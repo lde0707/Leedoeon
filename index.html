@@ -104,7 +104,7 @@ body.dark #top .nm{color:#fff}
 #say .kicker s{display:inline-block;width:34px;height:1px;background:var(--ac);
   text-decoration:none;vertical-align:middle;margin-right:12px}
 #say p{font-family:var(--f7);font-size:clamp(26px,4.4vw,60px);line-height:1.46;letter-spacing:-.04em}
-#say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block;-webkit-text-stroke:.28px currentColor}
+#say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block;-webkit-text-stroke:.55px currentColor;paint-order:stroke fill}
 #say .w.on{color:var(--ink)}
 #say .w.key.on{color:var(--ac)}
 #say .w.box.on{box-shadow:inset 0 -.32em 0 rgba(232,69,44,.18)}
@@ -275,7 +275,7 @@ body.dark #top .nm{color:#fff}
 <section id="say">
   <div class="inner">
     <div class="kicker"><s></s>ABOUT ME</div>
-    <p id="sayText">규칙을 설계하고, 그게 실제로 [작동하는지] 확인합니다. 게임 [출시]부터 [경제 밸런스], [QA 자동화]까지. 지금도 [만들고] 있습니다.</p>
+    <p id="sayText">규칙을 설계하고, 그게 실제로 [작동하는지] 확인합니다. // 게임 [출시]부터 [경제 밸런스], [QA 자동화]까지. 지금도 [만들고] 있습니다.</p>
   </div>
 </section>
 
@@ -464,6 +464,7 @@ $$('a,.card,.erow,.pstep').forEach(el=>{el.addEventListener('mouseenter',()=>doc
 /* ── 수루룩 하이라이트 : 단어 분해 ── */
 const st=$('#sayText');
 st.innerHTML=st.textContent.trim().split(/\s+/).map(w=>{
+  if(w==='//')return '<br>';
   let key=/[\[\]]/.test(w), t=w.replace(/[\[\]]/g,'');
   return '<span class="w'+(key?' key box':'')+'">'+t+'</span>';
 }).join(' ');
