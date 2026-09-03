@@ -103,8 +103,8 @@ body.dark #top .nm{color:#fff}
 #say .kicker{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--gray);margin-bottom:38px}
 #say .kicker s{display:inline-block;width:34px;height:1px;background:var(--ac);
   text-decoration:none;vertical-align:middle;margin-right:12px}
-#say p{font-family:var(--f7);font-size:clamp(26px,4.4vw,60px);line-height:1.46;letter-spacing:-.04em}
-#say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block;-webkit-text-stroke:.55px currentColor;paint-order:stroke fill}
+#say p{font-family:var(--f8);font-size:clamp(26px,4.4vw,60px);line-height:1.46;letter-spacing:-.04em}
+#say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block}
 #say .w.on{color:var(--ink)}
 #say .w.key.on{color:var(--ac)}
 #say .w.box.on{box-shadow:inset 0 -.32em 0 rgba(232,69,44,.18)}
@@ -136,13 +136,6 @@ body.dark #top .nm{color:#fff}
 .card .tp{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f6);font-size:12px;
   letter-spacing:.14em;color:#9ca1a9;margin-bottom:18px}
 .card .tp b{color:var(--ac)}
-.card .shot{margin-bottom:20px;border:1px solid #26282e;overflow:hidden;background:#000}
-.card .shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;
-  filter:grayscale(.3) contrast(1.04) saturate(.82);transition:filter .35s ease}
-.card:hover .shot img{filter:grayscale(0) contrast(1.06) saturate(1)}
-@media(min-width:901px){
-  .card .shot{position:absolute;top:-9vh;right:0;width:clamp(150px,18vw,230px);margin-bottom:0;z-index:0}
-}
 .card h3{font-size:clamp(26px,4.6vw,54px);line-height:1.08;letter-spacing:-.045em}
 .card h3 s{display:block;text-decoration:none;font-family:var(--f6);font-size:.32em;
   letter-spacing:.06em;color:#a8acb3;margin-top:12px}
@@ -152,6 +145,15 @@ body.dark #top .nm{color:#fff}
 .card li{position:relative;padding-left:22px;font-size:15.5px;color:#d2d6dc;line-height:1.62}
 .card li:before{content:"";position:absolute;left:0;top:11px;width:10px;height:1.5px;background:var(--ac)}
 .card .tl{margin-top:26px;display:flex;flex-wrap:wrap;gap:7px}
+.shot{margin-top:26px;position:relative;overflow:hidden;border:1px solid #2c2f36;border-radius:3px;
+  max-width:600px;background:#111}
+.shot img{display:block;width:100%;height:clamp(110px,17vh,168px);object-fit:cover;object-position:center 32%;
+  filter:grayscale(.35) contrast(1.03);transition:filter .5s,transform .8s;transform:scale(1.01)}
+.card:hover .shot img{filter:none;transform:scale(1.05)}
+.shot figcaption{position:absolute;left:0;bottom:0;right:0;padding:22px 12px 9px;
+  font-family:var(--f6);font-size:10.5px;letter-spacing:.14em;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.55) 45%,rgba(0,0,0,.9))}
+@media(max-width:900px){.shot img{height:160px}}
 .card .tl span{font-family:var(--f6);font-size:11.5px;letter-spacing:.08em;color:#c3c7cd;
   border:1px solid #2c2f36;border-radius:2px;padding:6px 11px}
 .wend{flex:0 0 min(60vw,380px);padding:0 clamp(28px,5vw,90px);color:#6f747c;font-size:14px}
@@ -204,6 +206,7 @@ body.dark #top .nm{color:#fff}
 .erow .d{font-family:var(--f6);font-size:12px;letter-spacing:.1em;color:var(--gray)}
 .erow .t{font-family:var(--f7);font-size:clamp(17px,2.2vw,24px);letter-spacing:-.03em}
 .erow .m{margin-top:8px;font-size:14px;color:var(--ink2)}
+.erow a.bd{transition:.25s}.erow a.bd:hover{background:var(--ink)}
 .erow .bd{display:inline-block;font-family:var(--f6);font-size:11px;letter-spacing:.1em;color:#fff;
   background:var(--ac);padding:3px 10px;margin-left:8px;vertical-align:3px}
 .erow:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ac);transition:width .6s}
@@ -298,7 +301,6 @@ body.dark #top .nm{color:#fff}
           <div class="no">01</div>
           <div class="body">
             <div class="tp"><span>2026.08 — 현재</span><span>팀 4인</span><b>진행 중</b></div>
-            <div class="shot"><img src="쓰레기집게소년타이틀.png" alt="쓰레기 집게 소년 타이틀 이미지" loading="lazy"></div>
             <h3>쓰레기 집게 소년<s>콘셉트 · 게임 경제 · 시스템 구현</s></h3>
             <p class="q">모으는 재미를, 굴러가는 경제로 만들었습니다.</p>
             <ul>
@@ -308,6 +310,8 @@ body.dark #top .nm{color:#fff}
               <li>일꾼 고용과 자동 재활용 시스템으로 수동 수집 외 수익 창출 루프 개발</li>
             </ul>
             <div class="tl"><span>Unity C#</span><span>Claude Code</span><span>Photoshop</span></div>
+            <figure class="shot"><img src="trash-boy-title.png" alt="쓰레기 집게 소년 타이틀 화면" loading="lazy">
+              <figcaption>TITLE SCREEN — 7일 안에 도시를 세워라</figcaption></figure>
           </div>
         </article>
 
@@ -315,7 +319,6 @@ body.dark #top .nm{color:#fff}
           <div class="no">02</div>
           <div class="body">
             <div class="tp"><span>2026.03 — 2026.07</span><span>팀 4인</span><b>STOVE INDIE 출시</b></div>
-            <div class="shot"><img src="%EC%A7%84%EC%A3%BC%EB%8F%84%EB%91%91%EB%93%A4%20STOVE%20%EC%B6%9C%EC%8B%9C%20%EC%82%AC%EC%A7%84.png" alt="진주도둑들 STOVE 출시 사진" loading="lazy"></div>
             <h3>진주도둑들<s>시스템 · 밸런스 기획</s></h3>
             <p class="q">끝까지 만들어 출시하고, 유저 앞에서 숫자를 다시 만졌습니다.</p>
             <ul>
@@ -325,6 +328,8 @@ body.dark #top .nm{color:#fff}
               <li>출시 이후 라이브 서비스 대응 경험</li>
             </ul>
             <div class="tl"><span>Unity C#</span><span>GitHub</span><span>Photoshop</span></div>
+            <figure class="shot"><img src="pearl-thieves-stove.png" alt="진주도둑들 스토브인디 스토어 페이지" loading="lazy">
+              <figcaption>STOVE INDIE — 2026.05.30 출시 · 유저평가 100% 추천</figcaption></figure>
           </div>
         </article>
 
@@ -421,7 +426,7 @@ body.dark #top .nm{color:#fff}
   </div>
   <div class="erow rv">
     <div class="d">2026.05</div>
-    <div><div class="t">Google AI 전문 인증서 <span class="bd">수료</span></div>
+    <div><div class="t">Google AI 전문 인증서 <a class="bd" href="google-ai-certificate.pdf" target="_blank" rel="noopener">수료증 보기</a></div>
       <div class="m">Google Professional Certificate · AI 활용 및 워크플로우 과정 수료</div></div>
   </div>
   <div class="erow rv">
