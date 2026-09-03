@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이도언 · GAME DESIGN PORTFOLIO</title>
+<style>
+/* ══════════ FONT : 프리젠테이션(Freesentation) 5 · 6 · 7 (로컬 설치 폰트) ══════════ */
+:root{
+  --f5:"Freesentation 5Medium","Freesentation 5 Medium","Freesentation-5Medium","프리젠테이션 5","프레젠테이션 5",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+  --f6:"Freesentation 6SemiBold","Freesentation 6 SemiBold","Freesentation-6SemiBold","프리젠테이션 6","프레젠테이션 6",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+  --f7:"Freesentation 7Bold","Freesentation 7 Bold","Freesentation-7Bold","프리젠테이션 7","프레젠테이션 7",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+  --f8:"Freesentation 8ExtraBold","Freesentation 8 ExtraBold","Freesentation-8ExtraBold","프리젠테이션 8","프레젠테이션 8","Freesentation 7Bold","프리젠테이션 7",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+
+  --ac:#E8452C;              /* 단 하나의 포인트 컬러 */
+  --ink:#0B0B0C; --ink2:#2f3238; --gray:#6d7178; --gray2:#adb1b8;
+  --line:#e6e7ea; --bg:#fff; --bg2:#f4f4f5;
+  --pad:clamp(20px,4.4vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f7);line-height:1.7;
+  word-break:keep-all;overflow-wrap:break-word;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+@media(max-width:900px){body{cursor:auto}}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--ac);color:#fff}
+h1,h2,h3,h4,.f7{font-family:var(--f8);font-weight:400}
+.f6{font-family:var(--f6)}
+
+/* ══════════ 0. 인트로 블라인드 (싸라락) ══════════ */
+#blinds{position:fixed;inset:0;z-index:999;display:flex;pointer-events:none}
+#blinds b{flex:1;background:var(--ink);transform-origin:top;
+  animation:blind .95s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes blind{to{transform:scaleY(0)}}
+#blinds.done{display:none}
+#introword{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;pointer-events:none;
+  color:#fff;font-family:var(--f7);font-size:clamp(28px,6vw,64px);letter-spacing:-.04em;
+  animation:iw 1.15s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes iw{0%{opacity:0;transform:translateY(18px)}22%{opacity:1;transform:none}
+  60%{opacity:1}100%{opacity:0;transform:translateY(-18px)}}
+
+/* ══════════ 커서 ══════════ */
+#cur{position:fixed;top:0;left:0;width:11px;height:11px;border-radius:50%;background:var(--ac);
+  z-index:900;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:normal;transition:width .25s,height .25s}
+#ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1.4px solid var(--ink);border-radius:50%;
+  z-index:899;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s,opacity .3s}
+body.dark #ring{border-color:#fff}
+body.hov #ring{width:74px;height:74px;border-color:var(--ac)}
+body.hov #cur{width:4px;height:4px}
+@media(max-width:900px){#cur,#ring{display:none}}
+
+/* ══════════ HUD ══════════ */
+#bar{position:fixed;top:0;left:0;height:2.5px;background:var(--ac);z-index:800;width:0}
+#idx{position:fixed;left:18px;bottom:34px;z-index:700;font-family:var(--f6);font-size:10px;
+  letter-spacing:.22em;color:var(--gray);display:flex;flex-direction:column;gap:11px}
+#idx a{opacity:.5;transition:.3s;position:relative;padding-left:22px;line-height:1;white-space:nowrap}
+#idx a:before{content:"";position:absolute;left:0;top:50%;width:11px;height:1px;background:currentColor;transition:.3s}
+#idx a em{font-style:normal;opacity:0;transform:translateX(-8px);display:inline-block;transition:.3s}
+#idx:hover a em{opacity:1;transform:none}
+#idx a.on{opacity:1;color:var(--ac)}
+#idx a.on em{opacity:1;transform:none}
+#idx a.on:before{width:16px;background:var(--ac)}
+body.dark #idx{color:#8b8f97}
+body.dark #idx a.on{color:var(--ac)}
+@media(max-width:900px){#idx{display:none}}
+#top{position:fixed;top:26px;left:var(--pad);right:var(--pad);z-index:700;display:flex;
+  justify-content:space-between;font-family:var(--f6);font-size:11px;letter-spacing:.18em;color:var(--gray)}
+#top .nm{color:var(--ink)}
+body.dark #top .nm{color:#fff}
+#top .dot{display:inline-block;width:6px;height:6px;background:var(--ac);border-radius:50%;margin-left:4px}
+
+/* ══════════ 1. HERO ══════════ */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:130px var(--pad) 170px;position:relative;overflow:hidden}
+.grid{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:76px 76px;opacity:.55;
+  mask-image:radial-gradient(120% 90% at 70% 20%,#000 10%,transparent 75%)}
+.hline{overflow:hidden;display:block;padding-bottom:.14em;margin-bottom:-.1em}
+.hline span{display:inline-block;transform:translateY(105%);opacity:0}
+.go .hline span{animation:up 1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none;opacity:1}}
+#hero h1{font-family:var(--f7);font-size:clamp(42px,10.4vw,154px);line-height:1.02;letter-spacing:-.05em;position:relative;z-index:2}
+#hero h1 .ac{color:var(--ac)}
+#hero h1 .out{-webkit-text-stroke:1.6px var(--ink);color:transparent}
+.hsub{margin-top:clamp(28px,4vw,52px);display:flex;gap:clamp(20px,5vw,90px);flex-wrap:wrap;
+  align-items:flex-end;position:relative;z-index:2}
+.hsub p{max-width:560px;font-size:clamp(14.5px,1.6vw,18px);color:var(--ink2);line-height:1.75}
+.hsub p b{font-family:var(--f7);color:var(--ink)}
+.hrole{font-family:var(--f6);font-size:11px;letter-spacing:.2em;color:var(--gray);
+  border-left:2px solid var(--ac);padding-left:14px;line-height:2.1}
+.scroller{position:absolute;right:var(--pad);bottom:34px;font-family:var(--f6);font-size:10.5px;
+  letter-spacing:.22em;color:var(--gray);display:flex;align-items:center;gap:10px}
+.scroller i{display:block;width:44px;height:1px;background:var(--gray2);position:relative;overflow:hidden}
+.scroller i:after{content:"";position:absolute;inset:0;background:var(--ac);animation:sw 1.9s infinite}
+@keyframes sw{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+
+
+/* ══════════ 2. 스크롤 하이라이트 (수루룩) ══════════ */
+#say{padding:min(24vh,200px) var(--pad) min(26vh,220px);background:var(--bg)}
+#say .inner{max-width:1000px;margin:0 auto}
+#say .kicker{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--gray);margin-bottom:38px}
+#say .kicker s{display:inline-block;width:34px;height:1px;background:var(--ac);
+  text-decoration:none;vertical-align:middle;margin-right:12px}
+#say p{font-family:var(--f7);font-size:clamp(26px,4.4vw,60px);line-height:1.46;letter-spacing:-.04em}
+#say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block}
+#say .w.on{color:var(--ink)}
+#say .w.key.on{color:var(--ac)}
+#say .w.box.on{box-shadow:inset 0 -.32em 0 rgba(232,69,44,.18)}
+
+/* ══════════ 3. 마퀴 ══════════ */
+#mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0;overflow:hidden;background:var(--bg2)}
+#mq .row{display:flex;width:max-content;will-change:transform}
+#mq .row div{font-family:var(--f7);font-size:clamp(28px,5vw,66px);letter-spacing:-.04em;
+  padding-right:44px;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:44px}
+#mq .row div i{width:10px;height:10px;background:var(--ac);border-radius:50%;display:inline-block}
+#mq .row div em{font-style:normal;-webkit-text-stroke:1.4px var(--ink2);color:transparent}
+
+/* ══════════ 4. WORK (가로 핀) ══════════ */
+#work{background:var(--ink);color:#fff;position:relative}
+#pin{height:900vh;position:relative}
+#stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+#track{display:flex;height:100%;align-items:center;will-change:transform}
+#track>*{align-self:center;max-height:76svh;overflow:visible}
+.wintro{flex:0 0 min(78vw,620px);padding:0 clamp(28px,5vw,90px);}
+.wintro .k{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--ac);margin-bottom:22px}
+.wintro h2{font-size:clamp(34px,6.2vw,86px);line-height:1.02;letter-spacing:-.05em}
+.wintro p{margin-top:24px;color:#b6bac1;font-size:16px;max-width:420px}
+.card{flex:0 0 min(86vw,760px);margin-right:clamp(20px,3vw,44px);position:relative;
+  border-left:1px solid #26282e;padding:0 clamp(24px,4vw,60px)}
+.card .no{font-family:var(--f7);font-size:clamp(60px,12vw,180px);line-height:.8;letter-spacing:-.06em;
+  color:transparent;-webkit-text-stroke:1.4px #34373e;position:absolute;top:-8vh;left:clamp(24px,4vw,60px);z-index:0}
+.card .body{position:relative;z-index:1}
+.card .tp{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f6);font-size:12px;
+  letter-spacing:.14em;color:#9ca1a9;margin-bottom:18px}
+.card .tp b{color:var(--ac)}
+.card h3{font-size:clamp(26px,4.6vw,54px);line-height:1.08;letter-spacing:-.045em}
+.card h3 s{display:block;text-decoration:none;font-family:var(--f6);font-size:.32em;
+  letter-spacing:.06em;color:#a8acb3;margin-top:12px}
+.card .q{margin-top:22px;font-family:var(--f6);font-size:clamp(14px,1.8vw,19px);color:#fff;
+  border-left:2px solid var(--ac);padding-left:14px}
+.card ul{margin-top:26px;list-style:none;display:grid;gap:11px;max-width:600px}
+.card li{position:relative;padding-left:22px;font-size:15.5px;color:#d2d6dc;line-height:1.62}
+.card li:before{content:"";position:absolute;left:0;top:11px;width:10px;height:1.5px;background:var(--ac)}
+.card .tl{margin-top:26px;display:flex;flex-wrap:wrap;gap:7px}
+.card .tl span{font-family:var(--f6);font-size:11.5px;letter-spacing:.08em;color:#c3c7cd;
+  border:1px solid #2c2f36;border-radius:2px;padding:6px 11px}
+.wend{flex:0 0 min(60vw,380px);padding:0 clamp(28px,5vw,90px);color:#6f747c;font-size:14px}
+.wend b{display:block;font-family:var(--f7);font-size:clamp(22px,3vw,36px);color:#fff;
+  letter-spacing:-.04em;margin-bottom:14px}
+#wprog{position:absolute;left:clamp(20px,4.4vw,72px);right:clamp(20px,4.4vw,72px);bottom:52px;
+  height:1px;background:#26282e;z-index:3}
+#wprog i{display:block;height:100%;background:var(--ac);width:0}
+@media(max-width:900px){
+  #pin{height:auto}
+  #stage{position:static;height:auto;display:block;padding:90px 0}
+  #track{display:block;transform:none!important}
+  .wintro,.card,.wend{flex:none;width:auto;margin:0 0 70px;padding:0 var(--pad)}
+  .card .no{position:static;font-size:64px;margin-bottom:8px}
+  #wprog{display:none}
+}
+
+/* ══════════ 5. PROCESS (스티키) ══════════ */
+#proc{padding:min(18vh,150px) var(--pad) 0;background:var(--bg)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:start;max-width:1200px;margin:0 auto}
+@media(max-width:860px){.pgrid{grid-template-columns:1fr;gap:20px}}
+.pstick{position:sticky;top:26vh}
+.pstick .k{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--gray);margin-bottom:26px}
+.pstick h2{font-size:clamp(30px,5vw,64px);line-height:1.06;letter-spacing:-.05em}
+.pstick .cnt{display:flex;align-items:baseline;gap:12px;margin-top:34px;font-family:var(--f7);letter-spacing:-.05em}
+.pstick .cnt .big{font-size:clamp(64px,11vw,130px);line-height:.86;color:var(--ac)}
+.pstick .cnt .of{font-size:clamp(20px,3vw,34px);color:var(--gray2)}
+.ticks{margin-top:36px;display:flex;gap:8px;max-width:260px}
+.ticks i{flex:1;height:3px;background:var(--line);transition:background .45s}
+.ticks i.on{background:var(--ac)}
+@media(max-width:860px){.pstick{position:static}.pstick .cnt,.ticks{display:none}}
+.psteps{display:grid;gap:0;padding-bottom:min(58vh,520px)}
+@media(max-width:860px){.psteps{padding-bottom:60px}}
+.pstep{padding:clamp(46px,7.5vh,84px) 0;border-top:1px solid var(--line);opacity:.3;
+  transition:opacity .5s,transform .5s}
+.pstep.on{opacity:1}
+.pstep .n{font-family:var(--f6);font-size:11px;letter-spacing:.2em;color:var(--ac)}
+.pstep h4{margin-top:12px;font-size:clamp(20px,2.6vw,30px);letter-spacing:-.035em}
+.pstep p{margin-top:14px;color:var(--ink2);font-size:15.5px;max-width:440px;line-height:1.72}
+
+/* ══════════ 6. EDU ══════════ */
+#edu{padding:min(16vh,130px) var(--pad);background:var(--bg2);border-top:1px solid var(--line)}
+#edu .in{max-width:1100px;margin:0 auto}
+#edu .k{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--gray);margin-bottom:30px}
+#edu h2{font-size:clamp(28px,4.6vw,54px);letter-spacing:-.045em;line-height:1.12;margin-bottom:54px}
+.erow{display:grid;grid-template-columns:190px 1fr;gap:26px;padding:32px 0;border-top:1px solid var(--line);
+  position:relative;overflow:hidden}
+.erow:last-child{border-bottom:1px solid var(--line)}
+@media(max-width:760px){.erow{grid-template-columns:1fr;gap:8px}}
+.erow .d{font-family:var(--f6);font-size:12px;letter-spacing:.1em;color:var(--gray)}
+.erow .t{font-family:var(--f7);font-size:clamp(17px,2.2vw,24px);letter-spacing:-.03em}
+.erow .m{margin-top:8px;font-size:14px;color:var(--ink2)}
+.erow .bd{display:inline-block;font-family:var(--f6);font-size:11px;letter-spacing:.1em;color:#fff;
+  background:var(--ac);padding:3px 10px;margin-left:8px;vertical-align:3px}
+.erow:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ac);transition:width .6s}
+.erow:hover:after{width:100%}
+
+/* ══════════ 7. CONTACT ══════════ */
+#end{background:var(--ink);color:#fff;padding:min(20vh,170px) var(--pad) 46px;position:relative;overflow:hidden}
+#end .k{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:#6f747c;margin-bottom:30px}
+#end .k s{display:inline-block;width:34px;height:1px;background:var(--ac);text-decoration:none;
+  vertical-align:middle;margin-right:12px}
+#end h2{font-family:var(--f7);font-size:clamp(34px,9vw,124px);line-height:.98;letter-spacing:-.055em}
+#end h2 .ac{color:var(--ac)}
+.mail{display:inline-flex;align-items:center;gap:14px;margin-top:clamp(34px,5vw,64px);
+  font-family:var(--f6);font-size:clamp(16px,3vw,30px);letter-spacing:-.02em;
+  border-bottom:1.5px solid #34373e;padding-bottom:10px;transition:.3s}
+.mail:hover{color:var(--ac);border-color:var(--ac)}
+.mail svg{width:.8em;height:.8em;transition:transform .3s}
+.mail:hover svg{transform:translate(4px,-4px)}
+.fend{margin-top:clamp(60px,10vh,120px);padding-top:24px;border-top:1px solid #26282e;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  font-family:var(--f6);font-size:11px;letter-spacing:.12em;color:#6f747c}
+
+/* 공통 리빌 */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv,.hline span{opacity:1!important;transform:none!important;animation:none!important}
+  #say .w{color:var(--ink)}#blinds,#introword{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+<div id="introword">GAME DESIGN &nbsp;/&nbsp; 이도언</div>
+<div id="cur"></div><div id="ring"></div>
+<div id="bar"></div>
+
+<div id="top">
+  <div class="nm f6">이도언<span class="dot"></span></div>
+  <div>PORTFOLIO 2026</div>
+</div>
+
+<div id="idx">
+  <a href="#hero" data-t="hero"><em>INTRO</em></a>
+  <a href="#say" data-t="say"><em>ABOUT</em></a>
+  <a href="#work" data-t="work"><em>WORK</em></a>
+  <a href="#proc" data-t="proc"><em>PROCESS</em></a>
+  <a href="#edu" data-t="edu"><em>EDU</em></a>
+  <a href="#end" data-t="end"><em>CONTACT</em></a>
+</div>
+
+<!-- ══ 1. HERO ══ -->
+<section id="hero">
+  <div class="grid"></div>
+  <h1>
+    <span class="hline"><span>재미는 감이 아니라</span></span>
+    <span class="hline"><span class="out">설계</span><span>의 결과<span class="ac">.</span></span></span>
+  </h1>
+  <div class="hsub">
+    <p class="hline"><span><b>출시와 라이브 서비스까지</b> 굴려본 게임 기획자 이도언입니다.<br>
+      규칙을 만들고, 숫자로 조율하고, 플레이로 검증합니다.</span></p>
+    <div class="hrole hline"><span>SYSTEM &amp; LEVEL<br>BALANCE &amp; ECONOMY<br>QA AUTOMATION</span></div>
+  </div>
+  <div class="scroller"><i></i>SCROLL</div>
+</section>
+
+<!-- ══ 2. 수루룩 하이라이트 ══ -->
+<section id="say">
+  <div class="inner">
+    <div class="kicker"><s></s>ABOUT ME</div>
+    <p id="sayText">규칙을 설계하고, 그게 실제로 [작동하는지] 확인합니다. 게임 [출시]부터 [경제 밸런스], [QA 자동화]까지. 지금도 [만들고] 있습니다.</p>
+  </div>
+</section>
+
+<!-- ══ 3. 마퀴 ══ -->
+<div id="mq"><div class="row" id="mqrow"></div></div>
+
+<!-- ══ 4. WORK ══ -->
+<section id="work">
+  <div id="pin">
+    <div id="stage">
+      <div id="track">
+
+        <div class="wintro">
+          <div class="k">SELECTED WORK — 05</div>
+          <h2>기획서보다<br>결과로<br>말합니다.</h2>
+          <p>무엇을 맡았고, 어떤 문제를 어떤 설계로 풀었는지. 옆으로 넘기며 확인하세요.</p>
+        </div>
+
+        <article class="card">
+          <div class="no">01</div>
+          <div class="body">
+            <div class="tp"><span>2026.08 — 현재</span><span>팀 4인</span><b>진행 중</b></div>
+            <h3>쓰레기 집게 소년<s>콘셉트 · 게임 경제 · 시스템 구현</s></h3>
+            <p class="q">모으는 재미를, 굴러가는 경제로 만들었습니다.</p>
+            <ul>
+              <li>핵심 콘셉트와 전체 게임 구조 기획</li>
+              <li>일일 할당량 · 제한 시간 · 기력 소모 · 보상으로 이어지는 게임 경제 밸런스 구현</li>
+              <li>깊이와 지형에 따라 쓰레기 · 자원 · 돌발 요소가 달라지는 탐험 시스템 구현</li>
+              <li>일꾼 고용과 자동 재활용 시스템으로 수동 수집 외 수익 창출 루프 개발</li>
+            </ul>
+            <div class="tl"><span>Unity C#</span><span>Claude Code</span><span>Photoshop</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="no">02</div>
+          <div class="body">
+            <div class="tp"><span>2026.03 — 2026.07</span><span>팀 4인</span><b>STOVE INDIE 출시</b></div>
+            <h3>진주도둑들<s>시스템 · 밸런스 기획</s></h3>
+            <p class="q">끝까지 만들어 출시하고, 유저 앞에서 숫자를 다시 만졌습니다.</p>
+            <ul>
+              <li>랭크 모드와 스테이지 모드로 나뉘는 두 갈래 진행 구조 기획</li>
+              <li>웨이브 간격 · 적 등장 타이밍 · 보스 등장 시점을 조정해 난이도 곡선 설계</li>
+              <li>점수 → 랭킹 → 재도전으로 이어지는 플레이 루프 설계</li>
+              <li>출시 이후 라이브 서비스 대응 경험</li>
+            </ul>
+            <div class="tl"><span>Unity C#</span><span>GitHub</span><span>Photoshop</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="no">03</div>
+          <div class="body">
+            <div class="tp"><span>2025.08 — 2025.12</span><span>팀 4인</span><b>전 과정 완주</b></div>
+            <h3>Lucky Dice<s>보드게임 룰 · 컴포넌트 디자인</s></h3>
+            <p class="q">화면이 없을 때, 재미는 규칙 그 자체에서 나옵니다.</p>
+            <ul>
+              <li>주사위 확률을 축으로 한 핵심 규칙과 턴 진행 구조 설계</li>
+              <li>주사위 · 점수 트래커 등 실물 구성품 설계 및 제작 사양 정리</li>
+              <li>로고와 보드 비주얼 콘셉트를 직접 제작해 톤 통일</li>
+              <li>테스트 플레이 → 규칙 수정 → 재검증 사이클로 밸런스 개선</li>
+            </ul>
+            <div class="tl"><span>Photoshop</span><span>Rule Design</span><span>Playtest</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="no">04</div>
+          <div class="body">
+            <div class="tp"><span>2025.03 — 2025.07</span><span>단독 기획</span><b>프로토타입 구축</b></div>
+            <h3>GreenWay<s>모빌리티 앱 서비스 기획</s></h3>
+            <p class="q">문제 정의부터 화면까지, 혼자서 한 줄로 이었습니다.</p>
+            <ul>
+              <li>시장 · 유사 서비스 분석으로 기존 앱의 한계와 사용자 문제 도출</li>
+              <li>타겟 페르소나, SWOT · Cross SWOT, 비즈니스 모델 캔버스 작성</li>
+              <li>신호 주기 기반 경로 추천, 출발 타이밍 안내, 루틴 기록 기능 기획</li>
+              <li>홈 · 경로 탐색 · 출근 기록 · 히스토리 · 마이페이지 프로토타입 제작</li>
+            </ul>
+            <div class="tl"><span>Figma</span><span>UX Research</span><span>BM Canvas</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="no">05</div>
+          <div class="body">
+            <div class="tp"><span>2026.03 — 2026.07</span><span>팀 3인</span><b>자동화 프로토타입</b></div>
+            <h3>메이플키우기 자동화 테스팅<s>QA 테스트 설계</s></h3>
+            <p class="q">사람이 반복할 일을 스크립트에게 넘겼습니다.</p>
+            <ul>
+              <li>스모크 · 자동화 테스트 범위를 식별하고 테스트 시나리오 기획</li>
+              <li>Python · OpenCV · OCR 기반 화면 인식 자동화 프로토타입 구현</li>
+              <li>DNN · XGBoost 기반 게임 AI 테스트 방법론 조사</li>
+              <li>기능별 자동화 적합성을 분석해 효율적인 QA 구조 설계</li>
+            </ul>
+            <div class="tl"><span>Python</span><span>PyAutoGUI</span><span>OpenCV</span><span>Tesseract OCR</span><span>Jira</span></div>
+          </div>
+        </article>
+
+        <div class="wend"><b>여기까지가<br>지금의 기록.</b>다음 프로젝트는 아직 비어 있습니다. 그 칸을 함께 채울 팀을 찾고 있습니다.</div>
+      </div>
+      <div id="wprog"><i></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. PROCESS ══ -->
+<section id="proc">
+  <div class="pgrid">
+    <div class="pstick">
+      <div class="k">HOW I WORK</div>
+      <h2>기획은<br>네 단계를<br>거칩니다.</h2>
+      <div class="cnt"><span class="big" id="pbig">01</span><span class="of">/ 04</span></div>
+      <div class="ticks" id="ticks"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="psteps">
+      <div class="pstep" data-n="01"><div class="n">STEP 01</div><h4>문제 정의</h4>
+        <p>무엇이 재미없는지, 누가 불편한지부터 좁힙니다. 시장과 유사 사례를 먼저 뜯어봅니다.</p></div>
+      <div class="pstep" data-n="02"><div class="n">STEP 02</div><h4>규칙 설계</h4>
+        <p>핵심 루프와 진행 구조를 세우고, 문서로 팀 전체가 같은 그림을 보게 만듭니다.</p></div>
+      <div class="pstep" data-n="03"><div class="n">STEP 03</div><h4>수치 조율</h4>
+        <p>간격 · 타이밍 · 보상을 숫자로 만지며 난이도와 리듬을 맞춥니다.</p></div>
+      <div class="pstep" data-n="04"><div class="n">STEP 04</div><h4>검증 · 반복</h4>
+        <p>플레이테스트와 자동화 테스트로 확인하고, 결과를 다시 기획에 되돌립니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. EDU ══ -->
+<section id="edu"><div class="in">
+  <div class="k rv">EDUCATION · CERTIFICATE · AWARD</div>
+  <h2 class="rv">배우는 중이고,<br>이미 만들고 있습니다.</h2>
+  <div class="erow rv">
+    <div class="d">2022.03 — 현재</div>
+    <div><div class="t">유한대학교 컴퓨터공학과 · 게임콘텐츠전공</div>
+      <div class="m">게임 시스템 · 콘텐츠 기획 중심 전공 과정 이수 중</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">2025.12</div>
+    <div><div class="t">창업 아이디어 경진대회 <span class="bd">대상</span></div>
+      <div class="m">4인 팀 · 아이디어 구상부터 발표까지 참여</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">2026.05</div>
+    <div><div class="t">Google AI 전문 인증서 <span class="bd">수료</span></div>
+      <div class="m">Google Professional Certificate · AI 활용 및 워크플로우 과정 수료</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">2026.03 — 2026.12</div>
+    <div><div class="t">게임콘텐츠전공 집행부</div>
+      <div class="m">전공 학생회 활동 · 학과 행사 기획 및 운영</div></div>
+  </div>
+</div></section>
+
+<!-- ══ 7. CONTACT ══ -->
+<section id="end">
+  <div class="k"><s></s>CONTACT</div>
+  <h2>다음 게임의 규칙,<br><span class="ac">같이 만들어요.</span></h2>
+  <a class="mail" href="mailto:doun070789@gmail.com">doun070789@gmail.com
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+  <div class="fend"><span>© 2026 이도언 · GAME DESIGN PORTFOLIO</span><span>DESIGNED &amp; BUILT BY 이도언</span></div>
+</section>
+
+<script>
+(function(){
+const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>[...(r||document).querySelectorAll(s)];
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── 인트로 블라인드 ── */
+$$('#blinds b').forEach((b,i)=>b.style.animationDelay=(.55+i*.055)+'s');
+setTimeout(()=>{$('#blinds').classList.add('done');$('#introword').remove();},1400);
+$$('#hero .hline span').forEach((s,i)=>s.style.animationDelay=(1.05+i*.09)+'s');
+setTimeout(()=>document.body.classList.add('go'),100);
+
+/* ── 커서 ── */
+const cur=$('#cur'),ring=$('#ring');let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';});
+(function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;
+  ring.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';requestAnimationFrame(loop);})();
+$$('a,.card,.erow,.pstep').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));});
+
+/* ── 수루룩 하이라이트 : 단어 분해 ── */
+const st=$('#sayText');
+st.innerHTML=st.textContent.trim().split(/\s+/).map(w=>{
+  let key=/[\[\]]/.test(w), t=w.replace(/[\[\]]/g,'');
+  return '<span class="w'+(key?' key box':'')+'">'+t+'</span>';
+}).join(' ');
+const words=$$('#say .w');
+
+/* ── 마퀴 ── */
+const items=['시스템 기획','전투 밸런싱','게임 경제 설계','레벨 디자인','보드게임 룰','UX 기획','QA 자동화'];
+const build=()=>'<div>'+items.map((t,i)=>(i%2?'<em>'+t+'</em>':t)+'<i></i>').join('')+'</div>';
+$('#mqrow').innerHTML=build()+build()+build();
+let mqx=0,vel=0;
+
+/* ── WORK 가로 핀 ── */
+const pin=$('#pin'),track=$('#track'),wp=$('#wprog i');
+
+/* ── PROCESS ── */
+const steps=$$('.pstep'),pbig=$('#pbig'),ticks=$$('#ticks i');
+
+/* ── 리빌 ── */
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+$$('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3*80)+'ms';io.observe(el)});
+
+/* ── 스크롤 루프 ── */
+const links=$$('#idx a'),secs=links.map(a=>$('#'+a.dataset.t));
+let last=scrollY;
+function frame(){
+  const y=scrollY,h=innerHeight,dy=y-last;last=y;
+  vel+=(dy*.55-vel)*.12;
+
+  /* progress bar */
+  $('#bar').style.width=(y/(document.body.scrollHeight-h)*100)+'%';
+
+  /* 단어 하이라이트 */
+  const sr=$('#say').getBoundingClientRect();
+  if(sr.top<h && sr.bottom>0){
+    const p=clamp((h*.82-sr.top)/(sr.height*.62),0,1);
+    const n=Math.round(p*words.length);
+    words.forEach((w,i)=>w.classList.toggle('on',i<n));
+  }
+
+  /* 마퀴 */
+  mqx-=(1.1+Math.abs(vel)*.5);
+  const rw=$('#mqrow').scrollWidth/3;
+  if(-mqx>=rw)mqx+=rw;
+  $('#mqrow').style.transform='translate3d('+mqx+'px,0,0) skewX('+clamp(-vel*.12,-7,7)+'deg)';
+
+  /* 가로 핀 */
+  if(innerWidth>900){
+    const r=pin.getBoundingClientRect(),total=pin.offsetHeight-h;
+    const p=clamp(-r.top/total,0,1);
+    const dist=track.scrollWidth-innerWidth+60;
+    track.style.transform='translate3d('+(-p*dist)+'px,0,0)';
+    wp.style.width=(p*100)+'%';
+  }
+
+  /* 다크 섹션 */
+  const dark=[...$$('#work,#end')].some(s=>{const r=s.getBoundingClientRect();return r.top<40&&r.bottom>40;});
+  document.body.classList.toggle('dark',dark);
+
+  /* 프로세스 */
+  let act=0;
+  steps.forEach((s,i)=>{const r=s.getBoundingClientRect();
+    s.classList.toggle('on',r.top<h*.66&&r.bottom>h*.16);
+    if(r.top<h*.60)act=i;});
+  if(pbig)pbig.textContent=steps[act].dataset.n;
+  ticks.forEach((t,i)=>t.classList.toggle('on',i<=act));
+
+  /* 인덱스 */
+  secs.forEach((s,i)=>{const r=s.getBoundingClientRect();
+    links[i].classList.toggle('on',r.top<h*.5&&r.bottom>h*.5);});
+
+  requestAnimationFrame(frame);
+}
+if(!reduce)requestAnimationFrame(frame);
+else{words.forEach(w=>w.classList.add('on'));steps.forEach(s=>s.classList.add('on'));}
+
+/* 앵커 부드럽게 */
+$$('#idx a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();
+  document.getElementById(a.dataset.t).scrollIntoView({behavior:'smooth'});}));
+})();
+</script>
+</body>
+</html>
