@@ -104,7 +104,7 @@ body.dark #top .nm{color:#fff}
 #say .kicker s{display:inline-block;width:34px;height:1px;background:var(--ac);
   text-decoration:none;vertical-align:middle;margin-right:12px}
 #say p{font-family:var(--f7);font-size:clamp(26px,4.4vw,60px);line-height:1.46;letter-spacing:-.04em}
-#say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block}
+#say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block;-webkit-text-stroke:.28px currentColor}
 #say .w.on{color:var(--ink)}
 #say .w.key.on{color:var(--ac)}
 #say .w.box.on{box-shadow:inset 0 -.32em 0 rgba(232,69,44,.18)}
@@ -136,6 +136,13 @@ body.dark #top .nm{color:#fff}
 .card .tp{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f6);font-size:12px;
   letter-spacing:.14em;color:#9ca1a9;margin-bottom:18px}
 .card .tp b{color:var(--ac)}
+.card .shot{margin-bottom:20px;border:1px solid #26282e;overflow:hidden;background:#000}
+.card .shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;
+  filter:grayscale(.3) contrast(1.04) saturate(.82);transition:filter .35s ease}
+.card:hover .shot img{filter:grayscale(0) contrast(1.06) saturate(1)}
+@media(min-width:901px){
+  .card .shot{position:absolute;top:-9vh;right:0;width:clamp(150px,18vw,230px);margin-bottom:0;z-index:0}
+}
 .card h3{font-size:clamp(26px,4.6vw,54px);line-height:1.08;letter-spacing:-.045em}
 .card h3 s{display:block;text-decoration:none;font-family:var(--f6);font-size:.32em;
   letter-spacing:.06em;color:#a8acb3;margin-top:12px}
@@ -291,6 +298,7 @@ body.dark #top .nm{color:#fff}
           <div class="no">01</div>
           <div class="body">
             <div class="tp"><span>2026.08 — 현재</span><span>팀 4인</span><b>진행 중</b></div>
+            <div class="shot"><img src="쓰레기집게소년타이틀.png" alt="쓰레기 집게 소년 타이틀 이미지" loading="lazy"></div>
             <h3>쓰레기 집게 소년<s>콘셉트 · 게임 경제 · 시스템 구현</s></h3>
             <p class="q">모으는 재미를, 굴러가는 경제로 만들었습니다.</p>
             <ul>
@@ -307,6 +315,7 @@ body.dark #top .nm{color:#fff}
           <div class="no">02</div>
           <div class="body">
             <div class="tp"><span>2026.03 — 2026.07</span><span>팀 4인</span><b>STOVE INDIE 출시</b></div>
+            <div class="shot"><img src="%EC%A7%84%EC%A3%BC%EB%8F%84%EB%91%91%EB%93%A4%20STOVE%20%EC%B6%9C%EC%8B%9C%20%EC%82%AC%EC%A7%84.png" alt="진주도둑들 STOVE 출시 사진" loading="lazy"></div>
             <h3>진주도둑들<s>시스템 · 밸런스 기획</s></h3>
             <p class="q">끝까지 만들어 출시하고, 유저 앞에서 숫자를 다시 만졌습니다.</p>
             <ul>
