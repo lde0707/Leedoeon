@@ -145,11 +145,21 @@ body.dark #top .nm{color:#fff}
 .card li{position:relative;padding-left:22px;font-size:15.5px;color:#d2d6dc;line-height:1.62}
 .card li:before{content:"";position:absolute;left:0;top:11px;width:10px;height:1.5px;background:var(--ac)}
 .card .tl{margin-top:26px;display:flex;flex-wrap:wrap;gap:7px}
+.card ul.full{display:none}
+#ov ul.short{display:none}
+#ov ul.full{display:grid!important}
 .shot{margin-top:26px;position:relative;overflow:hidden;border:1px solid #2c2f36;border-radius:3px;
   max-width:600px;background:#111}
-.shot img{display:block;width:100%;height:clamp(110px,17vh,168px);object-fit:cover;object-position:center 32%;
-  filter:grayscale(.35) contrast(1.03);transition:filter .5s,transform .8s;transform:scale(1.01)}
-.card:hover .shot img{filter:none;transform:scale(1.05)}
+/* 데스크톱 : 카드 우측 상단 미리보기 */
+@media(min-width:901px){
+  .card .body{padding-right:clamp(210px,23vw,290px)}
+  .card .shot{position:absolute;top:0;right:0;width:clamp(190px,21vw,268px);margin:0;z-index:2}
+  .card .shot img{height:clamp(118px,14vh,150px)}
+  .card .shot figcaption{font-size:9.5px;letter-spacing:.1em;padding:18px 9px 7px}
+}
+.shot img{display:block;width:100%;height:clamp(110px,16vh,158px);object-fit:contain;background:#000;
+  filter:grayscale(.3) contrast(1.03);transition:filter .5s}
+.card:hover .shot img{filter:none}
 .shot figcaption{position:absolute;left:0;bottom:0;right:0;padding:22px 12px 9px;
   font-family:var(--f6);font-size:10.5px;letter-spacing:.14em;color:#fff;
   background:linear-gradient(transparent,rgba(0,0,0,.55) 45%,rgba(0,0,0,.9))}
@@ -170,6 +180,60 @@ body.dark #top .nm{color:#fff}
   .card .no{position:static;font-size:64px;margin-bottom:8px}
   #wprog{display:none}
 }
+
+.card{cursor:pointer}
+.more{margin-top:28px;display:inline-flex;align-items:center;gap:11px;font-family:var(--f6);
+  font-size:12.5px;letter-spacing:.14em;color:#fff;background:var(--ac);border:1.5px solid var(--ac);
+  border-radius:2px;padding:13px 22px;transition:.28s;position:relative}
+.more:before{content:"";position:absolute;inset:-5px;border:1px solid rgba(232,69,44,.35);
+  border-radius:3px;opacity:0;transition:.28s}
+.card:hover .more{background:#fff;border-color:#fff;color:var(--ink);transform:translateY(-2px)}
+.card:hover .more:before{opacity:1;inset:-7px}
+.more svg{width:13px;height:13px;transition:transform .3s}
+.card:hover .more svg{transform:translate(3px,-3px)}
+/* 썸네일 위 오버레이 힌트 */
+.shot:after{content:"CLICK";position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--f6);font-size:11px;letter-spacing:.3em;color:#fff;
+  background:rgba(11,11,12,.55);opacity:0;transition:opacity .3s}
+.card:hover .shot:after{opacity:1}
+
+/* ══════════ 프로젝트 상세 오버레이 ══════════ */
+#ov{position:fixed;inset:0;z-index:950;background:var(--ink);color:#fff;overflow-y:auto;
+  opacity:0;pointer-events:none;transition:opacity .4s}
+#ov.on{opacity:1;pointer-events:auto}
+#ov .sheet{max-width:940px;margin:0 auto;padding:120px var(--pad) 140px;
+  transform:translateY(24px);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+#ov.on .sheet{transform:none}
+#ovClose{position:fixed;top:24px;right:var(--pad);z-index:960;font-family:var(--f6);font-size:11px;
+  letter-spacing:.2em;color:#fff;border:1px solid #34373e;border-radius:2px;padding:11px 18px;
+  background:rgba(11,11,12,.7);backdrop-filter:blur(8px);cursor:pointer;transition:.25s}
+#ovClose:hover{background:var(--ac);border-color:var(--ac)}
+#ov .tp{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f6);font-size:12px;
+  letter-spacing:.14em;color:#9ca1a9;margin-bottom:18px}
+#ov .tp b{color:var(--ac)}
+#ov h3{font-size:clamp(30px,6vw,64px);line-height:1.06;letter-spacing:-.045em}
+#ov h3 s{display:block;text-decoration:none;font-family:var(--f6);font-size:.3em;
+  letter-spacing:.06em;color:#a8acb3;margin-top:14px}
+#ov .q{margin-top:26px;font-family:var(--f6);font-size:clamp(15px,2vw,21px);color:#fff;
+  border-left:2px solid var(--ac);padding-left:16px}
+#ov ul{margin-top:32px;list-style:none;display:grid;gap:13px;max-width:720px}
+#ov li{position:relative;padding-left:22px;font-size:16px;color:#d2d6dc;line-height:1.7}
+#ov li:before{content:"";position:absolute;left:0;top:12px;width:10px;height:1.5px;background:var(--ac)}
+#ov .tl{margin-top:30px;display:flex;flex-wrap:wrap;gap:7px}
+#ov .tl span{font-family:var(--f6);font-size:11.5px;letter-spacing:.08em;color:#c3c7cd;
+  border:1px solid #2c2f36;border-radius:2px;padding:6px 11px}
+#ov .shot,#ov .more{display:none}
+#ov .gal{margin-top:56px;border-top:1px solid #26282e;padding-top:44px;display:grid;gap:40px}
+#ov .gal h4{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:#6f747c;font-weight:400}
+#ov .gal figure{margin:0}
+#ov .gal img{display:block;width:100%;height:auto;border:1px solid #26282e;background:#000}
+#ov .gal figcaption{margin-top:12px;font-family:var(--f6);font-size:12px;color:#9ca1a9;letter-spacing:.04em}
+#ov .empty{font-family:var(--f6);font-size:13px;color:#6f747c}
+body.lock{overflow:hidden}
+/* 상세 화면에서는 기본 마우스 포인터 사용 */
+body.lock,#ov,#ov *{cursor:auto}
+#ovClose,#ov a{cursor:pointer}
+body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 
 /* ══════════ 5. PROCESS (스티키) ══════════ */
 #proc{padding:min(18vh,150px) var(--pad) 0;background:var(--bg)}
@@ -297,13 +361,18 @@ body.dark #top .nm{color:#fff}
           <p>무엇을 맡았고, 어떤 문제를 어떤 설계로 풀었는지. 옆으로 넘기며 확인하세요.</p>
         </div>
 
-        <article class="card">
+        <article class="card" data-key="trash">
           <div class="no">01</div>
           <div class="body">
             <div class="tp"><span>2026.08 — 현재</span><span>팀 4인</span><b>진행 중</b></div>
             <h3>쓰레기 집게 소년<s>콘셉트 · 게임 경제 · 시스템 구현</s></h3>
             <p class="q">모으는 재미를, 굴러가는 경제로 만들었습니다.</p>
-            <ul>
+            <ul class="short">
+              <li>핵심 콘셉트와 전체 게임 구조 기획</li>
+              <li>할당량 · 시간 · 기력 · 보상 경제 밸런스 구현</li>
+              <li>일꾼 고용 · 자동 재활용 수익 루프 개발</li>
+            </ul>
+            <ul class="full" hidden>
               <li>핵심 콘셉트와 전체 게임 구조 기획</li>
               <li>일일 할당량 · 제한 시간 · 기력 소모 · 보상으로 이어지는 게임 경제 밸런스 구현</li>
               <li>깊이와 지형에 따라 쓰레기 · 자원 · 돌발 요소가 달라지는 탐험 시스템 구현</li>
@@ -312,16 +381,24 @@ body.dark #top .nm{color:#fff}
             <div class="tl"><span>Unity C#</span><span>Claude Code</span><span>Photoshop</span></div>
             <figure class="shot"><img src="trash-boy-title.png" alt="쓰레기 집게 소년 타이틀 화면" loading="lazy">
               <figcaption>TITLE SCREEN — 7일 안에 도시를 세워라</figcaption></figure>
+            <span class="more">프로젝트 자세히 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-key="pearl">
           <div class="no">02</div>
           <div class="body">
             <div class="tp"><span>2026.03 — 2026.07</span><span>팀 4인</span><b>STOVE INDIE 출시</b></div>
             <h3>진주도둑들<s>시스템 · 밸런스 기획</s></h3>
             <p class="q">끝까지 만들어 출시하고, 유저 앞에서 숫자를 다시 만졌습니다.</p>
-            <ul>
+            <ul class="short">
+              <li>랭크 · 스테이지 두 갈래 진행 구조 기획</li>
+              <li>웨이브 · 보스 타이밍으로 난이도 곡선 설계</li>
+              <li>출시 이후 라이브 서비스 대응</li>
+            </ul>
+            <ul class="full" hidden>
               <li>랭크 모드와 스테이지 모드로 나뉘는 두 갈래 진행 구조 기획</li>
               <li>웨이브 간격 · 적 등장 타이밍 · 보스 등장 시점을 조정해 난이도 곡선 설계</li>
               <li>점수 → 랭킹 → 재도전으로 이어지는 플레이 루프 설계</li>
@@ -330,54 +407,81 @@ body.dark #top .nm{color:#fff}
             <div class="tl"><span>Unity C#</span><span>GitHub</span><span>Photoshop</span></div>
             <figure class="shot"><img src="pearl-thieves-stove.png" alt="진주도둑들 스토브인디 스토어 페이지" loading="lazy">
               <figcaption>STOVE INDIE — 2026.05.30 출시 · 유저평가 100% 추천</figcaption></figure>
+            <span class="more">프로젝트 자세히 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-key="dice">
           <div class="no">03</div>
           <div class="body">
             <div class="tp"><span>2025.08 — 2025.12</span><span>팀 4인</span><b>전 과정 완주</b></div>
             <h3>Lucky Dice<s>보드게임 룰 · 컴포넌트 디자인</s></h3>
             <p class="q">화면이 없을 때, 재미는 규칙 그 자체에서 나옵니다.</p>
-            <ul>
+            <ul class="short">
+              <li>주사위 확률 기반 핵심 규칙 · 턴 구조 설계</li>
+              <li>주사위 · 점수 트래커 등 실물 구성품 설계</li>
+              <li>테스트 플레이 반복으로 밸런스 개선</li>
+            </ul>
+            <ul class="full" hidden>
               <li>주사위 확률을 축으로 한 핵심 규칙과 턴 진행 구조 설계</li>
               <li>주사위 · 점수 트래커 등 실물 구성품 설계 및 제작 사양 정리</li>
               <li>로고와 보드 비주얼 콘셉트를 직접 제작해 톤 통일</li>
               <li>테스트 플레이 → 규칙 수정 → 재검증 사이클로 밸런스 개선</li>
             </ul>
             <div class="tl"><span>Photoshop</span><span>Rule Design</span><span>Playtest</span></div>
+            <span class="more">프로젝트 자세히 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-key="greenway">
           <div class="no">04</div>
           <div class="body">
             <div class="tp"><span>2025.03 — 2025.07</span><span>단독 기획</span><b>프로토타입 구축</b></div>
             <h3>GreenWay<s>모빌리티 앱 서비스 기획</s></h3>
             <p class="q">문제 정의부터 화면까지, 혼자서 한 줄로 이었습니다.</p>
-            <ul>
+            <ul class="short">
+              <li>시장 · 유사 서비스 분석으로 사용자 문제 도출</li>
+              <li>페르소나 · SWOT · BM 캔버스 작성</li>
+              <li>주요 5개 화면 프로토타입 제작</li>
+            </ul>
+            <ul class="full" hidden>
               <li>시장 · 유사 서비스 분석으로 기존 앱의 한계와 사용자 문제 도출</li>
               <li>타겟 페르소나, SWOT · Cross SWOT, 비즈니스 모델 캔버스 작성</li>
               <li>신호 주기 기반 경로 추천, 출발 타이밍 안내, 루틴 기록 기능 기획</li>
               <li>홈 · 경로 탐색 · 출근 기록 · 히스토리 · 마이페이지 프로토타입 제작</li>
             </ul>
             <div class="tl"><span>Figma</span><span>UX Research</span><span>BM Canvas</span></div>
+            <span class="more">프로젝트 자세히 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-key="qa">
           <div class="no">05</div>
           <div class="body">
             <div class="tp"><span>2026.03 — 2026.07</span><span>팀 3인</span><b>자동화 프로토타입</b></div>
             <h3>메이플키우기 자동화 테스팅<s>QA 테스트 설계</s></h3>
             <p class="q">사람이 반복할 일을 스크립트에게 넘겼습니다.</p>
-            <ul>
+            <ul class="short">
+              <li>자동화 테스트 범위 식별 · 시나리오 기획</li>
+              <li>Python · OpenCV · OCR 화면 인식 자동화 구현</li>
+              <li>기능별 자동화 적합성 분석 · QA 구조 설계</li>
+            </ul>
+            <ul class="full" hidden>
               <li>스모크 · 자동화 테스트 범위를 식별하고 테스트 시나리오 기획</li>
               <li>Python · OpenCV · OCR 기반 화면 인식 자동화 프로토타입 구현</li>
               <li>DNN · XGBoost 기반 게임 AI 테스트 방법론 조사</li>
               <li>기능별 자동화 적합성을 분석해 효율적인 QA 구조 설계</li>
             </ul>
             <div class="tl"><span>Python</span><span>PyAutoGUI</span><span>OpenCV</span><span>Tesseract OCR</span><span>Jira</span></div>
+            <span class="more">프로젝트 자세히 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
           </div>
         </article>
 
@@ -387,6 +491,8 @@ body.dark #top .nm{color:#fff}
     </div>
   </div>
 </section>
+
+<div id="ov"><button id="ovClose">CLOSE ✕</button><div class="sheet" id="ovBody"></div></div>
 
 <!-- ══ 5. PROCESS ══ -->
 <section id="proc">
@@ -463,7 +569,7 @@ const cur=$('#cur'),ring=$('#ring');let mx=innerWidth/2,my=innerHeight/2,rx=mx,r
 addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';});
 (function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;
   ring.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';requestAnimationFrame(loop);})();
-$$('a,.card,.erow,.pstep').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+$$('a,.card,.erow,.pstep,#ovClose').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));});
 
 /* ── 수루룩 하이라이트 : 단어 분해 ── */
@@ -483,6 +589,42 @@ let mqx=0,vel=0;
 
 /* ── WORK 가로 핀 ── */
 const pin=$('#pin'),track=$('#track'),wp=$('#wprog i');
+
+/* ══ 프로젝트 상세 갤러리 ══
+   사진을 추가하려면 아래 목록에 {src:'파일명.png',cap:'설명'} 한 줄만 넣으면 됩니다.
+   (파일은 index.html과 같은 폴더에 두고, 파일명은 영문·숫자 권장) */
+const GALLERY={
+  trash:[
+    {src:'trash-boy-title.png',cap:'타이틀 화면 — 7일 안에 도시를 세워라'}
+  ],
+  pearl:[
+    {src:'pearl-thieves-stove.png',cap:'스토브인디 스토어 페이지 — 2026.05.30 출시, 유저평가 100% 추천'}
+  ],
+  dice:[],
+  greenway:[],
+  qa:[]
+};
+
+/* ── 카드 클릭 → 상세 오버레이 ── */
+const ov=$('#ov'),ovBody=$('#ovBody');
+function openCard(card){
+  const key=card.dataset.key||'';
+  const shots=(GALLERY[key]||[]);
+  const gal=shots.length
+    ? '<div class="gal"><h4>SCREENS &amp; DOCUMENTS</h4>'+shots.map(g=>
+        '<figure><img src="'+g.src+'" alt="'+(g.cap||'')+'" loading="lazy">'+
+        (g.cap?'<figcaption>'+g.cap+'</figcaption>':'')+'</figure>').join('')+'</div>'
+    : '<div class="gal"><h4>SCREENS &amp; DOCUMENTS</h4><p class="empty">이미지 준비 중입니다.</p></div>';
+  ovBody.innerHTML=card.querySelector('.body').innerHTML+gal;
+  ov.classList.add('on');document.body.classList.add('lock');ov.scrollTop=0;
+}
+function closeCard(){ov.classList.remove('on');document.body.classList.remove('lock');}
+$('#ovClose').addEventListener('click',closeCard);
+addEventListener('keydown',e=>{if(e.key==='Escape')closeCard();});
+ov.addEventListener('click',e=>{if(e.target===ov)closeCard();});
+
+/* ── 카드 클릭으로만 상세 열기 (드래그 이동은 사용하지 않음) ── */
+$$('.card').forEach(c=>c.addEventListener('click',()=>openCard(c)));
 
 /* ── PROCESS ── */
 const steps=$$('.pstep'),pbig=$('#pbig'),ticks=$$('#ticks i');
