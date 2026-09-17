@@ -358,7 +358,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
       <div id="track">
 
         <div class="wintro">
-          <div class="k">SELECTED WORK — 05</div>
+          <div class="k">SELECTED WORK — 06</div>
           <h2>기획서보다<br>결과로<br>말합니다.</h2>
           <p>무엇을 맡았고, 어떤 문제를 어떤 설계로 풀었는지. 옆으로 넘기며 확인하세요.</p>
         </div>
@@ -487,10 +487,25 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           </div>
         </article>
 
-        <div class="wend"><b>여기까지가<br>지금의 기록.</b>다음 프로젝트는 아직 비어 있습니다. 그 칸을 함께 채울 팀을 찾고 있습니다.
-          <a class="more" href="lab/ready-core-event-proposal.html" target="_blank" rel="noopener" style="margin-top:22px;text-decoration:none">레디코어 작전실 &middot; 이벤트 기획서
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-        </div>
+        <article class="card" data-key="readycore">
+          <div class="no">06</div>
+          <div class="body">
+            <div class="tp"><span>2026.09</span><span>개인 기획</span><b>트렌드 리서치 기획서</b></div>
+            <h3>레디코어 작전실<s>이벤트 기획 · 트렌드 리서치</s></h3>
+            <p class="q">《트렌드 코리아 2026》을 게임 커뮤니티 이벤트로 번역했습니다.</p>
+            <ul class="short">
+              <li>'레디코어' 트렌드와 디펜스 게임 핵심 루프의 접점 분석</li>
+              <li>공유형 · 경쟁형 2트랙 이벤트 구조 설계</li>
+              <li>웨이브 진행에 맞춘 일정 · 기존 등급 체계를 재활용한 보상 설계</li>
+            </ul>
+            <div class="tl"><span>Trend Research</span><span>Event Design</span><span>HTML/CSS</span></div>
+            <a class="more" href="lab/ready-core-event-proposal.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">HTML 기획서 전체보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          </div>
+        </article>
+
+        <div class="wend"><b>여기까지가<br>지금의 기록.</b>다음 프로젝트는 아직 비어 있습니다. 그 칸을 함께 채울 팀을 찾고 있습니다.</div>
       </div>
       <div id="wprog"><i></i></div>
     </div>
@@ -607,7 +622,8 @@ const GALLERY={
   ],
   dice:[],
   greenway:[],
-  qa:[]
+  qa:[],
+  readycore:[]
 };
 
 /* ── 카드 클릭 → 상세 오버레이 ── */
