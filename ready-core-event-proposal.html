@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>레디코어 작전실</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #FFFFFF;
+    --ink: #111111;
+    --ink-soft: #4A4A4A;
+    --ink-faint: #8C8C8C;
+    --line: #111111;
+    --line-soft: #D6D6D6;
+    --line-grid: rgba(17,17,17,0.055);
+    --radius: 2px;
+    --maxw: 980px;
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Gothic A1', 'Noto Sans KR', system-ui, sans-serif;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before{
+    content:"";
+    position: fixed; inset:0; z-index:-1; background: var(--bg);
+    background-image:
+      repeating-linear-gradient(0deg, var(--line-grid) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, var(--line-grid) 0 1px, transparent 1px 28px);
+  }
+
+  h1,h2,h3{ margin:0; font-weight:900; text-wrap: balance; color: var(--ink); }
+  p{ margin:0; }
+  .display{ font-family:'Black Han Sans','Gothic A1',sans-serif; font-weight:400; letter-spacing:0.01em; }
+  .mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; }
+
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 20px; position:relative; }
+
+  /* corner registration marks */
+  .reg{ position:absolute; width:16px; height:16px; pointer-events:none; }
+  .reg::before, .reg::after{ content:""; position:absolute; background: var(--ink); }
+  .reg::before{ width:100%; height:1.4px; top:50%; left:0; transform:translateY(-50%); }
+  .reg::after{ width:1.4px; height:100%; left:50%; top:0; transform:translateX(-50%); }
+  .reg.tl{ top:14px; left:0; } .reg.tr{ top:14px; right:0; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding: 60px 0 42px; border-bottom: 2px solid var(--line); }
+  .brandrow{ display:flex; align-items:center; gap:10px; margin-bottom: 26px; flex-wrap:wrap; }
+  .brandrow .dash{ width:20px; height:1.6px; background: var(--ink); }
+  .eyebrow{ font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.12em; color: var(--ink); font-weight:700; text-transform:uppercase; }
+  .brandrow .sep{ color: var(--ink-faint); }
+  .brandrow .game{ font-size:12.5px; color: var(--ink-soft); letter-spacing:0.02em; font-family:'IBM Plex Mono'; }
+
+  .herotitle-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
+  .hero-title{ font-size: clamp(34px, 5.4vw, 58px); line-height:1.14; }
+  .hero-title u{ text-decoration: none; border-bottom: 5px solid var(--ink); }
+  .hero-sub{ margin-top:16px; max-width: 640px; font-size:16.5px; color: var(--ink-soft); }
+
+  .stamp{
+    flex-shrink:0; width:96px; height:96px; border-radius:50%;
+    border:2px solid var(--ink); position:relative;
+    display:flex; align-items:center; justify-content:center;
+    transform: rotate(-11deg); margin-top:6px;
+  }
+  .stamp::before{ content:""; position:absolute; inset:6px; border:1px solid var(--ink); border-radius:50%; }
+  .stamp span{ font-family:'IBM Plex Mono'; font-weight:700; font-size:11.5px; letter-spacing:0.06em; text-align:center; line-height:1.3; }
+
+  .dimline{ margin-top:30px; display:flex; align-items:center; gap:8px; max-width:340px; }
+  .dimline .tick{ width:1.4px; height:10px; background: var(--ink); }
+  .dimline .bar{ flex:1; height:1.4px; background: var(--ink); position:relative; }
+  .dimline .lbl{ font-family:'IBM Plex Mono'; font-size:11.5px; font-weight:700; letter-spacing:0.05em; white-space:nowrap; padding:0 4px; }
+
+  .metabar{
+    margin-top: 30px; display:flex; flex-wrap:wrap; gap:0;
+    border:1.4px solid var(--line);
+  }
+  .metabar .cell{ padding:14px 20px; flex:1 1 150px; border-right:1.4px solid var(--line); }
+  .metabar .cell:last-child{ border-right:none; }
+  .metabar .k{ font-family:'IBM Plex Mono'; font-size:10.5px; color: var(--ink-faint); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
+  .metabar .v{ font-size:14.5px; font-weight:700; }
+
+  /* ---------- SECTION / PANEL ---------- */
+  section{ padding: 54px 0; border-bottom:1.4px solid var(--line); position:relative; }
+  section:last-of-type{ border-bottom:none; }
+  .sec-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:26px; }
+  .sec-num{ font-family:'IBM Plex Mono'; font-size:12.5px; letter-spacing:0.05em; margin-bottom:8px; display:block; font-weight:700; }
+  .sec-title{ font-size: clamp(22px,3vw,30px); }
+  .sec-desc{ margin-top:10px; color: var(--ink-soft); font-size:15px; max-width: 680px; }
+
+  .panel{
+    position:relative;
+    background: #fff;
+    border:1.4px solid var(--line);
+    padding: 26px 26px;
+  }
+  .panel::before, .panel::after{ content:""; position:absolute; width:12px; height:12px; }
+  .panel::before{ top:-1.4px; left:-1.4px; border-top:2.4px solid var(--ink); border-left:2.4px solid var(--ink); }
+  .panel::after{ bottom:-1.4px; right:-1.4px; border-bottom:2.4px solid var(--ink); border-right:2.4px solid var(--ink); }
+
+  .icon{ width:22px; height:22px; stroke: var(--ink); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+
+  /* ---------- KEYWORD CHIPS ---------- */
+  .chiprow{ display:flex; flex-wrap:wrap; gap:9px; margin-top:22px; }
+  .chip{ font-size:13px; padding:7px 14px; border-radius:999px; border:1.4px solid var(--line); color: var(--ink-soft); background:#fff; font-family:'IBM Plex Mono'; }
+  .chip.hi{ background: var(--ink); border-color: var(--ink); color:#fff; font-weight:700; }
+
+  /* ---------- COMPARE TABLE ---------- */
+  table{ width:100%; border-collapse:collapse; font-size:14.5px; }
+  .cmp th{ text-align:left; font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.07em; text-transform:uppercase; color: var(--ink-faint); padding:0 14px 10px; border-bottom:1.4px solid var(--line); }
+  .cmp td{ padding:14px; vertical-align:top; border-bottom:1px solid var(--line-soft); color: var(--ink-soft); }
+  .cmp tr:last-child td{ border-bottom:none; }
+  .cmp td.lead{ font-weight:700; width:38%; color: var(--ink); }
+  .tablewrap{ overflow-x:auto; }
+
+  /* ---------- MODE CARDS ---------- */
+  .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+  .mode{ border:1.4px solid var(--line); padding:22px; background:#fff; }
+  .mode .tag{ display:inline-block; font-family:'IBM Plex Mono'; font-size:10.5px; letter-spacing:0.07em; text-transform:uppercase; border:1.2px solid var(--ink); padding:3px 10px; margin-bottom:12px; }
+  .mode h3{ font-size:19px; margin-bottom:8px; }
+  .mode p{ color: var(--ink-soft); font-size:14.5px; margin-bottom:14px; }
+  .mode ul{ margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .mode li{ font-size:13.8px; color: var(--ink-soft); padding-left:18px; position:relative; }
+  .mode li::before{ content:"—"; position:absolute; left:0; color: var(--ink); }
+
+  /* ---------- WAVE TIMELINE ---------- */
+  .waves{ display:grid; grid-template-columns: repeat(4,1fr); gap:14px; margin-top:8px; position:relative; }
+  .waves::before{ content:""; position:absolute; top:23px; left:6%; right:6%; height:1.4px; background: var(--line); z-index:0; }
+  .wave{ position:relative; z-index:1; }
+  .wave .node{ width:46px; height:46px; border-radius:50%; background:#fff; border:1.6px solid var(--ink); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+  .wave.boss .node{ background: var(--ink); }
+  .wave .node .icon{ width:20px; height:20px; }
+  .wave.boss .node .icon{ stroke:#fff; }
+  .wave .tag{ font-family:'IBM Plex Mono'; font-size:11.5px; font-weight:700; letter-spacing:0.03em; }
+  .wave .when{ font-family:'IBM Plex Mono'; font-size:11.5px; color: var(--ink-faint); margin-top:4px; }
+  .wave h3{ font-size:15.5px; margin-top:8px; font-weight:700; }
+  .wave p{ font-size:13.2px; color: var(--ink-soft); margin-top:6px; }
+
+  /* ---------- TIER REWARD CARDS ---------- */
+  .tiers{ display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
+  .tier{ border:1.4px solid var(--line); overflow:hidden; background:#fff; }
+  .tier .bar{ height:6px; background: var(--ink); }
+  .tier.silver .bar{ background:#fff; border-bottom:1.4px solid var(--ink); }
+  .tier.gold .bar{ background-image: repeating-linear-gradient(45deg, var(--ink) 0 2px, transparent 2px 8px); }
+  .tier.platinum{ background: var(--ink); color:#fff; }
+  .tier .body{ padding:20px; }
+  .tier .badge{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .tier .badge .icon{ width:26px; height:26px; }
+  .tier.platinum .badge .icon{ stroke:#fff; }
+  .tier .name{ font-family:'IBM Plex Mono'; font-weight:700; font-size:16px; letter-spacing:0.04em; }
+  .tier .cond{ font-family:'IBM Plex Mono'; font-size:12px; color: var(--ink-faint); margin-bottom:14px; }
+  .tier.platinum .cond{ color:#C9C9C9; }
+  .tier ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:7px; }
+  .tier li{ font-size:13.6px; color: var(--ink-soft); padding-left:16px; position:relative; }
+  .tier.platinum li{ color:#EDEDED; }
+  .tier li::before{ content:"·"; position:absolute; left:0; color: var(--ink-faint); }
+  .tier.platinum li::before{ color:#8A8A8A; }
+
+  /* ---------- KPI STAT TILES ---------- */
+  .stats{ display:grid; grid-template-columns: repeat(4,1fr); gap:14px; }
+  .stat{ border:1.4px solid var(--line); padding:18px; background:#fff; }
+  .stat .num{ font-family:'IBM Plex Mono'; font-weight:700; font-size: clamp(22px,3vw,28px); font-variant-numeric: tabular-nums; }
+  .stat .label{ margin-top:6px; font-size:12.8px; color: var(--ink-soft); }
+  .stat .goal{ margin-top:2px; font-family:'IBM Plex Mono'; font-size:10.2px; color: var(--ink-faint); letter-spacing:0.05em; text-transform:uppercase; }
+
+  /* ---------- RISK TABLE ---------- */
+  .risk td:first-child{ font-weight:700; color: var(--ink); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 46px 0 60px; text-align:center; }
+  footer .tagline{ font-family:'Black Han Sans'; font-size: clamp(20px,3vw,28px); max-width:640px; margin:0 auto 22px; line-height:1.45; }
+  footer .tagline u{ text-decoration:none; border-bottom:4px solid var(--ink); }
+  footer .sig{ font-family:'IBM Plex Mono'; font-size:12px; color: var(--ink-faint); }
+  footer .sig b{ color: var(--ink); }
+
+  @media (max-width: 720px){
+    .grid2, .tiers, .stats{ grid-template-columns: 1fr; }
+    .waves{ grid-template-columns: 1fr; }
+    .waves::before{ display:none; }
+    .metabar .cell{ border-right:none; border-bottom:1.4px solid var(--line); }
+    .metabar .cell:last-child{ border-bottom:none; }
+    .herotitle-row{ flex-direction:column; }
+    .stamp{ align-self:flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<!-- reusable icons -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-fortress" viewBox="0 0 24 24"><path d="M4 21V9l3-2 2 2 3-3 3 3 2-2 3 2v12"/><path d="M4 21h16"/><path d="M9 21v-5h6v5"/><path d="M12 4V2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-plan" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v3h6V3"/><path d="M8 11h8M8 14h8M8 17h5"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 16c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M3 10c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></symbol>
+    <symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/><path d="M12 6.5l1 2 2.2.3-1.6 1.5.4 2.2-2-1.1-2 1.1.4-2.2-1.6-1.5 2.2-.3z"/></symbol>
+    <symbol id="i-boss" viewBox="0 0 24 24"><path d="M4 10l2-5 3 3h6l3-3 2 5-2 2v6H6v-6z"/><circle cx="9.5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="12" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 10v4h3l6 4V6L6 10z"/><path d="M14 9a4 4 0 010 6"/><path d="M17 6a8 8 0 010 12"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4"/><path d="M6 4h12l-3 4 3 4H6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="0.6" fill="currentColor" stroke="none"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <span class="reg tl"></span><span class="reg tr"></span>
+    <div class="brandrow">
+      <span class="dash"></span>
+      <span class="eyebrow">EVENT PROPOSAL · 2026</span>
+      <span class="sep">/</span>
+      <span class="game">이동 요새 디펜스 (가제 · PC 로그라이크 디펜스)</span>
+    </div>
+
+    <div class="herotitle-row">
+      <h1 class="hero-title display">레디코어 작전실<br><u>Operation: READY CORE</u></h1>
+      <div class="stamp"><span>DRAFT<br>v1.0</span></div>
+    </div>
+
+    <p class="hero-sub">《트렌드 코리아 2026》 10대 키워드 중 <b>'레디코어(Ready Core)'</b>를 인게임 커뮤니티 이벤트로 번역한 기획서입니다. "웨이브가 오기 전, 완벽하게 준비된 자만이 요새를 지킨다" — 트렌드와 게임의 핵심 루프가 만나는 지점을 이벤트로 설계했습니다.</p>
+
+    <div class="dimline">
+      <div class="tick"></div><div class="bar"></div><div class="lbl mono">14 DAYS</div><div class="bar"></div><div class="tick"></div>
+    </div>
+
+    <div class="metabar">
+      <div class="cell"><div class="k">문서 상태</div><div class="v">Draft v1.0</div></div>
+      <div class="cell"><div class="k">작성일</div><div class="v">2026. 09. 17</div></div>
+      <div class="cell"><div class="k">작성자</div><div class="v">도언 · 게임 기획</div></div>
+      <div class="cell"><div class="k">연계 키워드</div><div class="v">레디코어 (Ready Core)</div></div>
+      <div class="cell"><div class="k">예상 기간</div><div class="v">14일</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 01 TREND ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-num display">01 — TREND INSIGHT</span>
+        <h2 class="sec-title">왜 지금, '레디코어'인가</h2>
+        <p class="sec-desc">서울대 소비트렌드분석센터(김난도 외)가 발표한 《트렌드 코리아 2026》은 불확실성이 커질수록 오히려 '철저한 사전 준비'가 삶의 태도가 되는 현상을 <b>레디코어(Ready Core)</b>로 정의합니다.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <svg class="icon" style="width:28px;height:28px;"><use href="#i-plan"/></svg>
+        <div>
+          <p style="color:var(--ink-soft); font-size:15px;">노션 템플릿으로 하루를 설계하고, 엑셀로 예산을 짜고, 여행 전 동선을 분 단위로 계획하는 것 — 젊은 세대에게 '준비'는 더 이상 피곤한 일이 아니라 불안한 시대를 통제하는 가장 확실한 방법이자 하나의 <b>놀이·자기표현</b>이 되었습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="mono" style="margin-top:22px; font-size:11.5px; color:var(--ink-faint); letter-spacing:0.05em;">2026년 10대 키워드 전체 (레디코어 강조)</p>
+    <div class="chiprow">
+      <span class="chip">휴먼 인 더 루프</span>
+      <span class="chip">필코노미</span>
+      <span class="chip">제로 클릭</span>
+      <span class="chip hi">★ 레디코어</span>
+      <span class="chip">AX 조직</span>
+      <span class="chip">픽셀 라이프</span>
+      <span class="chip">프라이스 디코딩</span>
+      <span class="chip">건강지능 HQ</span>
+      <span class="chip">1.5가구</span>
+      <span class="chip">근본니즘</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 FIT ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-num display">02 — GAME FIT</span>
+        <h2 class="sec-title">트렌드 × 게임, 두 개의 '준비 루프'</h2>
+        <p class="sec-desc"><b>이동 요새 디펜스</b>의 핵심 재미는 웨이브가 도달하기 전, 실버·골드·플래티넘 증강을 조합해 '나만의 방어 설계도'를 짜는 데 있습니다. 이는 레디코어 트렌드가 말하는 준비 문화를 게임 메커닉으로 이미 구현하고 있다는 뜻입니다.</p>
+      </div>
+    </div>
+
+    <div class="panel tablewrap">
+      <table class="cmp">
+        <thead><tr><th>레디코어 트렌드 특징</th><th>이동 요새 디펜스 대응 요소</th></tr></thead>
+        <tbody>
+          <tr><td class="lead">불확실한 미래 → 사전 계획으로 통제감 확보</td><td>웨이브 도달 전 증강 트리 설계 → 준비된 만큼 방어 성공률 상승</td></tr>
+          <tr><td class="lead">노션 · 엑셀로 짜는 '완벽한 하루'</td><td>도언이 실제 엑셀 밸런싱으로 설계한 증강 조합표와 동일한 성취감 구조</td></tr>
+          <tr><td class="lead">준비 과정 자체를 콘텐츠 · 자기표현으로 소비</td><td>내 설계도를 캡처·공유하는 UGC로 자연 전환 가능</td></tr>
+          <tr><td class="lead">등급별로 '얼마나 준비됐는지' 과시 (레디니스)</td><td>실버 · 골드 · 플래티넘 등급 체계와 1:1 매칭</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 CONCEPT + MODES ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-num display">03 — EVENT DESIGN</span>
+        <h2 class="sec-title">이벤트 구성 : 2개 트랙</h2>
+        <p class="sec-desc">"완벽한 준비"를 <b>보여주는 트랙</b>과 <b>증명하는 트랙</b>으로 나눠, 창작형 유저와 경쟁형 유저를 모두 끌어들입니다.</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="mode">
+        <span class="tag">Track A · 공유형</span>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+          <svg class="icon"><use href="#i-shield"/></svg>
+          <h3>출격 설계도 공모전</h3>
+        </div>
+        <p>내가 가장 자신 있는 증강 빌드를 '설계도 카드'로 캡처해 커뮤니티에 공유. 창의성 · 효율성 기준으로 인기 투표를 진행합니다.</p>
+        <ul>
+          <li>참여 방식: 인게임 빌드 요약 카드 자동 생성 → SNS/커뮤니티 업로드</li>
+          <li>심사: 유저 투표 60% + 운영진 밸런스 심사 40%</li>
+          <li>노림수: 레디코어=자기표현이라는 트렌드 축을 그대로 UGC로 전환</li>
+        </ul>
+      </div>
+
+      <div class="mode">
+        <span class="tag">Track B · 경쟁형</span>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+          <svg class="icon"><use href="#i-target"/></svg>
+          <h3>레디 웨이브 챌린지</h3>
+        </div>
+        <p>지정 웨이브(예: 20웨이브)까지 '최소 피해'로 도달한 준비된 설계도만 랭킹에 오르는 효율 경쟁전입니다.</p>
+        <ul>
+          <li>참여 방식: 챌린지 전용 시드로 플레이 → 결과 자동 집계</li>
+          <li>지표: 요새 잔여 체력 &gt; 클리어 타임 &gt; 사용 증강 수(적을수록 가점)</li>
+          <li>노림수: '준비 = 실력'이라는 레디코어의 승부욕 코드를 자극</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 SCHEDULE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-num display">04 — SCHEDULE</span>
+        <h2 class="sec-title">진행 일정 : 4개의 웨이브</h2>
+        <p class="sec-desc">디펜스 게임의 웨이브 구조를 그대로 이벤트 타임라인에 적용해, 마지막 '보스 웨이브'를 시상식으로 연결합니다.</p>
+      </div>
+    </div>
+
+    <div class="waves">
+      <div class="wave">
+        <div class="node"><svg class="icon"><use href="#i-megaphone"/></svg></div>
+        <span class="tag mono">WAVE 0 · 티저</span>
+        <div class="when">D-7 ~ D-1</div>
+        <h3>사전 예고</h3>
+        <p>인게임 배너 + SNS 티저로 레디코어 콘셉트 공개, 참여 가이드 배포</p>
+      </div>
+      <div class="wave">
+        <div class="node"><svg class="icon"><use href="#i-plan"/></svg></div>
+        <span class="tag mono">WAVE 1 · 접수</span>
+        <div class="when">D1 ~ D7</div>
+        <h3>설계도 제출 · 챌린지 오픈</h3>
+        <p>Track A 카드 업로드, Track B 챌린지 시드 상시 도전 가능</p>
+      </div>
+      <div class="wave">
+        <div class="node"><svg class="icon"><use href="#i-chart"/></svg></div>
+        <span class="tag mono">WAVE 2 · 집계</span>
+        <div class="when">D8 ~ D11</div>
+        <h3>투표 · 랭킹 마감</h3>
+        <p>유저 투표 집계 + 밸런스 심사, 챌린지 리더보드 최종 확정</p>
+      </div>
+      <div class="wave boss">
+        <div class="node"><svg class="icon"><use href="#i-boss"/></svg></div>
+        <span class="tag mono">WAVE 3 · 보스</span>
+        <div class="when">D12 ~ D14</div>
+        <h3>결과 발표 &amp; 보상</h3>
+        <p>등급별(실버·골드·플래티넘) 보상 지급, 우수 설계도 인게임 명예의 전당 등재</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 REWARDS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-num display">05 — REWARDS</span>
+        <h2 class="sec-title">보상 체계 : 기존 증강 등급 재활용</h2>
+        <p class="sec-desc">새 보상 체계를 따로 만들지 않고, 게임에 이미 존재하는 <b>실버 / 골드 / 플래티넘</b> 증강 등급 이름과 톤을 그대로 이벤트 보상에 입혀 세계관 일관성을 유지합니다.</p>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier silver">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="badge"><svg class="icon"><use href="#i-shield"/></svg><span class="name">SILVER</span></div>
+          <div class="cond">참여만 해도 전원 지급</div>
+          <ul>
+            <li>참여 기념 요새 스킨 뱃지</li>
+            <li>전용 프로필 프레임</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tier gold">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="badge"><svg class="icon"><use href="#i-medal"/></svg><span class="name">GOLD</span></div>
+          <div class="cond">투표 상위 30% / 챌린지 상위 30%</div>
+          <ul>
+            <li>한정 증강 카드 스킨</li>
+            <li>골드 등급 재화 패키지</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tier platinum">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="badge"><svg class="icon"><use href="#i-flag"/></svg><span class="name">PLATINUM</span></div>
+          <div class="cond">최종 TOP 3 (Track A/B 각 3인)</div>
+          <ul>
+            <li>명예의 전당 영구 등재 + 닉네임 노출</li>
+            <li>다음 시즌 얼리 테스트 초대</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 KPI ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-num display">06 — EXPECTED IMPACT</span>
+        <h2 class="sec-title">기대 효과 (목표 KPI)</h2>
+        <p class="sec-desc">출시 전/얼리엑세스 단계 기준의 목표치로, 실제 라이브 데이터로 사후 검증이 필요합니다.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">+35%</div><div class="label">이벤트 기간 재접속률</div><div class="goal">Target</div></div>
+      <div class="stat"><div class="num">200+</div><div class="label">설계도 카드 UGC 생성</div><div class="goal">Target</div></div>
+      <div class="stat"><div class="num">3건↑</div><div class="label">트렌드 연계 언론/SNS 노출</div><div class="goal">Target</div></div>
+      <div class="stat"><div class="num">Top10</div><div class="label">커뮤니티 화제성 랭킹 진입</div><div class="goal">Target</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 RISK ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-num display">07 — RISK &amp; MITIGATION</span>
+        <h2 class="sec-title">리스크 및 대응 방안</h2>
+      </div>
+    </div>
+    <div class="panel tablewrap">
+      <table class="cmp risk">
+        <thead><tr><th style="width:26%">리스크</th><th>대응 방안</th></tr></thead>
+        <tbody>
+          <tr><td>매크로 · 부정 시드 악용 (Track B)</td><td>서버 검증 로그 기반 재현 리플레이 확인, 이상치 자동 필터링 후 수동 재검수</td></tr>
+          <tr><td>투표 어뷰징 (Track A)</td><td>계정당 1일 1투표 제한 + 신규 계정 가중치 하향</td></tr>
+          <tr><td>참여율 저조</td><td>WAVE 1 중반 인게임 팝업 리마인드 + 실시간 랭킹 노출로 경쟁 심리 자극</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <svg class="icon" style="width:30px;height:30px; margin-bottom:18px;"><use href="#i-fortress"/></svg>
+    <p class="tagline">웨이브가 오기 전, <u>완벽하게 준비된 자</u>만이<br>요새를 지킨다.</p>
+    <p class="sig">이동 요새 디펜스 × 트렌드 코리아 2026 &nbsp;|&nbsp; Prepared by <b>도언</b> &nbsp;|&nbsp; Draft v1.0</p>
+  </div>
+</footer>
+
+</body>
+</html>
