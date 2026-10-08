@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>트릭컬 리바이브 게임 분석 · 이도언</title>
+<meta name="description" content="트릭컬 리바이브 게임 분석 — 기·승·전·결로 본 구조, 성장, BM, 운영, 평가 · 202227039 이도언">
+<meta property="og:title" content="트릭컬 리바이브 게임 분석">
+<meta property="og:description" content="귀여운 게임이 아니라, 부담 없는 게임 — 기승전결로 읽는 트릭컬 리바이브">
+<meta property="og:image" content="https://www.trickcal.com/assets/event/3rdAnniversary/img/main_bg_web-nYFJlJlQ.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root{
+  --paper:#F1EDE6; --paper2:#E7E1D7; --card:#FBF9F5; --ink:#1B1A18; --mute:#7f786f; --line:#d8d1c5;
+  --leaf:#7E9A72; --leaf2:#DCE5D3; --rose:#C9654F; --rose2:#F1D9D1; --sky:#D6E0E6; --sun:#EFE3BF;
+  --sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --kserif:'Noto Serif KR',serif;
+  --grot:'Space Grotesk','Pretendard Variable',sans-serif;
+  --gut:clamp(18px,4vw,56px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;overflow-x:clip}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+::selection{background:var(--rose);color:#fff}
+em{font-family:var(--serif);font-style:italic;font-weight:400}
+p{margin:0 0 14px}
+
+/* chrome */
+.bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--rose);z-index:81}
+.top{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:16px var(--gut);font:500 12px/1 var(--grot);letter-spacing:.14em;text-transform:uppercase;transition:color .3s,background .3s}
+.top.lt{color:#fff}
+.top a{text-decoration:none}
+.top .links{display:flex;gap:18px}
+.rail{position:fixed;left:calc(var(--gut) - 6px);top:50%;transform:translateY(-50%);z-index:70;display:flex;flex-direction:column;gap:14px;transition:opacity .4s}
+.rail a{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 15px/1 var(--kserif);color:var(--mute);opacity:.55;transition:.3s}
+.rail a i{display:block;width:16px;height:1px;background:currentColor;transition:.3s}
+.rail a.act{color:var(--rose);opacity:1}
+.rail a.act i{width:34px}
+.rail.hide{opacity:0;pointer-events:none}
+@media (max-width:1100px){.rail{display:none}}
+
+figure{margin:0;position:relative;overflow:hidden;border-radius:20px;background:var(--paper2)}
+figure img{width:100%;height:100%;object-fit:cover}
+figure.ct img{object-fit:contain}
+figure.ct{background:var(--card)}
+figure.bare{background:transparent;overflow:visible;border-radius:0}
+figcaption{position:absolute;left:12px;bottom:10px;font:500 11px/1.3 var(--grot);letter-spacing:.05em;background:rgba(27,26,24,.72);color:#fff;padding:5px 9px;border-radius:20px}
+figure.noimg{background:repeating-linear-gradient(45deg,var(--paper2) 0 12px,#ddd6ca 12px 24px);min-height:160px}
+figure.noimg img{display:none}
+.cr{font:500 11px/1.4 var(--grot);letter-spacing:.06em;color:var(--mute)}
+
+/* hero */
+.hero{height:100svh;min-height:640px;position:relative;overflow:hidden;color:#fff;background:#cfdcca}
+.hero .bg{position:absolute;inset:-4% 0 0 0;border-radius:0}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,26,24,.3),rgba(27,26,24,0) 30%,rgba(27,26,24,.45) 65%,rgba(27,26,24,.9))}
+.hero .in{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(30px,7vh,70px);display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+.kick{font:500 12px/1.6 var(--grot);letter-spacing:.16em;text-transform:uppercase;opacity:.9;margin-bottom:14px}
+.hero h1{margin:0;font-weight:800;letter-spacing:-.05em;line-height:1.02;font-size:clamp(46px,7.6vw,120px)}
+.hero h1 em{color:var(--sun);letter-spacing:-.02em}
+.hero .sub{margin-top:18px;font-size:clamp(16px,1.5vw,19px);opacity:.9;max-width:560px}
+.hero .who{text-align:right;font:500 12px/1.8 var(--grot);letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.hero .who b{display:block;font:700 16px/1.4 var(--sans);letter-spacing:0;text-transform:none}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero .who{text-align:left}}
+
+/* chapter opener */
+.ch{min-height:86vh;display:grid;place-items:center;text-align:center;padding:100px var(--gut);position:relative;overflow:hidden}
+.ch .han{font:900 clamp(160px,30vw,420px)/1 var(--kserif);color:transparent;-webkit-text-stroke:1.5px currentColor;opacity:.22;position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;user-select:none}
+.ch .t{position:relative}
+.ch .num{font:500 12px/1 var(--grot);letter-spacing:.24em;text-transform:uppercase;margin-bottom:20px;opacity:.75}
+.ch h2{margin:0;font-weight:800;letter-spacing:-.045em;line-height:1.1;font-size:clamp(38px,6vw,86px)}
+.ch h2 em{letter-spacing:-.02em}
+.ch p{margin:20px auto 0;max-width:560px;font-size:clamp(16px,1.4vw,19px);opacity:.8}
+.ch.c1{background:var(--paper);color:var(--ink)} .ch.c1 h2 em{color:var(--rose)}
+.ch.c2{background:var(--leaf2)} .ch.c2 h2 em{color:#4f6b44}
+.ch.c3{background:var(--ink);color:var(--paper)} .ch.c3 h2 em{color:var(--sun)}
+.ch.c4{background:var(--rose2)} .ch.c4 h2 em{color:var(--rose)}
+
+/* sections */
+.sec{padding:clamp(70px,11vh,140px) var(--gut)}
+.wrap{max-width:1140px;margin:0 auto}
+.lab{font:500 12px/1 var(--grot);letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.lab::before{content:"";width:30px;height:1px;background:currentColor}
+.h3{font-weight:800;letter-spacing:-.04em;line-height:1.15;font-size:clamp(28px,3.8vw,52px);margin:0 0 16px}
+.h3 em{color:var(--rose);letter-spacing:-.01em}
+.lead{font-size:clamp(16px,1.4vw,19px);color:#4b4640;max-width:620px;margin:0 0 34px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.two.w{grid-template-columns:1.15fr .85fr}
+@media (max-width:900px){.two,.two.w{grid-template-columns:1fr}}
+
+/* overview */
+.ov{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.ov div{background:var(--card);padding:20px 20px 18px}
+.ov small{display:block;font:600 10.5px/1 var(--grot);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.ov b{font-size:17px;letter-spacing:-.02em}
+@media (max-width:800px){.ov{grid-template-columns:repeat(2,1fr)}}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.kpi div{border-radius:20px;padding:22px;background:var(--ink);color:var(--paper)}
+.kpi b{display:block;font:700 clamp(40px,4.4vw,60px)/1 var(--grot);letter-spacing:-.05em}
+.kpi span{font-size:13.5px;color:#bdb5aa}
+@media (max-width:800px){.kpi{grid-template-columns:1fr}}
+.world{margin-top:70px}
+.world blockquote{margin:0;font:600 clamp(22px,2.6vw,34px)/1.5 var(--kserif);letter-spacing:-.02em}
+.world blockquote em{font-family:var(--kserif);font-style:normal;color:var(--rose)}
+
+/* core loop */
+.loopwrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.loopsvg{width:100%;max-width:500px;justify-self:center}
+.loopsvg .n circle{fill:var(--card);stroke:var(--ink);stroke-width:1.4}
+.loopsvg .n text{font:700 16px var(--sans);fill:var(--ink)}
+.loopsvg .n .s{font:500 11px var(--grot);fill:var(--mute);letter-spacing:.1em}
+.loopsvg .n.hl circle{fill:var(--leaf);stroke:var(--leaf)}
+.loopsvg .n.hl text,.loopsvg .n.hl .s{fill:#fff}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:14px 0;border-top:1px solid #c6d1bd}
+.steps li::before{content:"0" counter(s);font:700 14px/1.6 var(--grot);color:#4f6b44}
+.steps b{display:block;font-size:17px;letter-spacing:-.02em}
+.steps span{font-size:14.5px;color:#4b4640}
+@media (max-width:900px){.loopwrap{grid-template-columns:1fr}}
+
+/* content map */
+.cmap{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cm{background:var(--card);border-radius:20px;padding:22px 22px 18px;border:1px solid var(--line);transition:transform .35s,box-shadow .35s}
+.cm:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(27,26,24,.08)}
+.cm .ty{font:600 10.5px/1 var(--grot);letter-spacing:.14em;text-transform:uppercase;color:var(--leaf)}
+.cm h4{margin:10px 0 6px;font-size:19px;letter-spacing:-.02em}
+.cm p{font-size:14.5px;color:#4b4640;margin:0}
+.cm .rw{margin-top:12px;font-size:12.5px;color:var(--mute)}
+@media (max-width:900px){.cmap{grid-template-columns:1fr}}
+
+/* growth */
+.grow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gr{border-radius:18px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.gr .i{font:700 28px/1 var(--grot);color:var(--leaf)}
+.gr h4{margin:12px 0 4px;font-size:17px}
+.gr p{margin:0;font-size:14px;color:#4b4640}
+.gr.key{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.gr.key p{color:#cfc8bd}
+.gr.key .i{color:var(--sun)}
+@media (max-width:900px){.grow{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.grow{grid-template-columns:1fr}}
+
+/* characters */
+.cast{position:relative;height:clamp(360px,44vw,560px)}
+.cast figure{position:absolute;bottom:0;width:44%;aspect-ratio:1}
+.cast figure img{object-fit:contain;filter:drop-shadow(0 16px 26px rgba(27,26,24,.18))}
+.cast figure:nth-child(1){left:-2%;width:46%}
+.cast figure:nth-child(2){left:30%;width:42%;z-index:2}
+.cast figure:nth-child(3){right:-2%;width:40%}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tags span{font-size:13.5px;padding:7px 12px;border-radius:30px;background:var(--card);border:1px solid var(--line)}
+.persona6{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:20px 0 6px}
+.persona6 div{border-radius:14px;padding:12px 6px;text-align:center;font-weight:700;font-size:14px}
+@media (max-width:600px){.persona6{grid-template-columns:repeat(3,1fr)}}
+
+/* BM */
+.bmrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+.bmc{border-radius:20px;padding:22px;background:var(--card);border:1px solid var(--line)}
+.bmc small{font:600 10.5px/1 var(--grot);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.bmc b{display:block;font:700 clamp(34px,3.6vw,48px)/1.1 var(--grot);letter-spacing:-.04em;margin:12px 0 6px}
+.bmc p{margin:0;font-size:14px;color:#4b4640}
+@media (max-width:900px){.bmrow{grid-template-columns:1fr}}
+.pbar .r{display:grid;grid-template-columns:80px 1fr 90px;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:14.5px}
+.pbar .t{height:22px;background:var(--paper2);border-radius:6px;overflow:hidden}
+.pbar .f{height:100%;background:#b4ab9f;border-radius:6px;transform-origin:left}
+.pbar .r.me .f{background:var(--rose)}
+.pbar .r.me{font-weight:700}
+.pbar .v{text-align:right;font:700 14px/1 var(--grot)}
+
+/* live ops timeline */
+.tl{position:relative;margin-top:20px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:34px;height:2px;background:var(--line)}
+.tl .ln{position:absolute;left:0;top:34px;height:2px;background:var(--rose);width:100%;transform-origin:left}
+.tlr{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;position:relative}
+.tlr div{padding-top:56px;position:relative}
+.tlr div::before{content:"";position:absolute;top:27px;left:0;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--rose)}
+.tlr small{font:600 12px/1 var(--grot);letter-spacing:.1em;color:var(--mute)}
+.tlr b{display:block;font-size:17px;margin:6px 0 2px;letter-spacing:-.02em}
+.tlr span{font-size:13.5px;color:#4b4640}
+.tlr .r{font:700 26px/1 var(--grot);color:var(--rose);margin-top:8px;display:block;letter-spacing:-.03em}
+@media (max-width:900px){.tl::before,.tl .ln{display:none}.tlr{grid-template-columns:1fr 1fr}.tlr div{padding-top:30px}.tlr div::before{top:4px}}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:40px}
+.gal figure{aspect-ratio:818/472}
+.gal figure:nth-child(1){grid-column:span 4;grid-row:span 2;aspect-ratio:auto}
+.gal figure:nth-child(2),.gal figure:nth-child(3){grid-column:span 2}
+.gal figure:nth-child(4),.gal figure:nth-child(5),.gal figure:nth-child(6){grid-column:span 2}
+@media (max-width:800px){.gal{grid-template-columns:1fr 1fr}.gal figure:nth-child(n){grid-column:span 1;grid-row:auto;aspect-ratio:818/472}.gal figure:nth-child(1){grid-column:span 2}}
+
+/* turn (轉) */
+.turn{background:var(--ink);color:var(--paper)}
+.turn .lab{color:#a59d92}
+.turn .h3 em{color:var(--sun)}
+.turn .lead{color:#c9c1b6}
+.radarwrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.radar{width:100%;max-width:480px;justify-self:center}
+.radar text{font:600 13px var(--sans);fill:#d9d2c7}
+.radar .grid{fill:none;stroke:#3a3733}
+.radar .a{fill:rgba(126,154,114,.25);stroke:#9cba8f;stroke-width:2}
+.radar .b{fill:rgba(201,101,79,.18);stroke:#C9654F;stroke-width:2;stroke-dasharray:6 5}
+.leg{display:flex;gap:18px;font-size:13.5px;margin:10px 0 24px}
+.leg span{display:flex;align-items:center;gap:8px}
+.leg i{width:22px;height:4px;border-radius:2px}
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th,.cmp td{padding:12px 8px;border-bottom:1px solid #34312d;text-align:left}
+.cmp th{font:600 10.5px/1.3 var(--grot);letter-spacing:.14em;text-transform:uppercase;color:#a59d92}
+.cmp td:last-child{color:var(--sun);font-weight:700}
+.big-quote{margin:80px 0 0;font:600 clamp(26px,3.6vw,48px)/1.4 var(--kserif);letter-spacing:-.03em;max-width:980px}
+.big-quote em{font-family:var(--kserif);font-style:normal;color:var(--sun)}
+@media (max-width:900px){.radarwrap{grid-template-columns:1fr}}
+
+/* conclusion */
+.score{border-top:2px solid var(--ink)}
+.sc{display:grid;grid-template-columns:160px 1fr 54px;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.sc b{font-size:16px}
+.sc .dots{display:flex;gap:6px}
+.sc .dots i{flex:1;height:10px;border-radius:5px;background:var(--paper2)}
+.sc .dots i.on{background:var(--rose)}
+.sc .n{font:700 18px/1 var(--grot);text-align:right}
+.sc small{grid-column:2/4;font-size:13.5px;color:#5c564f;margin-top:-6px}
+@media (max-width:600px){.sc{grid-template-columns:100px 1fr 40px}.sc small{grid-column:1/4}}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pc > div{border-radius:20px;padding:24px}
+.pc .p{background:var(--leaf2)}
+.pc .c{background:var(--rose2)}
+.pc h4{margin:0 0 12px;font:700 12px/1 var(--grot);letter-spacing:.16em;text-transform:uppercase}
+.pc ul{margin:0;padding-left:18px;font-size:15px}
+.pc li{margin-bottom:6px}
+@media (max-width:800px){.pc{grid-template-columns:1fr}}
+.fix{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fix div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.fix .q{font:italic 400 36px/1 var(--serif);color:var(--rose)}
+.fix h4{margin:10px 0 6px;font-size:18px;letter-spacing:-.02em}
+.fix p{margin:0;font-size:14.5px;color:#4b4640}
+@media (max-width:900px){.fix{grid-template-columns:1fr}}
+.final{background:var(--rose2);border-radius:28px;padding:clamp(30px,5vw,60px);margin-top:70px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+.final p{margin:0;font:600 clamp(22px,2.8vw,36px)/1.45 var(--kserif);letter-spacing:-.02em}
+.final p em{font-family:var(--kserif);font-style:normal;color:var(--rose)}
+.final figure{width:clamp(140px,16vw,220px);aspect-ratio:1}
+@media (max-width:700px){.final{grid-template-columns:1fr}}
+
+.src ol{columns:2;column-gap:40px;padding-left:20px;font-size:13.5px;color:#4b4640}
+.src li{margin-bottom:6px;break-inside:avoid}
+@media (max-width:800px){.src ol{columns:1}}
+footer{background:var(--ink);color:#a59d92;padding:40px var(--gut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font:500 12px/1.6 var(--grot);letter-spacing:.12em;text-transform:uppercase}
+footer a{text-decoration:none;border-bottom:1px solid #5d5852}
+
+/* TL;DR */
+.tldr{background:var(--ink);color:var(--paper)}
+.tldr .lab{color:#a59d92}
+.tl-v{font-size:clamp(28px,4vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1.25;margin:0 0 44px;max-width:1080px}
+.tl-v em{color:var(--sun);letter-spacing:-.02em}
+.tl-k{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tl-k > div{background:#262421;border-radius:20px;padding:24px;position:relative}
+.tl-k span{font:700 11px/1 var(--grot);letter-spacing:.16em;color:var(--sun)}
+.tl-k b{display:block;font-size:24px;letter-spacing:-.03em;margin:14px 0 8px}
+.tl-k p{margin:0;font-size:14.5px;color:#cfc8bd}
+.tl-k .deep{position:absolute;top:22px;right:22px;font:700 10.5px/1 var(--grot);letter-spacing:.12em;font-style:normal;background:var(--rose);color:#fff;padding:5px 8px;border-radius:4px}
+.tl-k > div:nth-child(2){outline:2px solid var(--rose);outline-offset:-2px}
+.tl-r{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px;padding:16px 18px;border-radius:16px;background:rgba(201,101,79,.14);border:1px solid rgba(201,101,79,.5);font-size:14.5px}
+.tl-r .w{font:700 11px/1 var(--grot);letter-spacing:.14em;color:#fff;background:var(--rose);padding:6px 9px;border-radius:4px}
+.tl-r a{margin-left:auto;color:var(--sun);text-decoration:none;font-weight:700}
+@media (max-width:860px){.tl-k{grid-template-columns:1fr}.tl-r a{margin-left:0}}
+
+/* tiers */
+.tier{margin-bottom:12px}
+.tt{font:700 11px/1 var(--grot);letter-spacing:.14em;padding:7px 11px;border-radius:4px;display:inline-block}
+.tt.main{background:var(--rose);color:#fff}
+.tt.sub{background:var(--paper2);color:var(--mute)}
+.cm.main{background:#fff;border:2px solid var(--rose)}
+.cm.main .ty{color:var(--rose)}
+.cmap.sub .cm{background:transparent;opacity:.82}
+.cm .key{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;font-weight:700;color:var(--ink)}
+.cm.main .key{color:var(--rose)}
+
+/* matrix */
+.mx{display:grid;grid-template-columns:150px repeat(6,1fr);gap:6px;font-size:13.5px}
+.mx .h{font:600 11px/1.3 var(--grot);letter-spacing:.06em;color:var(--mute);display:flex;align-items:flex-end;justify-content:center;text-align:center;padding-bottom:4px}
+.mx .p{font-weight:700;display:flex;align-items:center;font-size:14.5px;line-height:1.3}
+.mx .p small{display:block;font-weight:500;color:var(--mute);font-size:12px}
+.mx .c{border-radius:10px;min-height:54px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px}
+.mx .c3{background:var(--rose);color:#fff}.mx .c2{background:#E5A895}.mx .c1{background:#ECE6DC;color:#a59d92}
+.mxleg{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:13px;align-items:center}
+.mxleg span{display:flex;align-items:center;gap:6px}
+.mxleg i{width:14px;height:14px;border-radius:4px}
+@media (max-width:760px){.mx{grid-template-columns:96px repeat(6,1fr);gap:4px}.mx .h{font-size:9.5px}.mx .c{min-height:40px;font-size:0}.mx .p{font-size:12.5px}}
+
+/* deep */
+.deep{background:var(--leaf2)}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lane{border-radius:22px;padding:24px}
+.lane.a{background:var(--card)}
+.lane.b{background:var(--ink);color:var(--paper)}
+.lane h5{margin:0 0 16px;font:700 12px/1 var(--grot);letter-spacing:.14em;text-transform:uppercase}
+.lane ol{list-style:none;margin:0;padding:0;counter-reset:d}
+.lane li{counter-increment:d;display:grid;grid-template-columns:62px 1fr;gap:10px;padding:12px 0;border-top:1px solid rgba(127,120,111,.3);align-items:center}
+.lane li::before{content:"DAY " counter(d);font:700 11px/1 var(--grot);letter-spacing:.08em;color:var(--mute)}
+.lane li b{display:block;font-size:16px}
+.lane li span{font-size:13.5px;opacity:.75}
+.lane li.bad b{color:var(--rose)}
+.lane li.good b{color:#b9d4ab}
+.why3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.why3 div{background:var(--card);border-radius:18px;padding:18px 20px}
+.why3 b{font:700 12px/1 var(--grot);letter-spacing:.1em;color:#4f6b44}
+.why3 p{margin:8px 0 0;font-size:15px}
+.why3 em{color:var(--rose);font-family:var(--sans);font-style:normal;font-weight:700}
+@media (max-width:860px){.story,.why3{grid-template-columns:1fr}}
+
+/* voices */
+.vc{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.vc > div{border-radius:20px;padding:24px;background:var(--card);border:1px solid var(--line)}
+.vc small{font:600 10.5px/1 var(--grot);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.vc p{margin:10px 0 0;font-size:14.5px;color:#4b4640}
+.vc q{display:block;margin-top:12px;font:600 clamp(19px,2vw,26px)/1.4 var(--kserif);letter-spacing:-.02em}
+.vc .v2 b{display:block;font:700 48px/1 var(--grot);letter-spacing:-.04em;margin-top:12px}
+.vc .v2 q{color:var(--rose)}
+.vc .v3{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.vc .v3 p{color:#cfc8bd}
+.kw{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.kw span{font-weight:800;padding:9px 16px;border-radius:30px;background:var(--rose);color:#fff;font-size:15px}
+.kw span:nth-child(2){background:#d98571}.kw span:nth-child(3){background:#e5a895;color:var(--ink)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.nums b{display:block;font:700 30px/1.1 var(--grot);letter-spacing:-.03em}
+.nums span{font-size:12.5px;color:#5c564f}
+@media (max-width:860px){.vc{grid-template-columns:1fr}}
+
+/* risk */
+.risk{display:flex;flex-direction:column;gap:12px}
+.rk{display:grid;grid-template-columns:1fr 50px 1fr;align-items:stretch}
+.rk .bad{background:var(--rose2);border-radius:18px 0 0 18px;padding:18px 20px;border-left:5px solid var(--rose)}
+.rk .fx{background:var(--leaf2);border-radius:0 18px 18px 0;padding:18px 20px}
+.rk .arw{display:grid;place-items:center;font:700 22px/1 var(--grot);background:linear-gradient(90deg,var(--rose2),var(--leaf2));color:var(--ink)}
+.rk b{display:block;font-size:17px;letter-spacing:-.02em}
+.rk p{margin:4px 0 0;font-size:14px;color:#4b4640}
+.rk .lv{font:700 10px/1 var(--grot);letter-spacing:.12em;color:#fff;background:var(--rose);padding:4px 7px;border-radius:3px;display:inline-block;margin-bottom:8px}
+.rk .fx b{color:#3f5836}
+@media (max-width:760px){.rk{grid-template-columns:1fr}.rk .bad{border-radius:18px 18px 0 0}.rk .fx{border-radius:0 0 18px 18px}.rk .arw{padding:4px;font-size:0;background:linear-gradient(180deg,var(--rose2),var(--leaf2))}.rk .arw::after{content:"↓";font-size:18px}}
+
+/* summary */
+.sum{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:24px;overflow:hidden}
+.sum > div{padding:28px 24px;position:relative}
+.sum > div + div::before{content:"→";position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font:700 13px/1 var(--grot);z-index:2}
+.sum span{font:700 11px/1 var(--grot);letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.sum b{display:block;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.03em;margin:12px 0 6px}
+.sum p{margin:0;font-size:14px}
+.sum .s1{background:var(--rose2)}.sum .s2{background:var(--leaf2)}.sum .s3{background:var(--sun)}.sum .s4{background:var(--ink);color:var(--paper)}
+@media (max-width:860px){.sum{grid-template-columns:1fr 1fr}.sum > div + div::before{display:none}}
+
+.anim .rv{opacity:0;transform:translateY(40px)}
+.anim .clip{clip-path:inset(8% 8% 8% 8% round 20px)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<header class="top lt" id="top">
+  <a href="./">← LAB / 이도언</a>
+  <div class="links"><a href="trickcal-system-analysis.html">시스템 분석 →</a></div>
+</header>
+<nav class="rail hide" id="rail" aria-label="장 이동">
+  <a href="#ch1"><i></i>起</a><a href="#ch2"><i></i>承</a><a href="#ch3"><i></i>轉</a><a href="#ch4"><i></i>結</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" data-tone="lt">
+  <figure class="bg"><img id="heroImg" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/main_bg_web-nYFJlJlQ.webp" alt="트릭컬 리바이브 3주년 키 아트" onerror="this.parentNode.classList.add('noimg')"></figure>
+  <div class="shade"></div>
+  <div class="in">
+    <div>
+      <div class="kick">Game Analysis · Trickcal RE:VIVE</div>
+      <h1 class="hl">귀여운 게임이 아니라<br><em>부담 없는</em> 게임</h1>
+      <p class="sub">기·승·전·결 네 장으로 읽는 트릭컬 리바이브. 무엇으로 만들어졌고, 어디가 다르며, 그래서 어떤 게임인가.</p>
+    </div>
+    <div class="who"><b>202227039 이도언</b>2026.10 · Key art ⓒ EPIDGames</div>
+  </div>
+</section>
+
+<!-- CONCLUSION FIRST -->
+<section class="sec tldr" id="tldr" data-tone="lt">
+  <div class="wrap">
+    <div class="lab">결론 먼저 · TL;DR</div>
+    <p class="tl-v rv">트릭컬 리바이브는 <em>"언제 돌아와도 괜찮은"</em> 게임이다.<br>귀여움은 입구일 뿐, 진짜 무기는 <em>낮은 피로도를 만드는 시스템</em>이다.</p>
+    <div class="tl-k">
+      <div class="rv"><span>KEY 01 · 입구</span><b>교감 · 스토리</b><p>볼따구 반응과 풀보이스 스토리. 리뷰 최다 언급 키워드 1~3위.</p></div>
+      <div class="rv"><span>KEY 02 · 머무름</span><b>계정 공유 성장</b><p>새 사도를 처음부터 키우지 않는다. 뽑은 날이 쓰는 날.</p><em class="deep">DEEP DIVE ↓</em></div>
+      <div class="rv"><span>KEY 03 · 재방문</span><b>반년 주기 축제</b><p>기념 이벤트마다 구글 TOP 10 재진입. 4회 반복.</p></div>
+    </div>
+    <div class="tl-r rv">
+      <span class="w">재미를 깎는 지점</span>
+      <span>① 확률 보정 없음 (0.8%)</span><span>② 잦은 튕김</span><span>③ 이벤트 공백기 급락</span>
+      <a href="#risk">해결책 보기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 起 -->
+<section class="ch c1" id="ch1" data-tone="dk">
+  <div class="han">起</div>
+  <div class="t rv"><div class="num">Chapter 1 · 기</div><h2>이 게임은<br><em>무엇</em>인가</h2><p>장르, 규모, 세계관. 분석을 시작하기 전에 게임의 윤곽부터.</p></div>
+</section>
+
+<section class="sec" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">Overview</div>
+    <div class="ov rv">
+      <div><small>장르</small><b>수집형 RPG · 자동 전투</b></div>
+      <div><small>개발 · 서비스</small><b>에피드게임즈</b></div>
+      <div><small>출시</small><b>2023.09.27 (재출시)</b></div>
+      <div><small>플랫폼</small><b>Android · iOS · PC</b></div>
+      <div><small>캐릭터</small><b>사도 100명 이상</b></div>
+      <div><small>연출</small><b>스토리 풀보이스</b></div>
+      <div><small>업데이트</small><b>2주 단위 신규 사도</b></div>
+      <div><small>이용 등급</small><b>12세 이상</b></div>
+    </div>
+    <div class="kpi">
+      <div class="rv"><b>6위</b><span>구글 매출 · 2026.10.01 (3주년)</span></div>
+      <div class="rv"><b>4.8</b><span>앱스토어 평점 · 리뷰 8,700건+</span></div>
+      <div class="rv"><b>$15M+</b><span>누적 매출 · 1주년 시점 (센서타워)</span></div>
+    </div>
+
+    <div class="world two w">
+      <div>
+        <div class="lab">World</div>
+        <blockquote class="rv">플레이어는 <em>교주</em>가 되어, 세계수 엘드르가 만든 <em>사도</em>들과 함께 왁자지껄한 장난극을 벌인다.</blockquote>
+        <p class="rv" style="margin-top:20px;color:#4b4640">무거운 판타지 대신 2등신 캐릭터와 코미디 톤. 2019년 베타 실패, 2021년 출시 2시간 만의 서비스 중단을 거쳐 2023년 "리바이브"로 다시 태어났다. 이름부터 재기의 이야기다.</p>
+      </div>
+      <figure class="ct clip" style="aspect-ratio:1"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/event_character_web-VMB1EEXW.png" alt="트릭컬 리바이브 3주년 사도 일러스트" onerror="this.parentNode.classList.add('noimg')"><figcaption>3주년 일러스트 ⓒ EPIDGames</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 承 -->
+<section class="ch c2" id="ch2" data-tone="dk">
+  <div class="han">承</div>
+  <div class="t rv"><div class="num">Chapter 2 · 승</div><h2>무엇으로<br><em>만들어졌나</em></h2><p>코어 루프부터 콘텐츠, 성장, 캐릭터, 과금, 운영까지. 게임을 이루는 부품을 하나씩.</p></div>
+</section>
+
+<section class="sec" style="background:var(--leaf2)" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">2-1 · Core Loop</div>
+    <div class="loopwrap">
+      <svg class="loopsvg rv" viewBox="0 0 500 500" role="img" aria-label="모집, 편성, 전투, 성장이 도는 코어 루프">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1B1A18"/></marker></defs>
+        <circle cx="250" cy="250" r="165" fill="none" stroke="#9aae8e" stroke-width="1.4" stroke-dasharray="5 7" id="loopC"/>
+        <g stroke="#1B1A18" stroke-width="1.6" fill="none" marker-end="url(#ar)">
+          <path d="M318 112 Q380 160 392 214"/><path d="M386 300 Q360 370 306 392"/><path d="M188 392 Q130 360 112 300"/><path d="M110 210 Q130 145 186 112"/>
+        </g>
+        <g class="n hl"><circle cx="250" cy="85" r="62"/><text x="250" y="82" text-anchor="middle">모집</text><text class="s" x="250" y="102" text-anchor="middle">GACHA</text></g>
+        <g class="n"><circle cx="415" cy="250" r="62"/><text x="415" y="247" text-anchor="middle">편성</text><text class="s" x="415" y="267" text-anchor="middle">DECK</text></g>
+        <g class="n"><circle cx="250" cy="415" r="62"/><text x="250" y="412" text-anchor="middle">전투</text><text class="s" x="250" y="432" text-anchor="middle">AUTO BATTLE</text></g>
+        <g class="n"><circle cx="85" cy="250" r="62"/><text x="85" y="247" text-anchor="middle">성장</text><text class="s" x="85" y="267" text-anchor="middle">GROWTH</text></g>
+        <text x="250" y="255" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="30" fill="#4f6b44">loop</text>
+      </svg>
+      <div>
+        <h3 class="h3 rv">모으고, 짜고,<br><em>지켜보고</em>, 키운다</h3>
+        <ol class="steps">
+          <li class="rv"><div><b>모집</b><span>엘리프로 사도를 뽑는다. 픽업 200회면 확정 교환.</span></div></li>
+          <li class="rv"><div><b>편성</b><span>6인 파티. 성격 상성·시너지, 역할(탱·딜·힐·서포터), 열 배치를 고민한다.</span></div></li>
+          <li class="rv"><div><b>전투</b><span>자동 전투. 손보다 머리 — 결과는 편성에서 이미 갈린다.</span></div></li>
+          <li class="rv"><div><b>성장</b><span>레벨은 계정 공유, 장비·보드·승급으로 세부 조정.</span></div></li>
+        </ol>
+        <p class="rv" style="font-size:14.5px;color:#4b4640;margin-top:14px">하루 숙제는 짧게 끝나도록 설계됐다. 글로벌판 소개 문구가 "데일리 3분"이다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">2-2 · Contents</div>
+    <h3 class="h3 rv">강점이 <em>앞</em>, 숙제는 <em>뒤</em></h3>
+    <p class="lead rv">재미의 중심은 전투가 아니라 교감과 이야기다. 반복 수급 콘텐츠는 "면제"로 짧게 끝내도록 뒤에 물려 있다.</p>
+    <div class="tier rv"><span class="tt main">MAIN · 사람을 붙잡는 재미</span></div>
+    <div class="cmap">
+      <div class="cm main rv"><span class="ty">교감</span><h4>볼따구 · 교단 꾸미기</h4><p>사도마다 다른 반응, 가구·피규어로 꾸미는 교단, 요리.</p><div class="key">KEY · 성능과 무관한 애착이 생긴다</div></div>
+      <div class="cm main rv"><span class="ty">스토리</span><h4>극장 · 테마 극장</h4><p>메인 스토리와 한정 사도 이야기. 전부 풀보이스.</p><div class="key">KEY · 캐릭터를 "알게" 만든다</div></div>
+      <div class="cm main rv"><span class="ty">미니게임</span><h4>시즌 미니게임</h4><p>시즌마다 바뀌는 이벤트 미니게임. 3주년엔 빙고·뽑기 기계 등.</p><div class="key">KEY · 매번 새 놀거리로 복귀 명분</div></div>
+    </div>
+    <div class="tier rv" style="margin-top:28px"><span class="tt sub">SUB · 성장 · 경쟁 (반복성 높음)</span></div>
+    <div class="cmap sub">
+      <div class="cm rv"><span class="ty">PvE · Story</span><h4>침략 · 세계수 굴착 기지</h4><p>스테이지 진행과 고난도 도전. 3★면 "면제"로 보상만.</p><div class="key">KEY · 면제로 반복 부담 ↓</div></div>
+      <div class="cm rv"><span class="ty">Farming</span><h4>던전 5종 · 장비 던전</h4><p>레벨·증명서·골드·스킬·보드 재화를 요일별로 수급.</p><div class="key">KEY · 노가다성 — 짧게 설계</div></div>
+      <div class="cm rv"><span class="ty">PvP · Async</span><h4>승자의 줘팸터</h4><p>다른 유저의 방어 덱과 겨루는 비동기 PvP. 시즌 랭킹.</p><div class="key">KEY · 덱 고민의 결과 확인</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--card)" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">2-3 · Growth</div>
+    <h3 class="h3 rv">성장의 <em>중심</em>은 계정이다</h3>
+    <p class="lead rv">대부분 수집형 RPG는 캐릭터마다 레벨을 올린다. 트릭컬은 레벨을 계정이 들고 있다. 새 사도가 와도 "처음부터"가 없다.</p>
+    <div class="grow">
+      <div class="gr key rv"><span class="i">01</span><h4>레벨 · 계정 공유</h4><p>캐릭터 레벨 = 계정 기준. 뽑자마자 실전.</p></div>
+      <div class="gr rv"><span class="i">02</span><h4>장비</h4><p>무기 → 목걸이 → 방어구 순 강화 권장.</p></div>
+      <div class="gr rv"><span class="i">03</span><h4>보드</h4><p>크레용 재화로 칸을 열어 계정 전체 능력치 상승.</p></div>
+      <div class="gr rv"><span class="i">04</span><h4>승급 · 어사이드</h4><p>교단 증명서로 사도 개별 한계 돌파.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--rose2)" data-tone="dk">
+  <div class="wrap two">
+    <div>
+      <div class="lab">2-4 · Characters</div>
+      <h3 class="h3 rv">100명의 사도,<br><em>6개의 성격</em></h3>
+      <p class="lead rv">모든 사도는 성격 하나를 가진다. 광기·순수·냉정은 가위바위보, 활발·우울은 서로 맞선다. 같은 성격이 모이면 팀 전체가 강해진다.</p>
+      <div class="persona6 rv">
+        <div style="background:#C9654F;color:#fff">광기</div><div style="background:#DCE5D3">순수</div><div style="background:#D6E0E6">냉정</div><div style="background:#EFE3BF">활발</div><div style="background:#1B1A18;color:#fff">우울</div><div style="background:#E7E1D7">공명</div>
+      </div>
+      <div class="tags rv"><span>엘다인 7명 (최상위 사도)</span><span>종족 8개 보너스</span><span>스토리 풀보이스</span><span>캐릭터별 볼따구 반응</span></div>
+    </div>
+    <div class="cast rv">
+      <figure class="bare"><img loading="lazy" src="https://www.trickcal.com/assets/revive/intro/vivi_ui/img/card_character_vivi_02-zZQlOcba.webp" alt="사도 비비" onerror="this.parentNode.classList.add('noimg')"></figure>
+      <figure class="bare"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/orchestra_character_epika-hU0hmqgS.png" alt="사도 일러스트" onerror="this.parentNode.classList.add('noimg')"></figure>
+      <figure class="bare"><img loading="lazy" src="https://www.trickcal.com/assets/revive/intro/vivi_ui/img/card_character_ui_02-M1NXQq6P.webp" alt="사도 우이" onerror="this.parentNode.classList.add('noimg')"></figure>
+    </div>
+  </div>
+  <div class="wrap"><p class="cr" style="margin-top:12px">Character art ⓒ EPIDGames · trickcal.com</p></div>
+</section>
+
+<section class="sec" data-tone="dk">
+  <div class="wrap two w">
+    <div>
+      <div class="lab">2-5 · Business Model</div>
+      <h3 class="h3 rv">작게, 그리고 <em>확실하게</em></h3>
+      <div class="bmrow" style="grid-template-columns:1fr 1fr">
+        <div class="bmc rv"><small>확정 교환</small><b>200회</b><p>픽업 1회 = 신앙심 1점. 200점(특별 사도 300점)에 원하는 사도.</p></div>
+        <div class="bmc rv"><small>3성 기본 확률</small><b>0.8%</b><p>확률 보정은 없다. 대신 끝점이 보인다.</p></div>
+      </div>
+      <div class="pbar rv" id="pbar">
+        <div class="r me"><span>트릭컬</span><div class="t"><div class="f" style="width:15.5%"></div></div><span class="v">5,600원</span></div>
+        <div class="r"><span>오딘</span><div class="t"><div class="f" style="width:91.6%"></div></div><span class="v">33,000원</span></div>
+        <div class="r"><span>리니지M</span><div class="t"><div class="f" style="width:100%"></div></div><span class="v">36,000원</span></div>
+        <p class="cr" style="margin-top:8px">많이 팔린 인앱 상품 평균가 · 센서타워 2024.10 · 앱스토어 상품 1,100원부터</p>
+      </div>
+    </div>
+    <figure class="ct clip" style="aspect-ratio:980/656"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/prereg_reward-AdxI05cg.webp" alt="3주년 사전예약 보상 엘리프 3000" onerror="this.parentNode.classList.add('noimg')"><figcaption>3주년 사전예약 보상 ⓒ EPIDGames</figcaption></figure>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--sun)" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">2-6 · Live Ops</div>
+    <h3 class="h3 rv">반년마다 <em>축제</em>가 온다</h3>
+    <p class="lead rv">2주마다 신규 사도, 반년마다 대형 기념 이벤트. 기념 이벤트 때마다 매출 순위가 크게 뛰었다.</p>
+    <div class="tl rv"><div class="ln" id="tlLine"></div>
+      <div class="tlr">
+        <div><small>2023.09</small><b>재출시</b><span>트릭컬 리바이브</span></div>
+        <div><small>2024.03</small><b>180일</b><span>뽑기 200회 · 홍대 팝업</span><em class="r">6.6만/일</em></div>
+        <div><small>2024.10</small><b>1주년</b><span>신규 사도 · 사전 쿠폰</span><em class="r">구글 6위</em></div>
+        <div><small>2025.04</small><b>1.5주년</b><span>뽑기 400회</span><em class="r">48→9위</em></div>
+        <div><small>2026.09</small><b>3주년</b><span>뽑기 600회 · 콜라보 카페</span><em class="r">36→6위</em></div>
+      </div>
+    </div>
+    <div class="gal">
+      <figure class="clip"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/event_cafe_photo_web-CsCWC4OM.png" alt="3주년 콜라보 카페" onerror="this.parentNode.classList.add('noimg')"><figcaption>3주년 콜라보 카페</figcaption></figure>
+      <figure class="clip"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/event_special_slide1_shot-tzXAVPL0.webp" alt="3주년 이벤트 화면" onerror="this.parentNode.classList.add('noimg')"></figure>
+      <figure class="clip"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/event_special_slide2_shot-r-GNzpe0.webp" alt="3주년 이벤트 화면" onerror="this.parentNode.classList.add('noimg')"></figure>
+      <figure class="clip"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/event_special_slide3_shot-VB0aGiKp.webp" alt="3주년 이벤트 화면" onerror="this.parentNode.classList.add('noimg')"></figure>
+      <figure class="clip"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/event_special_slide4_shot-cycy9cGj.webp" alt="3주년 이벤트 화면" onerror="this.parentNode.classList.add('noimg')"></figure>
+      <figure class="clip"><img loading="lazy" src="https://www.trickcal.com/assets/event/3rdAnniversary/img/event_special_slide5_shot-_-DEgFZn.webp" alt="3주년 이벤트 화면" onerror="this.parentNode.classList.add('noimg')"></figure>
+    </div>
+    <p class="cr" style="margin-top:12px">3주년 이벤트 화면 · 사진 ⓒ EPIDGames · trickcal.com</p>
+  </div>
+</section>
+
+<section class="sec" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">2-7 · Who gets what</div>
+    <h3 class="h3 rv">어떤 플레이어에게<br><em>어떤 재미</em>가 닿나</h3>
+    <p class="lead rv">색이 진할수록 그 플레이어에게 강하게 닿는 재미. 한눈에 보면, 트릭컬은 "가볍게 오래 보는 사람"에게 맞춰져 있다.</p>
+    <div class="mx rv" id="mx"></div>
+    <div class="mxleg rv"><span><i style="background:#C9654F"></i>강하게 닿음</span><span><i style="background:#E5A895"></i>보통</span><span><i style="background:#ECE6DC"></i>약함</span><span class="cr">작성자 평가 · 근거: 리뷰 키워드 · 콘텐츠 구조</span></div>
+  </div>
+</section>
+
+<!-- 轉 -->
+<section class="ch c3" id="ch3" data-tone="lt">
+  <div class="han">轉</div>
+  <div class="t rv"><div class="num">Chapter 3 · 전</div><h2>그런데,<br>진짜 무기는 <em>따로</em> 있다</h2><p>부품만 보면 평범한 수집형 RPG다. 다르게 보이는 건 "얼마나 덜 힘들게 하느냐"를 재봤을 때다.</p></div>
+</section>
+
+<section class="sec turn" data-tone="lt">
+  <div class="wrap">
+    <div class="lab">3 · The Twist</div>
+    <div class="radarwrap">
+      <div>
+        <h3 class="h3 rv">재미가 아니라<br><em>피로도</em>에서 갈린다</h3>
+        <p class="lead rv">같은 장르의 일반적인 구조와 "플레이어 부담" 다섯 축으로 비교했다. 바깥으로 갈수록 부담이 적다.</p>
+        <div class="leg rv"><span><i style="background:#9cba8f"></i>트릭컬 리바이브</span><span><i style="background:#C9654F"></i>일반 수집형 RPG</span></div>
+        <table class="cmp rv">
+          <tr><th>축</th><th>일반 구조</th><th>트릭컬</th></tr>
+          <tr><td>일일 시간</td><td>숙제 30분+</td><td>3분 + 면제</td></tr>
+          <tr><td>새 캐릭터 육성</td><td>처음부터</td><td>계정 레벨 공유</td></tr>
+          <tr><td>뽑기 보장</td><td>확률 의존</td><td>200회 확정</td></tr>
+          <tr><td>결제 단가</td><td>3만원대 (MMO)</td><td>5,600원</td></tr>
+          <tr><td>복귀 장벽</td><td>격차 큼</td><td>기념일 대량 지급</td></tr>
+        </table>
+        <p class="cr" style="margin-top:10px">작성자 평가 · 근거: 가이드 · 센서타워 · 공식 이벤트 공지</p>
+      </div>
+      <svg class="radar rv" viewBox="-60 -10 560 440" role="img" aria-label="부담 비교 레이더 차트">
+        <g id="radarGrid"></g>
+        <polygon class="b" id="rB"/>
+        <polygon class="a" id="rA"/>
+        <g id="radarLab"></g>
+      </svg>
+    </div>
+    <p class="big-quote rv">트릭컬이 파는 건 귀여움이 아니다. <em>"언제 돌아와도 괜찮다"</em>는 안심이다. 귀여움은 그 안심을 처음 경험하게 만드는 입구다.</p>
+  </div>
+</section>
+
+<section class="sec deep" id="deep" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">3-1 · Deep Dive — 계정 공유 성장</div>
+    <h3 class="h3 rv">하나만 깊게 판다면,<br><em>이 시스템</em></h3>
+    <p class="lead rv">피로도를 낮추는 장치 중 가장 중요한 건 "레벨을 계정이 들고 있다"는 구조다. 3주년에 돌아온 유저 한 명을 따라가 보면 차이가 보인다.</p>
+    <div class="story rv">
+      <div class="lane a">
+        <h5>일반 수집형 RPG에서 복귀하면</h5>
+        <ol><li><div><b>보상 수령</b><span>뽑기 수백 회</span></div></li><li class="bad"><div><b>신규 캐릭터 Lv.1</b><span>재료가 부족하다</span></div></li><li class="bad"><div><b>육성 재료 파밍</b><span>던전 반복 며칠</span></div></li><li class="bad"><div><b>격차 체감</b><span>"다시 접을까…"</span></div></li></ol>
+      </div>
+      <div class="lane b">
+        <h5>트릭컬에서 복귀하면</h5>
+        <ol><li><div><b>보상 수령</b><span>뽑기 600회 · 티켓 60장</span></div></li><li class="good"><div><b>신규 사도 = 계정 레벨</b><span>바로 편성 가능</span></div></li><li class="good"><div><b>스토리 · 이벤트 즉시 참여</b><span>"면제"로 숙제 단축</span></div></li><li class="good"><div><b>200회 확정 교환</b><span>최애 확보 → 정착</span></div></li></ol>
+      </div>
+    </div>
+    <div class="why3">
+      <div class="rv"><b>왜 중요한가 ①</b><p>대량 지급 이벤트의 효과가 <em>"받은 날"</em>에 바로 나타난다.</p></div>
+      <div class="rv"><b>왜 중요한가 ②</b><p>약한 최애도 버리지 않는다. 보드를 통해 계정 전체에 기여한다.</p></div>
+      <div class="rv"><b>왜 중요한가 ③</b><p>기존 유저와 복귀 유저의 격차가 작아 커뮤니티가 쪼개지지 않는다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec voice" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">3-2 · External Evidence</div>
+    <h3 class="h3 rv">플레이어와 시장은<br><em>뭐라고</em> 하나</h3>
+    <div class="vc">
+      <div class="v1 rv"><small>센서타워 · 고평점 리뷰 키워드</small><div class="kw"><span>1 볼따구</span><span>2 캐릭터</span><span>3 스토리</span></div><p>전투·보상보다 교감과 이야기가 먼저 언급된다.</p></div>
+      <div class="v2 rv"><small>App Store</small><b>4.8 / 5</b><p>리뷰 8,700건 이상. 반면 반복되는 불만은 하나 —</p><q>자주 튕깁니다. 너무 자주 튕깁니다</q></div>
+      <div class="v3 rv"><small>에피드게임즈 · 1.5주년</small><q>역주행의 패턴화를 이뤄냈다</q><p>반년 주기 이벤트가 의도된 설계라는 회사의 말.</p></div>
+      <div class="v4 rv"><small>커뮤니티 · IP 확장</small><div class="nums"><div><b>2만</b><span>공식 카페 회원 달성</span></div><div><b>55만</b><span>GS25 콜라보 한 달 판매</span></div><div><b>32.5%</b><span>글로벌 DL 중 일본 (밈 확산)</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 結 -->
+<section class="ch c4" id="ch4" data-tone="dk">
+  <div class="han">結</div>
+  <div class="t rv"><div class="num">Chapter 4 · 결</div><h2>그래서,<br><em>어떤 게임</em>인가</h2><p>항목별 평가와 강점·약점, 그리고 바꾼다면 무엇을 바꿀지.</p></div>
+</section>
+
+<section class="sec" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">4-1 · Score</div>
+    <h3 class="h3 rv">항목별 <em>평가</em></h3>
+    <div class="score" id="score">
+      <div class="sc rv"><b>캐릭터 · 연출</b><div class="dots" data-v="5"></div><span class="n">5</span><small>풀보이스, 캐릭터별 반응, 리뷰 1위 키워드</small></div>
+      <div class="sc rv"><b>성장 편의</b><div class="dots" data-v="5"></div><span class="n">5</span><small>계정 레벨 공유, 3★ 면제, 짧은 숙제</small></div>
+      <div class="sc rv"><b>라이브 운영</b><div class="dots" data-v="4"></div><span class="n">4</span><small>반년 주기 이벤트로 TOP 10 4회 재진입</small></div>
+      <div class="sc rv"><b>과금 구조</b><div class="dots" data-v="4"></div><span class="n">4</span><small>낮은 단가 · 확정 교환 / 단, 확률 보정 없음</small></div>
+      <div class="sc rv"><b>전투 깊이</b><div class="dots" data-v="3"></div><span class="n">3</span><small>편성 고민은 있지만 자동 전투라 손맛은 약함</small></div>
+      <div class="sc rv"><b>안정성</b><div class="dots" data-v="2"></div><span class="n">2</span><small>앱스토어 리뷰 "자주 튕긴다" 반복</small></div>
+    </div>
+    <p class="cr" style="margin-top:10px">5점 만점 · 작성자 평가</p>
+
+    <div class="lab" style="margin-top:80px">4-2 · Pros & Cons</div>
+    <div class="pc">
+      <div class="p rv"><h4>강점</h4><ul><li>복귀·신규 모두 진입 부담이 낮다</li><li>캐릭터가 성능 외의 이유로 사랑받는다</li><li>이벤트 ↔ 성장 구조가 맞물려 효과가 크다</li><li>게임 밖(카페·굿즈·밈)까지 이어지는 IP</li></ul></div>
+      <div class="c rv"><h4>약점</h4><ul><li>이벤트가 없으면 순위가 크게 빠진다 (9/17 TOP 46 밖)</li><li>앱스토어에선 존재감이 약하다 (3회 모두 TOP 46 밖)</li><li>자동 전투라 조작 재미를 원하는 층에겐 약하다</li><li>잦은 튕김 등 안정성 이슈</li></ul></div>
+    </div>
+
+    <div class="lab" style="margin-top:80px" id="risk">4-3 · Fun Killers → Fix</div>
+    <h3 class="h3 rv"><em>재미를 깎는</em> 지점과 해결책</h3>
+    <div class="risk">
+      <div class="rk rv"><div class="bad"><span class="lv">HIGH</span><b>잦은 튕김</b><p>평점 4.8에도 반복되는 1순위 불만. 이벤트 중 튕기면 보상·흐름을 동시에 잃는다.</p></div><div class="arw">→</div><div class="fx"><b>대형 이벤트 2주 전 안정화 패치 고정</b><p>+ 튕김 시 진행 자동 저장 · 보상 재지급</p></div></div>
+      <div class="rk rv"><div class="bad"><span class="lv">HIGH</span><b>이벤트 공백기 급락</b><p>9/17 TOP 46 밖 → 10/1 6위. 기념일 사이 할 거리가 줄어든다.</p></div><div class="arw">→</div><div class="fx"><b>3개월 차 "중간 축제" 정례화</b><p>소규모 미니게임 + 확정 모집권 1장</p></div></div>
+      <div class="rk rv"><div class="bad"><span class="lv">MID</span><b>보정 없는 확률 0.8%</b><p>200회 전까지 아무것도 보장되지 않아 무과금 체감이 나쁘다.</p></div><div class="arw">→</div><div class="fx"><b>100회 지점 중간 보상 추가</b><p>신앙심 100점에 사도 증명서 등 부분 보상</p></div></div>
+      <div class="rk rv"><div class="bad"><span class="lv">MID</span><b>자동 전투의 얕은 손맛</b><p>편성 이후엔 지켜보기만 한다. 전략형 유저 이탈 요인.</p></div><div class="arw">→</div><div class="fx"><b>보스전 한정 수동 스킬 1개</b><p>타이밍 개입으로 손맛 추가, 일반 전투는 그대로</p></div></div>
+      <div class="rk rv"><div class="bad"><span class="lv">LOW</span><b>iOS에서 존재감 약함</b><p>수업 자료 3회 모두 앱스토어 TOP 46 밖.</p></div><div class="arw">→</div><div class="fx"><b>iOS 대상 복귀 캠페인 분리</b><p>플랫폼별 복귀 보상·광고 소재 테스트</p></div></div>
+    </div>
+
+    <div class="lab" style="margin-top:90px">4-4 · One-page Summary</div>
+    <div class="sum rv">
+      <div class="s1"><span>01 · 들어온다</span><b>귀여움</b><p>볼따구 · 풀보이스 · 밈</p></div>
+      <div class="s2"><span>02 · 머문다</span><b>낮은 피로도</b><p>계정 공유 성장 · 면제 · 확정 교환</p></div>
+      <div class="s3"><span>03 · 돌아온다</span><b>반년의 축제</b><p>기념 이벤트 · 카페 · 커뮤니티</p></div>
+      <div class="s4"><span>단, 깎이는 곳</span><b>안정성 · 공백기</b><p>해결: 사전 안정화 · 중간 축제</p></div>
+    </div>
+
+    <div class="final rv">
+      <p>트릭컬 리바이브는 <em>"부담 없음"</em>을 시스템으로 만든 게임이다. 귀여움으로 들어오게 하고, 낮은 피로도로 머물게 하고, 반년마다 다시 불러온다.</p>
+      <figure class="bare"><img loading="lazy" src="https://www.trickcal.com/assets/revive/intro/vivi_ui/img/card_character_vivi_03-OJWrRciv.webp" alt="사도 비비" onerror="this.parentNode.classList.add('noimg')" style="object-fit:contain"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec src" style="padding-top:20px" data-tone="dk">
+  <div class="wrap">
+    <div class="lab">References</div>
+    <ol>
+      <li>모바일인덱스 실시간 매출 순위 (2026.09.03 · 09.17 · 10.01, 수업 자료)</li>
+      <li><a href="https://www.trickcal.com/event/3rdanniversary" target="_blank" rel="noopener">트릭컬 리바이브 공식 사이트 — 3주년 페이지 (이미지)</a></li>
+      <li><a href="https://www.trickcal.com/revive/intro/vivi_ui" target="_blank" rel="noopener">트릭컬 리바이브 공식 사이트 — 신규 사도 소개 (이미지)</a></li>
+      <li><a href="https://apps.apple.com/kr/app/id6443824730" target="_blank" rel="noopener">App Store — 트릭컬 리바이브 (평점, 설명, 리뷰)</a></li>
+      <li><a href="https://sensortower.com/ko/blog/Trickcal-RE-VIVE-achieves-highest-daily-revenue" target="_blank" rel="noopener">센서타워 — 일매출 최고치 분석</a></li>
+      <li><a href="https://byline.network/2024/10/22-366/" target="_blank" rel="noopener">바이라인네트워크 — 1주년 성과</a></li>
+      <li><a href="https://byline.network/2025/04/7-305/" target="_blank" rel="noopener">바이라인네트워크 — 1.5주년</a></li>
+      <li><a href="https://byline.network/2024/03/22-318/" target="_blank" rel="noopener">바이라인네트워크 — 180일 이벤트</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Trickcal:_Chibi_Go" target="_blank" rel="noopener">Wikipedia — 개발 연혁</a></li>
+      <li><a href="https://www.bluestacks.com/ko/blog/game-guides/tricky-revive/tr-strategy-guide-ko.html" target="_blank" rel="noopener">블루스택 — 전략 가이드 (콘텐츠, 성장)</a></li>
+      <li><a href="https://www.bluestacks.com/ko/blog/game-guides/tricky-revive/tr-game-modes-guide-ko.html" target="_blank" rel="noopener">블루스택 — 게임 모드 가이드</a></li>
+      <li><a href="https://www.prydwen.gg/trickcal/guides/beginner-guide" target="_blank" rel="noopener">Prydwen — Beginner Guide</a></li>
+      <li><a href="https://namu.wiki/w/%EC%84%B1%EA%B2%A9(%ED%8A%B8%EB%A6%AD%EC%BB%AC%20%EB%A6%AC%EB%B0%94%EC%9D%B4%EB%B8%8C)" target="_blank" rel="noopener">나무위키 — 성격</a></li>
+    </ol>
+    <p class="cr" style="margin-top:16px">게임 이미지의 저작권은 EPIDGames에 있으며, 학습용 분석 목적으로 공식 사이트 이미지를 인용했습니다.</p>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 이도언 · 202227039</span>
+  <a href="trickcal-system-analysis.html">시스템 분석 보기 →</a>
+  <a href="../links/">All links →</a>
+  <a href="#" id="toTop">Top ↑</a>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script>
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasG=!!(window.gsap&&window.ScrollTrigger);
+
+  /* score dots */
+  document.querySelectorAll('.sc .dots').forEach(d=>{const v=+d.dataset.v;for(let i=0;i<5;i++){const e=document.createElement('i');if(i<v)e.className='on';d.appendChild(e)}});
+
+  /* player × fun matrix */
+  const cols=['교감','스토리','미니게임','성장 편의','덱 전략','PvP'];
+  const rowsM=[
+    ['캐릭터 수집러','최애를 모으는 사람',[3,3,2,3,1,1]],
+    ['스토리 감상러','이야기를 보는 사람',[2,3,2,2,1,1]],
+    ['라이트 · 복귀','짧게, 가끔 하는 사람',[3,2,3,3,1,1]],
+    ['전략 덱 빌더','조합을 짜는 사람',[1,1,1,2,3,2]],
+    ['경쟁 유저','순위를 노리는 사람',[1,1,1,2,2,2]]
+  ];
+  const mx=document.getElementById('mx');
+  mx.insertAdjacentHTML('beforeend','<div></div>'+cols.map(c=>`<div class="h">${c}</div>`).join(''));
+  const lbl=['','약','보통','강'];
+  rowsM.forEach(r=>{mx.insertAdjacentHTML('beforeend',`<div class="p"><span>${r[0]}<small>${r[1]}</small></span></div>`+r[2].map(v=>`<div class="c c${v}">${lbl[v]}</div>`).join(''))});
+
+  /* radar */
+  const axes=['일일 시간','새 캐릭터 육성','뽑기 보장','결제 단가','복귀 장벽'];
+  const A=[4.6,4.8,4.2,4.5,4.4], B=[2.2,2,1.8,1.8,2.2]; // 작성자 평가 (5 = 부담 적음)
+  const cx=220,cy=205,R=150,N=axes.length,NS='http://www.w3.org/2000/svg';
+  const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/N;return[cx+R*v/5*Math.cos(a),cy+R*v/5*Math.sin(a)]};
+  const grid=document.getElementById('radarGrid'),lab=document.getElementById('radarLab');
+  [1,2,3,4,5].forEach(l=>{const p=document.createElementNS(NS,'polygon');p.setAttribute('class','grid');p.setAttribute('points',axes.map((_,i)=>pt(i,l).join(',')).join(' '));grid.appendChild(p)});
+  axes.forEach((t,i)=>{const [x,y]=pt(i,5);const ln=document.createElementNS(NS,'line');ln.setAttribute('x1',cx);ln.setAttribute('y1',cy);ln.setAttribute('x2',x);ln.setAttribute('y2',y);ln.setAttribute('stroke','#3a3733');grid.appendChild(ln);
+    const [lx,ly]=pt(i,5.9);const tx=document.createElementNS(NS,'text');tx.setAttribute('x',lx);tx.setAttribute('y',ly+4);tx.setAttribute('text-anchor',Math.abs(lx-cx)<10?'middle':(lx>cx?'start':'end'));tx.textContent=t;lab.appendChild(tx)});
+  const setPoly=(id,vals,k)=>document.getElementById(id).setAttribute('points',vals.map((v,i)=>pt(i,v*k).join(',')).join(' '));
+  setPoly('rA',A,1);setPoly('rB',B,1);
+
+  /* top bar tone + rail + progress */
+  const top=document.getElementById('top'),bar=document.getElementById('bar'),rail=document.getElementById('rail');
+  const toned=[...document.querySelectorAll('[data-tone]')],chs=['ch1','ch2','ch3','ch4'].map(id=>document.getElementById(id)),rl=[...rail.querySelectorAll('a')];
+  function onS(){const h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(scrollY/h*100)+'%';
+    let cur=toned[0];for(const s of toned){if(s.getBoundingClientRect().top<40)cur=s}top.classList.toggle('lt',cur.dataset.tone==='lt');
+    let ci=-1;chs.forEach((c,i)=>{if(c.getBoundingClientRect().top<innerHeight*.5)ci=i});rl.forEach((a,i)=>a.classList.toggle('act',i===ci));
+    rail.classList.toggle('hide',ci<0||cur.dataset.tone==='lt')}
+  addEventListener('scroll',onS,{passive:true});onS();
+  rl.forEach(a=>a.addEventListener('click',e=>{if(window.__lenis){e.preventDefault();window.__lenis.scrollTo(a.getAttribute('href'))}}));
+  document.getElementById('toTop').addEventListener('click',e=>{e.preventDefault();window.__lenis?window.__lenis.scrollTo(0):scrollTo({top:0,behavior:'smooth'})});
+
+  if(!hasG||reduce)return;
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('anim');
+  if(window.Lenis){const l=new Lenis({lerp:.1});window.__lenis=l;l.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>l.raf(t*1000));gsap.ticker.lagSmoothing(0)}
+
+  gsap.from('#heroImg',{scale:1.2,duration:2.4,ease:'expo.out'});
+  gsap.to('.hero .bg',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.from('.hero .kick,.hero h1,.hero .sub,.hero .who',{y:30,opacity:0,duration:1.2,ease:'expo.out',stagger:.1,delay:.3});
+
+  gsap.utils.toArray('.rv').forEach(el=>gsap.to(el,{opacity:1,y:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
+  gsap.utils.toArray('.clip').forEach(el=>gsap.to(el,{clipPath:'inset(0% 0% 0% 0% round 20px)',duration:1.4,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
+
+  // chapter openers: big hanja drifts & scales
+  gsap.utils.toArray('.ch').forEach(c=>{gsap.fromTo(c.querySelector('.han'),{scale:.8,yPercent:10},{scale:1.1,yPercent:-10,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'bottom top',scrub:true}})});
+
+  gsap.to('#loopC',{rotate:360,svgOrigin:'250 250',ease:'none',scrollTrigger:{trigger:'.loopsvg',start:'top bottom',end:'bottom top',scrub:1}});
+  // highlight loop nodes in sequence
+  const nodes=[...document.querySelectorAll('.loopsvg .n')];
+  ScrollTrigger.create({trigger:'.steps',start:'top 70%',end:'bottom 40%',onUpdate:s=>{const i=Math.min(3,Math.floor(s.progress*4));nodes.forEach((n,k)=>n.classList.toggle('hl',k===i))}});
+
+  gsap.utils.toArray('.cast figure').forEach((f,i)=>gsap.fromTo(f,{y:[80,40,100][i],rotate:[-6,0,6][i]},{y:[-20,-40,-10][i],rotate:[-2,0,2][i],ease:'none',scrollTrigger:{trigger:'.cast',start:'top bottom',end:'bottom top',scrub:true}}));
+  gsap.from('#pbar .f',{scaleX:0,stagger:.15,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'#pbar',start:'top 85%'}});
+  gsap.from('#tlLine',{scaleX:0,duration:1.8,ease:'power2.inOut',scrollTrigger:{trigger:'.tl',start:'top 80%'}});
+  gsap.from('.tlr > div',{y:30,opacity:0,stagger:.15,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.tl',start:'top 80%'}});
+
+  const k={v:0};gsap.to(k,{v:1,duration:1.6,ease:'power3.out',scrollTrigger:{trigger:'.radar',start:'top 75%'},onUpdate:()=>{setPoly('rA',A,k.v);setPoly('rB',B,k.v)}});
+  setPoly('rA',A,0);setPoly('rB',B,0);
+
+  gsap.from('#mx .c',{scale:.6,opacity:0,stagger:.02,duration:.5,ease:'back.out(2)',scrollTrigger:{trigger:'#mx',start:'top 80%'}});
+  gsap.from('.rk .arw',{x:-20,opacity:0,stagger:.12,duration:.6,ease:'power2.out',scrollTrigger:{trigger:'.risk',start:'top 80%'}});
+  gsap.from('.sum > div',{y:40,opacity:0,stagger:.12,duration:.9,ease:'expo.out',scrollTrigger:{trigger:'.sum',start:'top 85%'}});
+  gsap.utils.toArray('.sc').forEach(sc=>gsap.from(sc.querySelectorAll('.dots i.on'),{scaleX:0,transformOrigin:'left',stagger:.08,duration:.6,ease:'power2.out',scrollTrigger:{trigger:sc,start:'top 88%'}}));
+
+  addEventListener('load',()=>ScrollTrigger.refresh());
+  if(document.fonts)document.fonts.ready.then(()=>ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
