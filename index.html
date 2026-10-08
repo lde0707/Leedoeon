@@ -437,8 +437,16 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>주사위 · 점수 트래커 등 실물 구성품 설계 및 제작 사양 정리</li>
               <li>로고와 보드 비주얼 콘셉트를 직접 제작해 톤 통일</li>
               <li>테스트 플레이 → 규칙 수정 → 재검증 사이클로 밸런스 개선</li>
+              <li><b>게임 개요</b> — 4인 개인전 땅따먹기 보드게임. 인당 80코인과 내 색 주사위 20개로 시작해, 10턴 뒤 <b>내 색 구역의 땅을 가장 많이 가진 사람</b>이 승리합니다. (동점이면 코인이 많은 쪽)</li>
+              <li><b>주사위 = 땅의 가치</b> — 빈 땅에서 주사위를 굴려 나온 눈금만큼 코인을 내고, 같은 눈금이 되도록 내 색 주사위를 올려 땅을 삽니다. 땅마다 "가격"이 주사위로 눈에 보이게 했습니다.</li>
+              <li><b>인수 시스템</b> — 남의 땅에 도착하면 인수에 도전하거나(주사위 합이 기존 눈금보다 크면 성공, 지면 통행료 10코인) 포기하고 통행료 5코인을 냅니다. 운에 거는 선택과 안전한 선택 사이의 긴장이 핵심입니다.</li>
+              <li><b>역전 장치</b> — 더블 · 인수 성공 시 추가 턴(최대 2회), 흰색 Teleport 칸에서 원하는 땅으로 즉시 이동, 남은 5턴부터는 땅값이 떨어지는 <b>붕괴 카운트</b>로 후반 뒤집기를 열어 두었습니다.</li>
+              <li><b>파산 규칙</b> — 돈이 부족하면 내 땅의 눈금을 부족액의 두 배만큼 깎아 버틸 수 있어, 바로 탈락하지 않고 끝까지 플레이할 수 있게 했습니다.</li>
+              <li><b>구성품</b> — 원형 보드 1, 플레이어 말 4, 턴 표시 공책 1, 코인 칩(10 · 5 · 1) 각 30개, 이동용 주사위 통 1, 색깔별 주사위 각 20개.</li>
             </ul>
             <div class="tl"><span>Photoshop</span><span>Rule Design</span><span>Playtest</span></div>
+            <figure class="shot"><img src="dice-board.jpg" alt="Lucky Dice 보드게임 판" loading="lazy">
+              <figcaption>Lucky Dice 원형 보드 — 24칸 · 4색 구역 · Teleport 4칸</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -653,7 +661,10 @@ const GALLERY={
     {src:'pearl-06-shop.jpg',cap:'미네랄 상점 — 레벨업 비용은 300으로 통일, 유닛별로 오르는 능력치를 다르게 설계'},
     {src:'pearl-thieves-stove.png',cap:'스토브인디 스토어 페이지 — 2026.05.30 출시, 유저평가 100% 추천'}
   ],
-  dice:[],
+  dice:[
+    {src:'dice-board.jpg',cap:'보드게임 판 — 바깥 24칸 이동 트랙, 안쪽 4색 구역(빨강 · 파랑 · 노랑 · 초록)은 각자 모아야 할 땅, 1 · 7 · 13 · 19번 흰 칸은 원하는 땅으로 즉시 이동하는 Teleport'},
+    {src:'dice-rulebook.jpg',cap:'룰북 — 구성품과 게임 준비: 4인 개인전 · 인당 80코인 · 내 색 주사위 20개 · 10턴 후 내 구역 땅이 가장 많은 플레이어 승리'}
+  ],
   greenway:[],
   qa:[],
   readycore:[],
