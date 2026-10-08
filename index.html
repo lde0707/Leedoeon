@@ -358,7 +358,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
       <div id="track">
 
         <div class="wintro">
-          <div class="k">SELECTED WORK — 06</div>
+          <div class="k">SELECTED WORK — 07</div>
           <h2>기획서보다<br>결과로<br>말합니다.</h2>
           <p>무엇을 맡았고, 어떤 문제를 어떤 설계로 풀었는지. 옆으로 넘기며 확인하세요.</p>
         </div>
@@ -505,6 +505,27 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           </div>
         </article>
 
+        <article class="card" data-key="trickcal">
+          <div class="no">07</div>
+          <div class="body">
+            <div class="tp"><span>2026.10</span><span>개인 분석</span><b>게임 분석 · 재미요소 분석</b></div>
+            <h3>트릭컬 리바이브 분석<s>게임 분석 · 시장 데이터 · 재미요소</s></h3>
+            <p class="q">귀여운 게임이 아니라, 부담 없는 게임이라는 걸 데이터로 증명했습니다.</p>
+            <ul class="short">
+              <li>매출 순위 3회분에서 상승 폭 1위 게임을 골라 분석 대상 선정</li>
+              <li>기승전결 구조의 게임 분석 — 코어 루프 · 성장 · BM · 운영 · 리스크</li>
+              <li>재미요소 분석 — 복귀 비용을 낮추는 시스템 순환 구조 도출</li>
+            </ul>
+            <div class="tl"><span>Game Analysis</span><span>Data Research</span><span>HTML/CSS · GSAP</span></div>
+            <a class="more" href="lab/trickcal-game-analysis.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">게임 분석 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+            <a class="more" href="lab/trickcal-system-analysis.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="margin-left:18px">재미요소 분석 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          </div>
+        </article>
+
         <div class="wend"><b>여기까지가<br>지금의 기록.</b>다음 프로젝트는 아직 비어 있습니다. 그 칸을 함께 채울 팀을 찾고 있습니다.</div>
       </div>
       <div id="wprog"><i></i></div>
@@ -623,7 +644,11 @@ const GALLERY={
   dice:[],
   greenway:[],
   qa:[],
-  readycore:[]
+  readycore:[],
+  trickcal:[
+    {src:'https://www.trickcal.com/assets/event/3rdAnniversary/img/main_bg_web-nYFJlJlQ.webp',cap:'트릭컬 리바이브 3주년 키 아트 ⓒ EPIDGames'},
+    {src:'https://www.trickcal.com/assets/event/3rdAnniversary/img/event_cafe_photo_web-CsCWC4OM.png',cap:'3주년 콜라보 카페 ⓒ EPIDGames — 커뮤니티 시스템 분석'}
+  ]
 };
 
 /* ── 카드 클릭 → 상세 오버레이 ── */
