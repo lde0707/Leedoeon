@@ -120,7 +120,7 @@ body.dark #top .nm{color:#fff}
 
 /* ══════════ 4. WORK (가로 핀) ══════════ */
 #work{background:var(--ink);color:#fff;position:relative}
-#pin{height:300vh;position:relative}
+#pin{height:440vh;position:relative}
 #stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
 #track{display:flex;height:100%;align-items:center;will-change:transform}
 #track>*{align-self:center;max-height:76svh;overflow:visible}
@@ -358,7 +358,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
       <div id="track">
 
         <div class="wintro">
-          <div class="k">SELECTED WORK — 07</div>
+          <div class="k">SELECTED WORK — 10</div>
           <h2>기획서보다<br>결과로<br>말합니다.</h2>
           <p>무엇을 맡았고, 어떤 문제를 어떤 설계로 풀었는지. 옆으로 넘기며 확인하세요.</p>
         </div>
@@ -389,8 +389,91 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           </div>
         </article>
 
-        <article class="card" data-key="pearl">
+        <article class="card" data-key="rushitadel">
           <div class="no">02</div>
+          <div class="body">
+            <div class="tp"><span>2026.05 — 현재</span><span>창업동아리</span><b>진행 중</b></div>
+            <h3>Rushitadel<s>로그라이크 디펜스 · 시스템 기획</s></h3>
+            <p class="q">포탑을 세우는 게 아니라, 포탑을 입고 달립니다.</p>
+            <ul class="short">
+              <li>본체 1기 + 부착 포탑 5기 · 단일 HP 구조 설계</li>
+              <li>증강 6계열 · 변형 15종 포탑 성장 체계 설계</li>
+              <li>전진 카메라 + 후방 위험 구역으로 멈출 수 없게 만드는 압박 설계</li>
+            </ul>
+            <ul class="full" hidden>
+              <li>플레이어 본체 1기에 포탑 5기(T1~T5)를 부착하고 HP를 하나로 관리하는 코어 구조 설계</li>
+              <li>증강 6계열 · 변형 15종 · 공통/전용 증강으로 이어지는 런 성장 체계 설계</li>
+              <li>카메라가 전진하고 후방 위험 구역이 따라붙어, 멈추면 피해를 받는 압박 구조 설계</li>
+              <li>우클릭 동력 공격(기력 70% 소모 · 중앙 즉사 / 가장자리 50% 피해)과 파괴 가능한 적 탄 설계</li>
+              <li>UI · 시스템 · 상세 기획서 3종과 런/전투/성장/저장 4페이지 흐름도 작성</li>
+              <li>보스 A~D 타입별 패턴과 지형 타일 · 연결 배경 아트 디렉션</li>
+            </ul>
+            <div class="tl"><span>Unity C#</span><span>Excel 밸런싱</span><span>draw.io</span><span>Photoshop</span></div>
+            <figure class="shot"><img src="rushitadel-title.png" alt="Rushitadel 타이틀 화면" loading="lazy">
+              <figcaption>TITLE — 바이옴이 갈라지는 타이틀 화면</figcaption></figure>
+            <span class="more">프로젝트 자세히 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          </div>
+        </article>
+
+        <article class="card" data-key="unfin">
+          <div class="no">03</div>
+          <div class="body">
+            <div class="tp"><span>2026.07 — 현재</span><span>개인 기획</span><b>2D 메트로배니아</b></div>
+            <h3>Unfin<s>월드 설계 · 아트 파이프라인</s></h3>
+            <p class="q">보스를 쓰러뜨릴 때마다, 책이 한 장씩 완성됩니다.</p>
+            <ul class="short">
+              <li>5개 지역이 한 맵으로 이어지는 메트로배니아 월드 설계</li>
+              <li>지역 = 장(章), 능력 = 그림 도구, 보스 = 장의 수호자 구조</li>
+              <li>고해상도 타일맵 규격(256px/칸) 아트 파이프라인 정립</li>
+            </ul>
+            <ul class="full" hidden>
+              <li>작가가 그리다 만 스케치북 세계관 — 거대한 맵 하나 안에 5개 지역을 끊김 없이 연결</li>
+              <li>지역 = 책의 장(章), 능력 = 그림 도구, 보스 = 장의 수호자로 묶은 능력 게이트 설계</li>
+              <li>장을 완성할수록 흑백 세계에 색이 돌아오고 표지의 제목 글자가 하나씩 복원되는 연출 장치</li>
+              <li>지형 256px/칸 · PPU 256 고해상도 비도트 규격과 배경 제작 파이프라인 문서화</li>
+              <li>맵 · 전투 · 성장 · 아이템 · QA까지 기획 문서 20여 종 작성</li>
+              <li>Unity WebGL 프로토타입으로 1·2지역 통합 맵 탐색 검증</li>
+            </ul>
+            <div class="tl"><span>Unity 2D URP</span><span>Tilemap</span><span>AI Art Pipeline</span></div>
+            <figure class="shot"><img src="unfin-character.png" alt="Unfin 플레이어 캐릭터 디자인" loading="lazy">
+              <figcaption>CHARACTER — 종이 인형 플레이어 캐릭터 스터디</figcaption></figure>
+            <span class="more">프로젝트 자세히 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          </div>
+        </article>
+
+        <article class="card" data-key="booktower">
+          <div class="no">04</div>
+          <div class="body">
+            <div class="tp"><span>2026.09 — 현재</span><span>개인 기획</span><b>3D 퍼즐</b></div>
+            <h3>Book Tower<s>종이 백룸 《잊힌 제목》</s></h3>
+            <p class="q">책 속 실내를 걷는, 작은 종이 정령의 이야기.</p>
+            <ul class="short">
+              <li>책 내부를 건축물로 다루는 종이 백룸 공간 설계</li>
+              <li>접힘 · 그림자 · 기억 복원 3종 퍼즐 기믹 설계</li>
+              <li>스크립트 기반 방 배치 자동 생성 파이프라인 구축</li>
+            </ul>
+            <ul class="full" hidden>
+              <li>거대한 책의 실내를 탐색하는 3D 퍼즐 — 층(F0)과 방(1A~)을 건축 도면처럼 설계</li>
+              <li>종이의 접힘, 그림자, 잃어버린 문장의 기억을 복원하는 상호작용 기믹 설계</li>
+              <li>level_layout.py 기반으로 전체 방 배치를 재생성하고 수동 패스를 덧붙이는 파이프라인 구축</li>
+              <li>종이 정령 캐릭터 모델을 V1~V6까지 반복 검수하며 실루엣 확정</li>
+              <li>아트 컨셉 · 플레이어 스펙 · 구현 현황을 문서로 분리해 설계와 구현 범위를 구분</li>
+            </ul>
+            <div class="tl"><span>Unity URP</span><span>Blender</span><span>Python</span></div>
+            <figure class="shot"><img src="booktower-room.png" alt="Book Tower 방 설계 도면" loading="lazy">
+              <figcaption>LEVEL — 책 속 열람실 2B 공간 설계 도면</figcaption></figure>
+            <span class="more">프로젝트 자세히 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          </div>
+        </article>
+
+        <article class="card" data-key="pearl">
+          <div class="no">05</div>
           <div class="body">
             <div class="tp"><span>2026.03 — 2026.07</span><span>팀 4인</span><b>STOVE INDIE 출시</b></div>
             <h3>진주도둑들<s>시스템 · 밸런스 기획</s></h3>
@@ -422,7 +505,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
         </article>
 
         <article class="card" data-key="dice">
-          <div class="no">03</div>
+          <div class="no">06</div>
           <div class="body">
             <div class="tp"><span>2025.08 — 2025.12</span><span>팀 4인</span><b>전 과정 완주</b></div>
             <h3>Lucky Dice<s>보드게임 룰 · 컴포넌트 디자인</s></h3>
@@ -454,7 +537,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
         </article>
 
         <article class="card" data-key="greenway">
-          <div class="no">04</div>
+          <div class="no">07</div>
           <div class="body">
             <div class="tp"><span>2025.03 — 2025.07</span><span>단독 기획</span><b>프로토타입 구축</b></div>
             <h3>GreenWay<s>모빌리티 앱 서비스 기획</s></h3>
@@ -478,7 +561,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
         </article>
 
         <article class="card" data-key="qa">
-          <div class="no">05</div>
+          <div class="no">08</div>
           <div class="body">
             <div class="tp"><span>2026.03 — 2026.07</span><span>팀 3인</span><b>자동화 프로토타입</b></div>
             <h3>메이플키우기 자동화 테스팅<s>QA 테스트 설계</s></h3>
@@ -502,7 +585,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
         </article>
 
         <article class="card" data-key="readycore">
-          <div class="no">06</div>
+          <div class="no">09</div>
           <div class="body">
             <div class="tp"><span>2026.09</span><span>개인 기획</span><b>트렌드 리서치 기획서</b></div>
             <h3>레디코어 작전실<s>이벤트 기획 · 트렌드 리서치</s></h3>
@@ -520,7 +603,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
         </article>
 
         <article class="card" data-key="trickcal">
-          <div class="no">07</div>
+          <div class="no">10</div>
           <div class="body">
             <div class="tp"><span>2026.10</span><span>개인 분석</span><b>게임 분석 · 재미요소 분석</b></div>
             <h3>트릭컬 리바이브 분석<s>게임 분석 · 시장 데이터 · 재미요소</s></h3>
@@ -651,6 +734,22 @@ const pin=$('#pin'),track=$('#track'),wp=$('#wprog i');
 const GALLERY={
   trash:[
     {src:'trash-boy-title.png',cap:'타이틀 화면 — 7일 안에 도시를 세워라'}
+  ],
+  rushitadel:[
+    {src:'rushitadel-title.png',cap:'타이틀 — 좌우로 갈라지는 바이옴 콘셉트, 중앙에 본체+5포탑 실루엣'},
+    {src:'rushitadel-battle.png',cap:'전투 파노라마 — 전진하는 플레이어와 부착 포탑, 절벽 지형 구조'},
+    {src:'rushitadel-boss.gif',cap:'보스 A 타입 대기 모션 — 타입별 패턴을 나눠 설계'},
+    {src:'rushitadel-bg.png',cap:'연결 배경 1920×1080 — 아래로 흐르는 타일 배경 리소스'}
+  ],
+  unfin:[
+    {src:'unfin-character.png',cap:'플레이어 캐릭터 스터디 — 종이 질감의 작은 인형, 흑백 세계의 주인공'},
+    {src:'unfin-tower.png',cap:'지역 배경 — 탑 구역 배경 아트'},
+    {src:'unfin-paper.png',cap:'지역 배경 — 종이 구역 배경 아트'}
+  ],
+  booktower:[
+    {src:'booktower-room.png',cap:'열람실 2B — 책 속 실내를 건축 도면처럼 설계한 공간 레이아웃'},
+    {src:'booktower-f0.png',cap:'F0 정면 — 층 전체 배치와 퍼즐 오브젝트 위치'},
+    {src:'booktower-spirit.png',cap:'종이 정령 캐릭터 모델 — V6 디테일 검수본'}
   ],
   pearl:[
     {src:'pearl-01-title.jpg',cap:'타이틀 — 용궁의 진주를 노리는 물고기 · 게 · 해파리 3인방'},
