@@ -12,11 +12,13 @@
   --f7:"Freesentation 7Bold","Freesentation 7 Bold","Freesentation-7Bold","프리젠테이션 7","프레젠테이션 7",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
   --f8:"Freesentation 8ExtraBold","Freesentation 8 ExtraBold","Freesentation-8ExtraBold","프리젠테이션 8","프레젠테이션 8","Freesentation 7Bold","프리젠테이션 7",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
 
-  --ac:#E8452C;              /* 단 하나의 포인트 컬러 */
-  --ink:#0B0B0C; --ink2:#2f3238; --gray:#6d7178; --gray2:#adb1b8;
-  --line:#e6e7ea; --bg:#fff; --bg2:#f4f4f5;
+  --ac:#1F56FF;              /* 포인트 컬러 — 일렉트릭 코발트 */
+  --ac-l:#6E9BFF;            /* 다크 섹션용 밝은 블루 */
+  --ink:#080F26; --ink2:#262f4d; --gray:#636d8c; --gray2:#a7b0c6;
+  --line:#e2e6f0; --bg:#fff; --bg2:#f3f5fa;
   --pad:clamp(20px,4.4vw,72px);
 }
+#work,#end,#ov{--ac:var(--ac-l)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f7);line-height:1.7;
@@ -51,7 +53,8 @@ body.hov #cur{width:4px;height:4px}
 @media(max-width:900px){#cur,#ring{display:none}}
 
 /* ══════════ HUD ══════════ */
-#bar{position:fixed;top:0;left:0;height:2.5px;background:var(--ac);z-index:800;width:0}
+#bar{position:fixed;top:0;left:0;height:4px;background:var(--ac);z-index:800;width:0;
+  box-shadow:0 0 14px rgba(31,86,255,.65)}
 #idx{position:fixed;left:18px;bottom:34px;z-index:700;font-family:var(--f6);font-size:10px;
   letter-spacing:.22em;color:var(--gray);display:flex;flex-direction:column;gap:11px}
 #idx a{opacity:.5;transition:.3s;position:relative;padding-left:22px;line-height:1;white-space:nowrap}
@@ -68,7 +71,8 @@ body.dark #idx a.on{color:var(--ac)}
   justify-content:space-between;font-family:var(--f6);font-size:11px;letter-spacing:.18em;color:var(--gray)}
 #top .nm{color:var(--ink)}
 body.dark #top .nm{color:#fff}
-#top .dot{display:inline-block;width:6px;height:6px;background:var(--ac);border-radius:50%;margin-left:4px}
+#top .dot{display:inline-block;width:7px;height:7px;background:var(--ac);border-radius:50%;margin-left:5px;
+  box-shadow:0 0 10px rgba(31,86,255,.75)}
 
 /* ══════════ 1. HERO ══════════ */
 #hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
@@ -89,7 +93,7 @@ body.dark #top .nm{color:#fff}
 .hsub p{max-width:560px;font-size:clamp(14.5px,1.6vw,18px);color:var(--ink2);line-height:1.75}
 .hsub p b{font-family:var(--f7);color:var(--ink)}
 .hrole{font-family:var(--f6);font-size:11px;letter-spacing:.2em;color:var(--gray);
-  border-left:2px solid var(--ac);padding-left:14px;line-height:2.1}
+  border-left:3px solid var(--ac);padding-left:14px;line-height:2.1}
 .scroller{position:absolute;right:var(--pad);bottom:34px;font-family:var(--f6);font-size:10.5px;
   letter-spacing:.22em;color:var(--gray);display:flex;align-items:center;gap:10px}
 .scroller i{display:block;width:44px;height:1px;background:var(--gray2);position:relative;overflow:hidden}
@@ -107,7 +111,7 @@ body.dark #top .nm{color:#fff}
 #say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block}
 #say .w.on{color:var(--ink)}
 #say .w.key.on{color:var(--ac)}
-#say .w.box.on{box-shadow:inset 0 -.32em 0 rgba(232,69,44,.18)}
+#say .w.box.on{box-shadow:inset 0 -.34em 0 rgba(31,86,255,.28)}
 
 /* ══════════ 3. 마퀴 ══════════ */
 #mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -129,9 +133,9 @@ body.dark #top .nm{color:#fff}
 .wintro h2{font-size:clamp(34px,6.2vw,86px);line-height:1.02;letter-spacing:-.05em}
 .wintro p{margin-top:24px;color:#b6bac1;font-size:16px;max-width:420px}
 .card{flex:0 0 min(86vw,760px);margin-right:clamp(20px,3vw,44px);position:relative;
-  border-left:1px solid #26282e;padding:0 clamp(24px,4vw,60px)}
+  border-left:1px solid #223059;padding:0 clamp(24px,4vw,60px)}
 .card .no{font-family:var(--f7);font-size:clamp(60px,12vw,180px);line-height:.8;letter-spacing:-.06em;
-  color:transparent;-webkit-text-stroke:1.4px #34373e;position:absolute;top:-8vh;left:clamp(24px,4vw,60px);z-index:0}
+  color:transparent;-webkit-text-stroke:1.4px #33436e;position:absolute;top:-8vh;left:clamp(24px,4vw,60px);z-index:0}
 .card .body{position:relative;z-index:1}
 .card .tp{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f6);font-size:12px;
   letter-spacing:.14em;color:#9ca1a9;margin-bottom:18px}
@@ -140,7 +144,7 @@ body.dark #top .nm{color:#fff}
 .card h3 s{display:block;text-decoration:none;font-family:var(--f6);font-size:.32em;
   letter-spacing:.06em;color:#a8acb3;margin-top:12px}
 .card .q{margin-top:22px;font-family:var(--f6);font-size:clamp(14px,1.8vw,19px);color:#fff;
-  border-left:2px solid var(--ac);padding-left:14px}
+  border-left:3px solid var(--ac);padding-left:14px}
 .card ul{margin-top:26px;list-style:none;display:grid;gap:11px;max-width:600px}
 .card li{position:relative;padding-left:22px;font-size:15.5px;color:#d2d6dc;line-height:1.62}
 .card li:before{content:"";position:absolute;left:0;top:11px;width:10px;height:1.5px;background:var(--ac)}
@@ -148,7 +152,7 @@ body.dark #top .nm{color:#fff}
 .card ul.full{display:none}
 #ov ul.short{display:none}
 #ov ul.full{display:grid!important}
-.shot{margin-top:26px;position:relative;overflow:hidden;border:1px solid #2c2f36;border-radius:3px;
+.shot{margin-top:26px;position:relative;overflow:hidden;border:1px solid #28365f;border-radius:3px;
   max-width:600px;background:#111}
 /* 데스크톱 : 카드 우측 상단 미리보기 */
 @media(min-width:901px){
@@ -165,12 +169,12 @@ body.dark #top .nm{color:#fff}
   background:linear-gradient(transparent,rgba(0,0,0,.55) 45%,rgba(0,0,0,.9))}
 @media(max-width:900px){.shot img{height:160px}}
 .card .tl span{font-family:var(--f6);font-size:11.5px;letter-spacing:.08em;color:#c3c7cd;
-  border:1px solid #2c2f36;border-radius:2px;padding:6px 11px}
+  border:1px solid #28365f;border-radius:2px;padding:6px 11px}
 .wend{flex:0 0 min(60vw,380px);padding:0 clamp(28px,5vw,90px);color:#6f747c;font-size:14px}
 .wend b{display:block;font-family:var(--f7);font-size:clamp(22px,3vw,36px);color:#fff;
   letter-spacing:-.04em;margin-bottom:14px}
 #wprog{position:absolute;left:clamp(20px,4.4vw,72px);right:clamp(20px,4.4vw,72px);bottom:52px;
-  height:1px;background:#26282e;z-index:3}
+  height:1px;background:#223059;z-index:3}
 #wprog i{display:block;height:100%;background:var(--ac);width:0}
 @media(max-width:900px){
   #pin{height:auto}
@@ -183,11 +187,13 @@ body.dark #top .nm{color:#fff}
 
 .card{cursor:pointer}
 .more{margin-top:28px;display:inline-flex;align-items:center;gap:11px;font-family:var(--f6);
-  font-size:12.5px;letter-spacing:.14em;color:#fff;background:var(--ac);border:1.5px solid var(--ac);
-  border-radius:2px;padding:13px 22px;transition:.28s;position:relative}
-.more:before{content:"";position:absolute;inset:-5px;border:1px solid rgba(232,69,44,.35);
+  font-size:12.5px;letter-spacing:.14em;color:#06102e;background:var(--ac);border:1.5px solid var(--ac);
+  border-radius:2px;padding:13px 22px;transition:.28s;position:relative;
+  box-shadow:0 8px 30px -10px rgba(110,155,255,.8)}
+.more:before{content:"";position:absolute;inset:-5px;border:1px solid rgba(43,91,232,.35);
   border-radius:3px;opacity:0;transition:.28s}
-.card:hover .more{background:#fff;border-color:#fff;color:var(--ink);transform:translateY(-2px)}
+.card:hover .more{background:#fff;border-color:#fff;color:var(--ink);transform:translateY(-2px);
+  box-shadow:0 14px 34px -10px rgba(255,255,255,.45)}
 .card:hover .more:before{opacity:1;inset:-7px}
 .more svg{width:13px;height:13px;transition:transform .3s}
 .card:hover .more svg{transform:translate(3px,-3px)}
@@ -205,7 +211,7 @@ body.dark #top .nm{color:#fff}
   transform:translateY(24px);transition:transform .55s cubic-bezier(.16,1,.3,1)}
 #ov.on .sheet{transform:none}
 #ovClose{position:fixed;top:24px;right:var(--pad);z-index:960;font-family:var(--f6);font-size:11px;
-  letter-spacing:.2em;color:#fff;border:1px solid #34373e;border-radius:2px;padding:11px 18px;
+  letter-spacing:.2em;color:#fff;border:1px solid #33436e;border-radius:2px;padding:11px 18px;
   background:rgba(11,11,12,.7);backdrop-filter:blur(8px);cursor:pointer;transition:.25s}
 #ovClose:hover{background:var(--ac);border-color:var(--ac)}
 #ov .tp{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f6);font-size:12px;
@@ -215,18 +221,18 @@ body.dark #top .nm{color:#fff}
 #ov h3 s{display:block;text-decoration:none;font-family:var(--f6);font-size:.3em;
   letter-spacing:.06em;color:#a8acb3;margin-top:14px}
 #ov .q{margin-top:26px;font-family:var(--f6);font-size:clamp(15px,2vw,21px);color:#fff;
-  border-left:2px solid var(--ac);padding-left:16px}
+  border-left:3px solid var(--ac);padding-left:16px}
 #ov ul{margin-top:32px;list-style:none;display:grid;gap:13px;max-width:720px}
 #ov li{position:relative;padding-left:22px;font-size:16px;color:#d2d6dc;line-height:1.7}
 #ov li:before{content:"";position:absolute;left:0;top:12px;width:10px;height:1.5px;background:var(--ac)}
 #ov .tl{margin-top:30px;display:flex;flex-wrap:wrap;gap:7px}
 #ov .tl span{font-family:var(--f6);font-size:11.5px;letter-spacing:.08em;color:#c3c7cd;
-  border:1px solid #2c2f36;border-radius:2px;padding:6px 11px}
+  border:1px solid #28365f;border-radius:2px;padding:6px 11px}
 #ov .shot,#ov .more{display:none}
-#ov .gal{margin-top:56px;border-top:1px solid #26282e;padding-top:44px;display:grid;gap:40px}
+#ov .gal{margin-top:56px;border-top:1px solid #223059;padding-top:44px;display:grid;gap:40px}
 #ov .gal h4{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:#6f747c;font-weight:400}
 #ov .gal figure{margin:0}
-#ov .gal img{display:block;width:100%;height:auto;border:1px solid #26282e;background:#000}
+#ov .gal img{display:block;width:100%;height:auto;border:1px solid #223059;background:#0C1430}
 #ov .gal figcaption{margin-top:12px;font-family:var(--f6);font-size:12px;color:#9ca1a9;letter-spacing:.04em}
 #ov .empty{font-family:var(--f6);font-size:13px;color:#6f747c}
 body.lock{overflow:hidden}
@@ -271,7 +277,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 .erow .t{font-family:var(--f7);font-size:clamp(17px,2.2vw,24px);letter-spacing:-.03em}
 .erow .m{margin-top:8px;font-size:14px;color:var(--ink2)}
 .erow a.bd{transition:.25s}.erow a.bd:hover{background:var(--ink)}
-.erow .bd{display:inline-block;font-family:var(--f6);font-size:11px;letter-spacing:.1em;color:#fff;
+.erow .bd{box-shadow:0 5px 16px -5px rgba(31,86,255,.75);display:inline-block;font-family:var(--f6);font-size:11px;letter-spacing:.1em;color:#fff;
   background:var(--ac);padding:3px 10px;margin-left:8px;vertical-align:3px}
 .erow:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ac);transition:width .6s}
 .erow:hover:after{width:100%}
@@ -285,11 +291,11 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 #end h2 .ac{color:var(--ac)}
 .mail{display:inline-flex;align-items:center;gap:14px;margin-top:clamp(34px,5vw,64px);
   font-family:var(--f6);font-size:clamp(16px,3vw,30px);letter-spacing:-.02em;
-  border-bottom:1.5px solid #34373e;padding-bottom:10px;transition:.3s}
+  border-bottom:1.5px solid #33436e;padding-bottom:10px;transition:.3s}
 .mail:hover{color:var(--ac);border-color:var(--ac)}
 .mail svg{width:.8em;height:.8em;transition:transform .3s}
 .mail:hover svg{transform:translate(4px,-4px)}
-.fend{margin-top:clamp(60px,10vh,120px);padding-top:24px;border-top:1px solid #26282e;
+.fend{margin-top:clamp(60px,10vh,120px);padding-top:24px;border-top:1px solid #223059;
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
   font-family:var(--f6);font-size:11px;letter-spacing:.12em;color:#6f747c}
 .fend a{transition:.25s}
@@ -409,8 +415,8 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>보스 A~D 타입별 패턴과 지형 타일 · 연결 배경 아트 디렉션</li>
             </ul>
             <div class="tl"><span>Unity C#</span><span>Excel 밸런싱</span><span>draw.io</span><span>Photoshop</span></div>
-            <figure class="shot"><img src="rushitadel-title.png" alt="Rushitadel 타이틀 화면" loading="lazy">
-              <figcaption>TITLE — 바이옴이 갈라지는 타이틀 화면</figcaption></figure>
+            <figure class="shot"><img src="rushitadel-title-ingame.png" alt="Rushitadel 인게임 타이틀 화면" loading="lazy">
+              <figcaption>TITLE — 실제 인게임 타이틀 화면</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -745,10 +751,13 @@ const GALLERY={
     {src:'trash-boy-props.png',cap:'[기획 단계 레퍼런스] 소품 아트 시안 — 시대별 오브젝트 톤 검수'}
   ],
   rushitadel:[
-    {src:'rushitadel-title.png',cap:'타이틀 — 좌우로 갈라지는 바이옴 콘셉트, 중앙에 본체+5포탑 실루엣'},
-    {src:'rushitadel-battle.png',cap:'전투 파노라마 — 전진하는 플레이어와 부착 포탑, 절벽 지형 구조'},
-    {src:'rushitadel-boss.gif',cap:'보스 A 타입 대기 모션 — 타입별 패턴을 나눠 설계'},
-    {src:'rushitadel-bg.png',cap:'연결 배경 1920×1080 — 아래로 흐르는 타일 배경 리소스'}
+    {src:'rushitadel-title-ingame.png',cap:'[인게임] 타이틀 화면 — 실제 적용 중인 배경 · 로고 · 버튼 UI'},
+    {src:'rushitadel-player.png',cap:'[인게임] 플레이어 본체와 부착 포탑 스프라이트 — 본체 1기 + 회전 포탑 T1~T5'},
+    {src:'rushitadel-tiles.png',cap:'[인게임] 전장 지형 타일 — L · M · R 3종을 이어 붙여 길을 생성'},
+    {src:'rushitadel-boss-art.png',cap:'[인게임] 보스 아트 — 라바 테마 보스 본체'},
+    {src:'rushitadel-boss.gif',cap:'[인게임] 보스 A 타입 대기 모션'},
+    {src:'rushitadel-title.png',cap:'[기획 단계 레퍼런스] 타이틀 콘셉트 — 좌우 바이옴 분할 시안'},
+    {src:'rushitadel-battle.png',cap:'[기획 단계 레퍼런스] 전투 파노라마 콘셉트'}
   ],
   unfin:[
     {src:'unfin-character-final.png',cap:'[최종] 플레이어 캐릭터 3면도 — 정면 · 후면 · 측면 확정본'},
