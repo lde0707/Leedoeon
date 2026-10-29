@@ -124,7 +124,7 @@ body.dark #top .nm{color:#fff}
 
 /* ══════════ 4. WORK (가로 핀) ══════════ */
 #work{background:var(--ink);color:#fff;position:relative}
-#pin{height:440vh;position:relative}
+#pin{height:485vh;position:relative}
 #stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
 #track{display:flex;height:100%;align-items:center;will-change:transform}
 #track>*{align-self:center;max-height:76svh;overflow:visible}
@@ -364,7 +364,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
       <div id="track">
 
         <div class="wintro">
-          <div class="k">SELECTED WORK — 10</div>
+          <div class="k">SELECTED WORK — 11</div>
           <h2>기획서보다<br>결과로<br>말합니다.</h2>
           <p>무엇을 맡았고, 어떤 문제를 어떤 설계로 풀었는지. 옆으로 넘기며 확인하세요.</p>
         </div>
@@ -633,6 +633,26 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           </div>
         </article>
 
+        <article class="card" data-key="aion2">
+          <div class="no">11</div>
+          <div class="body">
+            <div class="tp"><span>2026.10</span><span>개인 분석</span><b>시스템 구조 분석</b></div>
+            <h3>AION2 성장 순환 구조<s>시스템 분석 · 웹 문서 6종</s></h3>
+            <p class="q">흩어진 성장 요소를 하나의 순환 구조로 다시 그렸습니다.</p>
+            <ul class="short">
+              <li>공식 가이드북 · 커뮤니티 자료로 성장 단계 6단계 정리</li>
+              <li>장비 강화 · 원정 · 초월 · 성역 · 내실 5개 축을 개별 문서로 분해</li>
+              <li>콘텐츠 → 보상 → 성장 → 상위 입장으로 맞물리는 순환 구조 도출</li>
+            </ul>
+            <div class="tl"><span>System Analysis</span><span>Game Research</span><span>HTML/CSS · JS</span></div>
+            <figure class="shot"><img src="aion2-hub.png" alt="AION2 성장 순환 구조 문서" loading="lazy">
+              <figcaption>HUB — 성장 순환 구조 메인 문서</figcaption></figure>
+            <a class="more" href="aion2/index.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">성장 순환 구조 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          </div>
+        </article>
+
         <div class="wend"><b>여기까지가<br>지금의 기록.</b>다음 프로젝트는 아직 비어 있습니다. 그 칸을 함께 채울 팀을 찾고 있습니다.</div>
       </div>
       <div id="wprog"><i></i></div>
@@ -795,6 +815,10 @@ const GALLERY={
   readycore:[
     {src:'readycore-proposal.png',cap:'기획서 표지 — 《트렌드 코리아 2026》 레디코어 키워드를 이벤트로 번역'},
     {src:'readycore-proposal-2.png',cap:'본문 — 트렌드 인사이트와 이벤트 2트랙 구조 설계'}
+  ],
+  aion2:[
+    {src:'aion2-hub.png',cap:'메인 문서 — 콘텐츠 플레이 → 보상 → 장비 성장 → 아이템 레벨 → 상위 입장으로 도는 순환 구조'},
+    {src:'aion2-pages.png',cap:'상세 페이지 5종 — 장비 강화 · 원정 · 초월/아르카나 · 성역 · 내실을 축별로 분해'}
   ],
   trickcal:[
     {src:'https://www.trickcal.com/assets/event/3rdAnniversary/img/main_bg_web-nYFJlJlQ.webp',cap:'트릭컬 리바이브 3주년 키 아트 ⓒ EPIDGames'},
