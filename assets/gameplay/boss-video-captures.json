@@ -1,0 +1,65 @@
+{
+  "captured_on": "2026-10-30",
+  "project": "Roguelike-Defense/Rushitadel2D",
+  "scene": "Assets/Scenes/inGame.unity",
+  "method": "Actual Unity standalone render frames captured at fixed 30 fps and encoded to H.264 MP4. Four independent 16-second recordings of existing boss attack pattern 5. No animation synthesized or image animation used.",
+  "notes": [
+    "Slot-zero capture sessions and isolated product/company settings preserve original saves.",
+    "Player invulnerability and disabled automatic towers keep the complete attack visible. Boss animation, attacks and battlefield remain unchanged.",
+    "Audio omitted for muted simultaneous playback. Original Unity project status restored after recording."
+  ],
+  "assets": [
+    {
+      "file": "rushitadel-boss-butterfly.mp4",
+      "boss": "butterfly",
+      "width": 1280,
+      "height": 720,
+      "capturedWidth": 1920,
+      "capturedHeight": 1080,
+      "fps": 30,
+      "frames": 480,
+      "seconds": 16,
+      "bytes": 1340709,
+      "sha256": "58fea4503dbcb161dd410935b6c602c21597b1ff1c0a1e89bc067363e9a257b5"
+    },
+    {
+      "file": "rushitadel-boss-lava.mp4",
+      "boss": "lava",
+      "width": 1280,
+      "height": 720,
+      "capturedWidth": 1920,
+      "capturedHeight": 1080,
+      "fps": 30,
+      "frames": 480,
+      "seconds": 16,
+      "bytes": 929513,
+      "sha256": "7f265826b80c9be182aac8c8361aabc6eb5ddb78c840a9fec6e6364768785f94"
+    },
+    {
+      "file": "rushitadel-boss-ice.mp4",
+      "boss": "ice",
+      "width": 1280,
+      "height": 720,
+      "capturedWidth": 1920,
+      "capturedHeight": 1080,
+      "fps": 30,
+      "frames": 480,
+      "seconds": 16,
+      "bytes": 927626,
+      "sha256": "268bc8474680b3e451f14621646998f656d119ef36e3ed08328ef75a4142a468"
+    },
+    {
+      "file": "rushitadel-boss-twins.mp4",
+      "boss": "twins",
+      "width": 1280,
+      "height": 720,
+      "capturedWidth": 1920,
+      "capturedHeight": 1080,
+      "fps": 30,
+      "frames": 480,
+      "seconds": 16,
+      "bytes": 871604,
+      "sha256": "adb05d440c0e05e75b346bb1f639aecb66ccc8db5a647e253e8b2e84dbd8bc10"
+    }
+  ]
+}
