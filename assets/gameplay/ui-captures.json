@@ -1,0 +1,187 @@
+{
+  "captured_on": "2026-10-30",
+  "method": "Unity Windows standalone full-frame capture including IMGUI and Canvas UI",
+  "notes": [
+    "Temporary runtime harness navigates existing UI and prepares example game states; original layouts and artwork are unchanged.",
+    "Capture builds use an isolated product name so existing player progress and preferences are not used.",
+    "Trash has no separate title screen in the current project; its flow begins with the gameplay HUD."
+  ],
+  "assets": [
+    {
+      "file": "trash-main-ui.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "title": "01 · 메인 화면 — 오늘의 목표 확인",
+      "caption": "할당량·남은 시간·기력과 가방 상태를 확인하고 지하 탐색을 시작합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 126446,
+      "sha256": "ddf9f52b855aa78d4ab55f64d3bc13883ba293a43ff14677f46cf4984126f06c"
+    },
+    {
+      "file": "trash-explore-ui.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "title": "02 · 지하 탐색 — 수집과 복귀 판단",
+      "caption": "시야와 기력을 관리하며 쓰레기를 모으고, 가방과 마감 시간을 살펴 지상으로 돌아갑니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 107410,
+      "sha256": "82373354185f31c51e83e47924d36084ddb143b80bb2be197f1c0dd8bc7fc3d0"
+    },
+    {
+      "file": "trash-recycling-ui.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "title": "03 · 분리수거 작업대 — 수집물을 수익으로",
+      "caption": "대기열의 쓰레기를 제한 시간 안에 알맞은 종류로 분류하며 수익과 오염도를 관리합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 44540,
+      "sha256": "63e7bfcf6fc42570004520a613b8b86798178867efeb24fe9ed52694183d3442"
+    },
+    {
+      "file": "trash-upgrade-ui.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "title": "04 · 낮의 강화소 — 다음 탐색 준비",
+      "caption": "모은 돈으로 능력치를 강화해 이동·굴착·수집의 효율을 높입니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 94356,
+      "sha256": "cb0acaffac7ab99467ccab750886fca2e93602f5356c63686fe07a1e37c3447a"
+    },
+    {
+      "file": "trash-codex-ui.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "title": "탐색 중 · 유물 도감",
+      "caption": "유물의 발굴·복원 상태를 살펴보며 다음 수집 목표를 정합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 96672,
+      "sha256": "7c907efd57501313a216fa8f969f64d3052477d59e89843bd57caadcbe7224a2"
+    },
+    {
+      "file": "trash-settlement-ui.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "title": "05 · 하루 정산 — 수익과 비용 확인",
+      "caption": "할당량 정산과 지출을 확인하고, 다음 날의 목표를 준비합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 33846,
+      "sha256": "b1da8ccf53d15abdc3aee0fd4ca7ed3721be0abd747be70f0636598f77565ee4"
+    },
+    {
+      "file": "trash-equipment-ui.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "title": "06 · 밤의 장비 상점 — 다음 날 준비",
+      "caption": "랜턴과 탐지기 등 필요한 장비를 선택해 다음 탐색의 범위를 넓힙니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 42746,
+      "sha256": "163befc362555a2cac569a24de5ea7ec02d663bed40485dbe14197bb9d8751d2"
+    },
+    {
+      "file": "rushitadel-title-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/Title.unity",
+      "title": "01 · 타이틀 — 런 시작과 이어하기",
+      "caption": "새 게임·이어하기·설정 메뉴에서 플레이를 시작하거나 저장된 진행을 확인합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 94888,
+      "sha256": "337a2da940d13110bf8c944663ea8885419b01f74eb5a84bed7b31bb02a73f39"
+    },
+    {
+      "file": "rushitadel-slots-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/Title.unity",
+      "title": "02 · 저장 슬롯 — 진행 공간 선택",
+      "caption": "세 개의 슬롯에서 새 런을 시작할 위치와 기존 저장 상태를 확인합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 64932,
+      "sha256": "392434166701acd80050392ae10321ee514233589af561973666e877ec0d9370"
+    },
+    {
+      "file": "rushitadel-themes-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/Title.unity",
+      "title": "03 · 테마 선택 — 전장의 첫 갈림길",
+      "caption": "제시된 두 테마 중 하나를 선택하고 해당 환경에서 전투를 시작합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 80120,
+      "sha256": "6749c858a6ad8a66b63338fb142a779c6b6ad1beac35b738eeb62d1d24cd7687"
+    },
+    {
+      "file": "rushitadel-hud-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/inGame.unity",
+      "title": "04 · 메인 전투 — 자원과 위험을 함께 읽기",
+      "caption": "체력·동력·경험치·포탑 상태를 확인하며 전진하는 전장에서 적에 대응합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 154528,
+      "sha256": "2042b961841f95544aa26007afe01f6098d3d1ad7da5cd3f8754372f835eb29d"
+    },
+    {
+      "file": "rushitadel-growth-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/inGame.unity",
+      "title": "05 · 레벨업 — 포탑의 성장 방향 선택",
+      "caption": "전투를 잠시 멈추고 포탑의 변형과 증강을 선택해 런의 전투 구성을 만듭니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 102140,
+      "sha256": "f014161cb1dd6b44072a9adce0845a5f2740eb62a06e64b111e9e0316735ef00"
+    },
+    {
+      "file": "rushitadel-maintenance-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/inGame.unity",
+      "title": "06 · 안전 정비 — 회복 선택",
+      "caption": "라운드 사이의 안전 구간에서 체력 또는 동력 회복을 선택합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 64492,
+      "sha256": "023a39cb1781de157adb37f6114980bdcd15b576c7fe9d75fca5d18e7c86f1e6"
+    },
+    {
+      "file": "rushitadel-web-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/inGame.unity",
+      "title": "07 · PLAYER WEB — 경험치를 성장으로",
+      "caption": "연결된 노드의 효과를 살펴보고 보유 경험치를 어디에 사용할지 결정합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 74418,
+      "sha256": "d8de7536d4acc076e2d56672402a7426fc990a775eb1512d2545154f2f4c843a"
+    },
+    {
+      "file": "rushitadel-pause-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/inGame.unity",
+      "title": "플레이 중 · 일시정지",
+      "caption": "진행 상태를 확인하고 계속하기·설정·타이틀 이동·종료를 선택합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 85180,
+      "sha256": "7ec1086d7aa7170031c8b768eca344a5d4c313ebdc8deb26bd331c4ee3dd9d3c"
+    },
+    {
+      "file": "rushitadel-settings-ui.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/Title.unity",
+      "title": "메뉴 분기 · 설정",
+      "caption": "게임 안의 설정 화면에서 플레이 환경을 조절합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 71048,
+      "sha256": "3278f54699f06cae1d0bdac2660cc9d7e3f51f81f02439376a56b0da1178c21d"
+    }
+  ]
+}

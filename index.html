@@ -238,6 +238,9 @@ body.dark #top .nm{color:#fff}
 #ov .play-gallery{margin:32px 0 40px;display:grid;gap:24px}
 #ov .play-gallery h4{font-size:13px;color:var(--ac);letter-spacing:.08em}
 #ov .play-gallery figure{margin:0;min-width:0}
+#ov .play-gallery a{display:block;cursor:zoom-in}
+#ov .play-gallery .flow-summary{margin:0;color:#d2d6dc;font-size:14px;line-height:1.8}
+#ov .play-gallery .flow-summary small{display:block;margin-top:8px;color:#9ca1a9;font-size:12px}
 #ov .play-gallery img{display:block;width:100%;height:auto;border:1px solid #28365f;border-radius:4px;background:#0c1430}
 #ov .play-gallery figcaption{margin-top:10px;font-family:var(--f6);font-size:13px;line-height:1.7;color:#c3cbdc}
 #ov .play-gallery figcaption strong{display:block;color:#fff;font-family:var(--f7);font-size:15px;margin-bottom:3px}
@@ -373,7 +376,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
       <div id="track">
 
         <div class="wintro">
-          <div class="k">SELECTED WORK — 11</div>
+          <div class="k">SELECTED WORK — 12</div>
           <h2>기획서보다<br>결과로<br>말합니다.</h2>
           <p>무엇을 맡았고, 어떤 문제를 어떤 설계로 풀었는지. 옆으로 넘기며 확인하세요.</p>
         </div>
@@ -396,8 +399,8 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>일꾼 고용과 자동 재활용 시스템으로 수동 수집 외 수익 창출 루프 개발</li>
             </ul>
             <div class="tl"><span>Unity C#</span><span>Claude Code</span><span>Photoshop</span></div>
-            <figure class="shot"><img src="assets/gameplay/trash-surface.webp" alt="쓰레기 집게 소년 실제 지상 거점 플레이 화면" loading="lazy">
-              <figcaption>PLAY — 수집과 성장을 잇는 지상 거점</figcaption></figure>
+            <figure class="shot"><img src="assets/gameplay/trash-main-ui.webp" alt="쓰레기 집게 소년 메인 화면과 게임 HUD" loading="lazy">
+              <figcaption>UI FLOW — 탐색부터 분리수거와 다음 날 준비까지</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -411,21 +414,21 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
             <h3>Rushitadel<s>로그라이크 디펜스 · 시스템 기획</s></h3>
             <p class="q">포탑을 세우는 게 아니라, 포탑을 입고 달립니다.</p>
             <ul class="short">
-              <li>본체 1기 + 부착 포탑 5기 · 단일 HP 구조 설계</li>
-              <li>증강 6계열 · 변형 15종 포탑 성장 체계 설계</li>
+              <li>본체 1기 + 부착 포탑 6기 · 단일 HP 구조 설계</li>
+              <li>증강 6계열 · 변형 16종 포탑 성장 체계 설계</li>
               <li>전진 카메라 + 후방 위험 구역으로 멈출 수 없게 만드는 압박 설계</li>
             </ul>
             <ul class="full" hidden>
-              <li>플레이어 본체 1기에 포탑 5기(T1~T5)를 부착하고 HP를 하나로 관리하는 코어 구조 설계</li>
-              <li>증강 6계열 · 변형 15종 · 공통/전용 증강으로 이어지는 런 성장 체계 설계</li>
+              <li>플레이어 본체 1기에 포탑 6기(T1~T6)를 부착하고 HP를 하나로 관리하는 코어 구조 설계</li>
+              <li>증강 6계열 · 변형 16종 · 공통/전용 증강으로 이어지는 런 성장 체계 설계</li>
               <li>카메라가 전진하고 후방 위험 구역이 따라붙어, 멈추면 피해를 받는 압박 구조 설계</li>
               <li>우클릭 동력 공격(기력 70% 소모 · 중앙 즉사 / 가장자리 50% 피해)과 파괴 가능한 적 탄 설계</li>
               <li>UI · 시스템 · 상세 기획서 3종과 런/전투/성장/저장 4페이지 흐름도 작성</li>
               <li>보스 A~D 타입별 패턴과 지형 타일 · 연결 배경 아트 디렉션</li>
             </ul>
             <div class="tl"><span>Unity C#</span><span>Excel 밸런싱</span><span>draw.io</span><span>Photoshop</span></div>
-            <figure class="shot"><img src="assets/gameplay/rushitadel-boss-battle.webp" alt="Rushitadel 실제 라바 보스전" loading="lazy">
-              <figcaption>PLAY — 용암과 탄막 사이의 보스전</figcaption></figure>
+            <figure class="shot"><img src="assets/gameplay/rushitadel-title-ui.webp" alt="Rushitadel 실제 타이틀 메뉴" loading="lazy">
+              <figcaption>UI FLOW — 타이틀부터 전투와 성장 선택까지</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -792,15 +795,28 @@ let mqx=0,vel=0;
 /* ── WORK 가로 핀 ── */
 const pin=$('#pin'),track=$('#track'),wp=$('#wprog i');
 
-/* 실제 Unity 게임 카메라로 촬영한 핵심 플레이 장면 */
+/* 실제 Unity 실행 화면: 메뉴 흐름과 핵심 플레이 장면 */
 const GAMEPLAY={
   trash:[
-    {file:'trash-surface',title:'수집한 자원이 모이는 지상 거점',cap:'투입소·강화소·복원소를 오가며 지하에서 모은 자원을 성장에 활용합니다.'},
-    {file:'trash-underground',title:'빛이 닿는 곳부터 파고드는 지하 탐색',cap:'좁은 시야 속에서 묻힌 자원과 시설을 찾아 굴착 경로를 정합니다.'}
+    {"file":"trash-main-ui","title":"01 · 메인 화면 — 오늘의 목표 확인","cap":"할당량·남은 시간·기력과 가방 상태를 확인하고 지하 탐색을 시작합니다."},
+    {"file":"trash-explore-ui","title":"02 · 지하 탐색 — 수집과 복귀 판단","cap":"시야와 기력을 관리하며 쓰레기를 모으고, 가방과 마감 시간을 살펴 지상으로 돌아갑니다."},
+    {"file":"trash-recycling-ui","title":"03 · 분리수거 작업대 — 수집물을 수익으로","cap":"대기열의 쓰레기를 제한 시간 안에 알맞은 종류로 분류하며 수익과 오염도를 관리합니다."},
+    {"file":"trash-upgrade-ui","title":"04 · 낮의 강화소 — 다음 탐색 준비","cap":"모은 돈으로 능력치를 강화해 이동·굴착·수집의 효율을 높입니다."},
+    {"file":"trash-codex-ui","title":"탐색 중 · 유물 도감","cap":"유물의 발굴·복원 상태를 살펴보며 다음 수집 목표를 정합니다."},
+    {"file":"trash-settlement-ui","title":"05 · 하루 정산 — 수익과 비용 확인","cap":"할당량 정산과 지출을 확인하고, 다음 날의 목표를 준비합니다."},
+    {"file":"trash-equipment-ui","title":"06 · 밤의 장비 상점 — 다음 날 준비","cap":"랜턴과 탐지기 등 필요한 장비를 선택해 다음 탐색의 범위를 넓힙니다."}
   ],
   rushitadel:[
-    {file:'rushitadel-battle',title:'회전 포탑과 함께 버티는 전장',cap:'본체 주변의 포탑으로 대응하며 양옆에서 날아오는 탄막 사이를 이동합니다.'},
-    {file:'rushitadel-boss-battle',title:'퇴로를 압박하는 라바 보스전',cap:'뒤에서 밀려오는 용암과 보스의 확산 탄막을 함께 살피며 안전한 자리를 찾습니다.'}
+    {"file":"rushitadel-title-ui","title":"01 · 타이틀 — 런 시작과 이어하기","cap":"새 게임·이어하기·설정 메뉴에서 플레이를 시작하거나 저장된 진행을 확인합니다."},
+    {"file":"rushitadel-slots-ui","title":"02 · 저장 슬롯 — 진행 공간 선택","cap":"세 개의 슬롯에서 새 런을 시작할 위치와 기존 저장 상태를 확인합니다."},
+    {"file":"rushitadel-themes-ui","title":"03 · 테마 선택 — 전장의 첫 갈림길","cap":"제시된 두 테마 중 하나를 선택하고 해당 환경에서 전투를 시작합니다."},
+    {"file":"rushitadel-hud-ui","title":"04 · 메인 전투 — 자원과 위험을 함께 읽기","cap":"체력·동력·경험치·포탑 상태를 확인하며 전진하는 전장에서 적에 대응합니다."},
+    {"file":"rushitadel-growth-ui","title":"05 · 레벨업 — 포탑의 성장 방향 선택","cap":"전투를 잠시 멈추고 포탑의 변형과 증강을 선택해 런의 전투 구성을 만듭니다."},
+    {"file":"rushitadel-maintenance-ui","title":"06 · 안전 정비 — 회복 선택","cap":"라운드 사이의 안전 구간에서 체력 또는 동력 회복을 선택합니다."},
+    {"file":"rushitadel-web-ui","title":"07 · PLAYER WEB — 경험치를 성장으로","cap":"연결된 노드의 효과를 살펴보고 보유 경험치를 어디에 사용할지 결정합니다."},
+    {"file":"rushitadel-pause-ui","title":"플레이 중 · 일시정지","cap":"진행 상태를 확인하고 계속하기·설정·타이틀 이동·종료를 선택합니다."},
+    {"file":"rushitadel-settings-ui","title":"메뉴 분기 · 설정","cap":"게임 안의 설정 화면에서 플레이 환경을 조절합니다."},
+    {"file":"rushitadel-boss-battle","title":"전투 예시 · 퇴로를 압박하는 라바 보스전","cap":"뒤에서 밀려오는 용암과 보스의 확산 탄막을 함께 살피며 안전한 자리를 찾습니다."}
   ],
   unfin:[
     {file:'unfin-exploration',title:'종이굴에서 시작되는 탐색과 전투',cap:'종이 질감의 발판과 단차를 넘으며 서로 다른 움직임을 가진 적을 만납니다.'},
@@ -821,52 +837,16 @@ const GAMEPLAY={
   ]
 };
 
-/* ══ 프로젝트 상세 갤러리 ══
-   사진을 추가하려면 아래 목록에 {src:'파일명.png',cap:'설명'} 한 줄만 넣으면 됩니다.
+const UI_FLOW={
+  trash:'메인 HUD → 지하 탐색 → 분리수거 → 강화 → 하루 정산 → 다음 날 준비',
+  rushitadel:'타이틀 → 저장 슬롯 → 테마 선택 → 전투 → 포탑 성장 → 정비 · PLAYER WEB'
+};
+
+/* ══ 비게임 프로젝트 자료 갤러리 ══
+   Unity 6개 프로젝트는 위 GAMEPLAY의 실제 촬영본만 사용합니다.
+   자료 사진을 추가하려면 아래 목록에 {src:'파일명.png',cap:'설명'} 한 줄만 넣으면 됩니다.
    (파일은 index.html과 같은 폴더에 두고, 파일명은 영문·숫자 권장) */
 const GALLERY={
-  trash:[
-    {src:'trash-boy-title.png',cap:'타이틀 화면 — 7일 안에 도시를 세워라'},
-    {src:'trash-boy-eras.png',cap:'시대별 지상 배경 — 원시 · 고대 · 조선 · 근대 · 미래. 7일 동안 도시가 한 시대씩 올라가는 성장 구조'},
-    {src:'trash-boy-buildings.png',cap:'시대별 시설 아트 — 투입소 · 강화소 · 복원소 3개 시설이 시대에 맞춰 함께 변하도록 설계'},
-    {src:'trash-boy-relics.png',cap:'유물 도감 — 공룡 · 고생물 16종. 지층을 깊이 팔수록 더 오래된 유물이 나오도록 배치'},
-    {src:'trash-boy-surface.png',cap:'[기획 단계 레퍼런스] 지상 레이아웃 — 시설 배치와 동선 계획'},
-    {src:'trash-boy-props.png',cap:'[기획 단계 레퍼런스] 소품 아트 시안 — 시대별 오브젝트 톤 검수'}
-  ],
-  rushitadel:[
-    {src:'rushitadel-title-ingame.png',cap:'[인게임] 타이틀 화면 — 실제 적용 중인 배경 · 로고 · 버튼 UI'},
-    {src:'rushitadel-player.png',cap:'[적용 에셋] 플레이어 본체와 부착 포탑 스프라이트 — 본체 1기 + 회전 포탑 T1~T5'},
-    {src:'rushitadel-tiles.png',cap:'[적용 에셋] 전장 지형 타일 — L · M · R 3종을 이어 붙여 길을 생성'},
-    {src:'rushitadel-boss-art.png',cap:'[적용 에셋] 보스 아트 — 라바 테마 보스 본체'},
-    {src:'rushitadel-boss.gif',cap:'[적용 에셋] 보스 A 타입 대기 모션'},
-    {src:'rushitadel-title.png',cap:'[기획 단계 레퍼런스] 타이틀 콘셉트 — 좌우 바이옴 분할 시안'},
-    {src:'rushitadel-battle.png',cap:'[기획 단계 레퍼런스] 전투 파노라마 콘셉트'}
-  ],
-  unfin:[
-    {src:'unfin-character-final.png',cap:'[최종] 플레이어 캐릭터 3면도 — 정면 · 후면 · 측면 확정본'},
-    {src:'unfin-run.gif',cap:'[최종] 달리기 애니메이션 — 8프레임 루프, 리듬 검수 후 확정'},
-    {src:'unfin-regions.png',cap:'[최종] 1지역 지형 타일 4종 — 128px 타일 규격으로 통일한 바닥 · 벽 · 단차'},
-    {src:'unfin-character-ref.png',cap:'[기획 단계 레퍼런스] 초기 캐릭터 스터디 — 실루엣 방향을 잡던 시안'},
-    {src:'unfin-tower.png',cap:'[기획 단계 레퍼런스] 탑 구역 배경 콘셉트'},
-    {src:'unfin-paper.png',cap:'[기획 단계 레퍼런스] 종이 구역 배경 콘셉트'}
-  ],
-  booktower:[
-    {src:'booktower-play.png',cap:'[최종] 동화 공방 1A — 실제 인게임 플레이 화면'},
-    {src:'booktower-reading-room.png',cap:'[최종] 열람실 1B — 인게임 렌더, 안내 문구와 상호작용 오브젝트 배치'},
-    {src:'booktower-room.png',cap:'[기획 단계 레퍼런스] 열람실 2B 공간 설계 도면 — 동선 · 기믹 배치 계획'},
-    {src:'booktower-f0.png',cap:'[기획 단계 레퍼런스] F0 정면 레이아웃 — 층 전체 배치 계획'},
-    {src:'booktower-spirit-ref.png',cap:'[기획 단계 레퍼런스] 종이 정령 콘셉트 — 최종 모델의 기준이 된 레퍼런스'},
-    {src:'booktower-spirit-v6.png',cap:'[기획 단계 레퍼런스] 캐릭터 모델 턴어라운드 V6 — 실루엣 검수 과정'}
-  ],
-  pearl:[
-    {src:'pearl-01-title.jpg',cap:'타이틀 — 용궁의 진주를 노리는 물고기 · 게 · 해파리 3인방'},
-    {src:'pearl-02-mode.jpg',cap:'모드 선택 — 성장형 STAGE와 반복 도전형 RANK, 두 갈래 진행 구조'},
-    {src:'pearl-03-stage.jpg',cap:'스테이지 지도 — 스테이지 보상으로 미네랄(능력치 강화)과 진주(특수 유닛 구매)를 획득'},
-    {src:'pearl-04-deck.jpg',cap:'덱 편성 — 최대 5칸 슬롯에 유닛 장착 · 해제, 잠긴 특수 유닛은 진주로 해금'},
-    {src:'pearl-05-battle.jpg',cap:'전투 — 골드로 유닛을 소환(100 · 200 · 150G)해 흑룡 보스의 공격을 막아내는 구조'},
-    {src:'pearl-06-shop.jpg',cap:'미네랄 상점 — 레벨업 비용은 300으로 통일, 유닛별로 오르는 능력치를 다르게 설계'},
-    {src:'pearl-thieves-stove.png',cap:'스토브인디 스토어 페이지 — 2026.05.30 출시, 유저평가 100% 추천'}
-  ],
   dice:[
     {src:'dice-board.jpg',cap:'보드게임 판 — 바깥 24칸 이동 트랙, 안쪽 4색 구역(빨강 · 파랑 · 노랑 · 초록)은 각자 모아야 할 땅, 1 · 7 · 13 · 19번 흰 칸은 원하는 땅으로 즉시 이동하는 Teleport'},
     {src:'dice-rulebook.jpg',cap:'룰북 — 구성품과 게임 준비: 4인 개인전 · 인당 80코인 · 내 색 주사위 20개 · 10턴 후 내 구역 땅이 가장 많은 플레이어 승리'}
@@ -904,9 +884,9 @@ function openCard(card){
   if(gameplay){
     const section=document.createElement('section');
     section.className='play-gallery'+(key==='puzzle'?' portrait':'');
-    section.setAttribute('aria-label','실제 게임 플레이 화면');
-    section.innerHTML='<h4>플레이 화면</h4>'+gameplay.map(g=>
-      '<figure><img src="assets/gameplay/'+g.file+'.webp" alt="'+g.title+'" width="'+(key==='puzzle'?780:1920)+'" height="'+(key==='puzzle'?1688:1080)+'" loading="lazy" decoding="async">'+
+    section.setAttribute('aria-label',UI_FLOW[key]?'UI 흐름과 실제 게임 화면':'실제 게임 플레이 화면');
+    section.innerHTML='<h4>'+(UI_FLOW[key]?'UI 흐름 · 실제 게임 화면':'실제 플레이 화면')+'</h4>'+(UI_FLOW[key]?'<p class="flow-summary">'+UI_FLOW[key]+'<small>이미지를 누르면 원본 크기로 볼 수 있습니다.</small></p>':'')+gameplay.map(g=>
+      '<figure><a href="assets/gameplay/'+g.file+'.webp" target="_blank" rel="noopener" aria-label="'+g.title+' 원본 이미지 보기"><img src="assets/gameplay/'+g.file+'.webp" alt="'+g.title+'" width="'+(key==='puzzle'?780:key==='unfin'?1280:1920)+'" height="'+(key==='puzzle'?1688:key==='unfin'?720:1080)+'" loading="lazy" decoding="async"></a>'+
       '<figcaption><strong>'+g.title+'</strong>'+g.cap+'</figcaption></figure>').join('');
     ovBody.querySelector('.q').after(section);
   }
