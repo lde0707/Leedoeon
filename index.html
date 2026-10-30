@@ -124,7 +124,7 @@ body.dark #top .nm{color:#fff}
 
 /* ══════════ 4. WORK (가로 핀) ══════════ */
 #work{background:var(--ink);color:#fff;position:relative}
-#pin{height:485vh;position:relative}
+#pin{height:385vh;position:relative}
 #stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
 #track{display:flex;height:100%;align-items:center;will-change:transform}
 #track>*{align-self:center;max-height:76svh;overflow:visible}
@@ -202,6 +202,31 @@ body.dark #top .nm{color:#fff}
   font-family:var(--f6);font-size:11px;letter-spacing:.3em;color:#fff;
   background:rgba(11,11,12,.55);opacity:0;transition:opacity .3s}
 .card:hover .shot:after{opacity:1}
+
+/* ══════════ 기획·분석 자료 ══════════ */
+#documents{padding:clamp(80px,10vw,150px) var(--pad);background:var(--bg2);border-bottom:1px solid var(--line);scroll-margin-top:40px}
+.docs-inner{max-width:1140px;margin:auto}
+.docs-header{margin-bottom:52px}
+.docs-kicker{font-family:var(--f6);font-size:11px;letter-spacing:.2em;color:var(--ac);margin-bottom:22px}
+.docs-header h2{font-size:clamp(34px,5.5vw,70px);letter-spacing:-.05em;line-height:1.2}
+.docs-header h2 span{color:var(--ac)}
+.docs-header p{margin-top:24px;font-family:var(--f6);color:var(--ink2);font-size:clamp(14px,1.5vw,17px);line-height:1.9}
+.docs-list{border-top:2px solid var(--ink)}
+.doc-entry{display:grid;grid-template-columns:135px minmax(0,1fr) 106px;gap:32px;align-items:start;padding:34px 16px;border-bottom:1px solid #d5dce9;transition:background .2s;cursor:pointer}
+.doc-entry:hover,.doc-entry:focus-visible{background:#e8eefb}
+.doc-entry:focus-visible,.docs-all:focus-visible{outline:2px solid var(--ac);outline-offset:5px}
+.doc-index{display:grid;gap:15px;font-family:var(--f6);font-size:12px;color:var(--ac)}
+.doc-index>span:first-child{font-size:30px;line-height:1.2;letter-spacing:-.04em}
+.doc-meta{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--f6);font-size:11px;color:#606b80;margin-bottom:10px}
+.doc-content h3{font-size:clamp(21px,2.5vw,29px);line-height:1.4;letter-spacing:-.035em;word-break:keep-all;overflow-wrap:anywhere}
+.doc-content p{font-family:var(--f6);font-size:14px;line-height:1.85;color:var(--ink2);max-width:680px;margin-top:12px}
+.doc-tags{display:flex;gap:7px;flex-wrap:wrap;list-style:none;margin-top:17px}
+.doc-tags li{font-family:var(--f6);font-size:11px;color:#4a5e86;border:1px solid #ced8ec;padding:3px 9px;border-radius:3px}
+.doc-open{align-self:center;display:flex;align-items:center;gap:10px;color:var(--ac);font-family:var(--f6);font-size:12px;white-space:nowrap}
+.doc-open>span{font-size:23px;transition:transform .2s}
+.doc-entry:hover .doc-open>span{transform:translate(2px,-2px)}
+.docs-all{display:inline-flex;gap:18px;margin-top:28px;font-family:var(--f6);font-size:13px;color:var(--ac)}
+@media(max-width:700px){.docs-header{margin-bottom:32px}.doc-entry{grid-template-columns:1fr;gap:16px;padding:26px 4px}.doc-index{display:flex;align-items:center;gap:14px}.doc-index>span:first-child{font-size:23px}.doc-open{justify-self:end}.doc-content p{font-size:13px}}
 
 /* ══════════ 프로젝트 상세 오버레이 ══════════ */
 #ov{position:fixed;inset:0;z-index:950;background:var(--ink);color:#fff;overflow-y:auto;
@@ -347,6 +372,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
   <a href="#hero" data-t="hero"><em>INTRO</em></a>
   <a href="#say" data-t="say"><em>ABOUT</em></a>
   <a href="#work" data-t="work"><em>WORK</em></a>
+  <a href="#documents" data-t="documents"><em>DOCS</em></a>
   <a href="#proc" data-t="proc"><em>PROCESS</em></a>
   <a href="#edu" data-t="edu"><em>EDU</em></a>
   <a href="#end" data-t="end"><em>CONTACT</em></a>
@@ -385,8 +411,8 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
       <div id="track">
 
         <div class="wintro">
-          <div class="k">SELECTED WORK — 12</div>
-          <h2>기획서보다<br>결과로<br>말합니다.</h2>
+          <div class="k">SELECTED WORK — 09</div>
+          <h2>직접 만들고,<br>플레이로<br>확인했습니다.</h2>
           <p>무엇을 맡았고, 어떤 문제를 어떤 설계로 풀었는지. 옆으로 넘기며 확인하세요.</p>
         </div>
 
@@ -640,71 +666,64 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           </div>
         </article>
 
-        <article class="card" data-key="readycore">
-          <div class="no">10</div>
-          <div class="body">
-            <div class="tp"><span>2026.09</span><span>개인 기획</span><b>트렌드 리서치 기획서</b></div>
-            <h3>레디코어 작전실<s>이벤트 기획 · 트렌드 리서치</s></h3>
-            <p class="q">《트렌드 코리아 2026》을 게임 커뮤니티 이벤트로 번역했습니다.</p>
-            <ul class="short">
-              <li>'레디코어' 트렌드와 디펜스 게임 핵심 루프의 접점 분석</li>
-              <li>공유형 · 경쟁형 2트랙 이벤트 구조 설계</li>
-              <li>웨이브 진행에 맞춘 일정 · 기존 등급 체계를 재활용한 보상 설계</li>
-            </ul>
-            <div class="tl"><span>Trend Research</span><span>Event Design</span><span>HTML/CSS</span></div>
-            <figure class="shot"><img src="readycore-proposal.png" alt="레디코어 작전실 기획서 표지" loading="lazy">
-              <figcaption>PROPOSAL — HTML 이벤트 기획서 표지</figcaption></figure>
-            <a class="more" href="lab/ready-core-event-proposal.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">HTML 기획서 전체보기
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-          </div>
-        </article>
-
-        <article class="card" data-key="trickcal">
-          <div class="no">11</div>
-          <div class="body">
-            <div class="tp"><span>2026.10</span><span>개인 분석</span><b>게임 분석 · 재미요소 분석</b></div>
-            <h3>트릭컬 리바이브 분석<s>게임 분석 · 시장 데이터 · 재미요소</s></h3>
-            <p class="q">귀여운 게임이 아니라, 부담 없는 게임이라는 걸 데이터로 증명했습니다.</p>
-            <ul class="short">
-              <li>매출 순위 3회분에서 상승 폭 1위 게임을 골라 분석 대상 선정</li>
-              <li>기승전결 구조의 게임 분석 — 코어 루프 · 성장 · BM · 운영 · 리스크</li>
-              <li>재미요소 분석 — 복귀 비용을 낮추는 시스템 순환 구조 도출</li>
-            </ul>
-            <div class="tl"><span>Game Analysis</span><span>Data Research</span><span>HTML/CSS · GSAP</span></div>
-            <a class="more" href="lab/trickcal-game-analysis.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">게임 분석 보기
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-            <a class="more" href="lab/trickcal-system-analysis.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="margin-left:18px">재미요소 분석 보기
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-          </div>
-        </article>
-
-        <article class="card" data-key="aion2">
-          <div class="no">12</div>
-          <div class="body">
-            <div class="tp"><span>2026.10</span><span>개인 분석</span><b>시스템 구조 분석</b></div>
-            <h3>AION2 성장 순환 구조<s>시스템 분석 · 웹 문서 6종</s></h3>
-            <p class="q">흩어진 성장 요소를 하나의 순환 구조로 다시 그렸습니다.</p>
-            <ul class="short">
-              <li>공식 가이드북 · 커뮤니티 자료로 성장 단계 6단계 정리</li>
-              <li>장비 강화 · 원정 · 초월 · 성역 · 내실 5개 축을 개별 문서로 분해</li>
-              <li>콘텐츠 → 보상 → 성장 → 상위 입장으로 맞물리는 순환 구조 도출</li>
-            </ul>
-            <div class="tl"><span>System Analysis</span><span>Game Research</span><span>HTML/CSS · JS</span></div>
-            <figure class="shot"><img src="aion2-hub.png" alt="AION2 성장 순환 구조 문서" loading="lazy">
-              <figcaption>HUB — 성장 순환 구조 메인 문서</figcaption></figure>
-            <a class="more" href="aion2/index.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">성장 순환 구조 보기
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-          </div>
-        </article>
-
         <div class="wend"><b>여기까지가<br>지금의 기록.</b>다음 프로젝트는 아직 비어 있습니다. 그 칸을 함께 채울 팀을 찾고 있습니다.</div>
       </div>
       <div id="wprog"><i></i></div>
     </div>
+  </div>
+</section>
+
+<!-- ══ 기획·분석 자료 ══ -->
+<section id="documents" aria-labelledby="documents-title">
+  <div class="docs-inner">
+    <header class="docs-header">
+      <div class="docs-kicker">DESIGN DOCUMENTS — 05</div>
+      <h2 id="documents-title">기획·분석 자료<span>.</span></h2>
+      <p>이벤트 기획서부터 게임 시스템·재미요소·BM 분석까지.<br>어떤 문제를 살폈고, 무엇을 설계에 적용할 수 있는지 정리했습니다.</p>
+    </header>
+    <div class="docs-list">
+      <a class="doc-entry" href="lab/ready-core-event-proposal.html" target="_blank" rel="noopener" aria-label="레디코어 작전실 — 기획서 읽기, 새 탭">
+        <div class="doc-index"><span>01</span><span>이벤트 기획서</span></div>
+        <div class="doc-content"><div class="doc-meta">개인 기획·분석 <span aria-hidden="true">·</span> <time datetime="2026-09-17">2026.09.17</time></div>
+          <h3>레디코어 작전실</h3><p>트렌드의 ‘준비’라는 키워드를 게임의 핵심 루프와 연결했습니다. 공유형·경쟁형 이벤트 2트랙, 진행 일정, 보상과 리스크를 설계한 기획서입니다.</p>
+          <ul class="doc-tags" aria-label="기획 관점"><li>트렌드 해석</li><li>이벤트 구조</li><li>보상 설계</li></ul>
+        </div>
+        <span class="doc-open">기획서 읽기 <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="doc-entry" href="lab/trickcal-game-analysis.html" target="_blank" rel="noopener" aria-label="트릭컬 리바이브 · 게임 분석 — 분석서 읽기, 새 탭">
+        <div class="doc-index"><span>02</span><span>게임 분석서</span></div>
+        <div class="doc-content"><div class="doc-meta">개인 기획·분석 <span aria-hidden="true">·</span> <time datetime="2026-10-08">2026.10.08</time></div>
+          <h3>트릭컬 리바이브 · 게임 분석</h3><p>코어 루프부터 콘텐츠·성장·BM·운영까지 게임 전체를 살펴봤습니다. 플레이어가 느끼는 재미와 부담을 나누고, 개선할 지점을 정리했습니다.</p>
+          <ul class="doc-tags" aria-label="기획 관점"><li>코어 루프</li><li>성장·BM</li><li>개선 제안</li></ul>
+        </div>
+        <span class="doc-open">분석서 읽기 <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="doc-entry" href="lab/trickcal-system-analysis.html" target="_blank" rel="noopener" aria-label="트릭컬 리바이브 · 다시 돌아오는 이유 — 분석서 읽기, 새 탭">
+        <div class="doc-index"><span>03</span><span>재미요소 분석서</span></div>
+        <div class="doc-content"><div class="doc-meta">개인 기획·분석 <span aria-hidden="true">·</span> <time datetime="2026-10-01">2026.10.01</time></div>
+          <h3>트릭컬 리바이브 · 다시 돌아오는 이유</h3><p>공유 레벨, 성격 시스템, 기념 이벤트가 어떻게 연결되는지 분석했습니다. 복귀 부담을 낮추고 재방문을 유도하는 설계를 중심으로 살펴봤습니다.</p>
+          <ul class="doc-tags" aria-label="기획 관점"><li>재미요소</li><li>복귀 동선</li><li>시스템 연결</li></ul>
+        </div>
+        <span class="doc-open">분석서 읽기 <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="doc-entry" href="aion2/index.html" target="_blank" rel="noopener" aria-label="AION2 · 성장 순환 구조 — 분석서 읽기, 새 탭">
+        <div class="doc-index"><span>04</span><span>시스템 분석서</span></div>
+        <div class="doc-content"><div class="doc-meta">개인 기획·분석 <span aria-hidden="true">·</span> <time datetime="2026-10-27">2026.10.27</time></div>
+          <h3>AION2 · 성장 순환 구조</h3><p>콘텐츠 → 보상 → 장비 성장 → 상위 콘텐츠로 이어지는 순환을 정리했습니다. 강화·원정·초월·성역·내실과 BM을 상세 문서로 연결했습니다.</p>
+          <ul class="doc-tags" aria-label="기획 관점"><li>성장 구조</li><li>재화 흐름</li><li>콘텐츠 연결</li></ul>
+        </div>
+        <span class="doc-open">분석서 읽기 <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="doc-entry" href="lab/lucky-defense-bm-analysis.html" target="_blank" rel="noopener" aria-label="운빨존많겜 · 과금 구조와 개선 아이디어 — 분석서 읽기, 새 탭">
+        <div class="doc-index"><span>05</span><span>BM 분석서</span></div>
+        <div class="doc-content"><div class="doc-meta">개인 기획·분석 <span aria-hidden="true">·</span> <time datetime="2026-10-29">2026.10.29</time></div>
+          <h3>운빨존많겜 · 과금 구조와 개선 아이디어</h3><p>상품을 구매자가 얻는 가치에 따라 분류하고, 과금 구조와 상품 구성을 살펴봤습니다. 조사 자료를 바탕으로 편의·성장·수집 관점의 개선 아이디어를 정리했습니다.</p>
+          <ul class="doc-tags" aria-label="기획 관점"><li>상품 구성</li><li>과금 가치</li><li>개선 아이디어</li></ul>
+        </div>
+        <span class="doc-open">분석서 읽기 <span aria-hidden="true">↗</span></span>
+      </a>
+    </div>
+    <a class="docs-all" href="lab/">자료 모아보기 <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -765,7 +784,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
   <a class="mail" href="mailto:doun070789@gmail.com">doun070789@gmail.com
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
       stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-  <div class="fend"><span>© 2026 이도언 · GAME DESIGN PORTFOLIO</span><a href="lab/" target="_blank" rel="noopener">LAB — 기획 초안 모음</a><span>DESIGNED &amp; BUILT BY 이도언</span></div>
+  <div class="fend"><span>© 2026 이도언 · GAME DESIGN PORTFOLIO</span><a href="lab/" target="_blank" rel="noopener">기획·분석 자료 모음</a><span>DESIGNED &amp; BUILT BY 이도언</span></div>
 </section>
 
 <script>
