@@ -245,7 +245,8 @@ body.dark #top .nm{color:#fff}
 #ov .play-gallery figcaption{margin-top:10px;font-family:var(--f6);font-size:13px;line-height:1.7;color:#c3cbdc}
 #ov .play-gallery figcaption strong{display:block;color:#fff;font-family:var(--f7);font-size:15px;margin-bottom:3px}
 #ov .play-gallery.portrait{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-#ov .play-gallery.portrait h4{grid-column:1/-1}
+#ov .play-gallery .game-intro{margin:0;font-size:16px;line-height:1.9;color:#e3e7ef}
+#ov .play-gallery.portrait h4,#ov .play-gallery.portrait .flow-summary,#ov .play-gallery.portrait .game-intro{grid-column:1/-1}
 @media(max-width:600px){#ov .play-gallery.portrait{grid-template-columns:1fr}#ov .play-gallery.portrait figure{width:100%;max-width:340px;margin:0 auto}}
 body.lock{overflow:hidden}
 /* 상세 화면에서는 기본 마우스 포인터 사용 */
@@ -439,24 +440,24 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           <div class="no">03</div>
           <div class="body">
             <div class="tp"><span>2026.07 — 현재</span><span>개인 기획</span><b>2D 메트로배니아</b></div>
-            <h3>Unfin<s>월드 설계 · 아트 파이프라인</s></h3>
-            <p class="q">보스를 쓰러뜨릴 때마다, 책이 한 장씩 완성됩니다.</p>
+            <h3>Stilldrawn<s>Unfin · 종이 세계 메트로배니아</s></h3>
+            <p class="q">그림 도구로 능력을 얻고, 막혔던 종이 세계의 길을 다시 엽니다.</p>
             <ul class="short">
-              <li>5개 지역이 한 맵으로 이어지는 메트로배니아 월드 설계</li>
+              <li>1·2지역 통합 맵에서 탐색과 능력 게이트 구현</li>
               <li>지역 = 장(章), 능력 = 그림 도구, 보스 = 장의 수호자 구조</li>
               <li>고해상도 타일맵 규격(256px/칸) 아트 파이프라인 정립</li>
             </ul>
             <ul class="full" hidden>
-              <li>작가가 그리다 만 스케치북 세계관 — 거대한 맵 하나 안에 5개 지역을 끊김 없이 연결</li>
+              <li>작가가 그리다 만 스케치북을 탐험하는 2D 액션 어드벤처 — 현재 1·2지역 통합 맵을 플레이할 수 있는 프로토타입</li>
               <li>지역 = 책의 장(章), 능력 = 그림 도구, 보스 = 장의 수호자로 묶은 능력 게이트 설계</li>
-              <li>장을 완성할수록 흑백 세계에 색이 돌아오고 표지의 제목 글자가 하나씩 복원되는 연출 장치</li>
+              <li>벽 점프·지우개 대시·연필 깎기 등 새 능력을 얻어 이전에 막혔던 길을 다시 탐색하는 진행 구조</li>
               <li>지형 256px/칸 · PPU 256 고해상도 비도트 규격과 배경 제작 파이프라인 문서화</li>
               <li>맵 · 전투 · 성장 · 아이템 · QA까지 기획 문서 20여 종 작성</li>
               <li>Unity WebGL 프로토타입으로 1·2지역 통합 맵 탐색 검증</li>
             </ul>
             <div class="tl"><span>Unity 2D URP</span><span>Tilemap</span><span>AI Art Pipeline</span></div>
-            <figure class="shot"><img src="assets/gameplay/unfin-boss.webp" alt="Unfin 실제 뿌리 심부 보스전" loading="lazy">
-              <figcaption>PLAY — 종이 세계의 탐색과 보스전</figcaption></figure>
+            <figure class="shot"><img src="assets/gameplay/unfin-title-flow.webp" alt="Stilldrawn 실제 타이틀 화면" loading="lazy">
+              <figcaption>PLAY FLOW — 탐색과 능력 획득, 지도, 보스전</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -467,23 +468,23 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           <div class="no">04</div>
           <div class="body">
             <div class="tp"><span>2026.09 — 현재</span><span>개인 기획</span><b>3D 퍼즐</b></div>
-            <h3>Book Tower<s>종이 백룸 《잊힌 제목》</s></h3>
-            <p class="q">책 속 실내를 걷는, 작은 종이 정령의 이야기.</p>
+            <h3>접힌 빛<s>A Fold of Light · Book Tower</s></h3>
+            <p class="q">기록 상자를 같은 문양의 자리에 보내며, 책 속 공간의 다음 길을 엽니다.</p>
             <ul class="short">
               <li>책 내부를 건축물로 다루는 종이 백룸 공간 설계</li>
-              <li>접힘 · 그림자 · 기억 복원 3종 퍼즐 기믹 설계</li>
-              <li>스크립트 기반 방 배치 자동 생성 파이프라인 구축</li>
+              <li>중력 방향에 함께 반응하는 기록 상자 퍼즐 구현</li>
+              <li>F0 · 1A · 1B와 연결 통로의 탐색 흐름 구현</li>
             </ul>
             <ul class="full" hidden>
               <li>거대한 책의 실내를 탐색하는 3D 퍼즐 — 층(F0)과 방(1A~)을 건축 도면처럼 설계</li>
-              <li>종이의 접힘, 그림자, 잃어버린 문장의 기억을 복원하는 상호작용 기믹 설계</li>
-              <li>level_layout.py 기반으로 전체 방 배치를 재생성하고 수동 패스를 덧붙이는 파이프라인 구축</li>
+              <li>네 방향의 중력을 바꾸어 기록 상자를 같은 문양의 목표에 맞추는 퍼즐 — 벽과 상자의 멈추는 순서를 함께 고려</li>
+              <li>현재 모델링된 F0·1A·1B와 연결 통로를 기준으로 퍼즐 배치·시야·진행 경로를 반복 검수</li>
               <li>종이 정령 캐릭터 모델을 V1~V6까지 반복 검수하며 실루엣 확정</li>
               <li>아트 컨셉 · 플레이어 스펙 · 구현 현황을 문서로 분리해 설계와 구현 범위를 구분</li>
             </ul>
             <div class="tl"><span>Unity URP</span><span>Blender</span><span>Python</span></div>
-            <figure class="shot"><img src="assets/gameplay/booktower-f0.webp" alt="Book Tower 실제 기록 상자 퍼즐" loading="lazy">
-              <figcaption>PLAY — 종이 공간 속 기록 상자 퍼즐</figcaption></figure>
+            <figure class="shot"><img src="assets/gameplay/booktower-puzzle-flow.webp" alt="접힌 빛 실제 기록 상자 퍼즐과 목표 안내" loading="lazy">
+              <figcaption>PLAY FLOW — 중력 조작으로 기록을 복원하는 퍼즐</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -495,7 +496,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           <div class="body">
             <div class="tp"><span>2026.03 — 2026.07</span><span>팀 4인</span><b>STOVE INDIE 출시</b></div>
             <h3>진주도둑들<s>시스템 · 밸런스 기획</s></h3>
-            <p class="q">끝까지 만들어 출시하고, 유저 앞에서 숫자를 다시 만졌습니다.</p>
+            <p class="q">유닛을 편성하고 골드를 나누어 쓰며, 몰려오는 적을 막습니다.</p>
             <ul class="short">
               <li>랭크 · 스테이지 두 갈래 진행 구조 기획</li>
               <li>웨이브 · 보스 타이밍으로 난이도 곡선 설계</li>
@@ -509,13 +510,13 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li><b>게임 소개</b> — 용궁의 진주를 노리는 물고기 · 게 · 해파리 3인방이 주인공인 캐주얼 디펜스. 골드로 유닛을 소환해 용궁을 지키는 흑룡 보스에 맞섭니다.</li>
               <li><b>두 갈래 진행</b> — STAGE는 섬 지도를 따라 한 칸씩 나아가는 성장 모드, RANK는 점수로 겨루는 반복 도전 모드입니다.</li>
               <li><b>이중 재화 구조</b> — 스테이지 보상으로 미네랄과 진주를 얻습니다. 미네랄은 보유 유닛의 능력치 강화, 진주는 특수 유닛 구매에 쓰여 "키우기"와 "모으기" 동기를 분리했습니다.</li>
-              <li><b>유닛 역할 분담</b> — 물고기는 높은 체력의 탱커(체력 250), 해파리는 낮은 체력 · 빠른 공격의 딜러(공격속도 0.8 → 0.6), 게는 그 사이의 균형형. 소환 비용도 100 · 200 · 150 골드로 차등을 두었습니다.</li>
+              <li><b>유닛 역할 분담</b> — 앞에서 버티는 유닛과 근접·원거리 공격 유닛을 조합합니다. 서로 다른 소환 비용과 역할 때문에 골드를 언제, 누구에게 쓸지 판단해야 합니다.</li>
               <li><b>덱 편성</b> — 최대 5칸 슬롯에 보유 유닛을 장착 · 해제하며, 진주로 해금하는 특수 유닛이 빈 칸을 채우는 목표가 됩니다.</li>
-              <li><b>강화 밸런스</b> — 미네랄 상점에서 레벨업 비용을 300으로 통일하고, 유닛마다 오르는 능력치를 다르게 설계해 "어떤 유닛부터 키울지" 선택이 생기도록 했습니다.</li>
+              <li><b>강화 밸런스</b> — 미네랄 상점에서 강화 전후의 수치와 비용을 함께 보여주고, 유닛마다 오르는 능력치를 다르게 설계해 "어떤 유닛부터 키울지" 선택이 생기도록 했습니다.</li>
             </ul>
             <div class="tl"><span>Unity C#</span><span>GitHub</span><span>Photoshop</span></div>
-            <figure class="shot"><img src="assets/gameplay/pearl-unit-battle.webp" alt="진주도둑들 실제 유닛 전투 화면" loading="lazy">
-              <figcaption>PLAY — 유닛을 소환해 이어가는 전투</figcaption></figure>
+            <figure class="shot"><img src="assets/gameplay/pearl-battle-flow.webp" alt="진주도둑들 실제 유닛 소환 전투" loading="lazy">
+              <figcaption>PLAY FLOW — 덱 편성부터 전투와 유닛 성장까지</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -539,8 +540,8 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li><b>시도와 복구</b> — 되돌리기·재시작·진행 저장을 지원해 여러 해법을 편하게 시도할 수 있습니다.</li>
             </ul>
             <div class="tl"><span>Unity 2D</span><span>C#</span><span>모바일 UX</span></div>
-            <figure class="shot"><img src="assets/gameplay/puzzle-board.webp" alt="말랑궤도 실제 중력 퍼즐 플레이 화면" loading="lazy">
-              <figcaption>PLAY — 함께 움직이는 중력 퍼즐</figcaption></figure>
+            <figure class="shot"><img src="assets/gameplay/puzzle-before-flow.webp" alt="말랑궤도 실제 두 친구 중력 퍼즐" loading="lazy">
+              <figcaption>PLAY FLOW — 함께 움직이는 친구들을 목적지로</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -819,27 +820,197 @@ const GAMEPLAY={
     {"file":"rushitadel-boss-battle","title":"전투 예시 · 퇴로를 압박하는 라바 보스전","cap":"뒤에서 밀려오는 용암과 보스의 확산 탄막을 함께 살피며 안전한 자리를 찾습니다."}
   ],
   unfin:[
-    {file:'unfin-exploration',title:'종이굴에서 시작되는 탐색과 전투',cap:'종이 질감의 발판과 단차를 넘으며 서로 다른 움직임을 가진 적을 만납니다.'},
-    {file:'unfin-boss',title:'뿌리 심부에서 마주하는 보스',cap:'거대한 종이 보스와의 거리, 발판의 높이를 살피며 다음 공격에 대비합니다.'}
-  ],
+    {
+        "file": "unfin-title-flow",
+        "title": "01 · 타이틀 — 아직 끝나지 않은 이야기",
+        "cap": "스케치북과 종이 질감으로 세계관을 보여주며, 새 이야기·이어하기·설정으로 진입합니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "unfin-explore-flow",
+        "title": "02 · 탐색 — 발판과 적을 넘는 종이 세계",
+        "cap": "흑연 광산의 단차와 적을 살피며 길을 찾습니다. 체력과 미니맵으로 현재 상태와 위치를 확인합니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "unfin-ability-flow",
+        "title": "03 · 능력 — 지우개 대시로 이동의 확장",
+        "cap": "지우개 대시를 얻은 상태의 이동 장면입니다. 새 능력은 이전에 지나가지 못했던 길을 다시 살펴볼 이유가 됩니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "unfin-map-flow",
+        "title": "04 · 탐험 지도 — 기억해 둔 길로 돌아가기",
+        "cap": "발견한 구역과 연결을 책 형태의 지도에서 확인하고, 다시 방문할 장소에 대한 기록을 남깁니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "unfin-boss-flow",
+        "title": "05 · 보스전 — 엉킨 뿌리 심부의 수호자",
+        "cap": "거대한 종이 보스의 움직임과 공격 거리를 읽으며 맞섭니다. 보스 체력과 자신의 체력을 함께 관리합니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "unfin-controls-flow",
+        "title": "플레이 중 · 조작 방법",
+        "cap": "이동·점프·공격·대시와 상호작용, 지도 열기 조작을 게임 안에서 확인할 수 있습니다.",
+        "width": 1920,
+        "height": 1080
+    }
+],
   booktower:[
-    {file:'booktower-f0',title:'종이 공간 안에 놓인 첫 번째 퍼즐',cap:'방향 장치로 기록 상자를 움직여 같은 문양의 목표에 도달하도록 길을 만듭니다.'},
-    {file:'booktower-1b',title:'두 상자가 함께 움직이는 열람실',cap:'하나의 방향 입력에 함께 반응하는 상자들을 벽과 단차로 나누어 각자의 목표에 보냅니다.'}
-  ],
+    {
+        "file": "booktower-puzzle-flow",
+        "title": "01 · 첫 방 — 기록을 제자리로",
+        "cap": "종이 정령을 움직여 방을 살피고, 기록 상자와 같은 문양의 목적지를 찾습니다. 화면 위 목표가 현재 할 일을 안내합니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "booktower-gravity-flow",
+        "title": "02 · 중력 조작 — 천장으로 향하는 상자",
+        "cap": "방향을 위로 바꾸어 상자를 이동시킨 장면입니다. 벽에 멈추는 위치를 이용해 다음 방향과 경로를 계획합니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "booktower-solved-flow",
+        "title": "03 · 퍼즐 완료 — 다음 장으로 이어지는 길",
+        "cap": "실제 방향 입력으로 상자를 목표에 맞추면 완성된 페이지와 안내 문구가 나타나 다음 탐색으로 이어집니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "booktower-multi-flow",
+        "title": "04 · 열람실 — 함께 움직이는 두 상자",
+        "cap": "하나의 입력에 두 상자가 함께 반응합니다. 서로 다른 벽과 통로를 활용해 각각의 문양에 맞춰야 합니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "booktower-pause-flow",
+        "title": "플레이 중 · 책갈피 메뉴",
+        "cap": "계속하기·설정·기록장·체크포인트 복귀를 한곳에 모아 탐색을 잠시 멈추거나 다시 시도할 수 있습니다.",
+        "width": 1920,
+        "height": 1080
+    }
+],
   pearl:[
-    {file:'pearl-unit-battle',title:'골드를 나누어 쓰는 유닛 소환',cap:'물고기·게·해파리 유닛을 소환하고 강화하며 몰려오는 적에 대응합니다.'},
-    {file:'pearl-defense',title:'역할이 다른 유닛으로 전선 유지',cap:'앞에서 버티는 유닛과 뒤에서 공격하는 유닛을 조합해 전투를 이어갑니다.'}
-  ],
+    {
+        "file": "pearl-title-flow",
+        "title": "01 · 타이틀 — 진주를 향한 해저 모험",
+        "cap": "물고기·게·해파리와 용궁의 진주가 게임의 소재를 보여줍니다. 게임 시작을 눌러 진행 방식을 선택합니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "pearl-hub-flow",
+        "title": "02 · 모드 선택 — 스테이지에서 랭크까지",
+        "cap": "STAGE로 공략을 시작하고, 스테이지 8을 클리어하면 RANK 도전이 열리는 진행 구조입니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "pearl-stages-flow",
+        "title": "03 · 스테이지 지도 — 전투와 성장의 거점",
+        "cap": "섬의 스테이지를 선택하고, 유닛 장착과 상점으로 이동합니다. 첫 안내에서 보상 재화의 쓰임도 확인할 수 있습니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "pearl-deck-flow",
+        "title": "04 · 덱 편성 — 전장에 데려갈 유닛 선택",
+        "cap": "다섯 칸의 덱에 보유 유닛을 장착합니다. 기본 세 유닛의 역할을 조합하고 새로운 유닛으로 선택지를 넓힙니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "pearl-battle-flow",
+        "title": "05 · 전투 — 골드를 소환과 강화에 배분",
+        "cap": "물고기·게·해파리를 소환한 실제 교전 장면입니다. 유닛별 비용, 강화 버튼과 남은 골드를 보고 전선을 유지합니다.",
+        "width": 1920,
+        "height": 1080
+    },
+    {
+        "file": "pearl-store-flow",
+        "title": "06 · 미네랄 상점 — 보상을 다음 전투의 힘으로",
+        "cap": "강화 전후의 체력·공격력·공격속도를 비교하며 미네랄을 투자합니다. 유닛마다 성장 효과가 달라 강화 우선순위를 선택하게 됩니다.",
+        "width": 1920,
+        "height": 1080
+    }
+],
   puzzle:[
-    {file:'puzzle-home',title:'말랑 친구들과 떠나는 작은 우주',cap:'부드러운 색과 둥근 캐릭터로 중력 퍼즐의 첫인상을 전달합니다.'},
-    {file:'puzzle-board',title:'한 번의 방향 입력, 함께 움직이는 친구들',cap:'벽에 멈추는 순서를 이용해 모든 친구를 같은 색의 목표에 보냅니다.'},
-    {file:'puzzle-mechanic',title:'크기를 바꿔 도착하는 목표',cap:'변환대에서 친구의 크기를 바꾸어 목표의 색과 크기를 함께 맞춥니다.'}
-  ]
+    {
+        "file": "puzzle-title-flow",
+        "title": "01 · 홈 — 작은 우주로 출발",
+        "cap": "게임 시작·단계 선택·스킨 뽑기를 한 화면에서 고릅니다. 친구와 같은 색의 자리로 돌아간다는 목표를 먼저 보여줍니다.",
+        "width": 780,
+        "height": 1688
+    },
+    {
+        "file": "puzzle-levels-flow",
+        "title": "02 · 단계 선택 — 차근차근 확장되는 규칙",
+        "cap": "각 단계의 이동 기록과 완료 상태를 살펴보고 도전할 퍼즐을 고릅니다.",
+        "width": 780,
+        "height": 1688
+    },
+    {
+        "file": "puzzle-before-flow",
+        "title": "03 · 조작 전 — 두 친구와 두 목적지",
+        "cap": "엇갈린 길 단계의 시작 상태입니다. 친구의 색과 목적지, 벽의 배치를 보고 함께 움직일 순서를 계획합니다.",
+        "width": 780,
+        "height": 1688
+    },
+    {
+        "file": "puzzle-tilt-flow",
+        "title": "04 · 중력 조작 — 한 방향으로 함께 이동",
+        "cap": "위를 선택한 뒤의 실제 화면입니다. 두 친구가 함께 움직이되, 각자 만나는 벽에 따라 서로 다른 위치에서 멈춥니다.",
+        "width": 780,
+        "height": 1688
+    },
+    {
+        "file": "puzzle-clear-flow",
+        "title": "05 · 클리어 — 해법과 보상을 확인",
+        "cap": "실제 7회 입력으로 두 친구를 모두 목적지에 보낸 결과입니다. 이동 수와 별 보상을 확인하고 다음 단계로 이어갑니다.",
+        "width": 780,
+        "height": 1688
+    },
+    {
+        "file": "puzzle-resize-flow",
+        "title": "06 · 새로운 규칙 — 크기까지 맞추기",
+        "cap": "변환대에서 멈추며 친구의 크기가 달라집니다. 목적지의 색뿐 아니라 크기도 맞도록 경로를 설계해야 합니다.",
+        "width": 780,
+        "height": 1688
+    },
+    {
+        "file": "puzzle-collection-flow",
+        "title": "보상 사용 · 말랑 옷장",
+        "cap": "퍼즐에서 모은 별로 스킨을 뽑고, 보유한 친구의 모습을 선택해 착용합니다.",
+        "width": 780,
+        "height": 1688
+    }
+]
+};
+
+const GAME_INTRO={
+  "unfin": "그리다 만 스케치북을 탐험하는 2D 메트로배니아입니다. 발판과 적을 넘고 보스에 도전하며, 벽 점프·지우개 대시 같은 능력으로 막혀 있던 길을 엽니다. 탐험 지도에 남긴 단서를 보고 이전 장소로 돌아가는 것이 핵심입니다.",
+  "booktower": "책 속 종이 공간을 탐색하며 기록을 제자리로 돌려놓는 3D 퍼즐입니다. 방향 장치로 중력을 바꾸면 기록 상자가 함께 움직입니다. 벽에 멈추는 위치와 이동 순서를 이용해 모든 상자를 같은 문양의 목표에 맞추고 다음 공간으로 나아갑니다.",
+  "pearl": "물고기·게·해파리 등 역할이 다른 유닛으로 적을 막는 캐주얼 디펜스입니다. 전투 전에 덱을 편성하고, 전투에서는 제한된 골드를 소환과 강화에 나누어 씁니다. 스테이지 공략과 랭크 도전을 통해 보상을 모아 유닛을 성장시킵니다.",
+  "puzzle": "한 번의 방향 입력으로 모든 친구가 함께 움직이는 모바일 중력 퍼즐입니다. 벽과 다른 친구에 멈추는 순서를 활용해 모두 같은 색의 자리에 보내세요. 이후에는 포탈·크기 변환 등의 규칙이 더해지며, 적은 이동과 깔끔한 해법에 도전할 수 있습니다."
 };
 
 const UI_FLOW={
   trash:'메인 HUD → 지하 탐색 → 분리수거 → 강화 → 하루 정산 → 다음 날 준비',
-  rushitadel:'타이틀 → 저장 슬롯 → 테마 선택 → 전투 → 포탑 성장 → 정비 · PLAYER WEB'
+  rushitadel:'타이틀 → 저장 슬롯 → 테마 선택 → 전투 → 포탑 성장 → 정비 · PLAYER WEB',
+  unfin:"타이틀 → 탐색 → 능력 획득 → 지도와 재탐색 → 보스전",
+  booktower:"첫 방 탐색 → 중력 조작 → 기록 복원 → 다음 방의 두 상자 퍼즐",
+  pearl:"타이틀 → 모드 · 스테이지 선택 → 덱 편성 → 소환 전투 → 상점 강화",
+  puzzle:"홈 → 단계 선택 → 중력 조작 → 목표 도착 → 별 보상 · 스킨 수집"
 };
 
 /* ══ 비게임 프로젝트 자료 갤러리 ══
@@ -885,8 +1056,8 @@ function openCard(card){
     const section=document.createElement('section');
     section.className='play-gallery'+(key==='puzzle'?' portrait':'');
     section.setAttribute('aria-label',UI_FLOW[key]?'UI 흐름과 실제 게임 화면':'실제 게임 플레이 화면');
-    section.innerHTML='<h4>'+(UI_FLOW[key]?'UI 흐름 · 실제 게임 화면':'실제 플레이 화면')+'</h4>'+(UI_FLOW[key]?'<p class="flow-summary">'+UI_FLOW[key]+'<small>이미지를 누르면 원본 크기로 볼 수 있습니다.</small></p>':'')+gameplay.map(g=>
-      '<figure><a href="assets/gameplay/'+g.file+'.webp" target="_blank" rel="noopener" aria-label="'+g.title+' 원본 이미지 보기"><img src="assets/gameplay/'+g.file+'.webp" alt="'+g.title+'" width="'+(key==='puzzle'?780:key==='unfin'?1280:1920)+'" height="'+(key==='puzzle'?1688:key==='unfin'?720:1080)+'" loading="lazy" decoding="async"></a>'+
+    section.innerHTML=(GAME_INTRO[key]?'<p class="game-intro">'+GAME_INTRO[key]+'</p>':'')+'<h4>'+(UI_FLOW[key]?'UI 흐름 · 실제 게임 화면':'실제 플레이 화면')+'</h4>'+(UI_FLOW[key]?'<p class="flow-summary">'+UI_FLOW[key]+'<small>이미지를 누르면 원본 크기로 볼 수 있습니다.</small></p>':'')+gameplay.map(g=>
+      '<figure><a href="assets/gameplay/'+g.file+'.webp" target="_blank" rel="noopener" aria-label="'+g.title+' 원본 이미지 보기"><img src="assets/gameplay/'+g.file+'.webp" alt="'+g.title+'" width="'+(g.width||(key==='puzzle'?780:1920))+'" height="'+(g.height||(key==='puzzle'?1688:1080))+'" loading="lazy" decoding="async"></a>'+
       '<figcaption><strong>'+g.title+'</strong>'+g.cap+'</figcaption></figure>').join('');
     ovBody.querySelector('.q').after(section);
   }
