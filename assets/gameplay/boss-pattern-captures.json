@@ -1,0 +1,48 @@
+{
+  "captured_on": "2026-10-30",
+  "project": "Roguelike-Defense/Rushitadel2D",
+  "scene": "Assets/Scenes/inGame.unity",
+  "method": "Actual Windows standalone frames captured during the existing animated attack pattern 5 for each boss. Slot-zero isolated capture session, player protected and automatic towers disabled for a clear pattern demonstration. Boss artwork, attacks and UI unchanged.",
+  "assets": [
+    {
+      "file": "rushitadel-boss-butterfly.webp",
+      "title": "적월 나비 · 꽃가루 파동",
+      "cap": "날갯짓에 맞춰 양쪽에서 부채꼴 탄막을 방출합니다. 퍼져 나가는 탄 사이의 틈을 찾아 피합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 132216,
+      "sha256": "cfd0afc065f3a3a0f6bc85a626a0111a4b9e8b9c829fccf86816388212797ac6",
+      "captureEvidence": "BOSS_CAPTURE rush-boss-0-b kind=Butterfly pattern=날갯짓 · 삼중 꽃가루 파동 bullets=32 lasers=0 liveLasers=0"
+    },
+    {
+      "file": "rushitadel-boss-lava.webp",
+      "title": "용광로 거신 · 교대 포격",
+      "cap": "손바닥에서 충전한 레이저와 반대편의 탄막을 번갈아 사용합니다. 예고된 사선에서 먼저 벗어나야 합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 148740,
+      "sha256": "65c1442f968d7af9ab726c17b7189bebe5280bb80e2476cb4482dc61e6264787",
+      "captureEvidence": "BOSS_CAPTURE rush-boss-1-b kind=Lava pattern=손바닥 충전 · 교대 포격 bullets=0 lasers=1 liveLasers=1"
+    },
+    {
+      "file": "rushitadel-boss-ice.webp",
+      "title": "빙환 수호자 · 고리 전개",
+      "cap": "몸체 옆 고리를 전개해 레이저를 발사합니다. 고리 위치와 뒤이어 날아오는 탄의 경로를 함께 읽습니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 121958,
+      "sha256": "b42f8c422a541e22be06d6e476b193c6c9c2822537452fea0677a3fdcef638c8",
+      "captureEvidence": "BOSS_CAPTURE rush-boss-2-a kind=Ice pattern=전개 고리 · 순차 소각선 bullets=0 lasers=1 liveLasers=1"
+    },
+    {
+      "file": "rushitadel-boss-twins.webp",
+      "title": "수압·전격 쌍성 · 공명 교대",
+      "cap": "두 개체가 레이저와 탄막을 교대로 이어 갑니다. 어느 쪽이 공격 중인지 확인하며 빈 공간으로 이동합니다.",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 134500,
+      "sha256": "49ee24c3bce619465fb5ce54fc1b2d207373f17932e1d234f08e5aa9e9c8847f",
+      "captureEvidence": "BOSS_CAPTURE rush-boss-3-a kind=Twins pattern=수압·전격 · 공명 교대 bullets=0 lasers=1 liveLasers=1"
+    }
+  ]
+}

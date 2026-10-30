@@ -248,6 +248,12 @@ body.dark #top .nm{color:#fff}
 #ov .play-gallery .game-intro{margin:0;font-size:16px;line-height:1.9;color:#e3e7ef}
 #ov .play-gallery.portrait h4,#ov .play-gallery.portrait .flow-summary,#ov .play-gallery.portrait .game-intro{grid-column:1/-1}
 @media(max-width:600px){#ov .play-gallery.portrait{grid-template-columns:1fr}#ov .play-gallery.portrait figure{width:100%;max-width:340px;margin:0 auto}}
+#ov .play-gallery.boss-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
+#ov .boss-gallery h4,#ov .boss-gallery .boss-note{grid-column:1/-1}
+#ov .boss-gallery .boss-note{margin:0;color:#c3cbdc;font-size:14px;line-height:1.7}
+#ov .boss-gallery figure{padding:10px;background:#111c35;border:1px solid #28365f;border-radius:8px}
+#ov .boss-gallery img{aspect-ratio:16/9;object-fit:contain}
+@media(max-width:600px){#ov .play-gallery.boss-gallery{gap:14px 10px}#ov .boss-gallery figure{padding:6px}#ov .boss-gallery figcaption{font-size:11px;line-height:1.6}#ov .boss-gallery figcaption strong{font-size:13px}}
 body.lock{overflow:hidden}
 /* 상세 화면에서는 기본 마우스 포인터 사용 */
 body.lock,#ov,#ov *{cursor:auto}
@@ -816,8 +822,7 @@ const GAMEPLAY={
     {"file":"rushitadel-maintenance-ui","title":"06 · 안전 정비 — 회복 선택","cap":"라운드 사이의 안전 구간에서 체력 또는 동력 회복을 선택합니다."},
     {"file":"rushitadel-web-ui","title":"07 · PLAYER WEB — 경험치를 성장으로","cap":"연결된 노드의 효과를 살펴보고 보유 경험치를 어디에 사용할지 결정합니다."},
     {"file":"rushitadel-pause-ui","title":"플레이 중 · 일시정지","cap":"진행 상태를 확인하고 계속하기·설정·타이틀 이동·종료를 선택합니다."},
-    {"file":"rushitadel-settings-ui","title":"메뉴 분기 · 설정","cap":"게임 안의 설정 화면에서 플레이 환경을 조절합니다."},
-    {"file":"rushitadel-boss-battle","title":"전투 예시 · 퇴로를 압박하는 라바 보스전","cap":"뒤에서 밀려오는 용암과 보스의 확산 탄막을 함께 살피며 안전한 자리를 찾습니다."}
+    {"file":"rushitadel-settings-ui","title":"메뉴 분기 · 설정","cap":"게임 안의 설정 화면에서 플레이 환경을 조절합니다."}
   ],
   unfin:[
     {
@@ -997,6 +1002,29 @@ const GAMEPLAY={
 ]
 };
 
+const BOSS_PATTERNS=[
+  {
+    "file": "rushitadel-boss-butterfly",
+    "title": "적월 나비 · 꽃가루 파동",
+    "cap": "날갯짓에 맞춰 양쪽에서 부채꼴 탄막을 방출합니다. 퍼져 나가는 탄 사이의 틈을 찾아 피합니다."
+  },
+  {
+    "file": "rushitadel-boss-lava",
+    "title": "용광로 거신 · 교대 포격",
+    "cap": "손바닥에서 충전한 레이저와 반대편의 탄막을 번갈아 사용합니다. 예고된 사선에서 먼저 벗어나야 합니다."
+  },
+  {
+    "file": "rushitadel-boss-ice",
+    "title": "빙환 수호자 · 고리 전개",
+    "cap": "몸체 옆 고리를 전개해 레이저를 발사합니다. 고리 위치와 뒤이어 날아오는 탄의 경로를 함께 읽습니다."
+  },
+  {
+    "file": "rushitadel-boss-twins",
+    "title": "수압·전격 쌍성 · 공명 교대",
+    "cap": "두 개체가 레이저와 탄막을 교대로 이어 갑니다. 어느 쪽이 공격 중인지 확인하며 빈 공간으로 이동합니다."
+  }
+];
+
 const GAME_INTRO={
   "unfin": "그리다 만 스케치북을 탐험하는 2D 메트로배니아입니다. 발판과 적을 넘고 보스에 도전하며, 벽 점프·지우개 대시 같은 능력으로 막혀 있던 길을 엽니다. 탐험 지도에 남긴 단서를 보고 이전 장소로 돌아가는 것이 핵심입니다.",
   "booktower": "책 속 종이 공간을 탐색하며 기록을 제자리로 돌려놓는 3D 퍼즐입니다. 방향 장치로 중력을 바꾸면 기록 상자가 함께 움직입니다. 벽에 멈추는 위치와 이동 순서를 이용해 모든 상자를 같은 문양의 목표에 맞추고 다음 공간으로 나아갑니다.",
@@ -1060,6 +1088,14 @@ function openCard(card){
       '<figure><a href="assets/gameplay/'+g.file+'.webp" target="_blank" rel="noopener" aria-label="'+g.title+' 원본 이미지 보기"><img src="assets/gameplay/'+g.file+'.webp" alt="'+g.title+'" width="'+(g.width||(key==='puzzle'?780:1920))+'" height="'+(g.height||(key==='puzzle'?1688:1080))+'" loading="lazy" decoding="async"></a>'+
       '<figcaption><strong>'+g.title+'</strong>'+g.cap+'</figcaption></figure>').join('');
     ovBody.querySelector('.q').after(section);
+  }
+  if(key==='rushitadel'){
+    const bosses=document.createElement('section');
+    bosses.className='play-gallery boss-gallery';
+    bosses.setAttribute('aria-label','RUSHITADEL 보스 4종 공격 패턴');
+    bosses.innerHTML='<h4>보스 4종 · 공격 패턴</h4><p class="boss-note">실제 전투에서 공격이 발동한 순간입니다. 이미지를 누르면 크게 볼 수 있습니다.</p>'+BOSS_PATTERNS.map(b=>
+      '<figure><a href="assets/gameplay/'+b.file+'.webp" target="_blank" rel="noopener" aria-label="'+b.title+' 원본 이미지 보기"><img src="assets/gameplay/'+b.file+'.webp" alt="'+b.title+' 실제 공격 장면" width="1920" height="1080" loading="lazy" decoding="async"></a><figcaption><strong>'+b.title+'</strong>'+b.cap+'</figcaption></figure>').join('');
+    ovBody.querySelector('.q').after(bosses);
   }
   ov.classList.add('on');document.body.classList.add('lock');ov.scrollTop=0;
 }
