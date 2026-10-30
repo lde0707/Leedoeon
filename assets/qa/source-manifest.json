@@ -1,0 +1,56 @@
+{
+  "source": "도태단 메이플키우기 자동화 (1).pptx",
+  "sourceSha256": "095ed8d469bad362f0cc6d4f5802d2fe4827ce2ec2804c746027888462fb036f",
+  "processing": "Full embedded clips transcoded to H.264, maximum width 1600, 30 fps, no audio, faststart. Posters are frames from the same clips.",
+  "videos": [
+    {
+      "file": "weapon-levelup.mp4",
+      "poster": "weapon-levelup.webp",
+      "slide": 12,
+      "embeddedSource": "ppt/media/media6.mp4",
+      "sourceSha256": "8fa54638fb7637b08f462bb971755d7a8a504673312dd6f6097f5eca8238c16c",
+      "bytes": 1351679
+    },
+    {
+      "file": "scroll-enhancement.mp4",
+      "poster": "scroll-enhancement.webp",
+      "slide": 13,
+      "embeddedSource": "ppt/media/media7.mp4",
+      "sourceSha256": "0d78be85bdb043974e9bf8184004b5d967b382a4ae980f058ef4bc3bdbd17902",
+      "bytes": 2341356
+    },
+    {
+      "file": "ocr-currency.mp4",
+      "poster": "ocr-currency.webp",
+      "slide": 10,
+      "embeddedSource": "ppt/media/media4.mp4",
+      "sourceSha256": "138f9cde4d5a5b2e626b6c94a983fb2354cc864283ea939777f17e75a46a9c9b",
+      "bytes": 1057799
+    },
+    {
+      "file": "popup-recovery.mp4",
+      "poster": "popup-recovery.webp",
+      "slide": 11,
+      "embeddedSource": "ppt/media/media5.mp4",
+      "sourceSha256": "7d8c3bb77cc539479c0071fa842484200fea765c8c9acbb9fb0cad83d125cbe3",
+      "bytes": 3449856
+    }
+  ],
+  "images": [
+    {
+      "file": "automation-flow.webp",
+      "slide": 3,
+      "embeddedSource": "ppt/media/image3.png"
+    },
+    {
+      "file": "template-threshold.webp",
+      "slide": 9,
+      "embeddedSource": "ppt/media/image32.png"
+    },
+    {
+      "file": "execution-log.webp",
+      "slide": 11,
+      "embeddedSource": "ppt/media/image40.png"
+    }
+  ]
+}

@@ -255,6 +255,8 @@ body.dark #top .nm{color:#fff}
 #ov .boss-gallery video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#0c1430;border:1px solid #28365f;border-radius:4px}
 @media(max-width:600px){#ov .play-gallery.boss-gallery{gap:14px 10px}#ov .boss-gallery figure{padding:6px}#ov .boss-gallery figcaption{font-size:11px;line-height:1.6}#ov .boss-gallery figcaption strong{font-size:13px}}
 body.lock{overflow:hidden}
+#ov .qa-gallery video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#0c1430;border:1px solid #28365f;border-radius:4px}
+#ov .qa-gallery .qa-note{margin:0;color:#9ca1a9;font-size:13px;line-height:1.8}
 /* 상세 화면에서는 기본 마우스 포인터 사용 */
 body.lock,#ov,#ov *{cursor:auto}
 #ovClose,#ov a{cursor:pointer}
@@ -617,18 +619,20 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           <div class="body">
             <div class="tp"><span>2026.03 — 2026.07</span><span>팀 3인</span><b>자동화 프로토타입</b></div>
             <h3>메이플키우기 자동화 테스팅<s>QA 테스트 설계</s></h3>
-            <p class="q">사람이 반복할 일을 스크립트에게 넘겼습니다.</p>
+            <p class="q">화면을 읽고, 강화 버튼을 누르고, 결과를 검증하는 QA 자동화.</p>
             <ul class="short">
-              <li>자동화 테스트 범위 식별 · 시나리오 기획</li>
-              <li>Python · OpenCV · OCR 화면 인식 자동화 구현</li>
-              <li>기능별 자동화 적합성 분석 · QA 구조 설계</li>
+              <li>OpenCV · PyAutoGUI로 무기 레벨업과 주문서 강화 반복 실행</li>
+              <li>Tesseract OCR로 실행 전후 재화 변화를 읽고 결과 검증</li>
+              <li>예외 팝업 감시 · 재시도 · CSV 로그와 스크린샷 기록</li>
             </ul>
             <ul class="full" hidden>
-              <li>스모크 · 자동화 테스트 범위를 식별하고 테스트 시나리오 기획</li>
-              <li>Python · OpenCV · OCR 기반 화면 인식 자동화 프로토타입 구현</li>
-              <li>DNN · XGBoost 기반 게임 AI 테스트 방법론 조사</li>
-              <li>기능별 자동화 적합성을 분석해 효율적인 QA 구조 설계</li>
+              <li>반복 성장 루틴을 자동화 대상으로 정하고, 화면 캡처 → 버튼 탐지 → 클릭 → 결과 확인의 테스트 흐름 설계</li>
+              <li>관심 영역(ROI)과 이미지 매칭 임계값을 조정해 버튼을 찾고, OCR 재화 수치와 강화 결과를 확인하는 Python 프로토타입 구현</li>
+              <li>팝업 감시와 재시도 흐름을 구성하고, 단계별 실행 결과를 CSV 로그와 스크린샷으로 기록</li>
+              <li>결제 · 광고 · 네트워크 오류 등 수동 확인 범위를 구분하고, DNN · XGBoost 활용 가능성은 별도 조사</li>
             </ul>
+            <figure class="shot"><img src="assets/qa/weapon-levelup.webp" alt="메이플키우기 무기 레벨업 자동화 실행 화면과 OCR 테스트 로그" width="1280" height="656" loading="lazy">
+              <figcaption>QA DEMO — 실제 자동화 실행 화면과 검증 로그</figcaption></figure>
             <div class="tl"><span>Python</span><span>PyAutoGUI</span><span>OpenCV</span><span>Tesseract OCR</span><span>Jira</span></div>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
@@ -1052,7 +1056,11 @@ const GALLERY={
   greenway:[
     {src:'GreenWay.png',cap:'Figma 프로토타입 — 홈 · 경로 탐색 · 출근 기록 · 루틴 히스토리 · 마이페이지'}
   ],
-  qa:[],
+  qa:[
+    {src:'assets/qa/automation-flow.webp',cap:'자동화 범위와 테스트 흐름 — 타이틀·로그인·로비에서 성장 화면으로 이어지는 흐름을 정리하고, 반복 강화 구간을 버튼 탐지 → 실행 → 결과 감지 → 로그 저장으로 설계했습니다.'},
+    {src:'assets/qa/template-threshold.webp',cap:'이미지 매칭 기준 조정 — 고정 좌표 대신 버튼 이미지를 찾아 클릭합니다. 관심 영역(ROI)과 매칭 임계값을 조정하며, 이 화면은 임계값 0.85에서의 탐지 예시입니다.'},
+    {src:'assets/qa/execution-log.webp',cap:'단계별 CSV 실행 로그 — 버튼 탐지·클릭·게이지 확인 결과를 시간과 반복 회차별로 저장합니다. SUCCESS·NO_CHANGE 같은 상태를 남겨 실행 과정을 다시 추적할 수 있게 했습니다.'}
+  ],
   readycore:[
     {src:'readycore-proposal.png',cap:'기획서 표지 — 《트렌드 코리아 2026》 레디코어 키워드를 이벤트로 번역'},
     {src:'readycore-proposal-2.png',cap:'본문 — 트렌드 인사이트와 이벤트 2트랙 구조 설계'}
@@ -1066,6 +1074,13 @@ const GALLERY={
     {src:'https://www.trickcal.com/assets/event/3rdAnniversary/img/event_cafe_photo_web-CsCWC4OM.png',cap:'3주년 콜라보 카페 ⓒ EPIDGames — 커뮤니티 시스템 분석'}
   ]
 };
+
+const QA_DEMOS=[
+  {file:'weapon-levelup',title:'01 · 무기 레벨업 자동화',width:1280,height:656,cap:'OpenCV로 강화 버튼을 찾고 PyAutoGUI로 클릭을 반복합니다. Tesseract OCR로 강화 전후 재화 값을 읽어 변화 여부와 테스트 결과를 기록합니다.'},
+  {file:'scroll-enhancement',title:'02 · 주문서 강화 자동화',width:1280,height:720,cap:'강화 버튼 탐지와 클릭을 반복하고, 결과 화면과 게이지 변화를 확인합니다. 성공 여부·변화 없음·팝업 처리 결과를 로그로 남겨 반복 실행을 추적합니다.'},
+  {file:'ocr-currency',title:'03 · OCR 재화 소모 검증',width:1600,height:834,cap:'소환 실행 전후의 보유 재화를 OCR로 읽고 차이를 계산합니다. 실제 차감량을 기대 소모량과 비교해 PASS·FAIL을 판정하는 과정을 시연합니다.'},
+  {file:'popup-recovery',title:'04 · 팝업 감시와 예외 복구',width:1600,height:900,cap:'메인 반복 실행과 별도로 Watcher가 재화 부족 등 예외 팝업을 감시합니다. 처리·재시도 후 흐름을 이어가고, 로그와 스크린샷을 남기는 구조입니다.'}
+];
 
 /* ── 카드 클릭 → 상세 오버레이 ── */
 const ov=$('#ov'),ovBody=$('#ovBody');
@@ -1096,8 +1111,20 @@ function openCard(card){
       '<figure><video controls autoplay muted loop playsinline preload="metadata" poster="assets/gameplay/'+b.file+'.webp" width="1280" height="720" aria-label="'+b.title+' 실제 공격 패턴 영상"><source src="assets/gameplay/'+b.file+'.mp4" type="video/mp4"><a href="assets/gameplay/'+b.file+'.mp4">'+b.title+' 영상 열기</a></video><figcaption><strong>'+b.title+'</strong>'+b.cap+'</figcaption></figure>').join('');
     ovBody.querySelector('.q').after(bosses);
   }
+  if(key==='qa'){
+    const demos=document.createElement('section');
+    demos.className='play-gallery qa-gallery';
+    demos.setAttribute('aria-label','메이플키우기 QA 자동화 실제 시연');
+    demos.innerHTML='<h4>자동화 테스트 · 실제 실행 영상</h4><p class="flow-summary">반복 성장 루틴을 화면 인식으로 실행하고, 재화 변화와 결과를 검증하는 QA 프로토타입입니다. 게임 화면과 실행 로그를 함께 보며 각 단계의 동작을 확인할 수 있습니다.</p><p class="qa-note">도태단 발표 자료에 포함된 실제 시연 영상입니다. 재생 버튼을 누르면 시작되며, 전체화면으로 로그를 자세히 볼 수 있습니다.</p>'+QA_DEMOS.map(d=>
+      '<figure><video controls muted playsinline preload="metadata" poster="assets/qa/'+d.file+'.webp" width="'+d.width+'" height="'+d.height+'" aria-label="'+d.title+' 시연 영상"><source src="assets/qa/'+d.file+'.mp4" type="video/mp4"><a href="assets/qa/'+d.file+'.mp4">'+d.title+' 영상 열기</a></video><figcaption><strong>'+d.title+'</strong>'+d.cap+'</figcaption></figure>').join('');
+    ovBody.querySelector('.q').after(demos);
+    ovBody.querySelectorAll('.gal img').forEach(img=>{
+      const link=document.createElement('a');link.href=img.getAttribute('src');link.target='_blank';link.rel='noopener';link.setAttribute('aria-label','자료 원본 크기로 보기');
+      img.replaceWith(link);link.append(img);
+    });
+  }
   ov.classList.add('on');document.body.classList.add('lock');ov.scrollTop=0;
-  ovBody.querySelectorAll('video').forEach(video=>{video.muted=true;video.play().catch(()=>{});});
+  ovBody.querySelectorAll('video[autoplay]').forEach(video=>{video.muted=true;video.play().catch(()=>{});});
 }
 function closeCard(){ovBody.querySelectorAll('video').forEach(video=>video.pause());ov.classList.remove('on');document.body.classList.remove('lock');}
 $('#ovClose').addEventListener('click',closeCard);
