@@ -1,0 +1,104 @@
+{
+  "captured_on": "2026-10-30",
+  "timezone": "Asia/Seoul",
+  "method": "Unity batch mode, offscreen game-camera rendering; no desktop control or generated artwork",
+  "notes": [
+    "Capture sessions position the player or camera and prepare game states for presentation; gameplay source and scenes are not saved.",
+    "Unfin uses the existing EnemyCombatVfxIntegration validation renderer to sample runtime combat states.",
+    "Puzzle captures repair missing CanvasRenderer references on temporary runtime UI instances; game source is unchanged.",
+    "Temporary capture scripts were removed and Puzzle progress save files restored after capture."
+  ],
+  "assets": [
+    {
+      "file": "booktower-1b.webp",
+      "project": "Book-tower",
+      "scene": "Assets/Scenes/InGame.unity",
+      "bytes": 176952,
+      "sha256": "2ca2ff1c208c4c019eee0124010e0d0f14e2eb81d38e69d9ae2c30d583797621"
+    },
+    {
+      "file": "booktower-f0.webp",
+      "project": "Book-tower",
+      "scene": "Assets/Scenes/InGame.unity",
+      "bytes": 206368,
+      "sha256": "55fc826328d10360f24befad4acccf6fbdb96a339e0c892b7fe4ab075060148e"
+    },
+    {
+      "file": "pearl-defense.webp",
+      "project": "GameEngine_Pearl-Thieves/prototype3-2-2",
+      "scene": "Assets/Scenes/inGame.unity",
+      "bytes": 108192,
+      "sha256": "9e18467026146cc8f456d7824ccdaad639278e4e252af649222cbeb56509ac42"
+    },
+    {
+      "file": "pearl-unit-battle.webp",
+      "project": "GameEngine_Pearl-Thieves/prototype3-2-2",
+      "scene": "Assets/Scenes/inGame.unity",
+      "bytes": 115356,
+      "sha256": "0806c4d3578fe708b8e97950ba74b9c112e521c8ea023effc723930fd17b4ec9"
+    },
+    {
+      "file": "puzzle-board.webp",
+      "project": "Puzzle/Android Puzzle",
+      "scene": "Assets/Scenes/GravityPrototype.unity",
+      "bytes": 60572,
+      "sha256": "1c67762ef1b93f7239d9bd6ede9cc1d04b9acba08272bfb4e4df54450a84dbf5"
+    },
+    {
+      "file": "puzzle-home.webp",
+      "project": "Puzzle/Android Puzzle",
+      "scene": "Assets/Scenes/GravityPrototype.unity",
+      "bytes": 63810,
+      "sha256": "b52f0907390f83f3915b2e26421d4e9b17606a2af58290db23479d8674873e9e"
+    },
+    {
+      "file": "puzzle-mechanic.webp",
+      "project": "Puzzle/Android Puzzle",
+      "scene": "Assets/Scenes/GravityPrototype.unity",
+      "bytes": 58874,
+      "sha256": "9cba1734284490656f2ea92d127d3c6cbab53f4f81c063acfd539da4788c393e"
+    },
+    {
+      "file": "rushitadel-battle.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/inGame.unity",
+      "bytes": 156876,
+      "sha256": "ebcecb7e66f617382b0794383bc852f2d1708c418add689dc8324fc618ac9895"
+    },
+    {
+      "file": "rushitadel-boss-battle.webp",
+      "project": "Roguelike-Defense/Rushitadel2D",
+      "scene": "Assets/Scenes/inGame.unity",
+      "bytes": 177904,
+      "sha256": "532cac5f6f0f3397814f097e69cb712ec9b4998945cf7a73911b6583df24e992"
+    },
+    {
+      "file": "trash-surface.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "bytes": 58218,
+      "sha256": "8d04857125b75f2d7c3feb25987ff7147b6e52c0967854d52b2f83100a487442"
+    },
+    {
+      "file": "trash-underground.webp",
+      "project": "Capstone/Capstone",
+      "scene": "Assets/Scenes/SampleScene.unity",
+      "bytes": 65014,
+      "sha256": "1e2b96e19293278e24983c6a16c68356969d5ac988ca51e526d6c6989323c611"
+    },
+    {
+      "file": "unfin-boss.webp",
+      "project": "Unfinished-Sketchbook/Book",
+      "scene": "Assets/Scenes/World12Prototype.unity",
+      "bytes": 70984,
+      "sha256": "0687a5ff00cf95ea8749d79f78cf1671e958381cdd950abb4526f324288e1d0d"
+    },
+    {
+      "file": "unfin-exploration.webp",
+      "project": "Unfinished-Sketchbook/Book",
+      "scene": "Assets/Scenes/World12Prototype.unity",
+      "bytes": 92154,
+      "sha256": "7f756a4949ea00c7fe5f170ca178015dd029a44ca3306685bb4b7e834250336c"
+    }
+  ]
+}
