@@ -1,0 +1,508 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="이도언의 게임 QA 포트폴리오. 메이플키우기 화면 인식 자동화, OCR 재화 검증, 예외 처리와 실행 로그를 실제 영상으로 소개합니다."><title>이도언 · GAME QA PORTFOLIO</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><style>
+/* ══════════ FONT : 프리젠테이션(Freesentation) 5 · 6 · 7 (로컬 설치 폰트) ══════════ */
+:root{
+  --f5:"Freesentation 5Medium","Freesentation 5 Medium","Freesentation-5Medium","프리젠테이션 5","프레젠테이션 5",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+  --f6:"Freesentation 6SemiBold","Freesentation 6 SemiBold","Freesentation-6SemiBold","프리젠테이션 6","프레젠테이션 6",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+  --f7:"Freesentation 7Bold","Freesentation 7 Bold","Freesentation-7Bold","프리젠테이션 7","프레젠테이션 7",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+  --f8:"Freesentation 8ExtraBold","Freesentation 8 ExtraBold","Freesentation-8ExtraBold","프리젠테이션 8","프레젠테이션 8","Freesentation 7Bold","프리젠테이션 7",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+
+  --ac:#1F56FF;              /* 포인트 컬러 — 일렉트릭 코발트 */
+  --ac-l:#6E9BFF;            /* 다크 섹션용 밝은 블루 */
+  --ink:#080F26; --ink2:#262f4d; --gray:#636d8c; --gray2:#a7b0c6;
+  --line:#e2e6f0; --bg:#fff; --bg2:#f3f5fa;
+  --pad:clamp(20px,4.4vw,72px);
+}
+#work,#end,#ov{--ac:var(--ac-l)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f7);line-height:1.7;
+  word-break:keep-all;overflow-wrap:break-word;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+@media(max-width:900px){body{cursor:auto}}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--ac);color:#fff}
+h1,h2,h3,h4,.f7{font-family:var(--f8);font-weight:400}
+.f6{font-family:var(--f6)}
+
+/* ══════════ 0. 인트로 블라인드 (싸라락) ══════════ */
+#blinds{position:fixed;inset:0;z-index:999;display:flex;pointer-events:none}
+#blinds b{flex:1;background:var(--ink);transform-origin:top;
+  animation:blind .95s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes blind{to{transform:scaleY(0)}}
+#blinds.done{display:none}
+#introword{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;pointer-events:none;
+  color:#fff;font-family:var(--f7);font-size:clamp(28px,6vw,64px);letter-spacing:-.04em;
+  animation:iw 1.15s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes iw{0%{opacity:0;transform:translateY(18px)}22%{opacity:1;transform:none}
+  60%{opacity:1}100%{opacity:0;transform:translateY(-18px)}}
+
+/* ══════════ 커서 ══════════ */
+#cur{position:fixed;top:0;left:0;width:11px;height:11px;border-radius:50%;background:var(--ac);
+  z-index:900;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:normal;transition:width .25s,height .25s}
+#ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1.4px solid var(--ink);border-radius:50%;
+  z-index:899;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s,opacity .3s}
+body.dark #ring{border-color:#fff}
+body.hov #ring{width:74px;height:74px;border-color:var(--ac)}
+body.hov #cur{width:4px;height:4px}
+@media(max-width:900px){#cur,#ring{display:none}}
+
+/* ══════════ HUD ══════════ */
+#bar{position:fixed;top:0;left:0;height:4px;background:var(--ac);z-index:800;width:0;
+  box-shadow:0 0 14px rgba(31,86,255,.65)}
+#idx{position:fixed;left:18px;bottom:34px;z-index:700;font-family:var(--f6);font-size:10px;
+  letter-spacing:.22em;color:var(--gray);display:flex;flex-direction:column;gap:11px}
+#idx a{opacity:.5;transition:.3s;position:relative;padding-left:22px;line-height:1;white-space:nowrap}
+#idx a:before{content:"";position:absolute;left:0;top:50%;width:11px;height:1px;background:currentColor;transition:.3s}
+#idx a em{font-style:normal;opacity:0;transform:translateX(-8px);display:inline-block;transition:.3s}
+#idx:hover a em{opacity:1;transform:none}
+#idx a.on{opacity:1;color:var(--ac)}
+#idx a.on em{opacity:1;transform:none}
+#idx a.on:before{width:16px;background:var(--ac)}
+body.dark #idx{color:#8b8f97}
+body.dark #idx a.on{color:var(--ac)}
+@media(max-width:900px){#idx{display:none}}
+#top{position:fixed;top:26px;left:var(--pad);right:var(--pad);z-index:700;display:flex;
+  justify-content:space-between;font-family:var(--f6);font-size:11px;letter-spacing:.18em;color:var(--gray)}
+#top .nm{color:var(--ink)}
+body.dark #top .nm{color:#fff}
+#top .dot{display:inline-block;width:7px;height:7px;background:var(--ac);border-radius:50%;margin-left:5px;
+  box-shadow:0 0 10px rgba(31,86,255,.75)}
+
+/* ══════════ 1. HERO ══════════ */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:130px var(--pad) 170px;position:relative;overflow:hidden}
+.grid{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:76px 76px;opacity:.55;
+  mask-image:radial-gradient(120% 90% at 70% 20%,#000 10%,transparent 75%)}
+.hline{overflow:hidden;display:block;padding-bottom:.14em;margin-bottom:-.1em}
+.hline span{display:inline-block;transform:translateY(105%);opacity:0}
+.go .hline span{animation:up 1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none;opacity:1}}
+#hero h1{font-family:var(--f7);font-size:clamp(42px,10.4vw,154px);line-height:1.02;letter-spacing:-.05em;position:relative;z-index:2}
+#hero h1 .ac{color:var(--ac)}
+#hero h1 .out{-webkit-text-stroke:1.6px var(--ink);color:transparent}
+.hsub{margin-top:clamp(28px,4vw,52px);display:flex;gap:clamp(20px,5vw,90px);flex-wrap:wrap;
+  align-items:flex-end;position:relative;z-index:2}
+.hsub p{max-width:560px;font-size:clamp(14.5px,1.6vw,18px);color:var(--ink2);line-height:1.75}
+.hsub p b{font-family:var(--f7);color:var(--ink)}
+.hrole{font-family:var(--f6);font-size:11px;letter-spacing:.2em;color:var(--gray);
+  border-left:3px solid var(--ac);padding-left:14px;line-height:2.1}
+.scroller{position:absolute;right:var(--pad);bottom:34px;font-family:var(--f6);font-size:10.5px;
+  letter-spacing:.22em;color:var(--gray);display:flex;align-items:center;gap:10px}
+.scroller i{display:block;width:44px;height:1px;background:var(--gray2);position:relative;overflow:hidden}
+.scroller i:after{content:"";position:absolute;inset:0;background:var(--ac);animation:sw 1.9s infinite}
+@keyframes sw{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+
+
+/* ══════════ 2. 스크롤 하이라이트 (수루룩) ══════════ */
+#say{padding:min(24vh,200px) var(--pad) min(26vh,220px);background:var(--bg)}
+#say .inner{max-width:1000px;margin:0 auto}
+#say .kicker{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--gray);margin-bottom:38px}
+#say .kicker s{display:inline-block;width:34px;height:1px;background:var(--ac);
+  text-decoration:none;vertical-align:middle;margin-right:12px}
+#say p{font-family:var(--f8);font-size:clamp(26px,4.4vw,60px);line-height:1.46;letter-spacing:-.04em}
+#say .w{color:#b0b3ba;transition:color .3s ease;display:inline-block}
+#say .w.on{color:var(--ink)}
+#say .w.key.on{color:var(--ac)}
+#say .w.box.on{box-shadow:inset 0 -.34em 0 rgba(31,86,255,.28)}
+
+/* ══════════ 3. 마퀴 ══════════ */
+#mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0;overflow:hidden;background:var(--bg2)}
+#mq .row{display:flex;width:max-content;will-change:transform}
+#mq .row div{font-family:var(--f7);font-size:clamp(28px,5vw,66px);letter-spacing:-.04em;
+  padding-right:44px;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:44px}
+#mq .row div i{width:10px;height:10px;background:var(--ac);border-radius:50%;display:inline-block}
+#mq .row div em{font-style:normal;-webkit-text-stroke:1.4px var(--ink2);color:transparent}
+
+/* ══════════ 4. WORK (가로 핀) ══════════ */
+#work{background:var(--ink);color:#fff;position:relative}
+#pin{height:385vh;position:relative}
+#stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+#track{display:flex;height:100%;align-items:center;will-change:transform}
+#track>*{align-self:center;max-height:76svh;overflow:visible}
+.wintro{flex:0 0 min(78vw,620px);padding:0 clamp(28px,5vw,90px);}
+.wintro .k{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--ac);margin-bottom:22px}
+.wintro h2{font-size:clamp(34px,6.2vw,86px);line-height:1.02;letter-spacing:-.05em}
+.wintro p{margin-top:24px;color:#b6bac1;font-size:16px;max-width:420px}
+.card{flex:0 0 min(86vw,760px);margin-right:clamp(20px,3vw,44px);position:relative;
+  border-left:1px solid #223059;padding:0 clamp(24px,4vw,60px)}
+.card .no{font-family:var(--f7);font-size:clamp(60px,12vw,180px);line-height:.8;letter-spacing:-.06em;
+  color:transparent;-webkit-text-stroke:1.4px #33436e;position:absolute;top:-8vh;left:clamp(24px,4vw,60px);z-index:0}
+.card .body{position:relative;z-index:1}
+.card .tp{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f6);font-size:12px;
+  letter-spacing:.14em;color:#9ca1a9;margin-bottom:18px}
+.card .tp b{color:var(--ac)}
+.card h3{font-size:clamp(26px,4.6vw,54px);line-height:1.08;letter-spacing:-.045em}
+.card h3 s{display:block;text-decoration:none;font-family:var(--f6);font-size:.32em;
+  letter-spacing:.06em;color:#a8acb3;margin-top:12px}
+.card .q{margin-top:22px;font-family:var(--f6);font-size:clamp(14px,1.8vw,19px);color:#fff;
+  border-left:3px solid var(--ac);padding-left:14px}
+.card ul{margin-top:26px;list-style:none;display:grid;gap:11px;max-width:600px}
+.card li{position:relative;padding-left:22px;font-size:15.5px;color:#d2d6dc;line-height:1.62}
+.card li:before{content:"";position:absolute;left:0;top:11px;width:10px;height:1.5px;background:var(--ac)}
+.card .tl{margin-top:26px;display:flex;flex-wrap:wrap;gap:7px}
+.card ul.full{display:none}
+#ov ul.short{display:none}
+#ov ul.full{display:grid!important}
+.shot{margin-top:26px;position:relative;overflow:hidden;border:1px solid #28365f;border-radius:3px;
+  max-width:600px;background:#111}
+/* 데스크톱 : 카드 우측 상단 미리보기 */
+@media(min-width:901px){
+  .card .body{padding-right:clamp(210px,23vw,290px)}
+  .card .shot{position:absolute;top:0;right:0;width:clamp(190px,21vw,268px);margin:0;z-index:2}
+  .card .shot img{height:clamp(118px,14vh,150px)}
+  .card .shot figcaption{font-size:9.5px;letter-spacing:.1em;padding:18px 9px 7px}
+}
+.shot img{display:block;width:100%;height:clamp(110px,16vh,158px);object-fit:contain;background:#000;
+  filter:grayscale(.3) contrast(1.03);transition:filter .5s}
+.card:hover .shot img{filter:none}
+.shot figcaption{position:absolute;left:0;bottom:0;right:0;padding:22px 12px 9px;
+  font-family:var(--f6);font-size:10.5px;letter-spacing:.14em;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.55) 45%,rgba(0,0,0,.9))}
+@media(max-width:900px){.shot img{height:160px}}
+.card .tl span{font-family:var(--f6);font-size:11.5px;letter-spacing:.08em;color:#c3c7cd;
+  border:1px solid #28365f;border-radius:2px;padding:6px 11px}
+.wend{flex:0 0 min(60vw,380px);padding:0 clamp(28px,5vw,90px);color:#6f747c;font-size:14px}
+.wend b{display:block;font-family:var(--f7);font-size:clamp(22px,3vw,36px);color:#fff;
+  letter-spacing:-.04em;margin-bottom:14px}
+#wprog{position:absolute;left:clamp(20px,4.4vw,72px);right:clamp(20px,4.4vw,72px);bottom:52px;
+  height:1px;background:#223059;z-index:3}
+#wprog i{display:block;height:100%;background:var(--ac);width:0}
+@media(max-width:900px){
+  #pin{height:auto}
+  #stage{position:static;height:auto;display:block;padding:90px 0}
+  #track{display:block;transform:none!important}
+  .wintro,.card,.wend{flex:none;width:auto;margin:0 0 70px;padding:0 var(--pad)}
+  .card .no{position:static;font-size:64px;margin-bottom:8px}
+  #wprog{display:none}
+}
+
+.card{cursor:pointer}
+.more{margin-top:28px;display:inline-flex;align-items:center;gap:11px;font-family:var(--f6);
+  font-size:12.5px;letter-spacing:.14em;color:#06102e;background:var(--ac);border:1.5px solid var(--ac);
+  border-radius:2px;padding:13px 22px;transition:.28s;position:relative;
+  box-shadow:0 8px 30px -10px rgba(110,155,255,.8)}
+.more:before{content:"";position:absolute;inset:-5px;border:1px solid rgba(43,91,232,.35);
+  border-radius:3px;opacity:0;transition:.28s}
+.card:hover .more{background:#fff;border-color:#fff;color:var(--ink);transform:translateY(-2px);
+  box-shadow:0 14px 34px -10px rgba(255,255,255,.45)}
+.card:hover .more:before{opacity:1;inset:-7px}
+.more svg{width:13px;height:13px;transition:transform .3s}
+.card:hover .more svg{transform:translate(3px,-3px)}
+/* 썸네일 위 오버레이 힌트 */
+.shot:after{content:"CLICK";position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--f6);font-size:11px;letter-spacing:.3em;color:#fff;
+  background:rgba(11,11,12,.55);opacity:0;transition:opacity .3s}
+.card:hover .shot:after{opacity:1}
+
+/* ══════════ 기획·분석 자료 ══════════ */
+#documents{padding:clamp(80px,10vw,150px) var(--pad);background:var(--bg2);border-bottom:1px solid var(--line);scroll-margin-top:40px}
+.docs-inner{max-width:1140px;margin:auto}
+.docs-header{margin-bottom:52px}
+.docs-kicker{font-family:var(--f6);font-size:11px;letter-spacing:.2em;color:var(--ac);margin-bottom:22px}
+.docs-header h2{font-size:clamp(34px,5.5vw,70px);letter-spacing:-.05em;line-height:1.2}
+.docs-header h2 span{color:var(--ac)}
+.docs-header p{margin-top:24px;font-family:var(--f6);color:var(--ink2);font-size:clamp(14px,1.5vw,17px);line-height:1.9}
+.docs-list{border-top:2px solid var(--ink)}
+.doc-entry{display:grid;grid-template-columns:135px minmax(0,1fr) 106px;gap:32px;align-items:start;padding:34px 16px;border-bottom:1px solid #d5dce9;transition:background .2s;cursor:pointer}
+.doc-entry:hover,.doc-entry:focus-visible{background:#e8eefb}
+.doc-entry:focus-visible,.docs-all:focus-visible{outline:2px solid var(--ac);outline-offset:5px}
+.doc-index{display:grid;gap:15px;font-family:var(--f6);font-size:12px;color:var(--ac)}
+.doc-index>span:first-child{font-size:30px;line-height:1.2;letter-spacing:-.04em}
+.doc-meta{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--f6);font-size:11px;color:#606b80;margin-bottom:10px}
+.doc-content h3{font-size:clamp(21px,2.5vw,29px);line-height:1.4;letter-spacing:-.035em;word-break:keep-all;overflow-wrap:anywhere}
+.doc-content p{font-family:var(--f6);font-size:14px;line-height:1.85;color:var(--ink2);max-width:680px;margin-top:12px}
+.doc-tags{display:flex;gap:7px;flex-wrap:wrap;list-style:none;margin-top:17px}
+.doc-tags li{font-family:var(--f6);font-size:11px;color:#4a5e86;border:1px solid #ced8ec;padding:3px 9px;border-radius:3px}
+.doc-open{align-self:center;display:flex;align-items:center;gap:10px;color:var(--ac);font-family:var(--f6);font-size:12px;white-space:nowrap}
+.doc-open>span{font-size:23px;transition:transform .2s}
+.doc-entry:hover .doc-open>span{transform:translate(2px,-2px)}
+.docs-all{display:inline-flex;gap:18px;margin-top:28px;font-family:var(--f6);font-size:13px;color:var(--ac)}
+@media(max-width:700px){.docs-header{margin-bottom:32px}.doc-entry{grid-template-columns:1fr;gap:16px;padding:26px 4px}.doc-index{display:flex;align-items:center;gap:14px}.doc-index>span:first-child{font-size:23px}.doc-open{justify-self:end}.doc-content p{font-size:13px}}
+
+/* ══════════ 프로젝트 상세 오버레이 ══════════ */
+#ov{position:fixed;inset:0;z-index:950;background:var(--ink);color:#fff;overflow-y:auto;
+  opacity:0;pointer-events:none;transition:opacity .4s}
+#ov.on{opacity:1;pointer-events:auto}
+#ov .sheet{max-width:940px;margin:0 auto;padding:120px var(--pad) 140px;
+  transform:translateY(24px);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+#ov.on .sheet{transform:none}
+#ovClose{position:fixed;top:24px;right:var(--pad);z-index:960;font-family:var(--f6);font-size:11px;
+  letter-spacing:.2em;color:#fff;border:1px solid #33436e;border-radius:2px;padding:11px 18px;
+  background:rgba(11,11,12,.7);backdrop-filter:blur(8px);cursor:pointer;transition:.25s}
+#ovClose:hover{background:var(--ac);border-color:var(--ac)}
+#ov .tp{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f6);font-size:12px;
+  letter-spacing:.14em;color:#9ca1a9;margin-bottom:18px}
+#ov .tp b{color:var(--ac)}
+#ov h3{font-size:clamp(30px,6vw,64px);line-height:1.06;letter-spacing:-.045em}
+#ov h3 s{display:block;text-decoration:none;font-family:var(--f6);font-size:.3em;
+  letter-spacing:.06em;color:#a8acb3;margin-top:14px}
+#ov .q{margin-top:26px;font-family:var(--f6);font-size:clamp(15px,2vw,21px);color:#fff;
+  border-left:3px solid var(--ac);padding-left:16px}
+#ov ul{margin-top:32px;list-style:none;display:grid;gap:13px;max-width:720px}
+#ov li{position:relative;padding-left:22px;font-size:16px;color:#d2d6dc;line-height:1.7}
+#ov li:before{content:"";position:absolute;left:0;top:12px;width:10px;height:1.5px;background:var(--ac)}
+#ov .tl{margin-top:30px;display:flex;flex-wrap:wrap;gap:7px}
+#ov .tl span{font-family:var(--f6);font-size:11.5px;letter-spacing:.08em;color:#c3c7cd;
+  border:1px solid #28365f;border-radius:2px;padding:6px 11px}
+#ov .shot,#ov .more{display:none}
+#ov .gal{margin-top:56px;border-top:1px solid #223059;padding-top:44px;display:grid;gap:40px}
+#ov .gal h4{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:#6f747c;font-weight:400}
+#ov .gal figure{margin:0}
+#ov .gal img{display:block;width:100%;height:auto;border:1px solid #223059;background:#0C1430}
+#ov .gal figcaption{margin-top:12px;font-family:var(--f6);font-size:12px;color:#9ca1a9;letter-spacing:.04em}
+#ov .empty{font-family:var(--f6);font-size:13px;color:#6f747c}
+#ov .play-gallery{margin:32px 0 40px;display:grid;gap:24px}
+#ov .play-gallery h4{font-size:13px;color:var(--ac);letter-spacing:.08em}
+#ov .play-gallery figure{margin:0;min-width:0}
+#ov .play-gallery a{display:block;cursor:zoom-in}
+#ov .play-gallery .flow-summary{margin:0;color:#d2d6dc;font-size:14px;line-height:1.8}
+#ov .play-gallery .flow-summary small{display:block;margin-top:8px;color:#9ca1a9;font-size:12px}
+#ov .play-gallery img{display:block;width:100%;height:auto;border:1px solid #28365f;border-radius:4px;background:#0c1430}
+#ov .play-gallery figcaption{margin-top:10px;font-family:var(--f6);font-size:13px;line-height:1.7;color:#c3cbdc}
+#ov .play-gallery figcaption strong{display:block;color:#fff;font-family:var(--f7);font-size:15px;margin-bottom:3px}
+#ov .play-gallery.portrait{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#ov .play-gallery .game-intro{margin:0;font-size:16px;line-height:1.9;color:#e3e7ef}
+#ov .play-gallery.portrait h4,#ov .play-gallery.portrait .flow-summary,#ov .play-gallery.portrait .game-intro{grid-column:1/-1}
+@media(max-width:600px){#ov .play-gallery.portrait{grid-template-columns:1fr}#ov .play-gallery.portrait figure{width:100%;max-width:340px;margin:0 auto}}
+#ov .play-gallery.boss-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
+#ov .boss-gallery h4,#ov .boss-gallery .boss-note{grid-column:1/-1}
+#ov .boss-gallery .boss-note{margin:0;color:#c3cbdc;font-size:14px;line-height:1.7}
+#ov .boss-gallery figure{padding:10px;background:#111c35;border:1px solid #28365f;border-radius:8px}
+#ov .boss-gallery video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#0c1430;border:1px solid #28365f;border-radius:4px}
+@media(max-width:600px){#ov .play-gallery.boss-gallery{gap:14px 10px}#ov .boss-gallery figure{padding:6px}#ov .boss-gallery figcaption{font-size:11px;line-height:1.6}#ov .boss-gallery figcaption strong{font-size:13px}}
+body.lock{overflow:hidden}
+#ov .qa-gallery video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#0c1430;border:1px solid #28365f;border-radius:4px}
+#ov .qa-gallery .qa-note{margin:0;color:#9ca1a9;font-size:13px;line-height:1.8}
+.publish-link{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:10px 16px;border:1px solid var(--ac);border-radius:3px;color:var(--ac);font-family:var(--f6);font-size:13px}
+.publish-link:hover,.publish-link:focus-visible{background:var(--ac);color:#080f26}
+#ov .publish-panel{margin:28px 0 36px}
+#ov .publish-panel h4{font-size:14px;color:var(--ac);margin-bottom:10px}
+#ov .publish-panel p{font-size:13px;color:#c3cbdc;margin-bottom:16px}
+#ov .publish-panel iframe{display:block;width:100%;max-width:552px;height:167px;border:0;background:#fff;border-radius:3px}
+/* 상세 화면에서는 기본 마우스 포인터 사용 */
+body.lock,#ov,#ov *{cursor:auto}
+#ovClose,#ov a{cursor:pointer}
+body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
+
+/* ══════════ 5. PROCESS (스티키) ══════════ */
+#proc{padding:min(18vh,150px) var(--pad) 0;background:var(--bg)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:start;max-width:1200px;margin:0 auto}
+@media(max-width:860px){.pgrid{grid-template-columns:1fr;gap:20px}}
+.pstick{position:sticky;top:26vh}
+.pstick .k{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--gray);margin-bottom:26px}
+.pstick h2{font-size:clamp(30px,5vw,64px);line-height:1.06;letter-spacing:-.05em}
+.pstick .cnt{display:flex;align-items:baseline;gap:12px;margin-top:34px;font-family:var(--f7);letter-spacing:-.05em}
+.pstick .cnt .big{font-size:clamp(64px,11vw,130px);line-height:.86;color:var(--ac)}
+.pstick .cnt .of{font-size:clamp(20px,3vw,34px);color:var(--gray2)}
+.ticks{margin-top:36px;display:flex;gap:8px;max-width:260px}
+.ticks i{flex:1;height:3px;background:var(--line);transition:background .45s}
+.ticks i.on{background:var(--ac)}
+@media(max-width:860px){.pstick{position:static}.pstick .cnt,.ticks{display:none}}
+.psteps{display:grid;gap:0;padding-bottom:min(58vh,520px)}
+@media(max-width:860px){.psteps{padding-bottom:60px}}
+.pstep{padding:clamp(46px,7.5vh,84px) 0;border-top:1px solid var(--line);opacity:.3;
+  transition:opacity .5s,transform .5s}
+.pstep.on{opacity:1}
+.pstep .n{font-family:var(--f6);font-size:11px;letter-spacing:.2em;color:var(--ac)}
+.pstep h4{margin-top:12px;font-size:clamp(20px,2.6vw,30px);letter-spacing:-.035em}
+.pstep p{margin-top:14px;color:var(--ink2);font-size:15.5px;max-width:440px;line-height:1.72}
+
+/* ══════════ 6. EDU ══════════ */
+#edu{padding:min(16vh,130px) var(--pad);background:var(--bg2);border-top:1px solid var(--line)}
+#edu .in{max-width:1100px;margin:0 auto}
+#edu .k{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:var(--gray);margin-bottom:30px}
+#edu h2{font-size:clamp(28px,4.6vw,54px);letter-spacing:-.045em;line-height:1.12;margin-bottom:54px}
+.erow{display:grid;grid-template-columns:190px 1fr;gap:26px;padding:32px 0;border-top:1px solid var(--line);
+  position:relative;overflow:hidden}
+.erow:last-child{border-bottom:1px solid var(--line)}
+@media(max-width:760px){.erow{grid-template-columns:1fr;gap:8px}}
+.erow .d{font-family:var(--f6);font-size:12px;letter-spacing:.1em;color:var(--gray)}
+.erow .t{font-family:var(--f7);font-size:clamp(17px,2.2vw,24px);letter-spacing:-.03em}
+.erow .m{margin-top:8px;font-size:14px;color:var(--ink2)}
+.erow a.bd{transition:.25s}.erow a.bd:hover{background:var(--ink)}
+.erow .bd{box-shadow:0 5px 16px -5px rgba(31,86,255,.75);display:inline-block;font-family:var(--f6);font-size:11px;letter-spacing:.1em;color:#fff;
+  background:var(--ac);padding:3px 10px;margin-left:8px;vertical-align:3px}
+.erow:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ac);transition:width .6s}
+.erow:hover:after{width:100%}
+
+/* ══════════ 7. CONTACT ══════════ */
+#end{background:var(--ink);color:#fff;padding:min(20vh,170px) var(--pad) 46px;position:relative;overflow:hidden}
+#end .k{font-family:var(--f6);font-size:11px;letter-spacing:.24em;color:#6f747c;margin-bottom:30px}
+#end .k s{display:inline-block;width:34px;height:1px;background:var(--ac);text-decoration:none;
+  vertical-align:middle;margin-right:12px}
+#end h2{font-family:var(--f7);font-size:clamp(34px,9vw,124px);line-height:.98;letter-spacing:-.055em}
+#end h2 .ac{color:var(--ac)}
+.mail{display:inline-flex;align-items:center;gap:14px;margin-top:clamp(34px,5vw,64px);
+  font-family:var(--f6);font-size:clamp(16px,3vw,30px);letter-spacing:-.02em;
+  border-bottom:1.5px solid #33436e;padding-bottom:10px;transition:.3s}
+.mail:hover{color:var(--ac);border-color:var(--ac)}
+.mail svg{width:.8em;height:.8em;transition:transform .3s}
+.mail:hover svg{transform:translate(4px,-4px)}
+.fend{margin-top:clamp(60px,10vh,120px);padding-top:24px;border-top:1px solid #223059;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  font-family:var(--f6);font-size:11px;letter-spacing:.12em;color:#6f747c}
+.fend a{transition:.25s}
+.fend a:hover{color:var(--ac)}
+
+/* 공통 리빌 */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv,.hline span{opacity:1!important;transform:none!important;animation:none!important}
+  #say .w{color:var(--ink)}#blinds,#introword{display:none}
+}
+
+#pin{height:260vh}.mode-nav{display:flex;gap:14px;align-items:center;font-size:11px;letter-spacing:.08em}.mode-nav a{padding:4px 0}.mode-nav a[aria-current]{color:var(--ac)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;position:relative;z-index:3}.hero-actions a{border:1px solid var(--ink);padding:11px 18px;font-size:13px}.hero-actions a:first-child{background:var(--ink);color:#fff}
+.scope{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.scope>div{border-top:2px solid var(--ac);padding:22px;background:#fff}.scope h3{font-size:20px;margin-bottom:10px}.scope p{font-size:14px;color:var(--ink2)}
+#documents .docs-header{margin-bottom:30px}.case-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:28px 0}.case-tools button,.csv-link{font:inherit;font-size:12px;padding:9px 14px;border:1px solid #c8d3e8;background:transparent;color:var(--ink);cursor:pointer}.case-tools button[aria-pressed=true]{background:var(--ink);color:#fff}.csv-link{margin-left:auto}.case-count{font-size:12px;color:var(--gray);margin-bottom:14px}.testcase{border-top:1px solid #cbd4e4;background:#fff}.testcase:last-child{border-bottom:1px solid #cbd4e4}.testcase summary{padding:23px;display:grid;grid-template-columns:90px 1fr auto;gap:20px;align-items:center;cursor:pointer;list-style:none}.testcase summary::-webkit-details-marker{display:none}.testcase summary:after{content:'+';font-size:22px;color:var(--ac)}.testcase[open] summary:after{content:'−'}.testcase summary small{display:block;color:var(--gray);font-size:11px;margin-top:6px}.testcase summary .case-id{font-size:12px;color:var(--ac)}.test-body{padding:0 23px 28px 133px;font-size:14px;color:var(--ink2)}.test-body dl{display:grid;grid-template-columns:72px 1fr;gap:10px 14px}.test-body dt{color:var(--ink)}.test-body ol{padding-left:19px}.case-note{font-size:13px;color:var(--gray);margin-top:18px}.card:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--ac);outline-offset:5px}
+#ov video{display:block;width:100%;height:auto;background:#050b1c;border:1px solid #28365f;border-radius:4px}#ov .evidence-note{font-size:12px;line-height:1.8;color:#aebbd1;margin-top:12px}#ov .evidence h4{font-size:14px;color:var(--ac);margin:28px 0 12px}#ov .evidence img{display:block;width:100%;height:auto}#ov .evidence figcaption{font-size:13px;line-height:1.8;color:#c3cbdc;margin-top:10px}#ov .evidence figure{margin:28px 0}.case-source{margin-top:20px;font-size:12px;color:#adbad4}.quick-counts{display:flex;gap:32px;margin-top:30px;font-size:12px;color:var(--gray)}.quick-counts b{display:block;font-size:30px;color:var(--ink)}
+@media(max-width:900px){#pin{height:auto}.card{padding-top:12px}.card .body{padding-right:0}#track>*{max-height:none}}
+@media(max-width:600px){.scope{grid-template-columns:1fr}.mode-nav{gap:10px;font-size:10px}.testcase summary{grid-template-columns:60px 1fr auto;gap:10px;padding:20px 14px}.test-body{padding:0 14px 22px}.test-body dl{grid-template-columns:1fr;gap:6px}.test-body dd{margin-bottom:12px}.csv-link{margin-left:0}.hero-actions{margin-top:24px}.quick-counts{gap:22px}.card .no{font-size:52px}}
+@media(prefers-reduced-motion:reduce){#pin{height:auto}#stage{position:static;height:auto;padding:80px 0}#track{display:block;transform:none!important}#track>*{max-height:none}.wintro,.card,.wend{width:auto;margin:0 0 70px;padding:0 var(--pad)}.card .no{position:static;font-size:64px;margin-bottom:16px}#wprog{display:none}}
+</style></head><body>
+<div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div id="introword">GAME QA &nbsp;/&nbsp; 이도언</div><div id="cur"></div><div id="ring"></div><div id="bar"></div>
+<div id="top"><div class="nm f6">이도언<span class="dot"></span></div><nav class="mode-nav" aria-label="포트폴리오 선택"><a href="../">GAME DESIGN</a><a href="./" aria-current="page">GAME QA</a></nav></div>
+<div id="idx"><a href="#hero" data-t="hero"><em>INTRO</em></a><a href="#say" data-t="say"><em>APPROACH</em></a><a href="#work" data-t="work"><em>CASES</em></a><a href="#documents" data-t="documents"><em>TEST DESIGN</em></a><a href="#proc" data-t="proc"><em>PROCESS</em></a><a href="#edu" data-t="edu"><em>BACKGROUND</em></a><a href="#end" data-t="end"><em>CONTACT</em></a></div>
+<section id="hero"><div class="grid"></div><h1><span class="hline"><span>테스트를 설계하고,</span></span><span class="hline"><span class="out">결과</span><span>를 기록합니다<span class="ac">.</span></span></span></h1><div class="hsub"><p class="hline"><span>게임의 규칙을 이해하고, <b>동작과 결과를 함께 확인합니다.</b><br>화면 인식 자동화와 실행 기록으로 검증 과정을 보여주는 이도언입니다.</span></p><div class="hrole hline"><span>GAME QA<br>TEST AUTOMATION<br>EVIDENCE &amp; REPRODUCTION</span></div></div><div class="hero-actions"><a href="#work">자동화 사례 보기 ↘</a><a href="#documents">테스트 설계 보기 ↘</a></div><div class="scroller"><i></i>SCROLL TO VERIFY</div></section>
+<section id="say"><div class="inner"><div class="kicker"><s></s>MY QA APPROACH</div><p id="sayText">무엇이 [정상]인지 먼저 정합니다. // 반복은 [자동화]하고, 결과는 [기록]합니다. // 예외 상황은 [재현할 근거]를 남깁니다.</p><div class="quick-counts"><span><b>01</b>팀 자동화 프로젝트</span><span><b>04</b>실제 시연 영상</span><span><b>08</b>테스트 설계 샘플</span></div></div></section><div id="mq"><div class="row" id="mqrow"></div></div>
+<section id="work"><div id="pin"><div id="stage"><div id="track"><div class="wintro"><div class="k">QA CASE STUDY — 04</div><h2>실행에서<br>판정까지.</h2><p>메이플키우기 자동화 테스트 프로젝트의 네 가지 검증 흐름입니다. 각 사례에서 실제 실행 영상과 기록 방식을 확인하세요.</p></div><article class="card" data-key="weapon" tabindex="0" role="button" aria-label="무기 레벨업 자동화 자세히 보기"><div class="no">01</div><div class="body"><div class="tp"><span>메이플키우기 · 팀 3인</span><b>자동화 시연</b></div><h3>무기 레벨업 자동화<s>반복 실행 · 화면 인식</s></h3><p class="q">반복 클릭을, 검증 가능한 실행 흐름으로.</p><ul class="short"><li>강화 버튼을 이미지로 탐지해 반복 클릭</li><li>강화 전후 재화를 OCR로 읽어 변화 확인</li><li>실행 과정과 판정 결과를 로그로 기록</li></ul><figure class="shot"><img src="../assets/qa/weapon-levelup.webp" alt="무기 레벨업 자동화 실제 실행 화면" loading="lazy"><figcaption>DEMO 01 / 실제 실행 영상</figcaption></figure><div class="tl"><span>Python</span><span>OpenCV</span><span>PyAutoGUI</span><span>Tesseract OCR</span></div><span class="more">검증 과정 보기 <span aria-hidden="true">↗</span></span></div></article><article class="card" data-key="scroll" tabindex="0" role="button" aria-label="주문서 강화 자동화 자세히 보기"><div class="no">02</div><div class="body"><div class="tp"><span>메이플키우기 · 팀 3인</span><b>자동화 시연</b></div><h3>주문서 강화 자동화<s>결과 인식 · 반복 시나리오</s></h3><p class="q">강화의 성공과, 테스트의 성공을 구분합니다.</p><ul class="short"><li>강화 버튼 탐지와 클릭을 반복</li><li>결과 화면과 게이지 변화로 진행 상태 확인</li><li>성공·변화 없음·팝업 처리 상태를 기록</li></ul><figure class="shot"><img src="../assets/qa/scroll-enhancement.webp" alt="주문서 강화 자동화 실제 실행 화면" loading="lazy"><figcaption>DEMO 02 / 실제 실행 영상</figcaption></figure><div class="tl"><span>OpenCV</span><span>PyAutoGUI</span><span>Python</span><span>CSV</span></div><span class="more">검증 과정 보기 <span aria-hidden="true">↗</span></span></div></article><article class="card" data-key="currency" tabindex="0" role="button" aria-label="OCR 재화 소모 검증 자세히 보기"><div class="no">03</div><div class="body"><div class="tp"><span>메이플키우기 · 팀 3인</span><b>자동화 시연</b></div><h3>OCR 재화 소모 검증<s>기대값 비교 · 데이터 정합성</s></h3><p class="q">클릭이 됐는지보다, 얼마가 차감됐는지.</p><ul class="short"><li>소환 전후 보유 재화를 OCR로 읽기</li><li>전후 차이를 기대 소모량과 비교</li><li>차감 결과를 PASS·FAIL로 판정</li></ul><figure class="shot"><img src="../assets/qa/ocr-currency.webp" alt="OCR 재화 소모 검증 실제 실행 화면" loading="lazy"><figcaption>DEMO 03 / 실제 실행 영상</figcaption></figure><div class="tl"><span>Tesseract OCR</span><span>Python</span><span>화면 캡처</span></div><span class="more">검증 과정 보기 <span aria-hidden="true">↗</span></span></div></article><article class="card" data-key="recovery" tabindex="0" role="button" aria-label="예외 감시와 복구 자세히 보기"><div class="no">04</div><div class="body"><div class="tp"><span>메이플키우기 · 팀 3인</span><b>자동화 시연</b></div><h3>예외 감시와 복구<s>팝업 처리 · 증거 수집</s></h3><p class="q">예상 밖의 화면에서도, 원인을 남깁니다.</p><ul class="short"><li>메인 실행과 별도로 예외 팝업 감시</li><li>팝업 처리와 재시도 흐름 구성</li><li>로그·스크린샷으로 중단 지점 확인</li></ul><figure class="shot"><img src="../assets/qa/popup-recovery.webp" alt="예외 감시와 복구 실제 실행 화면" loading="lazy"><figcaption>DEMO 04 / 실제 실행 영상</figcaption></figure><div class="tl"><span>Python</span><span>Watcher</span><span>재시도</span><span>로그·스크린샷</span></div><span class="more">검증 과정 보기 <span aria-hidden="true">↗</span></span></div></article><div class="wend"><b>다음은,<br>테스트 설계.</b>같은 기능을 정상·경계·예외 조건으로 나누어 살펴봅니다.</div></div><div id="wprog"><i></i></div></div></div></section>
+<section id="documents" aria-labelledby="casebook-title"><div class="docs-inner"><header class="docs-header"><div class="docs-kicker">TEST DESIGN / CASEBOOK</div><h2 id="casebook-title">조건을 나누면,<br>확인할 것이 보입니다<span>.</span></h2><p>메이플키우기 자동화 사례를 바탕으로 정리한 테스트 설계 샘플입니다.<br>항목을 펼치면 사전 조건·절차·기대 결과·수집할 증거를 볼 수 있습니다.</p></header><div class="case-tools" role="group" aria-label="테스트 유형 필터"><button type="button" data-filter="전체" aria-pressed="true">전체</button><button type="button" data-filter="정상 흐름" aria-pressed="false">정상 흐름</button><button type="button" data-filter="경계 조건" aria-pressed="false">경계 조건</button><button type="button" data-filter="예외 처리" aria-pressed="false">예외 처리</button><a class="csv-link" href="test-cases.csv" download>테스트 케이스 CSV ↓</a></div><p class="case-count" role="status" aria-live="polite">8개 테스트 설계</p><div id="testcases"><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-01</span><span>무기 레벨업 후 재화 감소<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>강화 가능한 무기와 충분한 재화가 있는 상태</dd><dt>실행 절차</dt><dd><ol><li>실행 전 재화 기록</li><li>강화 버튼 탐지·클릭</li><li>화면 갱신 후 재화 재확인</li></ol></dd><dt>기대 결과</dt><dd>재화가 규칙에 따라 차감되고 강화 상태가 갱신된다.</dd><dt>수집할 증거</dt><dd>전후 캡처 · OCR 값 · 탐지 점수</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-02</span><span>주문서 강화 결과 기록<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>주문서 강화 화면과 재료가 준비된 상태</dd><dt>실행 절차</dt><dd><ol><li>강화 실행</li><li>결과 화면 또는 게이지 확인</li><li>회차별 판정 저장</li></ol></dd><dt>기대 결과</dt><dd>게임의 성공·실패 결과와 자동화 실행 상태를 구분해 기록한다.</dd><dt>수집할 증거</dt><dd>결과 화면 · 회차별 로그</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-03</span><span>소환 재화 차감량 비교<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>소환 비용과 실행 전 재화가 확인된 상태</dd><dt>실행 절차</dt><dd><ol><li>실행 전 OCR</li><li>소환 1회 실행</li><li>실행 후 OCR과 기대 소모량 비교</li></ol></dd><dt>기대 결과</dt><dd>실행 전후 차이가 선택한 소환의 기대 비용과 일치한다.</dd><dt>수집할 증거</dt><dd>전후 OCR · 기대 비용 · 판정</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-04</span><span>재화가 필요 비용과 같은 경우<small>경계 조건 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>보유 재화가 해당 동작 비용과 같은 상태</dd><dt>실행 절차</dt><dd><ol><li>재화 값 확인</li><li>강화 또는 소환 실행</li><li>남은 재화와 후속 동작 확인</li></ol></dd><dt>기대 결과</dt><dd>해당 동작의 소모 규칙대로 처리되고 재화가 음수가 되지 않는다.</dd><dt>수집할 증거</dt><dd>초기 재화 · 결과 캡처</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-05</span><span>버튼 탐지 임계값 점검<small>경계 조건 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>버튼 템플릿과 관심 영역이 준비된 상태</dd><dt>실행 절차</dt><dd><ol><li>동일 화면에서 임계값 비교</li><li>탐지 위치와 점수 기록</li><li>오탐 여부 대조</li></ol></dd><dt>기대 결과</dt><dd>버튼 영역의 탐지와 유사 이미지 오탐을 구분할 수 있다.</dd><dt>수집할 증거</dt><dd>임계값 · 탐지 좌표 · 캡처</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-06</span><span>재화 부족 팝업 대응<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화가 동작 비용보다 부족한 상태</dd><dt>실행 절차</dt><dd><ol><li>강화 시도</li><li>부족 팝업 감지</li><li>처리 결과와 다음 실행 상태 기록</li></ol></dd><dt>기대 결과</dt><dd>팝업을 인지하고 중복 클릭 없이 정의한 처리 흐름으로 이동한다.</dd><dt>수집할 증거</dt><dd>팝업 캡처 · 처리 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-07</span><span>OCR 숫자 판독 실패<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화 영역이 가려지거나 숫자를 읽을 수 없는 상태</dd><dt>실행 절차</dt><dd><ol><li>판독 실패 조건 준비</li><li>OCR 실행</li><li>판정과 후속 동작 확인</li></ol></dd><dt>기대 결과</dt><dd>읽지 못한 값을 정상 차감으로 오판하지 않고 재확인 또는 중단한다.</dd><dt>수집할 증거</dt><dd>원본 영역 · OCR 원문 · 오류 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-08</span><span>결과 갱신 지연과 재시도<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>결과 화면 갱신이 지연되는 상태</dd><dt>실행 절차</dt><dd><ol><li>동작 실행</li><li>대기 시간 내 갱신 여부 확인</li><li>재시도·중단 기준 확인</li></ol></dd><dt>기대 결과</dt><dd>무한 반복과 중복 실행을 피하고 마지막 상태를 기록한다.</dd><dt>수집할 증거</dt><dd>타임스탬프 · 재시도 횟수 · 최종 캡처</dd></dl></div></details></div><p class="case-note">설계 샘플의 실행 상태는 미기록입니다. 위 시연 영상의 결과나 실제 결함 보고서와 구분해 제시합니다.</p><div class="scope"><div><h3>반복 자동화 범위</h3><p>버튼 탐지와 클릭, 전후 재화 비교, 강화 결과 확인, 예외 팝업 감시처럼 반복 가능하고 판정 기준을 세울 수 있는 흐름을 대상으로 합니다.</p></div><div><h3>수동 확인 범위</h3><p>결제·광고의 사용자 경험, 네트워크 오류 안내와 복구 경험, 확률 결과의 해석은 별도 판단이 필요합니다. 자동 실행 결과와 사용자 관점의 확인을 함께 봅니다.</p></div></div></div></section>
+<div id="ov" role="dialog" aria-modal="true" aria-label="QA 사례 자세히 보기" aria-hidden="true" inert><button id="ovClose">CLOSE ✕</button><div class="sheet" id="ovBody"></div></div>
+<section id="proc"><div class="pgrid"><div class="pstick"><div class="k">HOW I TEST</div><h2>검증은<br>네 단계를<br>거칩니다.</h2><div class="cnt"><span class="big" id="pbig">01</span><span class="of">/ 04</span></div><div class="ticks" id="ticks"><i></i><i></i><i></i><i></i></div></div><div class="psteps"><div class="pstep" data-n="01"><div class="n">STEP 01</div><h4>범위와 기대값 정의</h4><p>기능의 규칙과 사용자 흐름을 읽고 정상 동작의 기준을 정합니다. 자동화할 구간과 사람이 판단할 구간을 나눕니다.</p></div><div class="pstep" data-n="02"><div class="n">STEP 02</div><h4>조건과 재현 절차 설계</h4><p>정상·경계·예외 조건으로 나눕니다. 사전 상태, 실행 순서, 기대 결과와 필요한 증거를 구체화합니다.</p></div><div class="pstep" data-n="03"><div class="n">STEP 03</div><h4>실행과 기록</h4><p>반복 흐름을 실행하고 화면·수치·회차별 로그를 함께 남깁니다. 테스트 도구의 인식 실패와 게임의 결과를 구분합니다.</p></div><div class="pstep" data-n="04"><div class="n">STEP 04</div><h4>분석과 재검증</h4><p>차이가 난 조건과 마지막 정상 상태를 좁힙니다. 수정 이후에는 같은 조건을 다시 실행하고 주변 흐름까지 확인합니다.</p></div></div></div></section><section id="edu"><div class="in">
+  <div class="k rv">EDUCATION · CERTIFICATE · AWARD</div>
+  <h2 class="rv">게임을 만드는 경험을,<br>검증의 바탕으로.</h2>
+  <div class="erow rv">
+    <div class="d">2022.03 — 현재</div>
+    <div><div class="t">유한대학교 컴퓨터공학과 · 게임콘텐츠전공</div>
+      <div class="m">게임 시스템과 콘텐츠 기획을 배우며 동작 규칙과 사용자 흐름을 이해합니다.</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">2025.12</div>
+    <div><div class="t">창업 아이디어 경진대회 <span class="bd">대상</span></div>
+      <div class="m">4인 팀 · 아이디어 구상부터 발표까지 참여</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">2026.05</div>
+    <div><div class="t">Google AI 전문 인증서 <a class="bd" href="../google-ai-certificate.pdf" target="_blank" rel="noopener">수료증 보기</a></div>
+      <div class="m">Google Professional Certificate · AI 활용 및 워크플로우 과정 수료</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">2026.03 — 2026.12</div>
+    <div><div class="t">게임콘텐츠전공 집행부</div>
+      <div class="m">전공 학생회 활동 · 학과 행사 기획 및 운영</div></div>
+  </div>
+</div></section><section id="end"><div class="k"><s></s>CONTACT / GAME QA</div><h2>함께 확인하고,<br><span class="ac">더 나은 게임으로.</span></h2><a class="mail" href="mailto:doun070789@gmail.com">doun070789@gmail.com ↗</a><div class="fend"><span>© 2026 이도언 · GAME QA PORTFOLIO</span><a href="../">게임 기획 포트폴리오 ↗</a><a href="test-cases.csv" download>테스트 설계 CSV ↓</a></div></section><script>
+
+(function(){
+const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>[...(r||document).querySelectorAll(s)];
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── 인트로 블라인드 ── */
+$$('#blinds b').forEach((b,i)=>b.style.animationDelay=(.55+i*.055)+'s');
+setTimeout(()=>{$('#blinds').classList.add('done');$('#introword').remove();},1400);
+$$('#hero .hline span').forEach((s,i)=>s.style.animationDelay=(1.05+i*.09)+'s');
+setTimeout(()=>document.body.classList.add('go'),100);
+
+/* ── 커서 ── */
+const cur=$('#cur'),ring=$('#ring');let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';});
+(function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;
+  ring.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';requestAnimationFrame(loop);})();
+$$('a,.card,.erow,.pstep,#ovClose').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));});
+
+/* ── 수루룩 하이라이트 : 단어 분해 ── */
+const st=$('#sayText');
+st.innerHTML=st.textContent.trim().split(/\s+/).map(w=>{
+  if(w==='//')return '<br>';
+  let key=/[\[\]]/.test(w), t=w.replace(/[\[\]]/g,'');
+  return '<span class="w'+(key?' key box':'')+'">'+t+'</span>';
+}).join(' ');
+const words=$$('#say .w');
+
+/* ── 마퀴 ── */
+const items=['테스트 설계','화면 인식','OCR 검증','예외 처리','재현 절차','실행 로그','회귀 테스트'];
+const build=()=>'<div>'+items.map((t,i)=>(i%2?'<em>'+t+'</em>':t)+'<i></i>').join('')+'</div>';
+$('#mqrow').innerHTML=build()+build()+build();
+let mqx=0,vel=0;
+
+/* ── WORK 가로 핀 ── */
+const pin=$('#pin'),track=$('#track'),wp=$('#wprog i');
+
+const CASES=[{"key": "weapon", "title": "무기 레벨업 자동화", "sub": "반복 실행 · 화면 인식", "q": "반복 클릭을, 검증 가능한 실행 흐름으로.", "file": "weapon-levelup", "tools": ["Python", "OpenCV", "PyAutoGUI", "Tesseract OCR"], "points": ["강화 버튼을 이미지로 탐지해 반복 클릭", "강화 전후 재화를 OCR로 읽어 변화 확인", "실행 과정과 판정 결과를 로그로 기록"], "goal": "무기 레벨업의 반복 동작과 재화 변화를 함께 확인하는 테스트 흐름을 구성했습니다.", "method": "화면 캡처 → 버튼 이미지 매칭 → 클릭 → OCR 재확인 → 결과 기록", "evidence": "template-threshold", "cap": "팀 프로젝트에서 버튼 이미지 매칭 임계값을 조정한 탐지 예시입니다. 관심 영역(ROI)과 템플릿을 함께 점검합니다.", "slide": "12"}, {"key": "scroll", "title": "주문서 강화 자동화", "sub": "결과 인식 · 반복 시나리오", "q": "강화의 성공과, 테스트의 성공을 구분합니다.", "file": "scroll-enhancement", "tools": ["OpenCV", "PyAutoGUI", "Python", "CSV"], "points": ["강화 버튼 탐지와 클릭을 반복", "결과 화면과 게이지 변화로 진행 상태 확인", "성공·변화 없음·팝업 처리 상태를 기록"], "goal": "확률에 따라 강화가 실패하더라도 정상적인 게임 결과인지, 자동화 흐름이 멈춘 것인지 구분할 근거를 남깁니다.", "method": "버튼 탐지 → 강화 실행 → 결과 화면·게이지 확인 → 팝업 처리 → 로그 저장", "evidence": "execution-log", "cap": "주문서 강화의 탐지·클릭·게이지 확인 결과를 회차별로 기록했습니다. SUCCESS·NO_CHANGE 상태로 실행 흐름을 추적합니다.", "slide": "13"}, {"key": "currency", "title": "OCR 재화 소모 검증", "sub": "기대값 비교 · 데이터 정합성", "q": "클릭이 됐는지보다, 얼마가 차감됐는지.", "file": "ocr-currency", "tools": ["Tesseract OCR", "Python", "화면 캡처"], "points": ["소환 전후 보유 재화를 OCR로 읽기", "전후 차이를 기대 소모량과 비교", "차감 결과를 PASS·FAIL로 판정"], "goal": "소환 동작 이후의 재화 차감량을 확인합니다. 실행 전후 수치를 비교해 눈으로 지나치기 쉬운 결과를 검증합니다.", "method": "실행 전 OCR → 소환 클릭 → 실행 후 OCR → 차감량 계산 → 기대값과 비교", "evidence": null, "cap": "", "slide": "10"}, {"key": "recovery", "title": "예외 감시와 복구", "sub": "팝업 처리 · 증거 수집", "q": "예상 밖의 화면에서도, 원인을 남깁니다.", "file": "popup-recovery", "tools": ["Python", "Watcher", "재시도", "로그·스크린샷"], "points": ["메인 실행과 별도로 예외 팝업 감시", "팝업 처리와 재시도 흐름 구성", "로그·스크린샷으로 중단 지점 확인"], "goal": "재화 부족 등 예외 팝업에 대응하고, 처리 결과를 남겨 자동화가 어느 단계에서 멈췄는지 확인할 수 있도록 구성했습니다.", "method": "메인 반복 실행 + 팝업 감시 → 예외 처리 → 재시도 → 로그·화면 저장", "evidence": "automation-flow", "cap": "반복 성장 루틴에서 자동화할 구간과 각 단계의 실행 흐름을 정리한 원본 자료입니다.", "slide": "11"}];
+const ov=$('#ov'),ovBody=$('#ovBody');let opener=null;
+function closeCard(){ovBody.querySelectorAll('video').forEach(v=>v.pause());ov.classList.remove('on');ov.inert=true;ov.setAttribute('aria-hidden','true');document.body.classList.remove('lock');opener?.focus({preventScroll:true});}
+function openCard(card){opener=card;const c=CASES.find(c=>c.key===card.dataset.key);ovBody.innerHTML='<div class="tp"><span>메이플키우기 자동화 · 팀 3인</span><b>실제 시연</b></div><h3>'+c.title+'<s>'+c.sub+'</s></h3><p class="q">'+c.q+'</p><section class="evidence"><h4>검증 대상</h4><p>'+c.goal+'</p><h4>실행 흐름</h4><p>'+c.method+'</p><h4>실제 실행 영상</h4><video controls muted playsinline preload="metadata" poster="../assets/qa/'+c.file+'.webp" aria-label="'+c.title+' 시연"><source src="../assets/qa/'+c.file+'.mp4" type="video/mp4"></video><p class="evidence-note">게임 화면과 실행 로그를 함께 담은 시연입니다. 재생 버튼과 전체화면을 이용해 확인할 수 있습니다.</p>'+(c.evidence?'<figure><a href="../assets/qa/'+c.evidence+'.webp" target="_blank" rel="noopener"><img src="../assets/qa/'+c.evidence+'.webp" alt="'+c.cap+'"></a><figcaption>'+c.cap+'</figcaption></figure>':'')+'<p class="case-source">자료: 도태단 「메이플 키우기 자동화 테스트 시스템」 · 시연 슬라이드 '+c.slide+'<br>발표 자료에 포함된 실제 시연과 기록을 사용했습니다.</p></section>';ov.inert=false;ov.classList.add('on');ov.setAttribute('aria-hidden','false');document.body.classList.add('lock');ov.scrollTop=0;$('#ovClose').focus({preventScroll:true});}
+$$('.card').forEach(c=>{c.addEventListener('click',()=>openCard(c));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard(c);}})});$('#ovClose').addEventListener('click',closeCard);addEventListener('keydown',e=>{if(!ov.classList.contains('on'))return;if(e.key==='Escape')closeCard();if(e.key==='Tab'){const focusables=[...ov.querySelectorAll('button,a,video')];const first=focusables[0],last=focusables[focusables.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});ov.addEventListener('click',e=>{if(e.target.closest('a,button,img,video,iframe'))return;const sel=getSelection();if(sel&&!sel.isCollapsed&&ov.contains(sel.anchorNode))return;closeCard();});
+$$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const filter=b.dataset.filter;$$('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));let count=0;$$('.testcase').forEach(c=>{c.hidden=filter!=='전체'&&c.dataset.category!==filter;if(!c.hidden)count++;});$('.case-count').textContent=count+'개 테스트 설계';}));
+
+const steps=$$('.pstep'),pbig=$('#pbig'),ticks=$$('#ticks i');
+
+/* ── 리빌 ── */
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+$$('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3*80)+'ms';io.observe(el)});
+
+/* ── 스크롤 루프 ── */
+const links=$$('#idx a'),secs=links.map(a=>$('#'+a.dataset.t));
+let last=scrollY;
+function frame(){
+  const y=scrollY,h=innerHeight,dy=y-last;last=y;
+  vel+=(dy*.55-vel)*.12;
+
+  /* progress bar */
+  $('#bar').style.width=(y/(document.body.scrollHeight-h)*100)+'%';
+
+  /* 단어 하이라이트 */
+  const sr=$('#say').getBoundingClientRect();
+  if(sr.top<h && sr.bottom>0){
+    const p=clamp((h*.82-sr.top)/(sr.height*.62),0,1);
+    const n=Math.round(p*words.length);
+    words.forEach((w,i)=>w.classList.toggle('on',i<n));
+  }
+
+  /* 마퀴 */
+  mqx-=(1.1+Math.abs(vel)*.5);
+  const rw=$('#mqrow').scrollWidth/3;
+  if(-mqx>=rw)mqx+=rw;
+  $('#mqrow').style.transform='translate3d('+mqx+'px,0,0) skewX('+clamp(-vel*.12,-7,7)+'deg)';
+
+  /* 가로 핀 */
+  if(innerWidth>900&&!reduce){
+    const r=pin.getBoundingClientRect(),total=pin.offsetHeight-h;
+    const p=clamp(-r.top/total,0,1);
+    const dist=track.scrollWidth-innerWidth+60;
+    track.style.transform='translate3d('+(-p*dist)+'px,0,0)';
+    wp.style.width=(p*100)+'%';
+  }
+
+  /* 다크 섹션 */
+  const dark=[...$$('#work,#end')].some(s=>{const r=s.getBoundingClientRect();return r.top<40&&r.bottom>40;});
+  document.body.classList.toggle('dark',dark);
+
+  /* 프로세스 */
+  let act=0;
+  steps.forEach((s,i)=>{const r=s.getBoundingClientRect();
+    s.classList.toggle('on',r.top<h*.66&&r.bottom>h*.16);
+    if(r.top<h*.60)act=i;});
+  if(pbig)pbig.textContent=steps[act].dataset.n;
+  ticks.forEach((t,i)=>t.classList.toggle('on',i<=act));
+
+  /* 인덱스 */
+  secs.forEach((s,i)=>{const r=s.getBoundingClientRect();
+    links[i].classList.toggle('on',r.top<h*.5&&r.bottom>h*.5);});
+
+  requestAnimationFrame(frame);
+}
+if(!reduce)requestAnimationFrame(frame);
+else{words.forEach(w=>w.classList.add('on'));steps.forEach(s=>s.classList.add('on'));}
+
+/* 앵커 부드럽게 */
+$$('#idx a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();
+  document.getElementById(a.dataset.t).scrollIntoView({behavior:'smooth'});}));
+})();
+</script></body></html>
