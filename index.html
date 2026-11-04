@@ -1202,7 +1202,12 @@ function openCard(card){
 function closeCard(){ovBody.querySelectorAll('video').forEach(video=>video.pause());ov.classList.remove('on');document.body.classList.remove('lock');}
 $('#ovClose').addEventListener('click',closeCard);
 addEventListener('keydown',e=>{if(e.key==='Escape')closeCard();});
-ov.addEventListener('click',e=>{if(e.target===ov)closeCard();});
+ov.addEventListener('click',e=>{
+  if(e.target.closest('a,button,img,video,audio,iframe,input,select,textarea,[role="button"]'))return;
+  const selection=window.getSelection();
+  if(selection&&!selection.isCollapsed&&ov.contains(selection.anchorNode))return;
+  closeCard();
+});
 
 /* ── 카드 클릭으로만 상세 열기 (드래그 이동은 사용하지 않음) ── */
 $$('.card').forEach(c=>c.addEventListener('click',()=>openCard(c)));
