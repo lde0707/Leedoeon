@@ -282,6 +282,12 @@ body.dark #top .nm{color:#fff}
 body.lock{overflow:hidden}
 #ov .qa-gallery video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#0c1430;border:1px solid #28365f;border-radius:4px}
 #ov .qa-gallery .qa-note{margin:0;color:#9ca1a9;font-size:13px;line-height:1.8}
+.publish-link{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:10px 16px;border:1px solid var(--ac);border-radius:3px;color:var(--ac);font-family:var(--f6);font-size:13px}
+.publish-link:hover,.publish-link:focus-visible{background:var(--ac);color:#080f26}
+#ov .publish-panel{margin:28px 0 36px}
+#ov .publish-panel h4{font-size:14px;color:var(--ac);margin-bottom:10px}
+#ov .publish-panel p{font-size:13px;color:#c3cbdc;margin-bottom:16px}
+#ov .publish-panel iframe{display:block;width:100%;max-width:552px;height:167px;border:0;background:#fff;border-radius:3px}
 /* 상세 화면에서는 기본 마우스 포인터 사용 */
 body.lock,#ov,#ov *{cursor:auto}
 #ovClose,#ov a{cursor:pointer}
@@ -560,8 +566,8 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
         <article class="card" data-key="puzzle">
           <div class="no">06</div>
           <div class="body">
-            <div class="tp"><span>모바일 퍼즐</span><span>참여 4명</span><b>Unity 프로토타입</b></div>
-            <h3>말랑궤도<s>Android Puzzle · 중력 퍼즐</s></h3>
+            <div class="tp"><span>모바일 퍼즐</span><span>참여 4명</span><b>itch.io 공개</b></div>
+            <h3>데굴데굴 퍼즐<s>Degul Degul Puzzle · 중력 퍼즐</s></h3>
             <p class="q">한 번에 함께 움직이는 친구들, 순서를 바꾸면 길이 열립니다.</p>
             <ul class="short">
               <li>네 방향 입력으로 모든 블록을 함께 이동</li>
@@ -574,8 +580,9 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li><b>시도와 복구</b> — 되돌리기·재시작·진행 저장을 지원해 여러 해법을 편하게 시도할 수 있습니다.</li>
             </ul>
             <div class="tl"><span>Unity 2D</span><span>C#</span><span>모바일 UX</span></div>
-            <figure class="shot"><img src="assets/gameplay/puzzle-before-flow.webp" alt="말랑궤도 실제 두 친구 중력 퍼즐" loading="lazy">
+            <figure class="shot"><img src="assets/gameplay/puzzle-before-flow.webp" alt="데굴데굴 퍼즐 실제 두 친구 중력 퍼즐" loading="lazy">
               <figcaption>PLAY FLOW — 함께 움직이는 친구들을 목적지로</figcaption></figure>
+            <a class="publish-link" href="https://lde0707.itch.io/degul-degul" target="_blank" rel="noopener" onclick="event.stopPropagation()">itch.io에서 게임 보기 <span aria-hidden="true">↗</span></a>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                 stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -1160,6 +1167,14 @@ function openCard(card){
       '<figure><a href="assets/gameplay/'+g.file+'.webp" target="_blank" rel="noopener" aria-label="'+g.title+' 원본 이미지 보기"><img src="assets/gameplay/'+g.file+'.webp" alt="'+g.title+'" width="'+(g.width||(key==='puzzle'?780:1920))+'" height="'+(g.height||(key==='puzzle'?1688:1080))+'" loading="lazy" decoding="async"></a>'+
       '<figcaption><strong>'+g.title+'</strong>'+g.cap+'</figcaption></figure>').join('');
     ovBody.querySelector('.q').after(section);
+  }
+  if(key==='puzzle'){
+    const publication=document.createElement('section');
+    publication.className='publish-panel';
+    publication.setAttribute('aria-label','데굴데굴 퍼즐 itch.io 퍼블리싱');
+    publication.innerHTML='<h4>itch.io 퍼블리싱 · Undo</h4><p>Degul Degul Puzzle / 데굴데굴 퍼즐을 itch.io에서 공개했습니다.</p><iframe src="https://itch.io/embed/5285502" width="552" height="167" title="Degul Degul Puzzle / 데굴데굴 퍼즐 by Undo — itch.io"><a href="https://lde0707.itch.io/degul-degul">Degul Degul Puzzle / 데굴데굴 퍼즐 by Undo</a></iframe>';
+    publication.append(ovBody.querySelector('.publish-link'));
+    ovBody.querySelector('.q').after(publication);
   }
   if(key==='rushitadel'){
     const bosses=document.createElement('section');
