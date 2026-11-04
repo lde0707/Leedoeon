@@ -1,0 +1,80 @@
+{
+  "capturedOn": "2026-11-04",
+  "project": "Capstone/Capstone",
+  "scene": "Assets/Scenes/SampleScene.unity",
+  "method": "Unity standalone full-frame capture on a private desktop. Temporary harness navigates original UI and prepares representative inventory, recycling queue and settlement funds. No source artwork or layouts changed.",
+  "assets": [
+    {
+      "file": "trash-title-ui-20261104",
+      "title": "01 · 타이틀 — 탐험의 분위기와 시작 동선",
+      "cap": "지하 탐험의 배경을 타이틀에 담고, 게임 시작·설정·조작법을 한곳에 배치했습니다. 첫 화면에서 세계관과 기본 조작으로 이어집니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "c82296da35fb23335c89a3005f4b773a7619f2e606112f5081d8752145c8e011"
+    },
+    {
+      "file": "trash-main-ui-20261104",
+      "title": "02 · 목표 확인 — 시간·할당량·기력의 균형",
+      "cap": "남은 시간과 할당량, 기력과 가방 상태를 함께 보여줍니다. 더 캐고 내려갈지, 수집물을 지키기 위해 복귀할지 판단하는 기준입니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "bab7ace35276a04d3b66862e0c66f09186d996cea7a898462ce22e04d49143df"
+    },
+    {
+      "file": "trash-explore-ui-20261104",
+      "title": "03 · 탐색과 수집 — 깊이 내려갈수록 커지는 선택",
+      "cap": "지형을 파며 이동 경로를 만들고 쓰레기와 유물을 찾습니다. 탐색에 쓰는 기력과 귀환 시간을 고려해 수집 범위를 정합니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "c77cd90a6a0dd8ab068628b0e6c7c35bc6880cb510ef9b1aa7ef31c7189c4c96"
+    },
+    {
+      "file": "trash-inventory-ui-20261104",
+      "title": "04 · 인벤토리 — 수집물과 장비를 한눈에",
+      "cap": "쓰레기와 유물을 공통 슬롯에 정리하고 캐릭터·도구 정보를 함께 보여줍니다. 보유 물품과 남은 공간을 보고 다음 수집과 복귀를 계획합니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "6f4437188f3424b205877a083a529d8971fd63ab75d317015f68e57b42e5f3d3"
+    },
+    {
+      "file": "trash-recycling-ui-20261104",
+      "title": "05 · 분리수거 — 수집물을 수익으로 바꾸는 과정",
+      "cap": "보관한 쓰레기를 제한 시간 안에 알맞은 종류로 분류합니다. 대기열과 오염도를 함께 관리하며 탐색의 결과를 수익으로 연결합니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "c9026e570d4b57e7c972018c9ba50b866f041c245cd3ffb0a42d803f4d556d14"
+    },
+    {
+      "file": "trash-upgrade-ui-20261104",
+      "title": "06 · 낮의 강화 — 수익을 다음 탐색에 재투자",
+      "cap": "모은 돈으로 능력치를 강화합니다. 현재 부족한 이동·굴착·수집 능력을 선택해 같은 하루에 할 수 있는 활동을 늘리는 성장 구조입니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "6b846357f3b8c4067a24f4ddf2d6b3177f9a41dc99c5f6c1718fbe6a6b151e5c"
+    },
+    {
+      "file": "trash-codex-ui-20261104",
+      "title": "수집 목표 · 유물 도감",
+      "cap": "유물의 발견·복원 상태를 확인하는 기록 화면입니다. 아직 채우지 못한 항목을 다음 탐색의 목표로 삼도록 구성했습니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b415e1c6b3b3cdea7105474b5fcc95c2208ae51b7c711b31d709fef30faf3c84"
+    },
+    {
+      "file": "trash-settlement-ui-20261104",
+      "title": "07 · 하루 정산 — 선택의 결과를 확인",
+      "cap": "할당량 달성과 하루의 수익·비용을 정산합니다. 낮의 탐색과 분류 결과가 다음 날 사용할 자금으로 이어집니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "89e5f45581009655508820dcd4e436eac33f8701ff33ba5be026aee3f0485247"
+    },
+    {
+      "file": "trash-equipment-ui-20261104",
+      "title": "08 · 밤의 준비 — 다음 날의 탐색 방식 선택",
+      "cap": "장비의 가격과 효과를 살펴보고 다음 날에 필요한 도구를 준비합니다. 당장의 지출과 이후 탐색 효율을 비교하는 선택을 만듭니다.",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "f2ec86e27d49ba9f6c296de0dceb86909c7b44f8e49ef06481e8ee54c9eca69e"
+    }
+  ]
+}

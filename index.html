@@ -434,7 +434,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>일꾼 고용과 자동 재활용 시스템으로 수동 수집 외 수익 창출 루프 개발</li>
             </ul>
             <div class="tl"><span>Unity C#</span><span>Claude Code</span><span>Photoshop</span></div>
-            <figure class="shot"><img src="assets/gameplay/trash-main-ui.webp" alt="쓰레기 집게 소년 메인 화면과 게임 HUD" loading="lazy">
+            <figure class="shot"><img src="assets/gameplay/trash-main-ui-20261104.webp" alt="쓰레기 집게 소년 메인 화면과 게임 HUD" loading="lazy">
               <figcaption>UI FLOW — 탐색부터 분리수거와 다음 날 준비까지</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
@@ -474,7 +474,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
           <div class="no">03</div>
           <div class="body">
             <div class="tp"><span>2026.07 — 현재</span><span>참여 1명</span><b>2D 메트로배니아</b></div>
-            <h3>Stilldrawn<s>Unfin · 종이 세계 메트로배니아</s></h3>
+            <h3>StillDrawn<s>종이 세계 메트로배니아</s></h3>
             <p class="q">그림 도구로 능력을 얻고, 막혔던 종이 세계의 길을 다시 엽니다.</p>
             <ul class="short">
               <li>1·2지역 통합 맵에서 탐색과 능력 게이트 구현</li>
@@ -490,7 +490,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>Unity WebGL 프로토타입으로 1·2지역 통합 맵 탐색 검증</li>
             </ul>
             <div class="tl"><span>Unity 2D URP</span><span>Tilemap</span><span>AI Art Pipeline</span></div>
-            <figure class="shot"><img src="assets/gameplay/unfin-title-flow.webp" alt="Stilldrawn 실제 타이틀 화면" loading="lazy">
+            <figure class="shot"><img src="assets/gameplay/unfin-title-flow.webp" alt="StillDrawn 실제 타이틀 화면" loading="lazy">
               <figcaption>PLAY FLOW — 탐색과 능력 획득, 지도, 보스전</figcaption></figure>
             <span class="more">프로젝트 자세히 보기
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
@@ -828,14 +828,52 @@ const pin=$('#pin'),track=$('#track'),wp=$('#wprog i');
 /* 실제 Unity 실행 화면: 메뉴 흐름과 핵심 플레이 장면 */
 const GAMEPLAY={
   trash:[
-    {"file":"trash-main-ui","title":"01 · 메인 화면 — 오늘의 목표 확인","cap":"할당량·남은 시간·기력과 가방 상태를 확인하고 지하 탐색을 시작합니다."},
-    {"file":"trash-explore-ui","title":"02 · 지하 탐색 — 수집과 복귀 판단","cap":"시야와 기력을 관리하며 쓰레기를 모으고, 가방과 마감 시간을 살펴 지상으로 돌아갑니다."},
-    {"file":"trash-recycling-ui","title":"03 · 분리수거 작업대 — 수집물을 수익으로","cap":"대기열의 쓰레기를 제한 시간 안에 알맞은 종류로 분류하며 수익과 오염도를 관리합니다."},
-    {"file":"trash-upgrade-ui","title":"04 · 낮의 강화소 — 다음 탐색 준비","cap":"모은 돈으로 능력치를 강화해 이동·굴착·수집의 효율을 높입니다."},
-    {"file":"trash-codex-ui","title":"탐색 중 · 유물 도감","cap":"유물의 발굴·복원 상태를 살펴보며 다음 수집 목표를 정합니다."},
-    {"file":"trash-settlement-ui","title":"05 · 하루 정산 — 수익과 비용 확인","cap":"할당량 정산과 지출을 확인하고, 다음 날의 목표를 준비합니다."},
-    {"file":"trash-equipment-ui","title":"06 · 밤의 장비 상점 — 다음 날 준비","cap":"랜턴과 탐지기 등 필요한 장비를 선택해 다음 탐색의 범위를 넓힙니다."}
-  ],
+    {
+        "file": "trash-title-ui-20261104",
+        "title": "01 · 타이틀 — 탐험의 분위기와 시작 동선",
+        "cap": "지하 탐험의 배경을 타이틀에 담고, 게임 시작·설정·조작법을 한곳에 배치했습니다. 첫 화면에서 세계관과 기본 조작으로 이어집니다."
+    },
+    {
+        "file": "trash-main-ui-20261104",
+        "title": "02 · 목표 확인 — 시간·할당량·기력의 균형",
+        "cap": "남은 시간과 할당량, 기력과 가방 상태를 함께 보여줍니다. 더 캐고 내려갈지, 수집물을 지키기 위해 복귀할지 판단하는 기준입니다."
+    },
+    {
+        "file": "trash-explore-ui-20261104",
+        "title": "03 · 탐색과 수집 — 깊이 내려갈수록 커지는 선택",
+        "cap": "지형을 파며 이동 경로를 만들고 쓰레기와 유물을 찾습니다. 탐색에 쓰는 기력과 귀환 시간을 고려해 수집 범위를 정합니다."
+    },
+    {
+        "file": "trash-inventory-ui-20261104",
+        "title": "04 · 인벤토리 — 수집물과 장비를 한눈에",
+        "cap": "쓰레기와 유물을 공통 슬롯에 정리하고 캐릭터·도구 정보를 함께 보여줍니다. 보유 물품과 남은 공간을 보고 다음 수집과 복귀를 계획합니다."
+    },
+    {
+        "file": "trash-recycling-ui-20261104",
+        "title": "05 · 분리수거 — 수집물을 수익으로 바꾸는 과정",
+        "cap": "보관한 쓰레기를 제한 시간 안에 알맞은 종류로 분류합니다. 대기열과 오염도를 함께 관리하며 탐색의 결과를 수익으로 연결합니다."
+    },
+    {
+        "file": "trash-upgrade-ui-20261104",
+        "title": "06 · 낮의 강화 — 수익을 다음 탐색에 재투자",
+        "cap": "모은 돈으로 능력치를 강화합니다. 현재 부족한 이동·굴착·수집 능력을 선택해 같은 하루에 할 수 있는 활동을 늘리는 성장 구조입니다."
+    },
+    {
+        "file": "trash-codex-ui-20261104",
+        "title": "수집 목표 · 유물 도감",
+        "cap": "유물의 발견·복원 상태를 확인하는 기록 화면입니다. 아직 채우지 못한 항목을 다음 탐색의 목표로 삼도록 구성했습니다."
+    },
+    {
+        "file": "trash-settlement-ui-20261104",
+        "title": "07 · 하루 정산 — 선택의 결과를 확인",
+        "cap": "할당량 달성과 하루의 수익·비용을 정산합니다. 낮의 탐색과 분류 결과가 다음 날 사용할 자금으로 이어집니다."
+    },
+    {
+        "file": "trash-equipment-ui-20261104",
+        "title": "08 · 밤의 준비 — 다음 날의 탐색 방식 선택",
+        "cap": "장비의 가격과 효과를 살펴보고 다음 날에 필요한 도구를 준비합니다. 당장의 지출과 이후 탐색 효율을 비교하는 선택을 만듭니다."
+    }
+],
   rushitadel:[
     {"file":"rushitadel-title-ui","title":"01 · 타이틀 — 런 시작과 이어하기","cap":"새 게임·이어하기·설정 메뉴에서 플레이를 시작하거나 저장된 진행을 확인합니다."},
     {"file":"rushitadel-slots-ui","title":"02 · 저장 슬롯 — 진행 공간 선택","cap":"세 개의 슬롯에서 새 런을 시작할 위치와 기존 저장 상태를 확인합니다."},
@@ -1048,6 +1086,7 @@ const BOSS_PATTERNS=[
 ];
 
 const GAME_INTRO={
+  "trash": "제한된 하루 동안 지하에서 쓰레기와 유물을 모으고, 지상에서 분류·판매하며 성장하는 탐험 게임입니다. 시간·기력·가방 공간을 관리해 할당량을 채우고, 수익을 능력치와 장비에 재투자하는 순환을 설계했습니다.",
   "unfin": "그리다 만 스케치북을 탐험하는 2D 메트로배니아입니다. 발판과 적을 넘고 보스에 도전하며, 벽 점프·지우개 대시 같은 능력으로 막혀 있던 길을 엽니다. 탐험 지도에 남긴 단서를 보고 이전 장소로 돌아가는 것이 핵심입니다.",
   "booktower": "책 속 종이 공간을 탐색하며 기록을 제자리로 돌려놓는 3D 퍼즐입니다. 방향 장치로 중력을 바꾸면 기록 상자가 함께 움직입니다. 벽에 멈추는 위치와 이동 순서를 이용해 모든 상자를 같은 문양의 목표에 맞추고 다음 공간으로 나아갑니다.",
   "pearl": "물고기·게·해파리 등 역할이 다른 유닛으로 적을 막는 캐주얼 디펜스입니다. 전투 전에 덱을 편성하고, 전투에서는 제한된 골드를 소환과 강화에 나누어 씁니다. 스테이지 공략과 랭크 도전을 통해 보상을 모아 유닛을 성장시킵니다.",
@@ -1055,7 +1094,7 @@ const GAME_INTRO={
 };
 
 const UI_FLOW={
-  trash:'메인 HUD → 지하 탐색 → 분리수거 → 강화 → 하루 정산 → 다음 날 준비',
+  trash:'타이틀 → 목표 확인 → 탐색·인벤토리 → 분리수거·강화 → 하루 정산 → 다음 날 준비',
   rushitadel:'타이틀 → 저장 슬롯 → 테마 선택 → 전투 → 포탑 성장 → PLAYER WEB',
   unfin:"타이틀 → 탐색 → 능력 획득 → 지도와 재탐색 → 보스전",
   booktower:"첫 방 탐색 → 중력 조작 → 기록 복원 → 다음 방의 두 상자 퍼즐",
