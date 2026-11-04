@@ -50,7 +50,7 @@
     <div class="chips"><span class="chip">시스템 기획</span><span class="chip">밸런스</span><span class="chip">QA 테스트 설계</span><span class="chip">Unity / C#</span></div>
   </div>
 
-  <a class="lk main" href="../qa/">
+  <a class="lk main" href="../qa/index.html">
     <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
     <span class="tx"><span class="tt">QA 포트폴리오</span><span class="ds">자동화 시연 · 검증 과정 · 테스트 설계 보기</span></span>
     <span class="ar">→</span>
@@ -117,7 +117,7 @@
   <footer>© 2026 이도언 · GAME QA</footer>
 </div>
 <script>
-  const url = location.origin + '/links/';
+  const url = location.protocol === 'file:' ? 'https://leedoeon.vercel.app/links/' : location.origin + '/links/';
   const t = document.getElementById('toast');
   function msg(s){ t.textContent = s; setTimeout(()=>t.textContent='', 1800); }
   document.getElementById('copy').onclick = async () => {
