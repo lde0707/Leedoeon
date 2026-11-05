@@ -1,456 +1,404 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>승리의 여신: 니케 — 4주년 매출 급등 분석</title>
-<meta name="description" content="2026.10.29 4주년 업데이트로 니케의 매출 순위가 급등한 원인을 데이터와 콘텐츠 구조로 분석한 리포트">
+<title>승리의 여신: 니케 4주년 매출 급등 분석 · 이도언</title>
+<meta name="description" content="2026.10.29 4주년 업데이트로 매출 순위가 급등한 이유 — 데이터와 콘텐츠 설계로 읽는 라이브 운영 · 이도언">
+<meta property="og:title" content="니케 4주년 매출 급등 분석">
+<meta property="og:description" content="순위는 콘텐츠가 아니라, 서사의 결제 시점에 움직였다">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
 :root{
-  --f5:"Freesentation 5Medium","프리젠테이션 5",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
-  --f6:"Freesentation 6SemiBold","프리젠테이션 6",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
-  --f7:"Freesentation 7Bold","프리젠테이션 7",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
-  --f8:"Freesentation 8ExtraBold","프리젠테이션 8","Freesentation 7Bold",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
-  --ac:#1F56FF;        /* 포인트 — 코발트 블루 */
-  --ac-l:#1442D8;      /* 블루 딥 (텍스트용) */
-  --hot:#E8325C;       /* 보조 포인트 — 레드 */
-  --ink:#FFFFFF;       /* 페이지 바탕 */
-  --pan:#F5F7FD;       /* 섹션 패널 */
-  --pan2:#EAEFFB;      /* 강조 패널 */
-  --line:#DCE3F4;      /* 헤어라인 */
-  --tx:#0A1230; --tx2:#4B5675; --tx3:#8089A6;
-  --pad:clamp(20px,4.4vw,72px);
+  --paper:#F2F2F5; --paper2:#E6E7EE; --card:#FBFBFD; --ink:#141519; --mute:#787c8a; --line:#d7d9e3;
+  --blue:#2B4BFF; --blue2:#DDE2FF; --rose:#E8325C; --rose2:#FBDDE4; --steel:#D9DEEA; --gold:#F0E4C3;
+  --sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --grot:'Space Grotesk','Pretendard Variable',sans-serif;
+  --gut:clamp(18px,4vw,56px);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--ink);color:var(--tx);font-family:var(--f6);line-height:1.78;
-  word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-p,li{text-wrap:pretty}
-h1,h2,h3,h4,h5,.quote{text-wrap:balance}
-.lead,.rc p,.tl p,.box p{max-width:62ch}
-.rc .pts li{max-width:70ch}
-a{color:inherit;text-decoration:none}
-h1,h2,h3,h4{font-family:var(--f8);font-weight:400;letter-spacing:-.035em;line-height:1.18}
-::selection{background:var(--ac);color:#fff}
-img{max-width:100%;display:block}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;overflow-x:clip}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.78;
+  word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+::selection{background:var(--blue);color:#fff}
+p{margin:0 0 14px;text-wrap:pretty}
+h1,h2,h3{text-wrap:balance}
 
-/* 진행바 */
-#bar{position:fixed;top:0;left:0;height:4px;width:0;z-index:900;
-  background:linear-gradient(90deg,var(--ac),var(--hot));box-shadow:0 0 16px rgba(31,86,255,.7)}
+/* chrome */
+.bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--blue);z-index:81}
+.top{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;
+  padding:16px var(--gut);font:500 12px/1 var(--grot);letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.top.lt{color:#fff}
+.top a{text-decoration:none}
+.top .links{display:flex;gap:18px}
+@media(max-width:620px){.top .links{display:none}}
+.rail{position:fixed;left:calc(var(--gut) - 6px);top:50%;transform:translateY(-50%);z-index:70;
+  display:flex;flex-direction:column;gap:14px;transition:opacity .4s}
+.rail a{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 15px/1 var(--sans);color:var(--mute);opacity:.55;transition:.3s}
+.rail a i{display:block;width:16px;height:1px;background:currentColor;transition:.3s}
+.rail a.act{color:var(--blue);opacity:1}
+.rail a.act i{width:34px}
+.rail.hide{opacity:0;pointer-events:none}
+@media (max-width:1100px){.rail{display:none}}
 
-/* 네비 */
-nav{position:fixed;top:0;left:0;right:0;z-index:800;background:rgba(255,255,255,.86);
-  backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
-nav.on{border-bottom-color:var(--line)}
-nav .in{max-width:1180px;margin:0 auto;padding:0 var(--pad);height:62px;
-  display:flex;align-items:center;justify-content:space-between}
-nav .bd{font-family:var(--f7);font-size:13px;letter-spacing:.02em}
-nav .bd i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--hot);
-  margin-right:7px;box-shadow:0 0 10px var(--hot)}
-nav .mn{display:flex;gap:22px;font-family:var(--f6);font-size:12px;letter-spacing:.1em;color:var(--tx3)}
-nav .mn a{transition:.2s}nav .mn a:hover{color:var(--ac-l)}
-@media(max-width:820px){nav .mn{display:none}}
+figure{margin:0;position:relative;overflow:hidden;border-radius:20px;background:var(--paper2)}
+figure img{width:100%;height:100%;object-fit:cover}
+figure.ct img{object-fit:contain}
+figure.ct{background:var(--card)}
+figcaption{position:absolute;left:12px;bottom:10px;font:500 11px/1.3 var(--grot);letter-spacing:.05em;
+  background:rgba(20,21,25,.74);color:#fff;padding:5px 9px;border-radius:20px}
+.cr{font:500 11px/1.5 var(--grot);letter-spacing:.06em;color:var(--mute)}
 
-.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
-section{padding:clamp(70px,11vh,130px) 0;position:relative}
-.kick{font-family:var(--f6);font-size:11px;letter-spacing:.26em;color:var(--ac-l);margin-bottom:18px}
-.kick s{display:inline-block;width:30px;height:1px;background:var(--ac);text-decoration:none;
-  vertical-align:middle;margin-right:11px}
-h2{font-size:clamp(26px,4.4vw,46px)}
-.lead{margin-top:18px;color:var(--tx2);max-width:760px;font-size:clamp(14.5px,1.7vw,17px)}
+/* hero */
+.hero{height:100svh;min-height:640px;position:relative;overflow:hidden;color:#fff;background:#1b2036}
+.hero .bg{position:absolute;inset:-4% 0 0 0}
+.hero .bg img{width:100%;height:100%;object-fit:cover}
+.hero .shade{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(14,16,28,.42),rgba(14,16,28,.05) 32%,rgba(14,16,28,.55) 66%,rgba(14,16,28,.94))}
+.hero .in{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(30px,7vh,70px);
+  display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+.kick{font:500 12px/1.6 var(--grot);letter-spacing:.16em;text-transform:uppercase;opacity:.9;margin-bottom:14px}
+.hero h1{margin:0;font-weight:800;letter-spacing:-.05em;line-height:1.04;font-size:clamp(42px,7.2vw,112px)}
+.hero h1 em{font-style:normal;color:#9FB2FF}
+.hero h1 b{font-weight:800;color:#FF7C9B}
+.hero .sub{margin-top:18px;font-size:clamp(15px,1.5vw,19px);opacity:.92;max-width:580px}
+.hero .who{text-align:right;font:500 12px/1.8 var(--grot);letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.hero .who b{display:block;font:700 16px/1.4 var(--sans);letter-spacing:0;text-transform:none}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero .who{text-align:left}}
 
-/* HERO */
-header{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;
-  padding:120px 0 90px}
-.hbg{position:absolute;inset:0;z-index:0;
-  background:radial-gradient(900px 520px at 78% 18%,rgba(31,86,255,.14),transparent 62%),
-             radial-gradient(760px 480px at 12% 88%,rgba(232,50,92,.10),transparent 60%)}
-.hgrid{position:absolute;inset:0;z-index:0;opacity:.8;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:70px 70px;
-  mask-image:radial-gradient(120% 90% at 60% 30%,#000 5%,transparent 72%)}
-header .wrap{position:relative;z-index:2}
-.tagrow{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:26px}
-.tagrow span{font-family:var(--f6);font-size:11px;letter-spacing:.14em;color:var(--tx2);
-  border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px}
-.tagrow span.hot{border-color:var(--hot);color:#fff;background:var(--hot)}
-h1{font-size:clamp(38px,8.2vw,104px);line-height:1.04;letter-spacing:-.05em}
-h1 .jump{background:linear-gradient(100deg,var(--ac),var(--hot));-webkit-background-clip:text;
-  background-clip:text;color:transparent}
-h1 .out{-webkit-text-stroke:1.6px var(--tx);color:transparent}
-.hsub{margin-top:30px;max-width:620px;color:var(--tx2);font-size:clamp(14.5px,1.8vw,18px)}
-.hsub b{color:var(--tx);font-family:var(--f7)}
-.hmeta{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap;font-family:var(--f6);
-  font-size:11.5px;letter-spacing:.1em;color:var(--tx3)}
-.hmeta b{color:var(--tx2)}
-.scrolln{position:absolute;bottom:30px;right:var(--pad);font-family:var(--f6);font-size:10.5px;
-  letter-spacing:.22em;color:var(--tx3);display:flex;align-items:center;gap:10px;z-index:2}
-.scrolln i{display:block;width:40px;height:1px;background:var(--line);position:relative;overflow:hidden}
-.scrolln i:after{content:"";position:absolute;inset:0;background:var(--ac);animation:sw 1.9s infinite}
-@keyframes sw{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+/* chapter opener */
+.ch{min-height:80vh;display:grid;place-items:center;text-align:center;padding:100px var(--gut);position:relative;overflow:hidden}
+.ch .han{font:900 clamp(150px,28vw,400px)/1 var(--sans);color:transparent;-webkit-text-stroke:1.5px currentColor;
+  opacity:.2;position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;user-select:none}
+.ch .t{position:relative}
+.ch .num{font:500 12px/1 var(--grot);letter-spacing:.24em;text-transform:uppercase;margin-bottom:20px;opacity:.75}
+.ch h2{margin:0;font-weight:800;letter-spacing:-.045em;line-height:1.12;font-size:clamp(34px,5.6vw,80px)}
+.ch p{margin:20px auto 0;max-width:580px;font-size:clamp(15px,1.4vw,19px);opacity:.82}
+.ch.c1{background:var(--paper)} .ch.c1 h2 em{font-style:normal;color:var(--blue)}
+.ch.c2{background:var(--blue2)} .ch.c2 h2 em{font-style:normal;color:#1C34C8}
+.ch.c3{background:var(--ink);color:var(--paper)} .ch.c3 h2 em{font-style:normal;color:#FFD66B}
+.ch.c4{background:var(--rose2)} .ch.c4 h2 em{font-style:normal;color:var(--rose)}
 
-/* KPI */
-.kpis{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}}
-.kpi{background:linear-gradient(170deg,var(--pan2),var(--pan));border:1px solid var(--line);
-  border-radius:4px;padding:24px 22px;position:relative;overflow:hidden;transition:.3s}
-.kpi:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 16px 36px -24px rgba(31,86,255,.65)}
-.kpi:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;
-  background:linear-gradient(90deg,var(--ac),transparent)}
-.kpi .n{font-family:var(--f8);font-size:clamp(28px,4vw,42px);line-height:1;letter-spacing:-.04em;color:var(--tx)}
-.kpi .n em{font-style:normal;font-size:.46em;color:var(--ac-l);margin-left:5px}
-.kpi .l{margin-top:11px;font-size:12.5px;color:var(--tx2);line-height:1.5}
-.kpi .d{margin-top:7px;font-family:var(--f6);font-size:10.5px;letter-spacing:.1em;color:var(--tx3)}
+/* sections */
+.sec{padding:clamp(70px,11vh,140px) var(--gut)}
+.wrap{max-width:1140px;margin:0 auto}
+.lab{font:500 12px/1 var(--grot);letter-spacing:.18em;text-transform:uppercase;color:var(--mute);
+  display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.lab::before{content:"";width:30px;height:1px;background:currentColor}
+.h3{font-weight:800;letter-spacing:-.04em;line-height:1.16;font-size:clamp(26px,3.6vw,50px);margin:0 0 16px}
+.h3 em{font-style:normal;color:var(--blue)}
+.lead{font-size:clamp(15px,1.4vw,19px);color:#4a4d59;max-width:62ch;margin:0 0 34px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.two.w{grid-template-columns:1.1fr .9fr}
+@media (max-width:900px){.two,.two.w{grid-template-columns:1fr}}
 
-/* 표 */
-.tbl{margin-top:34px;overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--pan)}
-table{width:100%;border-collapse:collapse;min-width:620px}
-th,td{padding:14px 16px;text-align:left;font-size:13.5px;border-bottom:1px solid var(--line)}
-th{font-family:var(--f6);font-size:11px;letter-spacing:.14em;color:var(--tx3);
-  background:var(--pan2);white-space:nowrap}
-td{color:var(--tx2)}
-tr:last-child td{border-bottom:0}
-tbody tr:hover td{background:rgba(31,86,255,.07);color:var(--tx)}
-td b{color:var(--tx);font-family:var(--f7)}
-.rank1{color:var(--hot)!important;font-family:var(--f7)}
+/* kpi */
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
+.kpi div{border-radius:20px;padding:24px 22px;background:var(--ink);color:var(--paper)}
+.kpi div:nth-child(1){background:var(--blue)}
+.kpi b{display:block;font:700 clamp(34px,4vw,54px)/1 var(--grot);letter-spacing:-.05em}
+.kpi b i{font-style:normal;font-size:.42em;margin-left:4px;opacity:.8}
+.kpi span{font-size:13px;color:#c3c7d4;display:block;margin-top:9px}
+.kpi div:nth-child(1) span{color:#dbe2ff}
+.kpi em{font-style:normal;display:block;margin-top:5px;font:500 10.5px/1 var(--grot);letter-spacing:.14em;opacity:.6}
+@media (max-width:860px){.kpi{grid-template-columns:repeat(2,1fr)}}
 
-/* 카드 */
-.cards{margin-top:50px;display:grid;gap:18px}
-.rc{background:var(--pan);border:1px solid var(--line);border-radius:4px;padding:clamp(24px,3.4vw,40px);
-  position:relative;overflow:hidden;transition:.35s}
-.rc:hover{border-color:#B9C6E8;transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(10,18,48,.35)}
-.rc:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ac);
-  transform:scaleY(0);transform-origin:top;transition:.45s}
-.rc:hover:before{transform:scaleY(1)}
-.rc .num{font-family:var(--f8);font-size:clamp(40px,6vw,76px);line-height:.85;letter-spacing:-.05em;
-  color:transparent;-webkit-text-stroke:1.4px #C7D2EC;position:absolute;right:26px;top:18px}
-.rc h3{font-size:clamp(19px,2.6vw,27px);position:relative;z-index:1;padding-right:90px}
-.rc .why{margin-top:8px;font-family:var(--f6);font-size:12px;letter-spacing:.12em;color:var(--ac-l)}
-.rc p{margin-top:16px;color:var(--tx2);font-size:14.5px;max-width:800px}
-.rc .pts{margin-top:18px;list-style:none;display:grid;gap:9px}
-.rc .pts li{position-relative;position:relative;padding-left:20px;font-size:14px;color:var(--tx2)}
-.rc .pts li:before{content:"";position:absolute;left:0;top:10px;width:9px;height:1.5px;background:var(--ac-l)}
-.rc .pts li b{color:var(--tx)}
+/* table */
+.tb{margin-top:30px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card)}
+.tb table{width:100%;border-collapse:collapse;min-width:600px}
+.tb th,.tb td{padding:14px 18px;text-align:left;font-size:14px;border-bottom:1px solid var(--line)}
+.tb th{font:600 10.5px/1 var(--grot);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);background:var(--paper2)}
+.tb tr:last-child td{border-bottom:0}
+.tb td b{font-weight:700}
+.tb .one{color:var(--rose);font-weight:700}
+.scrollx{overflow-x:auto}
 
-/* 이미지 그리드 */
-.ig{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.ig figure{margin:0;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:#fff;
-  position:relative}
-.ig img{width:100%;height:150px;object-fit:cover;object-position:center 28%;
-  filter:saturate(.9);transition:.5s}
-.ig figure:hover img{filter:none;transform:scale(1.05)}
-.ig figcaption{padding:9px 11px;font-family:var(--f6);font-size:10.5px;letter-spacing:.06em;
-  color:var(--tx3);border-top:1px solid var(--line)}
-.wide{grid-column:1/-1}
-.wide img{height:auto;max-height:520px;object-fit:contain;background:#fff}
+/* lever cards */
+.lv{display:grid;gap:18px;margin-top:40px}
+.lvc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(24px,3.4vw,42px);position:relative;overflow:hidden}
+.lvc .no{position:absolute;right:28px;top:20px;font:700 clamp(48px,7vw,92px)/1 var(--grot);
+  letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.3px var(--steel)}
+.lvc .tag{display:inline-block;font:600 10.5px/1 var(--grot);letter-spacing:.16em;text-transform:uppercase;
+  background:var(--blue2);color:#1C34C8;padding:7px 12px;border-radius:20px;margin-bottom:14px}
+.lvc h3{margin:0 0 12px;font-weight:800;letter-spacing:-.035em;font-size:clamp(20px,2.7vw,30px);padding-right:90px}
+.lvc p{color:#4a4d59;max-width:62ch}
+.lvc ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.lvc li{position:relative;padding-left:19px;font-size:15px;color:#4a4d59;max-width:68ch}
+.lvc li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:1.5px;background:var(--blue)}
+.lvc li b{color:var(--ink)}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:22px}
+.shots figure{aspect-ratio:16/10;cursor:zoom-in}
+.shots figure.tall{aspect-ratio:3/4}
+.shots figure.wide{grid-column:span 2;aspect-ratio:16/8}
+@media(max-width:620px){.shots figure.wide{grid-column:span 1}}
 
-/* 타임라인 */
-.tl{margin-top:50px;position:relative;padding-left:26px}
-.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;
-  background:linear-gradient(var(--ac),var(--hot))}
-.tl .it{position:relative;padding-bottom:34px}
-.tl .it:last-child{padding-bottom:0}
-.tl .it:before{content:"";position:absolute;left:-26px;top:6px;width:11px;height:11px;border-radius:50%;
-  background:#fff;border:2px solid var(--ac);box-shadow:0 0 0 4px rgba(31,86,255,.12)}
-.tl .it.hot:before{border-color:var(--hot);box-shadow:0 0 0 4px rgba(232,50,92,.14)}
-.tl .dt{font-family:var(--f6);font-size:11.5px;letter-spacing:.14em;color:var(--ac-l)}
-.tl .it.hot .dt{color:var(--hot)}
-.tl h4{margin-top:7px;font-size:18px}
-.tl p{margin-top:7px;color:var(--tx2);font-size:14px;max-width:780px}
+/* quote */
+.qt{margin:34px 0 0;padding:0 0 0 20px;border-left:3px solid var(--rose);
+  font:600 clamp(18px,2.2vw,27px)/1.55 var(--sans);letter-spacing:-.02em}
+.qt cite{display:block;margin-top:10px;font:500 11.5px/1 var(--grot);font-style:normal;letter-spacing:.1em;color:var(--mute)}
 
-/* 인사이트 박스 */
-.box{margin-top:30px;border:1px solid var(--line);border-left:3px solid var(--hot);
-  background:linear-gradient(100deg,rgba(232,50,92,.07),transparent 60%);padding:24px 26px;border-radius:3px}
-.box .bt{font-family:var(--f6);font-size:11px;letter-spacing:.18em;color:var(--hot)}
-.box p{margin-top:10px;color:var(--tx);font-size:15px;line-height:1.75}
+/* timeline */
+.tl{margin-top:44px;position:relative}
+.tlline{position:absolute;left:0;right:0;top:9px;height:2px;background:var(--line);transform-origin:left}
+.tlr{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:900px){.tlr{grid-template-columns:1fr;gap:26px}.tlline{display:none}}
+.tlr>div{position:relative;padding-top:34px}
+.tlr>div::before{content:"";position:absolute;left:0;top:3px;width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--blue)}
+.tlr>div.hot::before{border-color:var(--rose);background:var(--rose)}
+.tlr .d{font:600 11px/1 var(--grot);letter-spacing:.14em;color:var(--blue);margin-bottom:9px}
+.tlr>div.hot .d{color:var(--rose)}
+.tlr h4{margin:0 0 7px;font-size:16.5px;letter-spacing:-.02em}
+.tlr p{font-size:13.5px;color:#5a5e6b;margin:0}
 
-.quote{margin-top:26px;border-left:3px solid var(--ac);padding:4px 0 4px 18px;
-  font-family:var(--f7);font-size:clamp(15px,2vw,19px);color:var(--tx)}
-.quote cite{display:block;margin-top:9px;font-family:var(--f6);font-size:11.5px;
-  font-style:normal;letter-spacing:.08em;color:var(--tx3)}
+/* formula */
+.fm{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:40px}
+@media(max-width:900px){.fm{grid-template-columns:repeat(2,1fr)}}
+.fm div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 18px}
+.fm small{font:600 10px/1 var(--grot);letter-spacing:.16em;color:var(--mute)}
+.fm b{display:block;margin-top:10px;font-size:16px;letter-spacing:-.02em}
+.fm p{margin:8px 0 0;font-size:13.5px;color:#5a5e6b}
 
-/* 공식 */
-.form{margin-top:44px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-@media(max-width:900px){.form{grid-template-columns:repeat(2,1fr)}}
-.fm{background:var(--pan2);border:1px solid var(--line);border-radius:3px;padding:20px 16px;transition:.3s}
-.fm:hover{border-color:var(--ac);transform:translateY(-3px)}
-.fm .s{font-family:var(--f6);font-size:10px;letter-spacing:.16em;color:var(--tx3)}
-.fm h5{margin-top:9px;font-family:var(--f7);font-size:15px;color:var(--tx);letter-spacing:-.02em}
-.fm p{margin-top:7px;font-size:12.5px;color:var(--tx2);line-height:1.55}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:40px}
+.gal figure{aspect-ratio:16/10;cursor:zoom-in;transition:transform .35s}
+.gal figure:hover{transform:translateY(-5px)}
 
-/* 주의 */
-.warn{margin-top:30px;border:1px dashed #C2CEEA;border-radius:4px;padding:22px 24px;background:#FFF7F9}
-.warn h4{font-size:15px;color:var(--tx)}
-.warn ul{margin-top:12px;list-style:none;display:grid;gap:8px}
-.warn li{padding-left:18px;position:relative;font-size:13.5px;color:var(--tx2)}
-.warn li:before{content:"!";position:absolute;left:0;top:0;color:var(--hot);font-family:var(--f7)}
+/* warn + source */
+.warn{margin-top:40px;border:1px dashed #c3c7d6;border-radius:20px;padding:26px 28px;background:#FFF8FA}
+.warn h4{margin:0 0 12px;font-size:16px}
+.warn ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.warn li{position:relative;padding-left:20px;font-size:14px;color:#4a4d59}
+.warn li::before{content:"!";position:absolute;left:2px;top:0;color:var(--rose);font-weight:700}
+.src{display:grid;gap:10px;margin-top:30px}
+.src a{display:flex;gap:16px;align-items:baseline;text-decoration:none;background:var(--card);
+  border:1px solid var(--line);border-radius:16px;padding:15px 18px;font-size:14.5px;transition:.25s}
+.src a:hover{border-color:var(--blue);color:var(--blue);transform:translateX(5px)}
+.src a span{font:600 10.5px/1 var(--grot);letter-spacing:.1em;color:var(--mute);white-space:nowrap}
 
-/* 출처 */
-.src{margin-top:34px;display:grid;gap:9px}
-.src a{display:flex;gap:14px;align-items:baseline;padding:13px 16px;border:1px solid var(--line);
-  border-radius:3px;background:var(--pan);transition:.25s;font-size:13.5px;color:var(--tx2)}
-.src a:hover{border-color:var(--ac);color:var(--ac);background:#fff;transform:translateX(4px);box-shadow:0 10px 26px -18px rgba(31,86,255,.6)}
-.src a span{font-family:var(--f6);font-size:10.5px;letter-spacing:.1em;color:var(--tx3);white-space:nowrap}
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:95;background:rgba(14,16,28,.94);display:none;place-items:center;padding:40px;cursor:zoom-out}
+#lb.on{display:grid}
+#lb img{max-width:92vw;max-height:84vh;object-fit:contain;border-radius:8px}
+#lb .cap{position:absolute;left:0;right:0;bottom:24px;text-align:center;color:#d8dcea;
+  font:500 12.5px/1.5 var(--grot);padding:0 40px}
 
-/* 대형 갤러리 */
-.gal-grid{margin-top:46px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.gal-grid figure{margin:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;
-  background:#fff;cursor:zoom-in;transition:.3s}
-.gal-grid figure:hover{border-color:var(--ac);transform:translateY(-4px);
-  box-shadow:0 18px 40px -26px rgba(31,86,255,.5)}
-.gal-grid img{width:100%;height:176px;object-fit:cover;object-position:center 26%;transition:.5s}
-.gal-grid figure:hover img{transform:scale(1.06)}
-.gal-grid figcaption{padding:11px 13px;font-family:var(--f6);font-size:11px;letter-spacing:.04em;
-  color:var(--tx2);border-top:1px solid var(--line);line-height:1.5}
-.gal-grid figcaption b{color:var(--ac);font-family:var(--f7);display:block;margin-bottom:3px;
-  font-size:10px;letter-spacing:.14em}
+footer{background:var(--ink);color:#9aa0b2;padding:60px var(--gut)}
+footer .in{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font:500 11.5px/1.6 var(--grot);letter-spacing:.1em;text-transform:uppercase}
+footer a{color:#9FB2FF;text-decoration:none}
 
-/* 라이트박스 */
-#lb{position:fixed;inset:0;z-index:950;background:rgba(6,10,26,.93);display:none;
-  align-items:center;justify-content:center;padding:40px;cursor:zoom-out}
-#lb.on{display:flex}
-#lb img{max-width:92vw;max-height:84vh;object-fit:contain;border-radius:3px;
-  box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
-#lb .cap{position:absolute;left:0;right:0;bottom:26px;text-align:center;color:#D7DEF0;
-  font-family:var(--f6);font-size:12.5px;letter-spacing:.04em;padding:0 40px}
-#lb .x{position:absolute;top:22px;right:28px;font-family:var(--f6);font-size:12px;
-  letter-spacing:.18em;color:#fff;border:1px solid rgba(255,255,255,.35);
-  border-radius:2px;padding:10px 16px}
-.ig figure{cursor:zoom-in}
-
-footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--pan)}
-footer .in{max-width:1180px;margin:0 auto;padding:0 var(--pad);display:flex;
-  justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--f6);
-  font-size:11.5px;letter-spacing:.1em;color:var(--tx3)}
-footer a{color:var(--ac-l)}
-
-.rv{opacity:0;transform:translateY(26px);transition:opacity .75s,transform .75s cubic-bezier(.16,1,.3,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(26px)}
+html:not(.anim) .rv{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<div id="bar"></div>
-<nav id="nav"><div class="in">
-  <div class="bd"><i></i>NIKKE 4TH ANNIVERSARY REPORT</div>
-  <div class="mn">
-    <a href="#data">순위 데이터</a><a href="#why">급등 원인</a>
-    <a href="#timeline">타임라인</a><a href="#insight">기획 인사이트</a><a href="#gallery">갤러리</a><a href="#source">출처</a>
+<div class="bar" id="bar"></div>
+<div class="top" id="top">
+  <a href="../index.html">← 이도언 포트폴리오</a>
+  <div class="links"><a href="#c1">기</a><a href="#c2">승</a><a href="#c3">전</a><a href="#c4">결</a></div>
+</div>
+<nav class="rail" id="rail">
+  <a href="#c1"><i></i>기</a><a href="#c2"><i></i>승</a><a href="#c3"><i></i>전</a><a href="#c4"><i></i>결</a>
+</nav>
+
+<section class="hero" data-tone="lt">
+  <div class="bg"><img id="heroImg" referrerpolicy="no-referrer"
+    src="https://i0.wp.com/playday.one/wp-content/uploads/2026/10/1024-Marian-Character-KV-scaled.png?resize=2048%2C1152&ssl=1"
+    alt="승리의 여신: 니케 4주년 마리안 키 비주얼"></div>
+  <div class="shade"></div>
+  <div class="in">
+    <div>
+      <div class="kick">Market Analysis · 2026.10.29 — 11.02</div>
+      <h1>순위는 <em>콘텐츠</em>가 아니라<br><b>서사의 결제 시점</b>에<br>움직였다</h1>
+      <p class="sub">승리의 여신: 니케는 4주년 업데이트 당일 한국 앱스토어 매출 1위에 올랐습니다.
+        4년 치 이야기를 끝내고, 무료 모집으로 문턱을 지우고, 한정 코스튬으로 결제를 받았습니다.</p>
+    </div>
+    <div class="who">Analysis by<b>이도언</b>게임 기획 · QA 지망</div>
   </div>
-</div></nav>
+</section>
 
-<header>
-  <div class="hbg"></div><div class="hgrid"></div>
-  <div class="wrap">
-    <div class="tagrow">
-      <span class="hot">MARKET ANALYSIS</span>
-      <span>2026.10.29 — 11.02</span>
-      <span>승리의 여신: 니케</span>
-      <span>시프트업 · 레벨 인피니트</span>
-    </div>
-    <h1>순위는 <span class="out">콘텐츠</span>가 아니라<br><span class="jump">서사의 결제 시점</span>에<br>움직였다</h1>
-    <p class="hsub">4주년 업데이트 하루 만에 <b>한국 애플 앱스토어 매출 1위</b>.
-      4년간 쌓은 메인 스토리를 끝내고, 무료 모집으로 문턱을 지우고, 한정 코스튬으로 결제를 받았습니다.
-      순위 급등의 구조를 데이터와 콘텐츠 설계로 분해했습니다.</p>
-    <div class="hmeta">
-      <span>작성 <b>이도언</b></span>
-      <span>기준일 <b>2026.11.05</b></span>
-      <span>자료 <b>모바일인덱스 · 언론 보도</b></span>
-    </div>
+<section class="ch c1" id="c1" data-tone="dk">
+  <div class="han">起</div>
+  <div class="t">
+    <div class="num">Chapter 01 — What happened</div>
+    <h2>업데이트 당일,<br><em>앱스토어 1위</em></h2>
+    <p>2026년 10월 29일. 니케는 4주년 업데이트가 적용된 그날 한국 애플 앱스토어 매출 1위를 찍었습니다.
+      일본·대만도 같은 날 상위권에 들었고, 구글플레이는 주말을 지나며 따라 올라왔습니다.</p>
   </div>
-  <div class="scrolln"><i></i>SCROLL</div>
-</header>
+</section>
 
-<section id="data">
+<section class="sec" data-tone="dk">
   <div class="wrap">
-    <div class="rv">
-      <div class="kick"><s></s>01 — 무슨 일이 있었나</div>
-      <h2>업데이트 당일, 앱스토어 1위</h2>
-      <p class="lead">2026년 10월 29일 4주년 업데이트가 적용된 날, 니케는 한국 애플 앱스토어 매출 1위에 올랐습니다.
-        일본·대만에서도 동시에 상위권에 진입했고, 반영이 느린 구글플레이는 며칠에 걸쳐 따라 올라왔습니다.</p>
+    <div class="lab rv">Rank Data</div>
+    <h3 class="h3 rv">하루 반짝이 아니라, <em>주 단위로 유지된 상승</em></h3>
+    <p class="lead rv">모바일인덱스 집계를 인용한 보도 기준입니다. 애플은 당일 즉시 1위,
+      구글플레이는 6위에서 사흘에 걸쳐 3위로 올라왔습니다. 스토어별 반영 속도 차이를 감안하면
+      일회성 스파이크가 아니라 유지되는 매출입니다.</p>
+
+    <div class="kpi rv">
+      <div><b>1<i>위</i></b><span>한국 애플 앱스토어 매출</span><em>10.29 업데이트 당일</em></div>
+      <div><b>6<i>→3위</i></b><span>한국 구글플레이 매출</span><em>10.30 → 11.02</em></div>
+      <div><b>1<i>위</i></b><span>일본 구글플레이 매출</span><em>11.02 기준</em></div>
+      <div><b>230<i>연차</i></b><span>기간 중 최대 모집 기회</span><em>특별 방송 발표</em></div>
     </div>
 
-    <div class="kpis rv">
-      <div class="kpi"><div class="n">1<em>위</em></div>
-        <div class="l">한국 애플 앱스토어 매출</div><div class="d">10.29 업데이트 당일</div></div>
-      <div class="kpi"><div class="n">6<em>→3위</em></div>
-        <div class="l">한국 구글플레이 매출</div><div class="d">10.30 → 11.02</div></div>
-      <div class="kpi"><div class="n">1<em>위</em></div>
-        <div class="l">일본 구글플레이 매출</div><div class="d">11.02 기준</div></div>
-      <div class="kpi"><div class="n">230<em>연차</em></div>
-        <div class="l">기간 중 최대 모집 기회</div><div class="d">특별 방송 발표</div></div>
-    </div>
-
-    <div class="tbl rv">
+    <div class="tb rv scrollx">
       <table>
         <thead><tr><th>기준일</th><th>스토어</th><th>한국</th><th>일본</th><th>대만</th><th>미국</th></tr></thead>
         <tbody>
-          <tr><td><b>10.29</b> 업데이트 당일</td><td>애플 앱스토어</td><td class="rank1">1위</td><td>2위</td><td>2위</td><td>—</td></tr>
-          <tr><td><b>10.30</b></td><td>애플 앱스토어</td><td class="rank1">1위</td><td>4위</td><td class="rank1">1위</td><td>19위</td></tr>
+          <tr><td><b>10.29</b> 업데이트 당일</td><td>애플 앱스토어</td><td class="one">1위</td><td>2위</td><td>2위</td><td>—</td></tr>
+          <tr><td><b>10.30</b></td><td>애플 앱스토어</td><td class="one">1위</td><td>4위</td><td class="one">1위</td><td>19위</td></tr>
           <tr><td><b>10.30</b></td><td>구글플레이</td><td>6위</td><td>4위</td><td>6위</td><td>40위</td></tr>
-          <tr><td><b>11.02</b></td><td>구글플레이</td><td>3위</td><td class="rank1">1위</td><td>5위</td><td>—</td></tr>
+          <tr><td><b>11.02</b></td><td>구글플레이</td><td>3위</td><td class="one">1위</td><td>5위</td><td>—</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="lead rv" style="margin-top:16px;font-size:13px;color:var(--tx3)">
-      출처: 모바일인덱스 집계를 인용한 ZDNet Korea(10.29 · 11.02), 테크M(10.30) 보도. '—'는 해당 기사에 수치가 없는 항목.</p>
+    <p class="cr rv" style="margin-top:12px">출처 · 모바일인덱스 집계를 인용한 ZDNet Korea(10.29 · 11.02), 테크M(10.30) 보도. ‘—’는 해당 기사에 수치가 없는 항목</p>
 
-    <div class="ig rv">
-      <figure class="wide">
-        <img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://image.zdnet.co.kr/2026/11/02/993437b668847d8cddd2557acd7ad732.png" alt="4주년 업데이트 이후 매출 순위 변화 그래프" loading="lazy">
-        <figcaption>4주년 업데이트 이후 매출 순위 급등 · 자료: 모바일인덱스 (ZDNet Korea 2026.11.02 보도)</figcaption>
-      </figure>
-      <figure class="wide">
-        <img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://www.techm.kr/news/photo/202610/156705_224198_3859.png" alt="한국 일본 미국 대만 구글플레이 최고 매출 순위" loading="lazy">
-        <figcaption>한국 · 일본 · 미국 · 대만 구글플레이 게임 최고 매출 순위 · 자료: 모바일인덱스 (테크M 2026.10.30 보도)</figcaption>
-      </figure>
-    </div>
-
-    <div class="box rv">
-      <div class="bt">데이터 해석</div>
-      <p>애플 앱스토어는 당일 즉시 1위, 구글플레이는 6위에서 사흘에 걸쳐 3위로 올라왔습니다.
-        <b>스토어별 반영 속도 차이</b>를 감안하면 "하루 만에 수직 상승"이 아니라
-        <b>업데이트 당일 폭발 → 주말을 지나며 유지</b>되는 형태입니다. 일회성 스파이크가 아니라는 뜻입니다.</p>
+    <div class="shots rv" style="margin-top:34px">
+      <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy"
+        src="https://image.zdnet.co.kr/2026/11/02/993437b668847d8cddd2557acd7ad732.png"
+        alt="4주년 업데이트 이후 매출 순위 변화"><figcaption>매출 순위 급등 · 모바일인덱스</figcaption></figure>
+      <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy"
+        src="https://www.techm.kr/news/photo/202610/156705_224198_3859.png"
+        alt="한국 일본 미국 대만 구글플레이 최고 매출 순위"><figcaption>4개국 구글플레이 순위 · 모바일인덱스</figcaption></figure>
     </div>
   </div>
 </section>
 
-<section id="why" style="background:var(--pan)">
+<section class="ch c2" id="c2" data-tone="dk">
+  <div class="han">承</div>
+  <div class="t">
+    <div class="num">Chapter 02 — Why it worked</div>
+    <h2>다섯 개의 레버가<br><em>같은 날 당겨졌다</em></h2>
+    <p>보통 주년 업데이트는 큰 콘텐츠 하나로 승부합니다.
+      니케는 서사 · 캐릭터 · 재화 · 코스튬 · 오프라인 다섯 축을 겹쳐 터뜨렸습니다.
+      각각이 서로 다른 유저층을 건드립니다.</p>
+  </div>
+</section>
+
+<section class="sec" data-tone="dk">
   <div class="wrap">
-    <div class="rv">
-      <div class="kick"><s></s>02 — 왜 올랐나</div>
-      <h2>다섯 개의 레버가<br>같은 날 동시에 당겨졌다</h2>
-      <p class="lead">주년 업데이트는 보통 하나의 큰 콘텐츠로 승부합니다. 니케는 서사 · 캐릭터 · 재화 · 코스튬 · 오프라인
-        다섯 축을 같은 날 겹쳐 터뜨렸습니다. 각각이 서로 다른 유저층을 건드립니다.</p>
-    </div>
+    <div class="lv">
 
-    <div class="cards">
-
-      <article class="rc rv">
-        <div class="num">01</div>
+      <article class="lvc rv">
+        <div class="no">01</div>
+        <div class="tag">Returning User · 복귀 명분</div>
         <h3>4년 치 서사의 결제 시점</h3>
-        <div class="why">RETURNING USER — 복귀 유저를 부르는 명분</div>
-        <p>메인 스토리 49챕터 '모든 것을 건 결전', 50챕터 '우리는 위로 올라간다'가 공개되며
-          출시 이후 4년간 이어진 <b>인류 대 '퀸'</b>의 대결이 마침표를 찍었습니다.
-          신규 보스로는 '노스텔지어', 그리고 퀸이 릴리바이스의 몸을 강탈해 궤도 엘리베이터와 융합한
-          '<b>승리의 여신</b>'이 등장합니다. 게임 제목이 곧 최종 보스가 되는 연출입니다.</p>
-        <ul class="pts">
+        <p>메인 스토리 49챕터 ‘모든 것을 건 결전’과 50챕터 ‘우리는 위로 올라간다’가 열리며
+          출시 이후 이어진 인류와 ‘퀸’의 대결이 마침표를 찍었습니다.
+          신규 보스로 ‘노스텔지어’, 그리고 퀸이 릴리바이스의 몸을 강탈해 궤도 엘리베이터와 융합한
+          ‘승리의 여신’이 등장합니다. 게임 제목이 곧 최종 보스가 되는 연출입니다.</p>
+        <ul>
           <li>서사의 <b>결말</b>은 떠난 유저가 돌아올 가장 강한 명분 — 광고보다 복귀 전환율이 높은 트리거</li>
           <li>48챕터 클리어가 입장 조건 → 복귀 유저의 <b>밀린 콘텐츠 소비</b>를 자연스럽게 유도</li>
-          <li>시나리오 디렉터는 방송에서 <b>최종전 이후에도 다음 이야기가 이어진다</b>고 예고 — 이탈 방지 장치</li>
+          <li>시나리오 디렉터는 방송에서 <b>최종전 이후에도 이야기가 이어진다</b>고 예고 — 이탈 방지 장치</li>
         </ul>
-        <div class="ig">
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1596489802.png" alt="메인 스토리 49챕터" loading="lazy"><figcaption>메인 스토리 49챕터</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1978091842.png" alt="메인 스토리 50챕터" loading="lazy"><figcaption>50챕터 — 제3차 지상 탈환전</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1402711779.png" alt="신규 보스 승리의 여신" loading="lazy"><figcaption>최종 보스 '승리의 여신'</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1298142030.png" alt="신규 보스 노스텔지어" loading="lazy"><figcaption>신규 보스 '노스텔지어'</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1166969854.png" alt="노스텔지어 전투" loading="lazy"><figcaption>노스텔지어 — 49챕터 최초 등장</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1239160843.png" alt="승리의 여신 보스" loading="lazy"><figcaption>퀸이 궤도 엘리베이터와 융합한 형태</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1304838185.png" alt="TRAIL MARKER 이벤트" loading="lazy"><figcaption>'TRAIL MARKER' — 메인 스토리 완주 보상</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1580815740.png" alt="TRAIL MARKER 보상" loading="lazy"><figcaption>완주 시 모집 티켓 · 커스텀 모듈 지급</figcaption></figure>
+        <div class="shots">
+          <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://i.ytimg.com/vi/wR6H9eJw7Z0/maxresdefault.jpg" alt="4주년 메인 배틀 트레일러"><figcaption>Main Battle Trailer</figcaption></figure>
+          <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://i0.wp.com/playday.one/wp-content/uploads/2026/10/screenshot1-scaled.png?resize=1600%2C912&ssl=1" alt="인게임 전투 스크린샷"><figcaption>최종전 인게임</figcaption></figure>
+          <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://i0.wp.com/playday.one/wp-content/uploads/2026/10/screenshot2-scaled.png?resize=1600%2C912&ssl=1" alt="인게임 스크린샷"><figcaption>신규 챕터 전투</figcaption></figure>
+          <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://static.invenglobal.com/upload/image/2026/10/29/i1793236808985711.jpeg" alt="4주년 업데이트 실시"><figcaption>4주년 업데이트 실시 ⓒ Level Infinite</figcaption></figure>
         </div>
       </article>
 
-      <article class="rc rv">
-        <div class="num">02</div>
+      <article class="lvc rv">
+        <div class="no">02</div>
+        <div class="tag">Acquisition · 과금 전환</div>
         <h3>SSR 세 명을 한 번에, 그중 하나는 무료</h3>
-        <div class="why">ACQUISITION — 과금 전환의 직접 동력</div>
-        <p>최고 등급인 <b>SSR 필그림</b> 3종이 한 업데이트에 투입됐습니다.
-          화력형 '마리안 : 퀸'과 '홍련 : 신살'은 픽업 모집으로, 지원형 '라푼젤 : 생츄어리'는
-          <b>무료 배포</b>로 풀었습니다. 지갑을 여는 캐릭터와 발을 들이게 하는 캐릭터를 분리한 구성입니다.</p>
-        <ul class="pts">
-          <li><b>마리안 : 퀸</b> — 3버스트 화력형 MG '퍼펙트 월드' · 픽업 10.29~11.19</li>
-          <li><b>홍련 : 신살</b> — 3버스트 화력형 AR '화무십일일홍', 관통 특화 · 픽업 11.05~11.26</li>
-          <li><b>라푼젤 : 생츄어리</b> — 2버스트 지원형 RL, <b>최대 4장</b>(로그인 1 + 선택 상자 3)</li>
+        <p>최고 등급인 SSR 필그림 3종이 한 업데이트에 투입됐습니다.
+          화력형 ‘마리안 : 퀸’과 ‘홍련 : 신살’은 픽업 모집으로, 지원형 ‘라푼젤 : 생츄어리’는 무료 배포로 풀었습니다.
+          지갑을 여는 캐릭터와 발을 들이게 하는 캐릭터를 분리한 구성입니다.</p>
+        <ul>
+          <li><b>마리안 : 퀸</b> — 3버스트 화력형 MG ‘퍼펙트 월드’ · 픽업 10.29~11.19</li>
+          <li><b>홍련 : 신살</b> — 3버스트 화력형 AR ‘화무십일일홍’, 관통 특화 · 픽업 11.05~11.26</li>
+          <li><b>라푼젤 : 생츄어리</b> — 2버스트 지원형 RL · <b>최대 4장</b>(로그인 1 + 선택 상자 3)</li>
           <li>픽업을 <b>1주 간격으로 분리</b> — 한 번의 결제로 끝나지 않게 소비 구간을 늘림</li>
         </ul>
-        <div class="ig">
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1312174535.png" alt="마리안 퀸" loading="lazy"><figcaption>마리안 : 퀸</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1374106184.png" alt="홍련 신살" loading="lazy"><figcaption>홍련 : 신살</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1294225175.png" alt="라푼젤 생츄어리" loading="lazy"><figcaption>라푼젤 : 생츄어리 (무료 배포)</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1929387559.png" alt="무료 모집 안내" loading="lazy"><figcaption>무료 모집 · 라푼젤 최대 4장</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1413383816.png" alt="홍련 신살 스킬" loading="lazy"><figcaption>홍련 : 신살 — 관통 특화 AR</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1002507172.png" alt="마리안 퀸 스킬" loading="lazy"><figcaption>마리안 : 퀸 — 3버스트 화력형 MG</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1330257686.png" alt="라푼젤 생츄어리 스킬" loading="lazy"><figcaption>라푼젤 : 생츄어리 — 2버스트 지원형 RL</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1991407630.png" alt="홍련 신살 일러스트" loading="lazy"><figcaption>홍련 : 신살 일러스트</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1518353362.png" alt="마리안 퀸 일러스트" loading="lazy"><figcaption>마리안 : 퀸 일러스트</figcaption></figure>
+        <div class="shots">
+          <figure class="tall"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-158f6c60d03e7f04f2d80b4b8b16013b-1080x1920.jpg?width=900&format=jpeg" alt="마리안 퀸"><figcaption>마리안 : 퀸</figcaption></figure>
+          <figure class="tall"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-b2d706b3fb215a4bb73bb11694768787-1080x1920.jpg?width=900&format=jpeg" alt="홍련 신살"><figcaption>홍련 : 신살</figcaption></figure>
+          <figure class="tall"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-ac8225ba3b14d4396b9c912e4c99334c-1080x1920.jpg?width=900&format=jpeg" alt="라푼젤 생츄어리"><figcaption>라푼젤 : 생츄어리 (무료)</figcaption></figure>
+          <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-9c8cbafa68f0bf00822ca5f859fa671a-1920x1080.jpg?width=1200&format=jpeg" alt="마리안 퀸 소개"><figcaption>마리안 : 퀸 스킬 구성</figcaption></figure>
+          <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-daea8705646be55ca73e82c3b82fa8db-1920x1080.jpg?width=1200&format=jpeg" alt="홍련 신살 소개"><figcaption>홍련 : 신살 스킬 구성</figcaption></figure>
+          <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-fb3be95fbfa6f92c11d6256826761326-1920x1080.jpg?width=1200&format=jpeg" alt="라푼젤 생츄어리 소개"><figcaption>라푼젤 : 생츄어리 스킬 구성</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.gamemeca.com/trees/0001/782/587/gm687072_261029_nikke_tips_1.jpg" alt="마리안 퀸 요약"><figcaption>마리안 : 퀸 한 장 요약 · 게임메카</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.gamemeca.com/trees/0001/782/587/gm728671_261029_nikke_tips_2.jpg" alt="마리안 퀸 스킬 효과"><figcaption>스킬 효과 인게임 검증 · 게임메카</figcaption></figure>
         </div>
       </article>
 
-      <article class="rc rv">
-        <div class="num">03</div>
+      <article class="lvc rv">
+        <div class="no">03</div>
+        <div class="tag">Conversion · 문턱 제거</div>
         <h3>230연차를 먼저 쥐여주고 결제를 받는다</h3>
-        <div class="why">CONVERSION — 문턱 제거 → 아쉬움 → 결제</div>
-        <p>특별 방송에서 발표된 기간 중 <b>최대 230회의 모집 기회</b>, 신규 니케 모집과 필그림 선택 모집의
-          <b>매일 1회 무료 모집</b>, 14일 접속 보상, 교환 코드 4종까지 — 재화를 먼저 대량으로 풀었습니다.
-          무료 재화는 매출을 깎는 비용처럼 보이지만, 실제로는 <b>'거의 다 왔다'는 상태</b>를 만들어
+        <p>특별 방송에서 발표된 기간 중 최대 230회 모집 기회, 신규 니케와 필그림 선택 모집의 매일 1회 무료 모집,
+          14일 접속 보상, 교환 코드 4종까지. 재화를 먼저 대량으로 풀었습니다.
+          무료 재화는 매출을 깎는 비용처럼 보이지만, 실제로는 <b>‘거의 다 왔다’는 상태</b>를 만들어
           마지막 구간의 결제를 부릅니다.</p>
-        <ul class="pts">
-          <li>마리안 : 퀸 / 홍련 : 신살 픽업에 각 <b>21회 무료 모집</b> — 천장까지의 체감 거리를 좁힘</li>
+        <ul>
+          <li>두 픽업에 각각 <b>21회 무료 모집</b> — 천장까지의 체감 거리를 좁힘</li>
           <li>필그림 선택 모집(신데렐라 · 그레이브 · 나유타)으로 <b>과거 미보유 캐릭터</b>까지 회수</li>
-          <li>교환 코드로 쥬얼 900개 등 즉시 지급 — <b>재설치 직후 바로 뽑을 수 있는 상태</b>를 설계</li>
+          <li>교환 코드로 쥬얼 900개 즉시 지급 — <b>재설치 직후 바로 뽑을 수 있는 상태</b>를 설계</li>
         </ul>
-        <div class="ig">
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1274729835.png" alt="필그림 선택 모집" loading="lazy"><figcaption>필그림 선택 모집</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1056899452.png" alt="방송 기념 교환 코드" loading="lazy"><figcaption>방송 기념 교환 코드</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1351216641.png" alt="VOLT TRIP 이벤트" loading="lazy"><figcaption>이벤트 'VOLT TRIP'</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1442906814.png" alt="AFFECTION TRAIL 구매 이벤트" loading="lazy"><figcaption>구매 이벤트 'AFFECTION TRAIL'</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1840891821.png" alt="VOLT TRIP 보드" loading="lazy"><figcaption>VOLT TRIP — 주사위 보드 이벤트</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1381637115.png" alt="교환 코드" loading="lazy"><figcaption>교환 코드 — 쥬얼 900개 즉시 지급</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1276880033.png" alt="싱크로 부스트" loading="lazy"><figcaption>싱크로 부스트 — 성장 부담 완화</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1850961072.png" alt="챔피언 아레나 확대" loading="lazy"><figcaption>챔피언 아레나 4명 → 8명 확대</figcaption></figure>
+        <div class="shots">
+          <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-4127154621a13f394ad15f0387a2092e-2048x1152.jpg?width=1200&format=jpeg" alt="필그림 선택 모집"><figcaption>필그림 선택 모집</figcaption></figure>
+          <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-d9380fdd9e58883f8fe87e2002c67848-1920x1080.jpg?width=1200&format=jpeg" alt="4주년 로그인 이벤트"><figcaption>4TH ANNIVERSARY 접속 이벤트</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-e3c6c27b9b1a4e144fdf5d99a40ba7cf-2048x1152.jpg?width=1000&format=jpeg" alt="마리안 모집 기간"><figcaption>마리안 : 퀸 모집 기간</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-867078e2cc888393974a59fefb9804da-2048x1152.jpg?width=1000&format=jpeg" alt="홍련 모집 기간"><figcaption>홍련 : 신살 모집 기간</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-e9877007079d6b2cc872a0ea9d3bca31-2048x1152.jpg?width=1000&format=jpeg" alt="라푼젤 획득 기간"><figcaption>라푼젤 무료 획득 기간</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.gamemeca.com/trees/0001/782/587/gm845932_261029_nikke_tips_4.jpg" alt="라푼젤 비교 테스트"><figcaption>무료 SSR 성능 비교 · 게임메카</figcaption></figure>
         </div>
       </article>
 
-      <article class="rc rv">
-        <div class="num">04</div>
+      <article class="lvc rv">
+        <div class="no">04</div>
+        <div class="tag">Monetization · 확정 상품</div>
         <h3>진짜 매출은 코스튬에서 나온다</h3>
-        <div class="why">MONETIZATION — 확률 없는 확정 상품</div>
         <p>한정 코스튬 라인업이 함께 열렸습니다. 특히 <b>마리안 : 퀸 - 라스트 어펙션</b>은 웨딩드레스 콘셉트로,
-          최종전 서사와 맞물려 감정적 구매를 유도합니다. 코스튬은 <b>확률이 없는 확정 상품</b>이라
+          최종전 서사와 맞물려 감정적 구매를 유도합니다. 코스튬은 확률이 없는 확정 상품이라
           뽑기를 피하는 유저까지 결제 대상으로 끌어옵니다.</p>
-        <ul class="pts">
-          <li>신규: 마리안 : 퀸 - 라스트 어펙션, 스노우 화이트 : 헤비암즈 - 라크리모사, 나유타 - 삼독, 네온 : 비전 아이 - 디어 그레이스</li>
-          <li><b>기간 한정 코스튬 6종 재출시</b> — 과거 미구매 유저의 FOMO를 다시 자극</li>
-          <li>풀보이스 이벤트 'MARIA-n'으로 캐릭터에 감정을 먼저 쌓고 코스튬을 판매하는 <b>순서 설계</b></li>
+        <ul>
+          <li>신규 4종 — 라스트 어펙션, 라크리모사, 삼독, 디어 그레이스</li>
+          <li><b>기간 한정 코스튬 재출시</b> — 과거 미구매 유저의 FOMO를 다시 자극</li>
+          <li>풀보이스 이벤트 ‘MARIA-n’으로 감정을 먼저 쌓고 판매하는 <b>순서 설계</b></li>
         </ul>
-        <div class="ig">
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1987265289.png" alt="마리안 퀸 라스트 어펙션" loading="lazy"><figcaption>마리안 : 퀸 - 라스트 어펙션</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1692481803.png" alt="스노우 화이트 라크리모사" loading="lazy"><figcaption>스노우 화이트 - 라크리모사</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1850960665.png" alt="나유타 삼독" loading="lazy"><figcaption>나유타 - 삼독</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1757543048.png" alt="한정 코스튬 재등장" loading="lazy"><figcaption>한정 코스튬 6종 재출시</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1495838818.png" alt="네온 비전아이 디어 그레이스" loading="lazy"><figcaption>네온 : 비전 아이 - 디어 그레이스</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1423076345.png" alt="라스트 어펙션 상세" loading="lazy"><figcaption>라스트 어펙션 — 웨딩드레스 콘셉트</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1064543966.png" alt="라크리모사 상세" loading="lazy"><figcaption>라크리모사 상세 컷</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1336317416.png" alt="나유타 삼독 상세" loading="lazy"><figcaption>나유타 - 삼독 상세 컷</figcaption></figure>
-          <figure class="wide"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1723854197.png" alt="MARIA-n 이벤트" loading="lazy"><figcaption>풀보이스 스토리 이벤트 'MARIA-n' — 코스튬 판매 직전에 감정을 쌓는 장치</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1401247643.png" alt="MARIA-n 장면" loading="lazy"><figcaption>MARIA-n — 신규 애니메이션</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1837640416.png" alt="MARIA-n 미니게임" loading="lazy"><figcaption>미니게임 'FADING AFFECTION'</figcaption></figure>
+        <div class="shots">
+          <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-16e0a475544d5af2fb797d344b5b7f5e-2048x1152.jpg?width=1200&format=jpeg" alt="라스트 어펙션"><figcaption>마리안 : 퀸 - 라스트 어펙션</figcaption></figure>
+          <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-ad04d1a8633cff9bad4194316be0f589-2048x1152.jpg?width=1200&format=jpeg" alt="라크리모사"><figcaption>스노우 화이트 : 헤비암즈 - 라크리모사</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-1768dcfd1c05c0f34fb938173148878e-2048x1152.jpg?width=1000&format=jpeg" alt="나유타 삼독"><figcaption>나유타 - 삼독</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-f1aed520924f457c7d08b510b5f29f96-2048x1148.jpg?width=1000&format=jpeg" alt="디어 그레이스"><figcaption>네온 : 비전 아이 - 디어 그레이스</figcaption></figure>
+          <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-9f97f5e819b70552337e8fdb943c010a-2048x1152.jpg?width=1000&format=jpeg" alt="한정 코스튬 재출시"><figcaption>한정 코스튬 재출시</figcaption></figure>
+          <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://i.ytimg.com/vi/4SE4wRT2q34/maxresdefault.jpg" alt="MARIA-n 스토리 트레일러"><figcaption>MARIA-n Story Trailer</figcaption></figure>
         </div>
       </article>
 
-      <article class="rc rv">
-        <div class="num">05</div>
+      <article class="lvc rv">
+        <div class="no">05</div>
+        <div class="tag">Awareness · 비유저 노출</div>
         <h3>게임 밖에서도 같은 주에 부딪히게</h3>
-        <div class="why">AWARENESS — 비유저까지 노출시키는 오프라인</div>
-        <p>업데이트와 같은 주에 오프라인·콜라보 일정이 몰려 있습니다. 게임을 하지 않는 사람도
-          거리와 SNS에서 니케를 마주치게 만드는 <b>노출 설계</b>입니다.</p>
-        <ul class="pts">
-          <li><b>무신사 콜라보 'GODDESS ARISE'</b> 팝업스토어 — 11.06~11.19, 무신사 스토어 성수</li>
-          <li><b>용산 아이파크몰 'MARIAN: WHITE &amp; BLACK'</b> — 10.30~11.01, 최후의 전투 트릭아트 · 미니 콘서트</li>
-          <li><b>치지직 드롭스</b> 10.29~11.18 — 스트리머 방송 시청이 곧 보상, 자발적 노출 확보</li>
-          <li><b>AGF 2026</b>(12.04~06) · 오케스트라 콘서트(2027) 예고 — 관심을 다음 분기까지 연장</li>
+        <p>업데이트와 같은 주에 오프라인·콜라보 일정이 몰려 있습니다.
+          게임을 하지 않는 사람도 거리와 SNS에서 니케를 마주치게 만드는 노출 설계입니다.</p>
+        <ul>
+          <li><b>무신사 콜라보 ‘GODDESS ARISE’</b> 팝업스토어 — 11.06~11.19, 무신사 스토어 성수</li>
+          <li><b>용산 아이파크몰 ‘MARIAN: WHITE &amp; BLACK’</b> — 10.30~11.01, 트릭아트 · 미니 콘서트</li>
+          <li><b>치지직 드롭스</b> 10.29~11.18 — 방송 시청이 곧 보상, 자발적 노출 확보</li>
+          <li><b>AGF 2026</b>(12.04~06) · 오케스트라 콘서트(2027) — 관심을 다음 분기까지 연장</li>
         </ul>
-        <div class="ig">
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1567457025.png" alt="무신사 콜라보" loading="lazy"><figcaption>무신사 콜라보 'GODDESS ARISE'</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1864880536.png" alt="용산 옥외광고" loading="lazy"><figcaption>용산 아이파크몰 옥외 광고</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1090674322.png" alt="최후의 전투 트릭아트" loading="lazy"><figcaption>'최후의 전투' 트릭아트</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1363795015.png" alt="치지직 드롭스" loading="lazy"><figcaption>치지직 드롭스</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1849907299.png" alt="무신사 팝업 굿즈" loading="lazy"><figcaption>무신사 팝업 — 콜라보 굿즈</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1961002207.png" alt="AGF 2026" loading="lazy"><figcaption>AGF 2026 참가 (12.04~06)</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1272842788.png" alt="오케스트라 콘서트" loading="lazy"><figcaption>오케스트라 콘서트 'ECHOES OF ETERNITY'</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1428747116.png" alt="용산 행사" loading="lazy"><figcaption>용산 'MARIAN: WHITE &amp; BLACK'</figcaption></figure>
-          <figure><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1211832432.png" alt="컴플리트 앨범" loading="lazy"><figcaption>메인 스토리 컴플리트 앨범</figcaption></figure>
+        <div class="shots">
+          <figure class="ct wide"><img referrerpolicy="no-referrer" loading="lazy" src="https://i0.wp.com/playday.one/wp-content/uploads/2026/10/4thAnniLive-scaled.png?fit=1600%2C900&ssl=1" alt="4주년 라이브"><figcaption>4주년 라이브 방송</figcaption></figure>
+          <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://i.ytimg.com/vi/UfSV-VkK6iQ/maxresdefault.jpg" alt="4주년 영상"><figcaption>4주년 공식 영상</figcaption></figure>
+          <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://i.ytimg.com/vi/DgE1xifVal8/maxresdefault.jpg" alt="메인 스토리 영상"><figcaption>메인 스토리 영상</figcaption></figure>
+          <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://i.ytimg.com/vi/MgF0qr8Onzc/maxresdefault.jpg" alt="코스튬 영상"><figcaption>코스튬 공개 영상</figcaption></figure>
         </div>
       </article>
 
@@ -458,68 +406,96 @@ footer a{color:var(--ac-l)}
   </div>
 </section>
 
-<section id="timeline">
-  <div class="wrap">
-    <div class="rv">
-      <div class="kick"><s></s>03 — 어떻게 올랐나</div>
-      <h2>닷새 동안의 순서</h2>
-      <p class="lead">순위는 업데이트 당일에만 움직인 게 아닙니다. 예고 → 적용 → 확산 → 유지의 순서가 설계돼 있습니다.</p>
-    </div>
-    <div class="tl rv">
-      <div class="it"><div class="dt">10.24 (토) — 예고</div>
-        <h4>4주년 특별 방송</h4>
-        <p>공식 유튜브로 업데이트 전모를 공개. 최대 230회 모집 기회와 교환 코드 4종을 발표해
-          <b>업데이트 전에 복귀 결심을 끝내게</b> 만들었습니다. 방송 자체가 유입 캠페인 역할을 합니다.</p></div>
-      <div class="it hot"><div class="dt">10.29 (목) — 적용</div>
-        <h4>4주년 대규모 업데이트 · 한국 앱스토어 매출 1위</h4>
-        <p>메인 스토리 49·50챕터, SSR 3종, 한정 코스튬, 이벤트가 동시에 열림.
-          같은 날 한국 애플 앱스토어 매출 1위, 일본·대만 2위를 기록했습니다.</p></div>
-      <div class="it"><div class="dt">10.30 (금) — 확산</div>
-        <h4>대만 앱스토어 1위 · 구글플레이 진입</h4>
-        <p>대만 앱스토어 1위, 한국 구글플레이 6위. 같은 날부터 용산 오프라인 행사가 시작돼
-          온라인 화제성과 오프라인 노출이 겹쳤습니다.</p></div>
-      <div class="it"><div class="dt">11.02 (일) — 유지</div>
-        <h4>일본 구글플레이 1위 · 한국 3위</h4>
-        <p>주말을 지나며 구글플레이 순위가 따라 올라왔습니다. 당일 반짝이 아니라
-          <b>주간 단위로 유지되는 매출</b>이라는 점이 확인된 시점입니다.</p></div>
-      <div class="it"><div class="dt">11.06 ~ — 연장</div>
-        <h4>무신사 팝업스토어 · 홍련 픽업</h4>
-        <p>11.05 홍련 : 신살 픽업 시작, 11.06 무신사 팝업 오픈.
-          <b>2주 차에 두 번째 소비 피크</b>를 만들도록 일정이 배치돼 있습니다.</p></div>
-    </div>
+<section class="ch c3" id="c3" data-tone="lt">
+  <div class="han">轉</div>
+  <div class="t">
+    <div class="num">Chapter 03 — The order</div>
+    <h2>닷새 동안의<br><em>순서</em></h2>
+    <p>순위는 업데이트 당일에만 움직이지 않았습니다.
+      예고 → 적용 → 확산 → 유지 → 연장. 일정 자체가 설계돼 있습니다.</p>
   </div>
 </section>
 
-<section id="insight" style="background:var(--pan)">
+<section class="sec" data-tone="dk">
   <div class="wrap">
-    <div class="rv">
-      <div class="kick"><s></s>04 — 기획자의 시선</div>
-      <h2>주년 업데이트의 공식</h2>
-      <p class="lead">니케의 3주년과 4주년은 같은 구조를 반복합니다. 이 순서를 떼어놓고 보면
-        다른 라이브 게임에도 그대로 적용할 수 있는 설계도가 됩니다.</p>
-    </div>
-    <div class="form rv">
-      <div class="fm"><div class="s">STEP 01</div><h5>예고로 모은다</h5>
-        <p>본 업데이트 5일 전 방송으로 보상 규모를 먼저 공개해 복귀 결심을 앞당긴다.</p></div>
-      <div class="fm"><div class="s">STEP 02</div><h5>서사로 부른다</h5>
-        <p>오래 끌어온 메인 서사에 분기점을 만든다. 결말은 가장 강한 복귀 명분이다.</p></div>
-      <div class="fm"><div class="s">STEP 03</div><h5>재화로 지운다</h5>
-        <p>무료 모집·배포로 진입 문턱을 없앤다. 매출을 깎는 게 아니라 모수를 늘린다.</p></div>
-      <div class="fm"><div class="s">STEP 04</div><h5>코스튬으로 받는다</h5>
-        <p>확률 없는 확정 상품으로 결제를 회수한다. 감정을 쌓은 직후에 판다.</p></div>
-      <div class="fm"><div class="s">STEP 05</div><h5>밖에서 늘린다</h5>
-        <p>팝업·옥외·드롭스로 비유저 노출을 만들고, 다음 분기 일정까지 미리 건다.</p></div>
+    <div class="lab rv">Timeline</div>
+    <h3 class="h3 rv">예고는 5일 전에, <em>두 번째 피크는 2주 차에</em></h3>
+    <div class="tl rv">
+      <div class="tlline" id="tlLine"></div>
+      <div class="tlr">
+        <div><div class="d">10.24 · 예고</div><h4>4주년 특별 방송</h4>
+          <p>최대 230회 모집과 교환 코드를 먼저 공개해 업데이트 전에 복귀 결심을 끝내게 만들었습니다.</p></div>
+        <div class="hot"><div class="d">10.29 · 적용</div><h4>업데이트 · 앱스토어 1위</h4>
+          <p>스토리 49·50챕터, SSR 3종, 한정 코스튬이 동시 공개. 같은 날 한국 앱스토어 매출 1위.</p></div>
+        <div><div class="d">10.30 · 확산</div><h4>대만 1위 · 구글 진입</h4>
+          <p>대만 앱스토어 1위, 한국 구글 6위. 같은 날 용산 오프라인 행사 시작.</p></div>
+        <div><div class="d">11.02 · 유지</div><h4>일본 구글 1위</h4>
+          <p>주말을 지나며 구글 순위가 따라 상승. 당일 반짝이 아님이 확인된 시점.</p></div>
+        <div><div class="d">11.05~ · 연장</div><h4>홍련 픽업 · 무신사 팝업</h4>
+          <p>2주 차에 두 번째 소비 피크를 만들도록 일정이 배치돼 있습니다.</p></div>
+      </div>
     </div>
 
-    <blockquote class="quote rv">“3·4주년 연속 매출 순위 반등은 니케가 출시 초기 흥행 이후에도
+    <div class="lab rv" style="margin-top:80px">Gallery</div>
+    <h3 class="h3 rv">4주년에 <em>한 번에 쏟아진 것들</em></h3>
+    <p class="lead rv">같은 주에 공개된 콘텐츠를 모아 보면 이번 업데이트의 물량이 한눈에 들어옵니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
+    <div class="gal rv">
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-1dbd90a55e22147295d5e9106e60c7cc-1920x1080.jpg?width=1000&format=jpeg" alt="4주년 키 비주얼"><figcaption>4주년 키 비주얼</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-8b3c325b7c69ee34d62812589a47144d-1920x1080.jpg?width=1000&format=jpeg" alt="홍련 신살 스킬"><figcaption>홍련 : 신살 · 관통 특화</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-28b31f4a6db81027a3aac65a0ef07c16-1920x1080.jpg?width=1000&format=jpeg" alt="라크리모사 소개"><figcaption>라크리모사 상세</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-87f420da8b5cae3c57dc610e01c1576c-1920x1080.jpg?width=1000&format=jpeg" alt="라스트 어펙션 소개"><figcaption>라스트 어펙션 상세</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-accf03581a0ac19725cd9df51094e22a-1920x1080.jpg?width=1000&format=jpeg" alt="삼독 소개"><figcaption>나유타 - 삼독 상세</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-b51a59625257572d9d1b98f12af22d70-1920x1080.jpg?width=1000&format=jpeg" alt="디어 그레이스 소개"><figcaption>디어 그레이스 상세</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-fcad1717245f9d1cb078e63e9c8f3bc9-1080x1920.jpg?width=900&format=jpeg" alt="홍련 신살 일러스트"><figcaption>홍련 : 신살 일러스트</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://static.invenglobal.com/upload/image/2026/10/26/i1792978807073553.jpeg" alt="신규 SSR 필그림 공개"><figcaption>신규 SSR 필그림 ⓒ Level Infinite</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.gamemeca.com/trees/0001/782/587/gm829191_261029_nikke_tips_3.jpg" alt="성능 비교 테스트"><figcaption>기존 캐릭터와 성능 비교 · 게임메카</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.gamemeca.com/trees/0001/782/587/gm404650_261029_nikke_tips_5.jpg" alt="인디빌리아 공략"><figcaption>신규 콘텐츠 공략 · 게임메카</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.gamemeca.com/trees/0001/782/587/gm185241_261029_nikke_tips_6.jpg" alt="11월 5일 홍련 등장"><figcaption>11.05 홍련 : 신살 등장 예고</figcaption></figure>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy" src="https://www.gamespark.jp/release/imgs/detail/569617.jpg" alt="MARIA-n 보도자료"><figcaption>MARIA-n 보도자료 비주얼</figcaption></figure>
+    </div>
+    <p class="cr rv" style="margin-top:14px">이미지 ⓒ 시프트업 · 레벨 인피니트 — PR TIMES 보도자료, 게임메카, 인벤글로벌, PlayDay 기사 게재 자료</p>
+  </div>
+</section>
+
+<section class="ch c4" id="c4" data-tone="dk">
+  <div class="han">結</div>
+  <div class="t">
+    <div class="num">Chapter 04 — What I'd take</div>
+    <h2>주년 업데이트의<br><em>공식</em></h2>
+    <p>니케의 3주년과 4주년은 같은 구조를 반복합니다.
+      이 순서를 떼어놓고 보면 다른 라이브 게임에도 적용할 수 있는 설계도가 됩니다.</p>
+  </div>
+</section>
+
+<section class="sec" data-tone="dk">
+  <div class="wrap">
+    <div class="lab rv">Playbook</div>
+    <h3 class="h3 rv">예고로 모으고, 서사로 부르고, <em>재화로 지운 뒤, 코스튬으로 받는다</em></h3>
+    <div class="fm rv">
+      <div><small>STEP 01</small><b>예고로 모은다</b><p>본 업데이트 5일 전 방송으로 보상 규모를 먼저 공개해 복귀 결심을 앞당긴다.</p></div>
+      <div><small>STEP 02</small><b>서사로 부른다</b><p>오래 끌어온 메인 서사에 분기점을 만든다. 결말은 가장 강한 복귀 명분이다.</p></div>
+      <div><small>STEP 03</small><b>재화로 지운다</b><p>무료 모집·배포로 진입 문턱을 없앤다. 매출을 깎는 게 아니라 모수를 늘린다.</p></div>
+      <div><small>STEP 04</small><b>코스튬으로 받는다</b><p>확률 없는 확정 상품으로 결제를 회수한다. 감정을 쌓은 직후에 판다.</p></div>
+      <div><small>STEP 05</small><b>밖에서 늘린다</b><p>팝업·옥외·드롭스로 비유저 노출을 만들고, 다음 분기 일정까지 미리 건다.</p></div>
+    </div>
+
+    <blockquote class="qt rv">“3·4주년 연속 매출 순위 반등은 니케가 출시 초기 흥행 이후에도
       새로운 콘텐츠로 이용자의 관심과 소비를 끌어낼 경쟁력을 유지하고 있음을 보여준다.”
       <cite>ZDNet Korea · 2026.11.02</cite></blockquote>
 
-    <div class="box rv">
-      <div class="bt">내 결론</div>
-      <p>이번 급등은 "좋은 업데이트를 해서 순위가 올랐다"로 요약되지 않습니다.
-        <b>무료 재화로 모수를 최대로 키운 상태에서, 4년 치 감정이 가장 고조된 순간에 확정 상품을 배치한 것</b>이 핵심입니다.
-        순위를 올린 건 신규 캐릭터 자체가 아니라, <b>결제가 가장 자연스러워지는 시점을 설계한 순서</b>였습니다.</p>
+    <div class="two rv" style="margin-top:60px">
+      <div>
+        <div class="lab">My Conclusion</div>
+        <h3 class="h3">좋은 업데이트라서가 아니라,<br><em>결제 시점을 설계해서</em></h3>
+        <p class="lead" style="margin-bottom:0">무료 재화로 모수를 최대로 키운 상태에서,
+          4년 치 감정이 가장 고조된 순간에 확정 상품을 배치한 것이 핵심입니다.
+          순위를 올린 건 신규 캐릭터 자체가 아니라, 결제가 가장 자연스러워지는 지점을 찾아낸 순서였습니다.
+          기획자가 가져갈 것은 캐릭터 목록이 아니라 이 <b>타이밍 테이블</b>입니다.</p>
+      </div>
+      <figure class="ct"><img referrerpolicy="no-referrer" loading="lazy"
+        src="https://prcdn.freetls.fastly.net/release_image/145037/147/145037-147-22b31f4a6db81027a3aac65a0ef07c16-1920x1080.jpg?width=1000&format=jpeg"
+        onerror="this.src='https://i0.wp.com/playday.one/wp-content/uploads/2026/10/1024-Marian-Character-KV-scaled.png?resize=1400%2C788&ssl=1'"
+        alt="4주년 키 비주얼"><figcaption>4th Anniversary</figcaption></figure>
     </div>
 
     <div class="warn rv">
@@ -531,151 +507,94 @@ footer a{color:var(--ac-l)}
         <li>코스튬 수량은 기사마다 집계가 달라(신규 4종 / 6종 재출시 등) 보도 표기를 그대로 옮겼습니다.</li>
       </ul>
     </div>
-  </div>
-</section>
 
-
-<section id="gallery" style="background:var(--pan)">
-  <div class="wrap">
-    <div class="rv">
-      <div class="kick"><s></s>05 — 업데이트 한눈에 보기</div>
-      <h2>4주년에 한 번에 쏟아진 것들</h2>
-      <p class="lead">신규 캐릭터부터 코스튬, 시스템 개편, 오프라인 행사까지.
-        같은 주에 공개된 콘텐츠를 모아 보면 이번 업데이트의 물량이 한눈에 들어옵니다.
-        이미지를 누르면 크게 볼 수 있습니다.</p>
-    </div>
-    <div class="gal-grid rv">
-        <figure data-cap="4주년 특별 방송 — 업데이트 전모 공개"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1021198831.png" alt="4주년 특별 방송 — 업데이트 전모 공개" loading="lazy">
-          <figcaption><b>BROADCAST</b>4주년 특별 방송 — 업데이트 전모 공개</figcaption></figure>
-        <figure data-cap="홍련 : 신살 — 모션 컷"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1185779656.png" alt="홍련 : 신살 — 모션 컷" loading="lazy">
-          <figcaption><b>CHARACTER</b>홍련 : 신살 — 모션 컷</figcaption></figure>
-        <figure data-cap="마리안 : 퀸 — 모션 컷"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1606992850.png" alt="마리안 : 퀸 — 모션 컷" loading="lazy">
-          <figcaption><b>CHARACTER</b>마리안 : 퀸 — 모션 컷</figcaption></figure>
-        <figure data-cap="라푼젤 : 생츄어리 — 모션 컷"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1570732511.png" alt="라푼젤 : 생츄어리 — 모션 컷" loading="lazy">
-          <figcaption><b>CHARACTER</b>라푼젤 : 생츄어리 — 모션 컷</figcaption></figure>
-        <figure data-cap="라푼젤 : 생츄어리 — 스킬 구성"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1500688569.png" alt="라푼젤 : 생츄어리 — 스킬 구성" loading="lazy">
-          <figcaption><b>CHARACTER</b>라푼젤 : 생츄어리 — 스킬 구성</figcaption></figure>
-        <figure data-cap="무료 배포 SSR 라푼젤 : 생츄어리"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1294225175.png" alt="무료 배포 SSR 라푼젤 : 생츄어리" loading="lazy">
-          <figcaption><b>FREE</b>무료 배포 SSR 라푼젤 : 생츄어리</figcaption></figure>
-        <figure data-cap="MARIA-n — 이벤트 스테이지"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1212265030.png" alt="MARIA-n — 이벤트 스테이지" loading="lazy">
-          <figcaption><b>EVENT</b>MARIA-n — 이벤트 스테이지</figcaption></figure>
-        <figure data-cap="MARIA-n — 스토리 컷"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1029409418.png" alt="MARIA-n — 스토리 컷" loading="lazy">
-          <figcaption><b>EVENT</b>MARIA-n — 스토리 컷</figcaption></figure>
-        <figure data-cap="스노우 화이트 - 라크리모사"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1852016798.png" alt="스노우 화이트 - 라크리모사" loading="lazy">
-          <figcaption><b>COSTUME</b>스노우 화이트 - 라크리모사</figcaption></figure>
-        <figure data-cap="나유타 - 삼독"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1850491962.png" alt="나유타 - 삼독" loading="lazy">
-          <figcaption><b>COSTUME</b>나유타 - 삼독</figcaption></figure>
-        <figure data-cap="네온 : 비전 아이 - 디어 그레이스"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1083229709.png" alt="네온 : 비전 아이 - 디어 그레이스" loading="lazy">
-          <figcaption><b>COSTUME</b>네온 : 비전 아이 - 디어 그레이스</figcaption></figure>
-        <figure data-cap="디어 그레이스 — 상세 컷"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1060753000.png" alt="디어 그레이스 — 상세 컷" loading="lazy">
-          <figcaption><b>COSTUME</b>디어 그레이스 — 상세 컷</figcaption></figure>
-        <figure data-cap="디오라마 로비 — 꾸미기 슬롯 15개로 확대"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1454188321.png" alt="디오라마 로비 — 꾸미기 슬롯 15개로 확대" loading="lazy">
-          <figcaption><b>SYSTEM</b>디오라마 로비 — 꾸미기 슬롯 15개로 확대</figcaption></figure>
-        <figure data-cap="스텔라 블레이드 콜라보 예고"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1917597711.png" alt="스텔라 블레이드 콜라보 예고" loading="lazy">
-          <figcaption><b>COLLAB</b>스텔라 블레이드 콜라보 예고</figcaption></figure>
-        <figure data-cap="'여신의 궤적' — 4년 스토리 회고 웹 이벤트"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1006966928.png" alt="'여신의 궤적' — 4년 스토리 회고 웹 이벤트" loading="lazy">
-          <figcaption><b>WEB</b>'여신의 궤적' — 4년 스토리 회고 웹 이벤트</figcaption></figure>
-        <figure data-cap="여신의 궤적 — 12개 이야기"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1109246522.png" alt="여신의 궤적 — 12개 이야기" loading="lazy">
-          <figcaption><b>WEB</b>여신의 궤적 — 12개 이야기</figcaption></figure>
-        <figure data-cap="개발팀 스페셜 코멘터리"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1567324215.png" alt="개발팀 스페셜 코멘터리" loading="lazy">
-          <figcaption><b>DEV</b>개발팀 스페셜 코멘터리</figcaption></figure>
-        <figure data-cap="다음 서사 예고"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1011916366.png" alt="다음 서사 예고" loading="lazy">
-          <figcaption><b>DEV</b>다음 서사 예고</figcaption></figure>
-        <figure data-cap="용산 아이파크몰 옥외 광고"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1864880536.png" alt="용산 아이파크몰 옥외 광고" loading="lazy">
-          <figcaption><b>OFFLINE</b>용산 아이파크몰 옥외 광고</figcaption></figure>
-        <figure data-cap="용산 현장 — 미니 콘서트"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1024048012.png" alt="용산 현장 — 미니 콘서트" loading="lazy">
-          <figcaption><b>OFFLINE</b>용산 현장 — 미니 콘서트</figcaption></figure>
-        <figure data-cap="'최후의 전투' 트릭아트"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1090674322.png" alt="'최후의 전투' 트릭아트" loading="lazy">
-          <figcaption><b>OFFLINE</b>'최후의 전투' 트릭아트</figcaption></figure>
-        <figure data-cap="무신사 콜라보 'GODDESS ARISE'"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1567457025.png" alt="무신사 콜라보 'GODDESS ARISE'" loading="lazy">
-          <figcaption><b>OFFLINE</b>무신사 콜라보 'GODDESS ARISE'</figcaption></figure>
-        <figure data-cap="커스텀 CD 플레이어"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1455136615.png" alt="커스텀 CD 플레이어" loading="lazy">
-          <figcaption><b>GOODS</b>커스텀 CD 플레이어</figcaption></figure>
-        <figure data-cap="공식 이모티콘 · X 이벤트"><img referrerpolicy="no-referrer" crossorigin="anonymous" src="https://static.inven.co.kr/column/2026/10/24/news/i1425614026.png" alt="공식 이모티콘 · X 이벤트" loading="lazy">
-          <figcaption><b>COMMUNITY</b>공식 이모티콘 · X 이벤트</figcaption></figure>
-    </div>
-    <p class="lead rv" style="margin-top:20px;font-size:12.5px;color:var(--tx3)">
-      이미지 출처: 인벤 '니케 4주년 특별 방송' 기사(2026.10.24) 게재 자료 ⓒ 시프트업 · 레벨 인피니트</p>
-  </div>
-</section>
-
-<section id="source">
-  <div class="wrap">
-    <div class="rv">
-      <div class="kick"><s></s>06 — 참고 자료</div>
-      <h2>출처</h2>
-    </div>
+    <div class="lab rv" style="margin-top:70px">Sources</div>
     <div class="src rv">
-      <a href="https://zdnet.co.kr/view/?no=20261029174322" target="_blank" rel="noopener">
-        <span>ZDNet · 10.29</span>승리의 여신: 니케, 4주년 업데이트 직후 국내 앱스토어 매출 1위 기록</a>
-      <a href="https://zdnet.co.kr/view/?no=20261102094333" target="_blank" rel="noopener">
-        <span>ZDNet · 11.02</span>승리의 여신: 니케, 4주년 효과로 매출 순위 급등…장기 흥행 저력</a>
-      <a href="https://www.techm.kr/news/articleView.html?idxno=156705" target="_blank" rel="noopener">
-        <span>테크M · 10.30</span>4주년 승리의 여신: 니케, 한국·대만 앱스토어 매출 정상…구글서도 두각</a>
-      <a href="https://www.inven.co.kr/webzine/news/?news=322698" target="_blank" rel="noopener">
-        <span>인벤 · 10.29</span>승리의 여신: 니케, 4주년 업데이트 실시</a>
-      <a href="https://www.inven.co.kr/webzine/news/?news=322531" target="_blank" rel="noopener">
-        <span>인벤 · 10.24</span>[니케 4주년] 최대 230뽑기! '최종 결전' 니케 4주년 특별 방송</a>
-      <a href="https://www.gameple.co.kr/news/articleView.html?idxno=216841" target="_blank" rel="noopener">
-        <span>게임플 · 10.29</span>승리의 여신: 니케, 4주년 대규모 업데이트 등 게임 업계 핫클립</a>
-      <a href="https://www.thisisgame.com/articles/431623" target="_blank" rel="noopener">
-        <span>디스이즈게임</span>승리의 여신: 니케, 4주년으로 국내 매출 1위</a>
+      <a href="https://zdnet.co.kr/view/?no=20261029174322" target="_blank" rel="noopener"><span>ZDNet · 10.29</span>4주년 업데이트 직후 국내 앱스토어 매출 1위 기록</a>
+      <a href="https://zdnet.co.kr/view/?no=20261102094333" target="_blank" rel="noopener"><span>ZDNet · 11.02</span>4주년 효과로 매출 순위 급등…장기 흥행 저력</a>
+      <a href="https://www.techm.kr/news/articleView.html?idxno=156705" target="_blank" rel="noopener"><span>테크M · 10.30</span>한국·대만 앱스토어 매출 정상, 구글서도 두각</a>
+      <a href="https://www.inven.co.kr/webzine/news/?news=322531" target="_blank" rel="noopener"><span>인벤 · 10.24</span>최대 230뽑기! ‘최종 결전’ 니케 4주년 특별 방송</a>
+      <a href="https://www.inven.co.kr/webzine/news/?news=322698" target="_blank" rel="noopener"><span>인벤 · 10.29</span>승리의 여신: 니케, 4주년 업데이트 실시</a>
+      <a href="https://www.gamemeca.com/en/view.php?gid=1782587" target="_blank" rel="noopener"><span>게임메카 · 10.29</span>마리안 : 퀸 성능 분석과 인게임 검증</a>
+      <a href="https://www.gamespark.jp/release/prtimes/20261029/324572.html" target="_blank" rel="noopener"><span>PR TIMES · 10.29</span>4주년 버전 ‘MARIA-n’ 공식 보도자료</a>
     </div>
-    <p class="lead rv" style="margin-top:22px;font-size:12.5px;color:var(--tx3)">
-      본문에 사용된 이미지는 각 언론사 기사에 게재된 자료이며 저작권은 시프트업 · 레벨 인피니트 및 해당 언론사에 있습니다.
-      이 문서는 상업적 목적이 없는 개인 분석 자료입니다.</p>
   </div>
 </section>
 
-<div id="lb"><span class="x">CLOSE ✕</span><img referrerpolicy="no-referrer" crossorigin="anonymous" alt=""><div class="cap"></div></div>
+<div id="lb"><img alt=""><div class="cap"></div></div>
 
-<footer><div class="in">
-  <span>© 2026 이도언 · GAME DESIGN PORTFOLIO</span>
-  <span><a href="../index.html">← 포트폴리오로 돌아가기</a></span>
-</div></footer>
+<footer>
+  <div class="in">
+    <span>© 2026 이도언 · Game Design Portfolio</span>
+    <span><a href="../index.html">포트폴리오</a> · <a href="../lab/index.html">LAB</a> · <a href="#" id="toTop">맨 위로</a></span>
+  </div>
+</footer>
 
+<script src="../lab/vendor/gsap.min.js"></script>
+<script src="../lab/vendor/ScrollTrigger.min.js"></script>
+<script src="../lab/vendor/lenis.min.js"></script>
 <script>
 (function(){
-const $=(s)=>document.querySelector(s), $$=(s)=>[...document.querySelectorAll(s)];
-const nav=$('#nav'), bar=$('#bar');
-addEventListener('scroll',()=>{
-  const h=document.body.scrollHeight-innerHeight;
-  bar.style.width=(scrollY/h*100)+'%';
-  nav.classList.toggle('on',scrollY>20);
-},{passive:true});
-const io=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-}),{threshold:.08});
-$$('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el);});
-/* 숫자 카운트업 */
-const nums=$$('.kpi .n');
-const io2=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return; io2.unobserve(e.target);
-  const el=e.target, raw=el.childNodes[0].nodeValue.trim(), tgt=parseInt(raw,10);
-  if(isNaN(tgt))return; let v=0; const step=Math.max(1,Math.ceil(tgt/28));
-  const t=setInterval(()=>{v+=step; if(v>=tgt){v=tgt;clearInterval(t);} el.childNodes[0].nodeValue=v;},26);
-}),{threshold:.5});
-nums.forEach(n=>io2.observe(n));
-/* 라이트박스 */
-const lb=$('#lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('.cap');
-$$('.gal-grid figure, .ig figure').forEach(f=>f.addEventListener('click',()=>{
-  const im=f.querySelector('img'); if(!im)return;
-  lbImg.src=im.src; lbCap.textContent=f.querySelector('figcaption')?.innerText||'';
-  lb.classList.add('on'); document.body.style.overflow='hidden';
-}));
-function lbClose(){lb.classList.remove('on');document.body.style.overflow='';}
-lb.addEventListener('click',lbClose);
-addEventListener('keydown',e=>{if(e.key==='Escape')lbClose();});
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasG=!!window.gsap;
+  const $=(s)=>document.querySelector(s), $$=(s)=>[...document.querySelectorAll(s)];
 
-/* 깨진 이미지 숨김 */
-$$('.ig img, .gal-grid img').forEach(img=>img.addEventListener('error',()=>{
-  const f=img.closest('figure'); if(f)f.style.display='none';
-}));
-/* 부드러운 앵커 */
-$$('nav .mn a').forEach(a=>a.addEventListener('click',e=>{
-  const t=document.querySelector(a.getAttribute('href'));
-  if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
-}));
+  /* 깨진 이미지 숨김 */
+  $$('figure img').forEach(im=>im.addEventListener('error',()=>{
+    const f=im.closest('figure'); if(f && !im.dataset.fb) f.style.display='none';
+  }));
+
+  /* 라이트박스 */
+  const lb=$('#lb'), lbi=lb.querySelector('img'), lbc=lb.querySelector('.cap');
+  $$('.shots figure, .gal figure').forEach(f=>f.addEventListener('click',()=>{
+    const im=f.querySelector('img'); if(!im)return;
+    lbi.src=im.currentSrc||im.src; lbc.textContent=f.querySelector('figcaption')?.textContent||'';
+    lb.classList.add('on'); document.body.style.overflow='hidden';
+  }));
+  const close=()=>{lb.classList.remove('on');document.body.style.overflow='';};
+  lb.addEventListener('click',close);
+  addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+
+  /* 상단 바 톤 + 레일 + 진행도 */
+  const top=$('#top'),bar=$('#bar'),rail=$('#rail');
+  const toned=$$('[data-tone]'), chs=['c1','c2','c3','c4'].map(i=>document.getElementById(i)), rl=$$('#rail a');
+  function onS(){
+    const h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.width=(scrollY/h*100)+'%';
+    let cur=toned[0]; for(const s of toned){ if(s.getBoundingClientRect().top<40) cur=s; }
+    top.classList.toggle('lt',cur.dataset.tone==='lt');
+    let ci=-1; chs.forEach((c,i)=>{ if(c.getBoundingClientRect().top<innerHeight*.5) ci=i; });
+    rl.forEach((a,i)=>a.classList.toggle('act',i===ci));
+    rail.classList.toggle('hide',ci<0);
+  }
+  addEventListener('scroll',onS,{passive:true}); onS();
+  rl.forEach(a=>a.addEventListener('click',e=>{ if(window.__lenis){e.preventDefault();window.__lenis.scrollTo(a.getAttribute('href'));} }));
+  $('#toTop').addEventListener('click',e=>{e.preventDefault();window.__lenis?window.__lenis.scrollTo(0):scrollTo({top:0,behavior:'smooth'});});
+
+  if(!hasG||reduce)return;
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('anim');
+  if(window.Lenis){const l=new Lenis({lerp:.1});window.__lenis=l;l.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(t=>l.raf(t*1000));gsap.ticker.lagSmoothing(0);}
+
+  gsap.from('#heroImg',{scale:1.18,duration:2.4,ease:'expo.out'});
+  gsap.to('.hero .bg',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.from('.hero .kick,.hero h1,.hero .sub,.hero .who',{y:30,opacity:0,duration:1.2,ease:'expo.out',stagger:.1,delay:.3});
+
+  gsap.utils.toArray('.rv').forEach(el=>gsap.to(el,{opacity:1,y:0,duration:1.1,ease:'expo.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}}));
+  gsap.utils.toArray('.ch').forEach(c=>gsap.fromTo(c.querySelector('.han'),
+    {scale:.82,yPercent:10},{scale:1.1,yPercent:-10,ease:'none',
+    scrollTrigger:{trigger:c,start:'top bottom',end:'bottom top',scrub:true}}));
+  gsap.from('#tlLine',{scaleX:0,duration:1.6,ease:'power2.inOut',scrollTrigger:{trigger:'.tl',start:'top 80%'}});
+  gsap.from('.tlr > div',{y:30,opacity:0,stagger:.14,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.tl',start:'top 80%'}});
+  gsap.from('.kpi div',{y:40,opacity:0,stagger:.1,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.kpi',start:'top 85%'}});
+  gsap.from('.fm div',{y:36,opacity:0,stagger:.09,duration:.9,ease:'expo.out',scrollTrigger:{trigger:'.fm',start:'top 85%'}});
+  gsap.utils.toArray('.shots figure, .gal figure').forEach(f=>gsap.from(f,{y:26,opacity:0,duration:.8,ease:'expo.out',
+    scrollTrigger:{trigger:f,start:'top 92%'}}));
+
+  addEventListener('load',()=>ScrollTrigger.refresh());
+  if(document.fonts)document.fonts.ready.then(()=>ScrollTrigger.refresh());
 })();
 </script>
 </body>
