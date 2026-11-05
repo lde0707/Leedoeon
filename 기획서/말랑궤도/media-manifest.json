@@ -1,0 +1,197 @@
+[
+  {
+    "file": "blink-board.png",
+    "bytes": 231482,
+    "sha256": "8acc07ed7d92348449838c25f6ef1467980018a7343c45a7cea17cb68c13cbc0"
+  },
+  {
+    "file": "board.png",
+    "bytes": 208009,
+    "sha256": "dfeca4efa05cd771c2920e5a1d0286501f1e830f522413d1250409109eb7cabd"
+  },
+  {
+    "file": "candy-draw-burst.png",
+    "bytes": 1445558,
+    "sha256": "0a983c1766799001209d0fc8364c392748aa534bd0455bf6cdd796a4f971def7"
+  },
+  {
+    "file": "candy-draw-capsule.png",
+    "bytes": 1561088,
+    "sha256": "166e25640385ed0b42eb8edaf7e4b0844e0fc03d3e4b760c2f359a74fb5f5746"
+  },
+  {
+    "file": "candy-draw-reward.png",
+    "bytes": 1320689,
+    "sha256": "5126c90c02f73fa66709ad50da063781fa4a9ebd0f4bbad4d83f920f6ba4616b"
+  },
+  {
+    "file": "candy-draw-ten-results.png",
+    "bytes": 1092990,
+    "sha256": "7045c93fe77853e0d924ec8be2655f0c6a136dcfe8833c543b5fb3eba606340b"
+  },
+  {
+    "file": "clear-finale.wav",
+    "bytes": 60020,
+    "sha256": "35e9c9b1d457eb6063261904bd9e1eb9d5a1a513964c889fe0fb45f2f6f43d77"
+  },
+  {
+    "file": "clear-note-0.wav",
+    "bytes": 22094,
+    "sha256": "c88178f21b9eea9bdf3aed8e4ca0f4c317a9dc55db9323d7c9608b9fecdda288"
+  },
+  {
+    "file": "clear-note-1.wav",
+    "bytes": 22094,
+    "sha256": "d2ed90556846d44f28bfb2f6f653598c12bda6e058db31205adba3515c7c0d5f"
+  },
+  {
+    "file": "clear-note-2.wav",
+    "bytes": 22094,
+    "sha256": "a5b22803766d7df00d100e517157763d16abdd7e825eb0be0f14fe166e8d04f3"
+  },
+  {
+    "file": "clear-note-3.wav",
+    "bytes": 22094,
+    "sha256": "63a5d662ac9307d71244ce3c809bae6ff48131f077611e9afc822a855c723f6e"
+  },
+  {
+    "file": "clear-note-4.wav",
+    "bytes": 22094,
+    "sha256": "374a1e5e4246e3b14f2a3ceba1faad4e0e994cea78e7e8ce622683a12381cbf1"
+  },
+  {
+    "file": "clear-note-5.wav",
+    "bytes": 22094,
+    "sha256": "6ac90586a8efcbc6470a24f2cad211806466348dc2b0f4d1195ca49dba3a515b"
+  },
+  {
+    "file": "clear-sequence.wav",
+    "bytes": 282284,
+    "sha256": "a2ec6c45e0a5935801786e9d83075f98ae21e698fe9c1000ec57f96fdfc74509"
+  },
+  {
+    "file": "draw-cue-0.wav",
+    "bytes": 33560,
+    "sha256": "7549da93d1b8e2d89b23d6d59f772e6194c0368cd77b5a9e353133708890105d"
+  },
+  {
+    "file": "draw-cue-1.wav",
+    "bytes": 33560,
+    "sha256": "fd6a5bcdbba7c031864b5956a05ffbf11c2473c95fc4ec72c0b66631782703e9"
+  },
+  {
+    "file": "draw-cue-2.wav",
+    "bytes": 33560,
+    "sha256": "682599ab030a7c85182a2c4405aee5fe5bcd8003ca42f2c44b5668de14249ba0"
+  },
+  {
+    "file": "draw-cue-3.wav",
+    "bytes": 28268,
+    "sha256": "17ed116abdd00cdd3dd483c4e9f64225fd304fc77cb14bff9cea32d04034b129"
+  },
+  {
+    "file": "draw-cue-4.wav",
+    "bytes": 101474,
+    "sha256": "805ae3fe5aab62cc5974448fbb5c41006673c1d7f95be8d6535fabce9b603ad8"
+  },
+  {
+    "file": "draw-cue-5.wav",
+    "bytes": 92654,
+    "sha256": "4b9acd7cadd7c28702a6272f4219ea68c32ef90b34765294eb1a6d29f2590e05"
+  },
+  {
+    "file": "draw-sequence.wav",
+    "bytes": 388124,
+    "sha256": "12b6a570ddb76ef13a737b18fec668c0e840aaee130e23098d57cd84fb150dd0"
+  },
+  {
+    "file": "drawing.png",
+    "bytes": 213846,
+    "sha256": "061e76822c70200243987011206d7a922d0ef0af272c6fd0c7ee3c3ab8147d79"
+  },
+  {
+    "file": "hint.png",
+    "bytes": 208879,
+    "sha256": "effcc2ebeea76680415a154b76ecb7146ccb7291a21addf53156857a7308f3ea"
+  },
+  {
+    "file": "home.png",
+    "bytes": 401881,
+    "sha256": "69befe9fc6e92cac4a6565a44db86236cab8a1ae430fb8e813ff97b3aff244cd"
+  },
+  {
+    "file": "levels.png",
+    "bytes": 250263,
+    "sha256": "e63f19ef0ee2169c9c3a295b68a16028eb0c9e404e35db043fd9aafd72ab7b7c"
+  },
+  {
+    "file": "mallang-lullaby.wav",
+    "bytes": 2116844,
+    "sha256": "6aae20be71a8a0d5ae4387f5b73264027164a69762d9cd12484e696d49b30ec3"
+  },
+  {
+    "file": "mochi-clear-3-finale.png",
+    "bytes": 1087891,
+    "sha256": "dd77c7a08eccb35476e663222788429ccc2af78c74634fafe4f299bdaa7af8ec"
+  },
+  {
+    "file": "mochi-clear-3-first.png",
+    "bytes": 1090130,
+    "sha256": "d3ecb18c1c62bd118a6f4a773c6a368019a32b8284e3470ab3ee71b12673c443"
+  },
+  {
+    "file": "mochi-clear-3-pop.png",
+    "bytes": 1130170,
+    "sha256": "8270554c728d260db6ed759e740c7933409bce72647e3e98573bddcc924a26cf"
+  },
+  {
+    "file": "pause.png",
+    "bytes": 192670,
+    "sha256": "bc3af6d8219b69363c0c705ffbfe32a4bbbbf876f750ca46bbcf1072070d9f0e"
+  },
+  {
+    "file": "portal-board.png",
+    "bytes": 218277,
+    "sha256": "48005f3b8ed938a7acafe3771d6884a46452172e54a659da4bd851f96bae38f4"
+  },
+  {
+    "file": "portal-help.png",
+    "bytes": 252625,
+    "sha256": "bf05f0f7332df0fa0fee755d7464fb9c9f7c35cb72c768603049d1010ed9d91f"
+  },
+  {
+    "file": "reset.png",
+    "bytes": 185295,
+    "sha256": "e78f7f51f49cc88629620662c1beba663a830e801af885458c480bb0b58e6b5f"
+  },
+  {
+    "file": "resize-board.png",
+    "bytes": 207145,
+    "sha256": "90ae40ad208b0df0ed155f293f0a2daa4fbe6e682074fbcd2e974ea770fe53e6"
+  },
+  {
+    "file": "settings.png",
+    "bytes": 260912,
+    "sha256": "077e8c02ed57ce78cb00424693e369454d9afc1854b36e21002dccb6fe964f59"
+  },
+  {
+    "file": "skin-effects-1-20.png",
+    "bytes": 1308684,
+    "sha256": "914e22196a1af05fa9d0558ca9b3943caaba699068e64cb8f98a67d3cf255d97"
+  },
+  {
+    "file": "stage-detail-matte-390x844.png",
+    "bytes": 1468168,
+    "sha256": "abe4b8f57f8ac880546247c6fdb767e0eb8356cc9306ca79e09680d6135935ed"
+  },
+  {
+    "file": "wardrobe.png",
+    "bytes": 1259273,
+    "sha256": "0e71cbb34e9136a2dd520e42e55a1980bd35d037c224ce8844bc83f716f45581"
+  },
+  {
+    "file": "wordmark.png",
+    "bytes": 1414038,
+    "sha256": "bc740887772bedf2ac204868dac02cb766fdfd13e14aca3046e3ccc0b2e3da8b"
+  }
+]
