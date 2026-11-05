@@ -374,6 +374,18 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 .project-open{display:inline-block;margin-top:auto;padding:8px 0;background:none;border:0;font:inherit;font-size:14px;color:#244ea7;cursor:pointer}
 @media(max-width:950px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.project-grid{grid-template-columns:1fr}.project-cover{height:180px}}
+#ov .project-tests{margin:32px 0 40px}
+#ov .project-tests h4{color:var(--ac);font-size:16px}
+#ov .test-status{font-size:12px;color:#adbcd7;margin:6px 0 16px}
+#ov .project-tests details{border-top:1px solid #33436e;padding:0 12px}
+#ov .project-tests summary{padding:15px 0;cursor:pointer;font-size:16px}
+#ov .project-tests dl{display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px 16px;margin:15px 0 22px;font-size:14px;line-height:1.75}
+#ov .project-tests dt{color:#aebfe6}
+#ov .project-tests ol{padding-left:20px}
+#ov .project-tests li{padding:0;font-size:inherit}
+#ov .project-tests li:before{display:none}
+#ov .frame-link{font-size:13px;color:var(--ac)}
+@media(max-width:520px){#ov .project-tests dl{grid-template-columns:1fr;gap:4px}#ov .project-tests dd{margin-bottom:10px}}
 </style></head><body>
 <div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div id="introword">GAME QA &nbsp;/&nbsp; 이도언</div><div id="cur"></div><div id="ring"></div><div id="bar"></div>
 <div id="top"><div class="nm f6">이도언<span class="dot"></span></div><nav class="mode-nav" aria-label="QA 포트폴리오"><a href="../links/index.html">링크 모음</a><a href="#hero" aria-current="page">GAME QA</a></nav></div>
@@ -393,6 +405,26 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>할당량 · 시간 · 기력 · 보상 경제 밸런스 구현</li>
               <li>일꾼 고용 · 자동 재활용 수익 루프 개발</li></ul>
     <h4>QA 관점에서 볼 지점</h4><p>가방이 가득 찬 상태에서 수집이나 투입을 시도할 때 보유량·대기열·정산 금액이 일치하는지 살펴볼 수 있습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>인벤토리 재진입 시 수집물 유지</summary>
+<p class="frame-link"><a href="../assets/gameplay/trash-inventory-ui-20261104.webp" target="_blank" rel="noopener">기준 화면 · 04 · 인벤토리 — 수집물과 장비를 한눈에 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>슬롯 4/36, 쓰레기 부피 4/12인 상태에서 하단 네 아이템을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>I로 인벤토리를 닫는다.</li><li>수집·투입 없이 다시 열어 슬롯과 부피를 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>사용 슬롯은 4칸, 부피는 4다. 네 아이템의 종류·순서·가치가 재진입 전과 일치한다.</dd></dl></details>
+<details>
+<summary>분리수거의 정답 입력과 대기열 이동</summary>
+<p class="frame-link"><a href="../assets/gameplay/trash-recycling-ui-20261104.webp" target="_blank" rel="noopener">기준 화면 · 05 · 분리수거 — 수집물을 수익으로 바꾸는 과정 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>대기 12개, 현재 물건은 플라스틱 반찬통이다. 다음 물건을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>2초 제한 안에 4번 플라스틱을 한 번 선택한다.</li><li>다음 문제 표시 직후 대기 수와 현재 물건을 확인한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>한 건만 처리되어 대기 수가 11이 된다. 예고된 다음 물건이 현재 물건으로 바뀌고 오염도가 증가하지 않는다.</dd></dl></details>
+<details>
+<summary>잔액 부족 시 낮 강화 구매 차단</summary>
+<p class="frame-link"><a href="../assets/gameplay/trash-upgrade-ui-20261104.webp" target="_blank" rel="noopener">기준 화면 · 06 · 낮의 강화 — 수익을 다음 탐색에 재투자 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>보유금 200원, 이동속도 Lv.0, 표시 비용 300원이다.</dd><dt>실행 절차</dt><dd><ol><li>이동속도 강화 항목을 선택한다.</li><li>강화소를 닫았다가 다시 열어 금액과 레벨을 확인한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>보유금은 200원, 이동속도는 Lv.0을 유지한다. 구매가 성립하지 않아야 한다.</dd></dl></details>
+</section>
+
     <section class="play-gallery"><h4>프로젝트 화면과 자료</h4><figure><a href="../assets/gameplay/trash-title-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-title-ui-20261104.webp" alt="01 · 타이틀 — 탐험의 분위기와 시작 동선"></a><figcaption><strong>01 · 타이틀 — 탐험의 분위기와 시작 동선</strong>지하 탐험의 배경을 타이틀에 담고, 게임 시작·설정·조작법을 한곳에 배치했습니다. 첫 화면에서 세계관과 기본 조작으로 이어집니다.</figcaption></figure><figure><a href="../assets/gameplay/trash-main-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-main-ui-20261104.webp" alt="02 · 목표 확인 — 시간·할당량·기력의 균형"></a><figcaption><strong>02 · 목표 확인 — 시간·할당량·기력의 균형</strong>남은 시간과 할당량, 기력과 가방 상태를 함께 보여줍니다. 더 캐고 내려갈지, 수집물을 지키기 위해 복귀할지 판단하는 기준입니다.</figcaption></figure><figure><a href="../assets/gameplay/trash-explore-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-explore-ui-20261104.webp" alt="03 · 탐색과 수집 — 깊이 내려갈수록 커지는 선택"></a><figcaption><strong>03 · 탐색과 수집 — 깊이 내려갈수록 커지는 선택</strong>지형을 파며 이동 경로를 만들고 쓰레기와 유물을 찾습니다. 탐색에 쓰는 기력과 귀환 시간을 고려해 수집 범위를 정합니다.</figcaption></figure><figure><a href="../assets/gameplay/trash-inventory-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-inventory-ui-20261104.webp" alt="04 · 인벤토리 — 수집물과 장비를 한눈에"></a><figcaption><strong>04 · 인벤토리 — 수집물과 장비를 한눈에</strong>쓰레기와 유물을 공통 슬롯에 정리하고 캐릭터·도구 정보를 함께 보여줍니다. 보유 물품과 남은 공간을 보고 다음 수집과 복귀를 계획합니다.</figcaption></figure><figure><a href="../assets/gameplay/trash-recycling-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-recycling-ui-20261104.webp" alt="05 · 분리수거 — 수집물을 수익으로 바꾸는 과정"></a><figcaption><strong>05 · 분리수거 — 수집물을 수익으로 바꾸는 과정</strong>보관한 쓰레기를 제한 시간 안에 알맞은 종류로 분류합니다. 대기열과 오염도를 함께 관리하며 탐색의 결과를 수익으로 연결합니다.</figcaption></figure><figure><a href="../assets/gameplay/trash-upgrade-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-upgrade-ui-20261104.webp" alt="06 · 낮의 강화 — 수익을 다음 탐색에 재투자"></a><figcaption><strong>06 · 낮의 강화 — 수익을 다음 탐색에 재투자</strong>모은 돈으로 능력치를 강화합니다. 현재 부족한 이동·굴착·수집 능력을 선택해 같은 하루에 할 수 있는 활동을 늘리는 성장 구조입니다.</figcaption></figure><figure><a href="../assets/gameplay/trash-codex-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-codex-ui-20261104.webp" alt="수집 목표 · 유물 도감"></a><figcaption><strong>수집 목표 · 유물 도감</strong>유물의 발견·복원 상태를 확인하는 기록 화면입니다. 아직 채우지 못한 항목을 다음 탐색의 목표로 삼도록 구성했습니다.</figcaption></figure><figure><a href="../assets/gameplay/trash-settlement-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-settlement-ui-20261104.webp" alt="07 · 하루 정산 — 선택의 결과를 확인"></a><figcaption><strong>07 · 하루 정산 — 선택의 결과를 확인</strong>할당량 달성과 하루의 수익·비용을 정산합니다. 낮의 탐색과 분류 결과가 다음 날 사용할 자금으로 이어집니다.</figcaption></figure><figure><a href="../assets/gameplay/trash-equipment-ui-20261104.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/trash-equipment-ui-20261104.webp" alt="08 · 밤의 준비 — 다음 날의 탐색 방식 선택"></a><figcaption><strong>08 · 밤의 준비 — 다음 날의 탐색 방식 선택</strong>장비의 가격과 효과를 살펴보고 다음 날에 필요한 도구를 준비합니다. 당장의 지출과 이후 탐색 효율을 비교하는 선택을 만듭니다.</figcaption></figure></section>
   </template>
 </article>
@@ -403,7 +435,27 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
     <div class="tp">2026.05 — 현재 · 창업동아리 · 참여 3명 · 진행 중</div><h3>Rushitadel<s>로그라이크 디펜스 · 시스템 기획</s></h3>
     <p class="q">전진하는 전장에서 적을 막고 포탑과 증강을 선택해 전투 구성을 바꾸는 디펜스 게임입니다.</p><section class="evidence"><h4>참여 내용</h4><ul><li>증강 6계열 · 변형 16종 포탑 성장 체계 설계</li>
               <li>전진 카메라 + 후방 위험 구역으로 멈출 수 없게 만드는 압박 설계</li></ul>
-    <h4>QA 관점에서 볼 지점</h4><p>보스 공격 예고와 실제 피격 시점이 맞는지, 레벨업 선택 후 전투가 정상적으로 이어지는지 살펴볼 수 있습니다.</p></section><section class="play-gallery boss-gallery"><h4>보스 공격 패턴</h4><figure><video playsinline autoplay muted loop controls preload="metadata" poster="../assets/gameplay/rushitadel-boss-butterfly.webp" src="../assets/gameplay/rushitadel-boss-butterfly.mp4" aria-label="적월 나비 · 꽃가루 파동"></video><figcaption><strong>적월 나비 · 꽃가루 파동</strong>날갯짓에 맞춰 양쪽에서 부채꼴 탄막을 방출합니다. 퍼져 나가는 탄 사이의 틈을 찾아 피합니다.</figcaption></figure><figure><video playsinline autoplay muted loop controls preload="metadata" poster="../assets/gameplay/rushitadel-boss-lava.webp" src="../assets/gameplay/rushitadel-boss-lava.mp4" aria-label="용광로 거신 · 교대 포격"></video><figcaption><strong>용광로 거신 · 교대 포격</strong>손바닥에서 충전한 레이저와 반대편의 탄막을 번갈아 사용합니다. 예고된 사선에서 먼저 벗어나야 합니다.</figcaption></figure><figure><video playsinline autoplay muted loop controls preload="metadata" poster="../assets/gameplay/rushitadel-boss-ice.webp" src="../assets/gameplay/rushitadel-boss-ice.mp4" aria-label="빙환 수호자 · 고리 전개"></video><figcaption><strong>빙환 수호자 · 고리 전개</strong>몸체 옆 고리를 전개해 레이저를 발사합니다. 고리 위치와 뒤이어 날아오는 탄의 경로를 함께 읽습니다.</figcaption></figure><figure><video playsinline autoplay muted loop controls preload="metadata" poster="../assets/gameplay/rushitadel-boss-twins.webp" src="../assets/gameplay/rushitadel-boss-twins.mp4" aria-label="수압·전격 쌍성 · 공명 교대"></video><figcaption><strong>수압·전격 쌍성 · 공명 교대</strong>두 개체가 레이저와 탄막을 교대로 이어 갑니다. 어느 쪽이 공격 중인지 확인하며 빈 공간으로 이동합니다.</figcaption></figure></section>
+    <h4>QA 관점에서 볼 지점</h4><p>보스 공격 예고와 실제 피격 시점이 맞는지, 레벨업 선택 후 전투가 정상적으로 이어지는지 살펴볼 수 있습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>새 런을 선택한 슬롯에만 저장</summary>
+<p class="frame-link"><a href="../assets/gameplay/rushitadel-slots-ui.webp" target="_blank" rel="noopener">기준 화면 · 02 · 저장 슬롯 — 진행 공간 선택 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>세 슬롯이 비어 있고 슬롯 2를 사용한다.</dd><dt>실행 절차</dt><dd><ol><li>슬롯 2의 새 게임을 눌러 첫 저장 지점까지 진행한다.</li><li>타이틀로 돌아와 슬롯 목록을 다시 연다.</li></ol></dd>
+<dt>기대 결과</dt><dd>슬롯 2에서 저장된 진행을 확인할 수 있고 슬롯 1·3은 빈 상태다.</dd></dl></details>
+<details>
+<summary>T1 포탑의 변형 선택 확정</summary>
+<p class="frame-link"><a href="../assets/gameplay/rushitadel-growth-ui.webp" target="_blank" rel="noopener">기준 화면 · 05 · 레벨업 — 포탑의 성장 방향 선택 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>포탑 변형 화면에서 T1을 선택하고 세 후보를 확인한다.</dd><dt>실행 절차</dt><dd><ol><li>후보 하나를 선택한 뒤 다른 후보로 바꾼다.</li><li>변형 확정을 한 번 눌러 T1의 외형과 공격을 관찰한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>최종 선택한 변형만 T1에 반영된다. 다른 포탑에는 같은 변형이 함께 적용되지 않는다.</dd></dl></details>
+<details>
+<summary>일시정지 동안 전투 상태 보존</summary>
+<p class="frame-link"><a href="../assets/gameplay/rushitadel-pause-ui.webp" target="_blank" rel="noopener">기준 화면 · 플레이 중 · 일시정지 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>적이 이동 중인 전투에서 플레이어 체력과 적 위치를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>일시정지를 열고 3초간 기다린다.</li><li>계속하기를 눌러 위치와 체력을 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>정지 시간에 적 이동이나 접촉 피해가 누적되지 않는다. 계속하기 이후 전투가 이어진다.</dd></dl></details>
+</section>
+<section class="play-gallery boss-gallery"><h4>보스 공격 패턴</h4><figure><video playsinline autoplay muted loop controls preload="metadata" poster="../assets/gameplay/rushitadel-boss-butterfly.webp" src="../assets/gameplay/rushitadel-boss-butterfly.mp4" aria-label="적월 나비 · 꽃가루 파동"></video><figcaption><strong>적월 나비 · 꽃가루 파동</strong>날갯짓에 맞춰 양쪽에서 부채꼴 탄막을 방출합니다. 퍼져 나가는 탄 사이의 틈을 찾아 피합니다.</figcaption></figure><figure><video playsinline autoplay muted loop controls preload="metadata" poster="../assets/gameplay/rushitadel-boss-lava.webp" src="../assets/gameplay/rushitadel-boss-lava.mp4" aria-label="용광로 거신 · 교대 포격"></video><figcaption><strong>용광로 거신 · 교대 포격</strong>손바닥에서 충전한 레이저와 반대편의 탄막을 번갈아 사용합니다. 예고된 사선에서 먼저 벗어나야 합니다.</figcaption></figure><figure><video playsinline autoplay muted loop controls preload="metadata" poster="../assets/gameplay/rushitadel-boss-ice.webp" src="../assets/gameplay/rushitadel-boss-ice.mp4" aria-label="빙환 수호자 · 고리 전개"></video><figcaption><strong>빙환 수호자 · 고리 전개</strong>몸체 옆 고리를 전개해 레이저를 발사합니다. 고리 위치와 뒤이어 날아오는 탄의 경로를 함께 읽습니다.</figcaption></figure><figure><video playsinline autoplay muted loop controls preload="metadata" poster="../assets/gameplay/rushitadel-boss-twins.webp" src="../assets/gameplay/rushitadel-boss-twins.mp4" aria-label="수압·전격 쌍성 · 공명 교대"></video><figcaption><strong>수압·전격 쌍성 · 공명 교대</strong>두 개체가 레이저와 탄막을 교대로 이어 갑니다. 어느 쪽이 공격 중인지 확인하며 빈 공간으로 이동합니다.</figcaption></figure></section>
     <section class="play-gallery"><h4>프로젝트 화면과 자료</h4><figure><a href="../assets/gameplay/rushitadel-title-ui.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/rushitadel-title-ui.webp" alt="01 · 타이틀 — 런 시작과 이어하기"></a><figcaption><strong>01 · 타이틀 — 런 시작과 이어하기</strong>새 게임·이어하기·설정 메뉴에서 플레이를 시작하거나 저장된 진행을 확인합니다.</figcaption></figure><figure><a href="../assets/gameplay/rushitadel-slots-ui.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/rushitadel-slots-ui.webp" alt="02 · 저장 슬롯 — 진행 공간 선택"></a><figcaption><strong>02 · 저장 슬롯 — 진행 공간 선택</strong>세 개의 슬롯에서 새 런을 시작할 위치와 기존 저장 상태를 확인합니다.</figcaption></figure><figure><a href="../assets/gameplay/rushitadel-themes-ui.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/rushitadel-themes-ui.webp" alt="03 · 테마 선택 — 전장의 첫 갈림길"></a><figcaption><strong>03 · 테마 선택 — 전장의 첫 갈림길</strong>제시된 두 테마 중 하나를 선택하고 해당 환경에서 전투를 시작합니다.</figcaption></figure><figure><a href="../assets/gameplay/rushitadel-hud-ui.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/rushitadel-hud-ui.webp" alt="04 · 메인 전투 — 자원과 위험을 함께 읽기"></a><figcaption><strong>04 · 메인 전투 — 자원과 위험을 함께 읽기</strong>체력·동력·경험치·포탑 상태를 확인하며 전진하는 전장에서 적에 대응합니다.</figcaption></figure><figure><a href="../assets/gameplay/rushitadel-growth-ui.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/rushitadel-growth-ui.webp" alt="05 · 레벨업 — 포탑의 성장 방향 선택"></a><figcaption><strong>05 · 레벨업 — 포탑의 성장 방향 선택</strong>전투를 잠시 멈추고 포탑의 변형과 증강을 선택해 런의 전투 구성을 만듭니다.</figcaption></figure><figure><a href="../assets/gameplay/rushitadel-web-ui.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/rushitadel-web-ui.webp" alt="06 · PLAYER WEB — 경험치를 성장으로"></a><figcaption><strong>06 · PLAYER WEB — 경험치를 성장으로</strong>연결된 노드의 효과를 살펴보고 보유 경험치를 어디에 사용할지 결정합니다.</figcaption></figure><figure><a href="../assets/gameplay/rushitadel-pause-ui.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/rushitadel-pause-ui.webp" alt="플레이 중 · 일시정지"></a><figcaption><strong>플레이 중 · 일시정지</strong>진행 상태를 확인하고 계속하기·설정·타이틀 이동·종료를 선택합니다.</figcaption></figure><figure><a href="../assets/gameplay/rushitadel-settings-ui.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/rushitadel-settings-ui.webp" alt="메뉴 분기 · 설정"></a><figcaption><strong>메뉴 분기 · 설정</strong>게임 안의 설정 화면에서 플레이 환경을 조절합니다.</figcaption></figure></section>
   </template>
 </article>
@@ -416,6 +468,26 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>지역 = 장(章), 능력 = 그림 도구, 보스 = 장의 수호자 구조</li>
               <li>고해상도 타일맵 규격(256px/칸) 아트 파이프라인 정립</li></ul>
     <h4>QA 관점에서 볼 지점</h4><p>능력 획득 전후에 같은 지형의 통과 조건이 달라지는지, 재방문 때 지도와 수집 상태가 일치하는지 살펴볼 수 있습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>지우개 대시 획득 전후 통과 조건</summary>
+<p class="frame-link"><a href="../assets/gameplay/unfin-ability-flow.webp" target="_blank" rel="noopener">기준 화면 · 03 · 능력 — 지우개 대시로 이동의 확장 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>대시가 필요한 동일한 통로 앞에서 능력 획득 전·후 상태를 각각 준비한다.</dd><dt>실행 절차</dt><dd><ol><li>획득 전에 통로를 향해 Shift를 누른다.</li><li>지우개 대시 획득 후 같은 위치와 방향에서 다시 누른다.</li></ol></dd>
+<dt>기대 결과</dt><dd>획득 전에는 해당 통로를 대시로 통과할 수 없다. 획득 후에는 대시가 발동해 통과할 수 있다.</dd></dl></details>
+<details>
+<summary>지도 조작 후 현재 위치 복원</summary>
+<p class="frame-link"><a href="../assets/gameplay/unfin-map-flow.webp" target="_blank" rel="noopener">기준 화면 · 04 · 탐험 지도 — 기억해 둔 길로 돌아가기 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>흑연 광산에서 현재 위치와 지도 배율을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>M으로 지도를 열고 확대 및 축소를 수행한다.</li><li>내 위치를 선택한 뒤 M으로 닫고 다시 연다.</li></ol></dd>
+<dt>기대 결과</dt><dd>내 위치가 실제 플레이어 위치와 일치한다. 지도 조작만으로 캐릭터의 월드 위치는 변하지 않는다.</dd></dl></details>
+<details>
+<summary>조작 안내와 실제 공격 입력 대조</summary>
+<p class="frame-link"><a href="../assets/gameplay/unfin-controls-flow.webp" target="_blank" rel="noopener">기준 화면 · 플레이 중 · 조작 방법 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>조작 방법 화면에서 공격에 J와 마우스 왼쪽 버튼이 표시된 상태다.</dd><dt>실행 절차</dt><dd><ol><li>안내를 닫고 캐릭터를 정지시킨다.</li><li>J로 한 번 공격하고 동작이 끝난 뒤 마우스 왼쪽 버튼으로 한 번 공격한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>각 입력에서 공격이 한 번씩 발동하며 두 입력 모두 안내와 같은 기능을 수행한다.</dd></dl></details>
+</section>
+
     <section class="play-gallery"><h4>프로젝트 화면과 자료</h4><figure><a href="../assets/gameplay/unfin-title-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/unfin-title-flow.webp" alt="01 · 타이틀 — 아직 끝나지 않은 이야기"></a><figcaption><strong>01 · 타이틀 — 아직 끝나지 않은 이야기</strong>스케치북과 종이 질감으로 세계관을 보여주며, 새 이야기·이어하기·설정으로 진입합니다.</figcaption></figure><figure><a href="../assets/gameplay/unfin-explore-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/unfin-explore-flow.webp" alt="02 · 탐색 — 발판과 적을 넘는 종이 세계"></a><figcaption><strong>02 · 탐색 — 발판과 적을 넘는 종이 세계</strong>흑연 광산의 단차와 적을 살피며 길을 찾습니다. 체력과 미니맵으로 현재 상태와 위치를 확인합니다.</figcaption></figure><figure><a href="../assets/gameplay/unfin-ability-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/unfin-ability-flow.webp" alt="03 · 능력 — 지우개 대시로 이동의 확장"></a><figcaption><strong>03 · 능력 — 지우개 대시로 이동의 확장</strong>지우개 대시를 얻은 상태의 이동 장면입니다. 새 능력은 이전에 지나가지 못했던 길을 다시 살펴볼 이유가 됩니다.</figcaption></figure><figure><a href="../assets/gameplay/unfin-map-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/unfin-map-flow.webp" alt="04 · 탐험 지도 — 기억해 둔 길로 돌아가기"></a><figcaption><strong>04 · 탐험 지도 — 기억해 둔 길로 돌아가기</strong>발견한 구역과 연결을 책 형태의 지도에서 확인하고, 다시 방문할 장소에 대한 기록을 남깁니다.</figcaption></figure><figure><a href="../assets/gameplay/unfin-boss-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/unfin-boss-flow.webp" alt="05 · 보스전 — 엉킨 뿌리 심부의 수호자"></a><figcaption><strong>05 · 보스전 — 엉킨 뿌리 심부의 수호자</strong>거대한 종이 보스의 움직임과 공격 거리를 읽으며 맞섭니다. 보스 체력과 자신의 체력을 함께 관리합니다.</figcaption></figure><figure><a href="../assets/gameplay/unfin-controls-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/unfin-controls-flow.webp" alt="플레이 중 · 조작 방법"></a><figcaption><strong>플레이 중 · 조작 방법</strong>이동·점프·공격·대시와 상호작용, 지도 열기 조작을 게임 안에서 확인할 수 있습니다.</figcaption></figure></section>
   </template>
 </article>
@@ -428,6 +500,26 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>중력 방향에 함께 반응하는 기록 상자 퍼즐 구현</li>
               <li>F0 · 1A · 1B와 연결 통로의 탐색 흐름 구현</li></ul>
     <h4>QA 관점에서 볼 지점</h4><p>중력을 연속으로 전환할 때 상자가 벽에 멈추는 위치와 목표 판정이 일치하는지 살펴볼 수 있습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>중력 전환 시 기록 상자의 충돌</summary>
+<p class="frame-link"><a href="../assets/gameplay/booktower-gravity-flow.webp" target="_blank" rel="noopener">기준 화면 · 02 · 중력 조작 — 천장으로 향하는 상자 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>첫 방에서 기록 상자와 천장 사이의 경로를 확인한다.</dd><dt>실행 절차</dt><dd><ol><li>중력을 천장 방향으로 바꾼다.</li><li>상자가 천장에 닿을 때까지 위치를 관찰한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>상자는 새 중력 방향으로 이동하고 천장 경계에서 멈춘다. 천장을 관통하지 않는다.</dd></dl></details>
+<details>
+<summary>두 상자 퍼즐의 부분 완료 판정</summary>
+<p class="frame-link"><a href="../assets/gameplay/booktower-multi-flow.webp" target="_blank" rel="noopener">기준 화면 · 04 · 열람실 — 함께 움직이는 두 상자 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>열람실에 두 기록 상자와 서로 다른 목표가 있다.</dd><dt>실행 절차</dt><dd><ol><li>한 상자만 맞는 문양에 놓고 완료 상태를 확인한다.</li><li>두 번째 상자도 맞는 목표로 이동한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>첫 상자만 맞춘 상태에서는 퍼즐이 진행 중이다. 두 상자가 동시에 각각의 목표를 충족할 때 완료된다.</dd></dl></details>
+<details>
+<summary>체크포인트 복귀 후 상자 상태</summary>
+<p class="frame-link"><a href="../assets/gameplay/booktower-pause-flow.webp" target="_blank" rel="noopener">기준 화면 · 플레이 중 · 책갈피 메뉴 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>체크포인트의 상자 배치를 기록한 뒤 한 상자를 이동한다.</dd><dt>실행 절차</dt><dd><ol><li>책갈피 메뉴에서 체크포인트로 돌아가기를 선택한다.</li><li>캐릭터와 상자 위치를 기록해 둔 배치와 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>캐릭터와 상자가 해당 체크포인트 상태로 복구되고, 이전 시도의 상자가 중복 생성되지 않는다.</dd></dl></details>
+</section>
+
     <section class="play-gallery"><h4>프로젝트 화면과 자료</h4><figure><a href="../assets/gameplay/booktower-puzzle-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/booktower-puzzle-flow.webp" alt="01 · 첫 방 — 기록을 제자리로"></a><figcaption><strong>01 · 첫 방 — 기록을 제자리로</strong>종이 정령을 움직여 방을 살피고, 기록 상자와 같은 문양의 목적지를 찾습니다. 화면 위 목표가 현재 할 일을 안내합니다.</figcaption></figure><figure><a href="../assets/gameplay/booktower-gravity-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/booktower-gravity-flow.webp" alt="02 · 중력 조작 — 천장으로 향하는 상자"></a><figcaption><strong>02 · 중력 조작 — 천장으로 향하는 상자</strong>방향을 위로 바꾸어 상자를 이동시킨 장면입니다. 벽에 멈추는 위치를 이용해 다음 방향과 경로를 계획합니다.</figcaption></figure><figure><a href="../assets/gameplay/booktower-solved-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/booktower-solved-flow.webp" alt="03 · 퍼즐 완료 — 다음 장으로 이어지는 길"></a><figcaption><strong>03 · 퍼즐 완료 — 다음 장으로 이어지는 길</strong>실제 방향 입력으로 상자를 목표에 맞추면 완성된 페이지와 안내 문구가 나타나 다음 탐색으로 이어집니다.</figcaption></figure><figure><a href="../assets/gameplay/booktower-multi-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/booktower-multi-flow.webp" alt="04 · 열람실 — 함께 움직이는 두 상자"></a><figcaption><strong>04 · 열람실 — 함께 움직이는 두 상자</strong>하나의 입력에 두 상자가 함께 반응합니다. 서로 다른 벽과 통로를 활용해 각각의 문양에 맞춰야 합니다.</figcaption></figure><figure><a href="../assets/gameplay/booktower-pause-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/booktower-pause-flow.webp" alt="플레이 중 · 책갈피 메뉴"></a><figcaption><strong>플레이 중 · 책갈피 메뉴</strong>계속하기·설정·기록장·체크포인트 복귀를 한곳에 모아 탐색을 잠시 멈추거나 다시 시도할 수 있습니다.</figcaption></figure></section>
   </template>
 </article>
@@ -440,6 +532,26 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>웨이브 · 보스 타이밍으로 난이도 곡선 설계</li>
               <li>출시 이후 라이브 서비스 대응</li></ul>
     <h4>QA 관점에서 볼 지점</h4><p>소환·강화를 연속으로 선택했을 때 골드 차감과 유닛 상태가 일치하는지 살펴볼 수 있습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>덱과 전투 소환 목록 일치</summary>
+<p class="frame-link"><a href="../assets/gameplay/pearl-deck-flow.webp" target="_blank" rel="noopener">기준 화면 · 04 · 덱 편성 — 전장에 데려갈 유닛 선택 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>덱 편성에 서로 다른 유닛 세 개를 배치하고 순서를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>편성을 마치고 스테이지 전투에 진입한다.</li><li>전투 상단 소환 슬롯의 유닛과 순서를 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>편성한 세 유닛이 대응하는 슬롯에 나타난다. 비어 있거나 잠긴 슬롯에서는 추가 유닛을 소환할 수 없다.</dd></dl></details>
+<details>
+<summary>소환 한 번당 골드 한 번 차감</summary>
+<p class="frame-link"><a href="../assets/gameplay/pearl-battle-flow.webp" target="_blank" rel="noopener">기준 화면 · 05 · 전투 — 골드를 소환과 강화에 배분 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>골드가 충분하고 소환 버튼의 표시 비용을 확인할 수 있다.</dd><dt>실행 절차</dt><dd><ol><li>보상 획득이 없는 구간에서 골드와 유닛 수를 기록한다.</li><li>소환을 한 번 실행한 직후 두 값을 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>전장 유닛 수가 하나 늘고 골드는 표시 비용만큼 한 번 차감된다.</dd></dl></details>
+<details>
+<summary>미네랄 부족 시 유닛 강화 차단</summary>
+<p class="frame-link"><a href="../assets/gameplay/pearl-store-flow.webp" target="_blank" rel="noopener">기준 화면 · 06 · 미네랄 상점 — 보상을 다음 전투의 힘으로 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>상점 잔액 0, 첫 유닛 Lv.1, 강화 비용 100이다.</dd><dt>실행 절차</dt><dd><ol><li>첫 유닛의 100 미네랄 버튼을 누른다.</li><li>상점을 나갔다 다시 열어 잔액과 첫 유닛 레벨을 확인한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>잔액은 0, 첫 유닛은 Lv.1을 유지한다. 미리보기의 다음 레벨 능력치가 적용되지 않는다.</dd></dl></details>
+</section>
+
     <section class="play-gallery"><h4>프로젝트 화면과 자료</h4><figure><a href="../assets/gameplay/pearl-title-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/pearl-title-flow.webp" alt="01 · 타이틀 — 진주를 향한 해저 모험"></a><figcaption><strong>01 · 타이틀 — 진주를 향한 해저 모험</strong>물고기·게·해파리와 용궁의 진주가 게임의 소재를 보여줍니다. 게임 시작을 눌러 진행 방식을 선택합니다.</figcaption></figure><figure><a href="../assets/gameplay/pearl-hub-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/pearl-hub-flow.webp" alt="02 · 모드 선택 — 스테이지에서 랭크까지"></a><figcaption><strong>02 · 모드 선택 — 스테이지에서 랭크까지</strong>STAGE로 공략을 시작하고, 스테이지 8을 클리어하면 RANK 도전이 열리는 진행 구조입니다.</figcaption></figure><figure><a href="../assets/gameplay/pearl-stages-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/pearl-stages-flow.webp" alt="03 · 스테이지 지도 — 전투와 성장의 거점"></a><figcaption><strong>03 · 스테이지 지도 — 전투와 성장의 거점</strong>섬의 스테이지를 선택하고, 유닛 장착과 상점으로 이동합니다. 첫 안내에서 보상 재화의 쓰임도 확인할 수 있습니다.</figcaption></figure><figure><a href="../assets/gameplay/pearl-deck-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/pearl-deck-flow.webp" alt="04 · 덱 편성 — 전장에 데려갈 유닛 선택"></a><figcaption><strong>04 · 덱 편성 — 전장에 데려갈 유닛 선택</strong>다섯 칸의 덱에 보유 유닛을 장착합니다. 기본 세 유닛의 역할을 조합하고 새로운 유닛으로 선택지를 넓힙니다.</figcaption></figure><figure><a href="../assets/gameplay/pearl-battle-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/pearl-battle-flow.webp" alt="05 · 전투 — 골드를 소환과 강화에 배분"></a><figcaption><strong>05 · 전투 — 골드를 소환과 강화에 배분</strong>물고기·게·해파리를 소환한 실제 교전 장면입니다. 유닛별 비용, 강화 버튼과 남은 골드를 보고 전선을 유지합니다.</figcaption></figure><figure><a href="../assets/gameplay/pearl-store-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/pearl-store-flow.webp" alt="06 · 미네랄 상점 — 보상을 다음 전투의 힘으로"></a><figcaption><strong>06 · 미네랄 상점 — 보상을 다음 전투의 힘으로</strong>강화 전후의 체력·공격력·공격속도를 비교하며 미네랄을 투자합니다. 유닛마다 성장 효과가 달라 강화 우선순위를 선택하게 됩니다.</figcaption></figure></section>
   </template>
 </article>
@@ -451,7 +563,27 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
     <p class="q">한 번의 방향 입력으로 친구들을 함께 움직여 같은 색의 목표에 도착시키는 중력 퍼즐입니다.</p><section class="evidence"><h4>참여 내용</h4><ul><li>네 방향 입력으로 모든 블록을 함께 이동</li>
               <li>벽과 목표의 배치로 만드는 이동 순서 퍼즐</li>
               <li>되돌리기 · 재시작으로 부담 없이 해법 탐색</li></ul>
-    <h4>QA 관점에서 볼 지점</h4><p>포탈이나 크기 변환 후 되돌리기를 사용했을 때 위치·크기·클리어 판정이 함께 복원되는지 살펴볼 수 있습니다.</p></section><section class="publish-panel"><h4>itch.io 공개</h4><iframe src="https://itch.io/embed/5285502" width="552" height="167" title="데굴데굴 퍼즐 itch.io"></iframe></section><a class="publish-link" href="https://lde0707.itch.io/degul-degul" target="_blank" rel="noopener">itch.io에서 게임 보기 ↗</a>
+    <h4>QA 관점에서 볼 지점</h4><p>포탈이나 크기 변환 후 되돌리기를 사용했을 때 위치·크기·클리어 판정이 함께 복원되는지 살펴볼 수 있습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>공동 이동 후 되돌리기</summary>
+<p class="frame-link"><a href="../assets/gameplay/puzzle-tilt-flow.webp" target="_blank" rel="noopener">기준 화면 · 04 · 중력 조작 — 한 방향으로 함께 이동 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>엇갈린 길에서 두 친구의 위치와 이동 횟수를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>한 방향으로 유효한 이동을 실행한다.</li><li>되돌리기를 한 번 누르고 보드와 이동 횟수를 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>두 친구가 모두 직전 위치로 돌아오고 이동 횟수도 직전 값으로 복원된다.</dd></dl></details>
+<details>
+<summary>클리어 기록과 단계 목록 반영</summary>
+<p class="frame-link"><a href="../assets/gameplay/puzzle-clear-flow.webp" target="_blank" rel="noopener">기준 화면 · 05 · 클리어 — 해법과 보상을 확인 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>현재 단계의 기존 별 기록을 확인하고 마지막 이동 직전까지 진행한다.</dd><dt>실행 절차</dt><dd><ol><li>두 친구를 각 목표에 놓아 결과 화면의 별을 기록한다.</li><li>결과 화면 아래 메인 화면으로 버튼을 누르고 단계 목록을 다시 확인한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>단계 기록이 결과 화면에서 획득한 별을 반영하며, 기존 최고 기록보다 낮아지지 않는다.</dd></dl></details>
+<details>
+<summary>크기 변환 후 초기화</summary>
+<p class="frame-link"><a href="../assets/gameplay/puzzle-resize-flow.webp" target="_blank" rel="noopener">기준 화면 · 06 · 새로운 규칙 — 크기까지 맞추기 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>처음 만난 변환대에서 시작 위치와 친구 크기를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>변환대에 진입해 크기 변화를 확인한다.</li><li>초기화를 누른 뒤 보드와 이동 횟수를 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>친구의 위치와 크기가 해당 단계의 시작 상태로 돌아가고 이동 횟수는 0이다.</dd></dl></details>
+</section>
+<section class="publish-panel"><h4>itch.io 공개</h4><iframe src="https://itch.io/embed/5285502" width="552" height="167" title="데굴데굴 퍼즐 itch.io"></iframe></section><a class="publish-link" href="https://lde0707.itch.io/degul-degul" target="_blank" rel="noopener">itch.io에서 게임 보기 ↗</a>
     <section class="play-gallery portrait"><h4>프로젝트 화면과 자료</h4><figure><a href="../assets/gameplay/puzzle-title-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/puzzle-title-flow.webp" alt="01 · 홈 — 작은 우주로 출발"></a><figcaption><strong>01 · 홈 — 작은 우주로 출발</strong>게임 시작·단계 선택·스킨 뽑기를 한 화면에서 고릅니다. 친구와 같은 색의 자리로 돌아간다는 목표를 먼저 보여줍니다.</figcaption></figure><figure><a href="../assets/gameplay/puzzle-levels-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/puzzle-levels-flow.webp" alt="02 · 단계 선택 — 차근차근 확장되는 규칙"></a><figcaption><strong>02 · 단계 선택 — 차근차근 확장되는 규칙</strong>각 단계의 이동 기록과 완료 상태를 살펴보고 도전할 퍼즐을 고릅니다.</figcaption></figure><figure><a href="../assets/gameplay/puzzle-before-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/puzzle-before-flow.webp" alt="03 · 조작 전 — 두 친구와 두 목적지"></a><figcaption><strong>03 · 조작 전 — 두 친구와 두 목적지</strong>엇갈린 길 단계의 시작 상태입니다. 친구의 색과 목적지, 벽의 배치를 보고 함께 움직일 순서를 계획합니다.</figcaption></figure><figure><a href="../assets/gameplay/puzzle-tilt-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/puzzle-tilt-flow.webp" alt="04 · 중력 조작 — 한 방향으로 함께 이동"></a><figcaption><strong>04 · 중력 조작 — 한 방향으로 함께 이동</strong>위를 선택한 뒤의 실제 화면입니다. 두 친구가 함께 움직이되, 각자 만나는 벽에 따라 서로 다른 위치에서 멈춥니다.</figcaption></figure><figure><a href="../assets/gameplay/puzzle-clear-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/puzzle-clear-flow.webp" alt="05 · 클리어 — 해법과 보상을 확인"></a><figcaption><strong>05 · 클리어 — 해법과 보상을 확인</strong>실제 7회 입력으로 두 친구를 모두 목적지에 보낸 결과입니다. 이동 수와 별 보상을 확인하고 다음 단계로 이어갑니다.</figcaption></figure><figure><a href="../assets/gameplay/puzzle-resize-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/puzzle-resize-flow.webp" alt="06 · 새로운 규칙 — 크기까지 맞추기"></a><figcaption><strong>06 · 새로운 규칙 — 크기까지 맞추기</strong>변환대에서 멈추며 친구의 크기가 달라집니다. 목적지의 색뿐 아니라 크기도 맞도록 경로를 설계해야 합니다.</figcaption></figure><figure><a href="../assets/gameplay/puzzle-collection-flow.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/gameplay/puzzle-collection-flow.webp" alt="보상 사용 · 말랑 옷장"></a><figcaption><strong>보상 사용 · 말랑 옷장</strong>퍼즐에서 모은 별로 스킨을 뽑고, 보유한 친구의 모습을 선택해 착용합니다.</figcaption></figure></section>
   </template>
 </article>
@@ -464,6 +596,26 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>주사위 · 점수 트래커 등 실물 구성품 설계</li>
               <li>테스트 플레이 반복으로 밸런스 개선</li></ul>
     <h4>QA 관점에서 볼 지점</h4><p>텔레포트로 도착한 칸의 처리 순서, 마지막 턴의 소유권과 승리 판정을 룰북과 대조할 수 있습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>4인 초기 자원 배분</summary>
+<p class="frame-link"><a href="../dice-rulebook.jpg" target="_blank" rel="noopener">기준 화면 · 룰북 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>룰북과 실물 구성품을 준비하고 네 색을 한 명씩 선택한다.</dd><dt>실행 절차</dt><dd><ol><li>각자 10·5·1 코인을 종류별로 다섯 개씩 받는다.</li><li>색 주사위와 시작 말을 룰북에 맞춰 배치한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>각자 80코인과 자기 색 주사위 20개를 가진다. 말 네 개가 각자 색의 시작 위치에 놓인다.</dd></dl></details>
+<details>
+<summary>텔레포트 칸의 경계 판정</summary>
+<p class="frame-link"><a href="../dice-board.jpg" target="_blank" rel="noopener">기준 화면 · 게임 보드 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>보드의 1·7·13·19번 흰색 칸과 인접 일반 칸을 식별한다.</dd><dt>실행 절차</dt><dd><ol><li>테스트용 이동값으로 일반 칸에 도착해 처리한다.</li><li>같은 조건에서 흰색 칸에 도착해 원하는 땅으로 이동한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>일반 칸에서는 텔레포트를 적용하지 않는다. 흰색 칸에서는 선택한 목적지에 말 하나만 놓인다.</dd></dl></details>
+<details>
+<summary>10턴 종료 시 승리 판정</summary>
+<p class="frame-link"><a href="../dice-rulebook.jpg" target="_blank" rel="noopener">기준 화면 · 룰북 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>네 플레이어가 참여하고 본인 색 구역 소유 수가 동률이 아닌 판을 준비한다.</dd><dt>실행 절차</dt><dd><ol><li>9턴 종료 시 진행 여부를 확인한다.</li><li>10턴을 마친 후 색 구역별 소유 수를 집계한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>9턴에는 게임이 계속된다. 10턴 뒤에는 본인 구역의 땅을 가장 많이 보유한 플레이어가 승리한다.</dd></dl></details>
+</section>
+
     <section class="play-gallery"><h4>프로젝트 화면과 자료</h4><figure><a href="../dice-board.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../dice-board.jpg" alt="게임 보드"></a><figcaption><strong>게임 보드</strong>이동 경로와 텔레포트 칸, 수집 대상이 표시된 실제 보드입니다.</figcaption></figure><figure><a href="../dice-rulebook.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../dice-rulebook.jpg" alt="룰북"></a><figcaption><strong>룰북</strong>게임 준비, 턴 진행과 승리 조건을 설명합니다.</figcaption></figure></section>
   </template>
 </article>
@@ -476,13 +628,53 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
               <li>페르소나 · SWOT · BM 캔버스 작성</li>
               <li>주요 5개 화면 프로토타입 제작</li></ul>
     <h4>QA 관점에서 볼 지점</h4><p>경로 선택 → 기록 → 히스토리 흐름에서 같은 이동 정보가 일관되게 표시되는지 살펴볼 수 있습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>SNS 버튼별 인증 경로 연결</summary>
+<p class="frame-link"><a href="../GreenWay.png" target="_blank" rel="noopener">기준 화면 · GreenWay 프로토타입 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>로그인 프로토타입에서 네 SNS 아이콘이 보인다.</dd><dt>실행 절차</dt><dd><ol><li>카카오·네이버·Apple·Google 아이콘을 각각 한 번씩 누른다.</li><li>각 진입 화면을 기록하고 시작 화면으로 돌아와 다음 아이콘을 확인한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>선택한 아이콘과 대응하는 가입 경로가 열린다. 다른 제공자나 비회원 경로로 연결되지 않는다.</dd></dl></details>
+<details>
+<summary>비회원 로그인 진입</summary>
+<p class="frame-link"><a href="../GreenWay.png" target="_blank" rel="noopener">기준 화면 · GreenWay 프로토타입 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>SNS 계정 연결 없이 로그인 화면에 머문 상태다.</dd><dt>실행 절차</dt><dd><ol><li>하단의 비회원 로그인을 선택한다.</li><li>도착 화면과 사용자 상태를 확인한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>SNS 인증 절차 없이 비회원용 진입 화면으로 이어지고 회원 계정으로 표시되지 않는다.</dd></dl></details>
+<details>
+<summary>작은 화면에서 가입 안내와 버튼 판독</summary>
+<p class="frame-link"><a href="../GreenWay.png" target="_blank" rel="noopener">기준 화면 · GreenWay 프로토타입 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>로그인 시안을 서로 다른 모바일 화면 크기에서 연다.</dd><dt>실행 절차</dt><dd><ol><li>SNS 아이콘, 비회원 버튼, 하단 약관 안내를 차례로 확인한다.</li><li>각 버튼의 중앙을 눌러 인접 버튼과 구분되는지 확인한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>약관 문구와 버튼이 겹치거나 잘리지 않고, 누른 위치에 대응하는 버튼만 선택된다.</dd></dl></details>
+</section>
+
     <section class="play-gallery"><h4>프로젝트 화면과 자료</h4><figure><a href="../GreenWay.png" target="_blank" rel="noopener"><img loading="lazy" src="../GreenWay.png" alt="GreenWay 프로토타입"></a><figcaption><strong>GreenWay 프로토타입</strong>홈·경로 탐색·출근 기록·루틴 히스토리·마이페이지의 흐름입니다.</figcaption></figure></section>
   </template>
 </article>
 <article class="project-item">
   <img class="project-cover" src="../assets/qa/weapon-levelup.webp" alt="메이플키우기 자동화 테스팅 프로젝트 화면" loading="lazy">
-  <div class="project-copy"><small>2026.03 — 2026.07 · 팀 3인 · 자동화 프로토타입</small><h3>메이플키우기 자동화 테스팅</h3><p>메이플키우기의 반복 성장 동작을 화면 인식으로 실행하고 결과를 로그로 검증한 팀 자동화 프로젝트입니다.</p><a class="project-open" href="#work">자동화 시연 4개 보기 →</a></div>
-</article>
+  <div class="project-copy"><small>2026.03 — 2026.07 · 팀 3인 · 자동화 프로토타입</small><h3>메이플키우기 자동화 테스팅</h3><p>메이플키우기의 반복 성장 동작을 화면 인식으로 실행하고 결과를 로그로 검증한 팀 자동화 프로젝트입니다.</p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button><a class="project-open" href="#work">자동화 시연 4개 보기 →</a></div>
+<template><div class="tp">2026.03 — 2026.07 · 팀 3인</div><h3>메이플키우기 자동화 테스팅</h3><p class="q">무기·주문서 강화와 소환 재화 검증을 실제 실행 화면과 로그로 확인합니다.</p><section class="evidence"><h4>참여 내용</h4><p>화면 인식 자동화 시나리오와 재화 검증, 예외 팝업 처리 과정을 구성했습니다.</p></section>
+<section class="project-tests" aria-label="화면 기반 테스트 케이스">
+<h4>화면 기반 테스트 케이스</h4>
+<p class="test-status">설계안 · 실행 결과 미기록</p>
+<details open>
+<summary>무기 레벨업 전후 OCR 대조</summary>
+<p class="frame-link"><a href="../assets/qa/weapon-levelup.webp" target="_blank" rel="noopener">기준 화면 · 무기 레벨업 시연 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>강화 가능한 무기와 충분한 재화를 준비하고 시작 수치를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>자동화로 레벨업 버튼을 한 번 탐지·클릭한다.</li><li>화면 갱신 후 재화 OCR 결과를 실제 화면 숫자와 대조한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>선택한 무기의 레벨이 오르고 실제 소모량과 OCR 로그의 전후 차이가 일치한다.</dd></dl></details>
+<details>
+<summary>주문서 성공 표시와 로그 대응</summary>
+<p class="frame-link"><a href="../assets/qa/scroll-enhancement.webp" target="_blank" rel="noopener">기준 화면 · 주문서 강화 시연 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>주문서 강화 창과 회차별 실행 로그를 동시에 확인할 수 있다.</dd><dt>실행 절차</dt><dd><ol><li>강화를 반복하며 SUCCESS가 표시된 회차를 기록한다.</li><li>같은 회차의 클릭·결과·게이지 정보를 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>성공 표시가 발생한 회차에 대응하는 결과가 한 번만 기록되며 다른 회차에 중복 반영되지 않는다.</dd></dl></details>
+<details>
+<summary>소환 차감량과 기대 비용 비교</summary>
+<p class="frame-link"><a href="../assets/qa/ocr-currency.webp" target="_blank" rel="noopener">기준 화면 · 소환 OCR 시연 ↗</a></p>
+<dl><dt>사전 조건</dt><dd>소환 종류·횟수를 고르고 화면의 필요 재화와 잔액을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>소환을 한 번 실행한다.</li><li>연출 후 잔액을 다시 읽어 전후 차이를 표시 비용과 비교한다.</li></ol></dd>
+<dt>기대 결과</dt><dd>실제 차감량이 선택한 소환 비용과 일치할 때만 비용 검증을 통과한다.</dd></dl></details>
+</section>
+</template></article>
   </div></div></section>
 <section id="documents" aria-labelledby="casebook-title"><div class="docs-inner"><header class="docs-header"><div class="docs-kicker">TEST DESIGN / CASEBOOK</div><h2 id="casebook-title">조건을 나누면,<br>확인할 것이 보입니다<span>.</span></h2><p>메이플키우기 자동화 사례를 바탕으로 정리한 테스트 설계 샘플입니다.<br>항목을 펼치면 사전 조건·절차·기대 결과·수집할 증거를 볼 수 있습니다.</p></header><div class="case-tools" role="group" aria-label="테스트 유형 필터"><button type="button" data-filter="전체" aria-pressed="true">전체</button><button type="button" data-filter="정상 흐름" aria-pressed="false">정상 흐름</button><button type="button" data-filter="경계 조건" aria-pressed="false">경계 조건</button><button type="button" data-filter="예외 처리" aria-pressed="false">예외 처리</button><a class="csv-link" href="test-cases.csv" download>테스트 케이스 CSV ↓</a></div><p class="case-count" role="status" aria-live="polite">8개 테스트 설계</p><div id="testcases"><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-01</span><span>무기 레벨업 후 재화 감소<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>강화 가능한 무기와 충분한 재화가 있는 상태</dd><dt>실행 절차</dt><dd><ol><li>실행 전 재화 기록</li><li>강화 버튼 탐지·클릭</li><li>화면 갱신 후 재화 재확인</li></ol></dd><dt>기대 결과</dt><dd>재화가 규칙에 따라 차감되고 강화 상태가 갱신된다.</dd><dt>수집할 증거</dt><dd>전후 캡처 · OCR 값 · 탐지 점수</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-02</span><span>주문서 강화 결과 기록<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>주문서 강화 화면과 재료가 준비된 상태</dd><dt>실행 절차</dt><dd><ol><li>강화 실행</li><li>결과 화면 또는 게이지 확인</li><li>회차별 판정 저장</li></ol></dd><dt>기대 결과</dt><dd>게임의 성공·실패 결과와 자동화 실행 상태를 구분해 기록한다.</dd><dt>수집할 증거</dt><dd>결과 화면 · 회차별 로그</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-03</span><span>소환 재화 차감량 비교<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>소환 비용과 실행 전 재화가 확인된 상태</dd><dt>실행 절차</dt><dd><ol><li>실행 전 OCR</li><li>소환 1회 실행</li><li>실행 후 OCR과 기대 소모량 비교</li></ol></dd><dt>기대 결과</dt><dd>실행 전후 차이가 선택한 소환의 기대 비용과 일치한다.</dd><dt>수집할 증거</dt><dd>전후 OCR · 기대 비용 · 판정</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-04</span><span>재화가 필요 비용과 같은 경우<small>경계 조건 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>보유 재화가 해당 동작 비용과 같은 상태</dd><dt>실행 절차</dt><dd><ol><li>재화 값 확인</li><li>강화 또는 소환 실행</li><li>남은 재화와 후속 동작 확인</li></ol></dd><dt>기대 결과</dt><dd>해당 동작의 소모 규칙대로 처리되고 재화가 음수가 되지 않는다.</dd><dt>수집할 증거</dt><dd>초기 재화 · 결과 캡처</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-05</span><span>버튼 탐지 임계값 점검<small>경계 조건 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>버튼 템플릿과 관심 영역이 준비된 상태</dd><dt>실행 절차</dt><dd><ol><li>동일 화면에서 임계값 비교</li><li>탐지 위치와 점수 기록</li><li>오탐 여부 대조</li></ol></dd><dt>기대 결과</dt><dd>버튼 영역의 탐지와 유사 이미지 오탐을 구분할 수 있다.</dd><dt>수집할 증거</dt><dd>임계값 · 탐지 좌표 · 캡처</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-06</span><span>재화 부족 팝업 대응<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화가 동작 비용보다 부족한 상태</dd><dt>실행 절차</dt><dd><ol><li>강화 시도</li><li>부족 팝업 감지</li><li>처리 결과와 다음 실행 상태 기록</li></ol></dd><dt>기대 결과</dt><dd>팝업을 인지하고 중복 클릭 없이 정의한 처리 흐름으로 이동한다.</dd><dt>수집할 증거</dt><dd>팝업 캡처 · 처리 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-07</span><span>OCR 숫자 판독 실패<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화 영역이 가려지거나 숫자를 읽을 수 없는 상태</dd><dt>실행 절차</dt><dd><ol><li>판독 실패 조건 준비</li><li>OCR 실행</li><li>판정과 후속 동작 확인</li></ol></dd><dt>기대 결과</dt><dd>읽지 못한 값을 정상 차감으로 오판하지 않고 재확인 또는 중단한다.</dd><dt>수집할 증거</dt><dd>원본 영역 · OCR 원문 · 오류 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-08</span><span>결과 갱신 지연과 재시도<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>결과 화면 갱신이 지연되는 상태</dd><dt>실행 절차</dt><dd><ol><li>동작 실행</li><li>대기 시간 내 갱신 여부 확인</li><li>재시도·중단 기준 확인</li></ol></dd><dt>기대 결과</dt><dd>무한 반복과 중복 실행을 피하고 마지막 상태를 기록한다.</dd><dt>수집할 증거</dt><dd>타임스탬프 · 재시도 횟수 · 최종 캡처</dd></dl></div></details></div><p class="case-note">설계 샘플의 실행 상태는 미기록입니다. 위 시연 영상의 결과나 실제 결함 보고서와 구분해 제시합니다.</p><div class="scope"><div><h3>반복 자동화 범위</h3><p>버튼 탐지와 클릭, 전후 재화 비교, 강화 결과 확인, 예외 팝업 감시처럼 반복 가능하고 판정 기준을 세울 수 있는 흐름을 대상으로 합니다.</p></div><div><h3>수동 확인 범위</h3><p>결제·광고의 사용자 경험, 네트워크 오류 안내와 복구 경험, 확률 결과의 해석은 별도 판단이 필요합니다. 자동 실행 결과와 사용자 관점의 확인을 함께 봅니다.</p></div></div></div></section>
 <div id="ov" role="dialog" aria-modal="true" aria-label="QA 사례 자세히 보기" aria-hidden="true" inert><button id="ovClose">CLOSE ✕</button><div class="sheet" id="ovBody"></div></div>
@@ -569,7 +761,7 @@ $$('button.project-open').forEach(button=>{
     showDetails('참여 프로젝트 자세히 보기');
   });
 });
-$$('.card').forEach(c=>{c.addEventListener('click',()=>openCard(c));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard(c);}})});$('#ovClose').addEventListener('click',closeCard);addEventListener('keydown',e=>{if(!ov.classList.contains('on'))return;if(e.key==='Escape')closeCard();if(e.key==='Tab'){const focusables=[...ov.querySelectorAll('button,a,video')];const first=focusables[0],last=focusables[focusables.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});ov.addEventListener('click',e=>{if(e.target.closest('a,button,img,video,iframe'))return;const sel=getSelection();if(sel&&!sel.isCollapsed&&ov.contains(sel.anchorNode))return;closeCard();});
+$$('.card').forEach(c=>{c.addEventListener('click',()=>openCard(c));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard(c);}})});$('#ovClose').addEventListener('click',closeCard);addEventListener('keydown',e=>{if(!ov.classList.contains('on'))return;if(e.key==='Escape')closeCard();if(e.key==='Tab'){const focusables=[...ov.querySelectorAll('button,a,video,summary')].filter(el=>el.getClientRects().length);const first=focusables[0],last=focusables[focusables.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});ov.addEventListener('click',e=>{if(e.target.closest('a,button,img,video,iframe,.project-tests details'))return;const sel=getSelection();if(sel&&!sel.isCollapsed&&ov.contains(sel.anchorNode))return;closeCard();});
 $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const filter=b.dataset.filter;$$('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));let count=0;$$('.testcase').forEach(c=>{c.hidden=filter!=='전체'&&c.dataset.category!==filter;if(!c.hidden)count++;});$('.case-count').textContent=count+'개 테스트 설계';}));
 
 const steps=$$('.pstep'),pbig=$('#pbig'),ticks=$$('#ticks i');
