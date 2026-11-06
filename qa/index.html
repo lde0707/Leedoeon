@@ -404,6 +404,10 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 .photo-stage.original img{width:auto;height:auto;max-width:none;max-height:none;margin:auto}
 @media(max-width:520px){.photo-tools{flex-wrap:wrap}.photo-tools strong{flex-basis:100%}}
 @media(max-width:520px){#ov .project-tests dl{grid-template-columns:1fr;gap:4px}#ov .project-tests dd{margin-bottom:10px}}
+#ov .greenway-player{display:grid;grid-template-columns:minmax(160px,245px) 1fr;gap:24px;align-items:center}
+#ov .greenway-player video{width:100%;height:auto;aspect-ratio:378/840}
+#ov .greenway-demo{margin:32px 0}
+@media(max-width:600px){#ov .greenway-player{grid-template-columns:1fr;gap:14px}#ov .greenway-player video{width:min(100%,240px);margin:auto}}
 </style></head><body>
 <div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div id="introword">GAME QA &nbsp;/&nbsp; 이도언</div><div id="cur"></div><div id="ring"></div><div id="bar"></div>
 <div id="top"><div class="nm f6">이도언<span class="dot"></span></div><nav class="mode-nav" aria-label="QA 포트폴리오"><a href="../links/index.html">링크 모음</a><a href="#hero" aria-current="page">GAME QA</a></nav></div>
@@ -645,14 +649,25 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
   </template>
 </article>
 <article class="project-item">
-  <img class="project-cover" src="../GreenWay.png" alt="GreenWay 프로젝트 화면" loading="lazy">
-  <div class="project-copy"><small>2025.03 — 2025.07 · 단독 기획 · 프로토타입 구축</small><h3>GreenWay</h3><p>출근 경로 탐색부터 이동 기록과 루틴 확인까지 연결한 모빌리티 앱 프로토타입입니다.</p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
+  <img class="project-cover" src="../assets/greenway/navigation.png" alt="GreenWay 신림역 보행 경로와 신호 시간 지도" loading="lazy">
+  <div class="project-copy"><small>2025.03 — 2025.07 · 단독 기획 · 프로토타입 구축</small><h3>GreenWay</h3><p>목적지별 이동 시간과 신호 대기를 비교하고, 선택한 보행 경로를 지도에서 확인하는 Figma 프로토타입입니다.</p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
   <template>
     <div class="tp">2025.03 — 2025.07 · 단독 기획 · 프로토타입 구축</div><h3>GreenWay<s>모빌리티 앱 서비스 기획</s></h3>
-    <p class="q">출근 경로 탐색부터 이동 기록과 루틴 확인까지 연결한 모빌리티 앱 프로토타입입니다.</p><section class="evidence"><h4>참여 내용</h4><ul><li>시장 · 유사 서비스 분석으로 사용자 문제 도출</li>
+    <p class="q">목적지별 이동 시간과 신호 대기를 비교하고, 선택한 보행 경로를 지도에서 확인하는 Figma 프로토타입입니다.</p><section class="evidence"><h4>참여 내용</h4><ul><li>시장 · 유사 서비스 분석으로 사용자 문제 도출</li>
               <li>페르소나 · SWOT · BM 캔버스 작성</li>
               <li>주요 5개 화면 프로토타입 제작</li></ul>
-    <h4>QA 관점에서 볼 지점</h4><p>경로 선택 → 기록 → 히스토리 흐름에서 같은 이동 정보가 일관되게 표시되는지 살펴볼 수 있습니다.</p></section>
+    <h4>QA 관점에서 볼 지점</h4><p>비회원 이용 동의 후 지도가 열리는지, 목록에서 선택한 목적지와 지도에 표시된 경로가 일치하는지 확인할 수 있습니다.</p></section>
+<section class="evidence greenway-demo" aria-labelledby="greenway-demo-title">
+  <h4 id="greenway-demo-title">Figma 프로토타입 시연</h4>
+  <div class="greenway-player">
+    <video controls playsinline preload="metadata" width="378" height="840" poster="../assets/greenway/map.png" aria-label="GreenWay 비회원 로그인부터 신림역 경로 선택까지 실제 Figma 시연">
+      <source src="../assets/greenway/prototype.mp4" type="video/mp4">
+    </video>
+    <div><p>비회원으로 이용 약관에 동의하면 주변 신호의 남은 시간이 지도에 나타납니다. 목적지 목록을 펼쳐 이동 시간과 신호 대기를 비교하고, 신림역을 선택하면 초록색 경로가 표시됩니다.</p>
+      <a class="publish-link" href="https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-이도언?node-id=363-4866&amp;starting-point-node-id=363%3A4875&amp;scaling=contain" target="_blank" rel="noopener">Figma에서 직접 체험하기 ↗</a>
+    </div>
+  </div>
+</section>
 <section class="project-tests" aria-label="화면 기반 테스트 케이스">
 <h4>화면 기반 테스트 케이스</h4>
 <p class="test-status">설계안 · 실행 결과 미기록</p>
@@ -673,7 +688,11 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <dt>기대 결과</dt><dd>약관 문구와 버튼이 겹치거나 잘리지 않고, 누른 위치에 대응하는 버튼만 선택된다.</dd></dl></details>
 </section>
 
-    <section class="play-gallery"><h4>프로젝트 화면과 자료</h4><figure><a href="../GreenWay.png" target="_blank" rel="noopener"><img loading="lazy" src="../GreenWay.png" alt="GreenWay 프로토타입"></a><figcaption><strong>GreenWay 프로토타입</strong>홈·경로 탐색·출근 기록·루틴 히스토리·마이페이지의 흐름입니다.</figcaption></figure></section>
+    <section class="play-gallery portrait"><h4>Figma 실제 화면</h4>
+      <figure><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="주변 신호 확인 확대"><img loading="lazy" src="../assets/greenway/map.png" alt="주변 신호 확인"></button><figcaption><strong>주변 신호 확인</strong>지도 위 숫자와 색으로 주변 신호의 남은 시간을 보여줍니다.</figcaption></figure>
+      <figure><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="목적지별 시간 비교 확대"><img loading="lazy" src="../assets/greenway/choices.png" alt="목적지별 시간 비교"></button><figcaption><strong>목적지별 시간 비교</strong>신림역·서원역·우리집의 이동 시간과 출발 시점에 따른 신호 대기 안내를 한 목록에서 비교합니다.</figcaption></figure>
+      <figure><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="선택한 보행 경로 확대"><img loading="lazy" src="../assets/greenway/navigation.png" alt="선택한 보행 경로"></button><figcaption><strong>선택한 보행 경로</strong>신림역을 선택하고 목록을 접은 상태입니다. 보행자 위치에서 이어지는 초록색 경로와 주변 신호를 함께 볼 수 있습니다.</figcaption></figure>
+    </section>
   </template>
 </article>
 <article class="project-item">
