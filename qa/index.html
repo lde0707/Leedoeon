@@ -765,29 +765,51 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
   </template>
 </article>
 <article class="project-item">
-  <img class="project-cover" src="../assets/qa/weapon-levelup.webp" alt="메이플키우기 자동화 테스팅 프로젝트 화면" loading="lazy">
-  <div class="project-copy"><small>2026.03 — 2026.07 · 팀 3인 · 자동화 프로토타입</small><h3>메이플키우기 자동화 테스팅</h3><p>메이플키우기의 반복 성장 동작을 화면 인식으로 실행하고 결과를 로그로 검증한 팀 자동화 프로젝트입니다.</p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button><a class="project-open" href="#work">자동화 시연 4개 보기 →</a></div>
-<template><div class="tp">2026.03 — 2026.07 · 팀 3인</div><h3>메이플키우기 자동화 테스팅</h3><p class="q">무기·주문서 강화와 소환 재화 검증을 실제 실행 화면과 로그로 확인합니다.</p><section class="evidence"><h4>참여 내용</h4><p>화면 인식 자동화 시나리오와 재화 검증, 예외 팝업 처리 과정을 구성했습니다.</p></section>
-<section class="project-tests" aria-label="화면 기반 테스트 케이스">
-<h4>화면 기반 테스트 케이스</h4>
-<p class="test-status">설계안 · 실행 결과 미기록</p>
-<details open>
-<summary>무기 레벨업 전후 OCR 대조</summary>
-<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 무기 레벨업 시연 확대"><img src="../assets/qa/weapon-levelup.webp" alt="기준 화면 · 무기 레벨업 시연" loading="lazy"></button><figcaption>기준 화면 · 무기 레벨업 시연 · 눌러서 확대</figcaption></figure>
-<dl><dt>사전 조건</dt><dd>강화 가능한 무기와 충분한 재화를 준비하고 시작 수치를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>자동화로 레벨업 버튼을 한 번 탐지·클릭한다.</li><li>화면 갱신 후 재화 OCR 결과를 실제 화면 숫자와 대조한다.</li></ol></dd>
-<dt>기대 결과</dt><dd>선택한 무기의 레벨이 오르고 실제 소모량과 OCR 로그의 전후 차이가 일치한다.</dd></dl></details>
-<details open>
-<summary>주문서 성공 표시와 로그 대응</summary>
-<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 주문서 강화 시연 확대"><img src="../assets/qa/scroll-enhancement.webp" alt="기준 화면 · 주문서 강화 시연" loading="lazy"></button><figcaption>기준 화면 · 주문서 강화 시연 · 눌러서 확대</figcaption></figure>
-<dl><dt>사전 조건</dt><dd>주문서 강화 창과 회차별 실행 로그를 동시에 확인할 수 있다.</dd><dt>실행 절차</dt><dd><ol><li>강화를 반복하며 SUCCESS가 표시된 회차를 기록한다.</li><li>같은 회차의 클릭·결과·게이지 정보를 비교한다.</li></ol></dd>
-<dt>기대 결과</dt><dd>성공 표시가 발생한 회차에 대응하는 결과가 한 번만 기록되며 다른 회차에 중복 반영되지 않는다.</dd></dl></details>
-<details open>
-<summary>소환 차감량과 기대 비용 비교</summary>
-<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 소환 OCR 시연 확대"><img src="../assets/qa/ocr-currency.webp" alt="기준 화면 · 소환 OCR 시연" loading="lazy"></button><figcaption>기준 화면 · 소환 OCR 시연 · 눌러서 확대</figcaption></figure>
-<dl><dt>사전 조건</dt><dd>소환 종류·횟수를 고르고 화면의 필요 재화와 잔액을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>소환을 한 번 실행한다.</li><li>연출 후 잔액을 다시 읽어 전후 차이를 표시 비용과 비교한다.</li></ol></dd>
-<dt>기대 결과</dt><dd>실제 차감량이 선택한 소환 비용과 일치할 때만 비용 검증을 통과한다.</dd></dl></details>
-</section>
-</template></article>
+  <img class="project-cover" src="../assets/flyeditor/launch.webp" alt="FlyEditor에서 종이비행기를 손에 들고 첫 발사를 준비하는 화면" loading="lazy">
+  <div class="project-copy">
+    <small>1인 개발 중 · Unity · Windows PC</small>
+    <h3>FlyEditor</h3>
+    <p>종이비행기를 던져 얼마나 멀리 날아가는지 기록합니다. 착륙하면 비행 거리로 얻은 연구점을 다음 비행에 쓸 수 있습니다.</p>
+    <button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button>
+  </div>
+  <template>
+    <div class="tp">1인 개발 중 · Unity · Windows PC</div>
+    <h3>FlyEditor</h3>
+    <p class="q">이번 비행에서 얻은 연구점으로 다음 종이비행기를 더 멀리 날립니다.</p>
+    <section class="evidence">
+      <h4>개발 내용</h4>
+      <p>혼자 개발하고 있는 종이비행기 게임입니다. 발사 각도와 높이로 비행을 시작하고, 첫 착륙을 마치면 연구 화면이 열립니다. ‘더 빠른 첫 던지기’를 구매하면 다음 발사의 속도가 기본값의 12%만큼 증가합니다.</p>
+    </section>
+    <section class="project-tests" aria-label="화면 기반 테스트 케이스">
+      <h4>화면 기반 테스트 케이스</h4>
+      <p class="test-status">Windows 빌드 실행 기록 · 2026.11.06</p>
+      <details open>
+        <summary>비행 중 연구 화면 진입</summary>
+        <figure class="reference-frame">
+          <button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="발사 후 활공 중인 종이비행기 확대"><img src="../assets/flyeditor/flight.webp" alt="발사 후 활공 중인 종이비행기" loading="lazy"></button>
+          <figcaption>발사 후 활공 중인 종이비행기 · 눌러서 확대</figcaption>
+        </figure>
+        <dl><dt>사전 조건</dt><dd>연구를 해금하기 전 첫 비행을 시작한다.</dd><dt>실행 절차</dt><dd>발사 직후 연구 화면 열기를 요청한다.</dd><dt>기대 결과</dt><dd>비행 상태를 유지하고 연구 화면은 닫혀 있다.</dd><dt>실행 결과</dt><dd>통과 · 발사 후 7.1m 지점에서 활공 중이었고, 연구 화면 열기 요청은 거부됐다.</dd></dl>
+      </details>
+      <details open>
+        <summary>첫 착륙의 연구점 정산</summary>
+        <figure class="reference-frame">
+          <button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="첫 착륙 후 이번 비행의 연구점 정산 확대"><img src="../assets/flyeditor/settlement.webp" alt="첫 착륙 후 이번 비행의 연구점 정산" loading="lazy"></button>
+          <figcaption>첫 착륙 후 이번 비행의 연구점 정산 · 눌러서 확대</figcaption>
+        </figure>
+        <dl><dt>사전 조건</dt><dd>연구점이 0인 상태에서 종이비행기를 발사한다.</dd><dt>실행 절차</dt><dd>착륙 후 이번 비행의 보상과 보유 연구점을 비교하고 연구 화면을 연다.</dd><dt>기대 결과</dt><dd>첫 보상이 잔액에 반영되고 연구 화면에 진입할 수 있다.</dd><dt>실행 결과</dt><dd>통과 · 35.3m 비행 후 7점을 받았다. 연구 화면을 열었을 때도 잔액은 7점이었다.</dd></dl>
+      </details>
+      <details open>
+        <summary>같은 연구를 두 번 구매</summary>
+        <figure class="reference-frame">
+          <button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="‘더 빠른 첫 던지기’ 구매 후 연구 화면 확대"><img src="../assets/flyeditor/purchase.webp" alt="‘더 빠른 첫 던지기’ 구매 후 연구 화면" loading="lazy"></button>
+          <figcaption>‘더 빠른 첫 던지기’ 구매 후 연구 화면 · 눌러서 확대</figcaption>
+        </figure>
+        <dl><dt>사전 조건</dt><dd>첫 착륙 후 구매 검증용 연구점 200점을 추가한다.</dd><dt>실행 절차</dt><dd>‘더 빠른 첫 던지기’를 구매하고 같은 연구를 다시 구매한다.</dd><dt>기대 결과</dt><dd>첫 구매만 성공하고 두 번째 요청 뒤에는 잔액이 그대로다.</dd><dt>실행 결과</dt><dd>통과 · 207점에서 구매 비용 30점이 차감됐다. 같은 연구를 다시 요청하자 구매가 거부됐고 잔액은 177점을 유지했다.</dd></dl>
+      </details>
+    </section>
+  </template>
+</article>
   </div></div></section>
 <section id="documents" aria-labelledby="casebook-title"><div class="docs-inner"><header class="docs-header"><div class="docs-kicker">TEST DESIGN / CASEBOOK</div><h2 id="casebook-title">조건을 나누면,<br>확인할 것이 보입니다<span>.</span></h2><p>메이플키우기 자동화 사례를 바탕으로 정리한 테스트 설계 샘플입니다.<br>항목을 펼치면 사전 조건·절차·기대 결과·수집할 증거를 볼 수 있습니다.</p></header><div class="case-tools" role="group" aria-label="테스트 유형 필터"><button type="button" data-filter="전체" aria-pressed="true">전체</button><button type="button" data-filter="정상 흐름" aria-pressed="false">정상 흐름</button><button type="button" data-filter="경계 조건" aria-pressed="false">경계 조건</button><button type="button" data-filter="예외 처리" aria-pressed="false">예외 처리</button><a class="csv-link" href="test-cases.csv" download>테스트 케이스 CSV ↓</a></div><p class="case-count" role="status" aria-live="polite">8개 테스트 설계</p><div id="testcases"><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-01</span><span>무기 레벨업 후 재화 감소<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>강화 가능한 무기와 충분한 재화가 있는 상태</dd><dt>실행 절차</dt><dd><ol><li>실행 전 재화 기록</li><li>강화 버튼 탐지·클릭</li><li>화면 갱신 후 재화 재확인</li></ol></dd><dt>기대 결과</dt><dd>재화가 규칙에 따라 차감되고 강화 상태가 갱신된다.</dd><dt>수집할 증거</dt><dd>전후 캡처 · OCR 값 · 탐지 점수</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-02</span><span>주문서 강화 결과 기록<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>주문서 강화 화면과 재료가 준비된 상태</dd><dt>실행 절차</dt><dd><ol><li>강화 실행</li><li>결과 화면 또는 게이지 확인</li><li>회차별 판정 저장</li></ol></dd><dt>기대 결과</dt><dd>게임의 성공·실패 결과와 자동화 실행 상태를 구분해 기록한다.</dd><dt>수집할 증거</dt><dd>결과 화면 · 회차별 로그</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-03</span><span>소환 재화 차감량 비교<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>소환 비용과 실행 전 재화가 확인된 상태</dd><dt>실행 절차</dt><dd><ol><li>실행 전 OCR</li><li>소환 1회 실행</li><li>실행 후 OCR과 기대 소모량 비교</li></ol></dd><dt>기대 결과</dt><dd>실행 전후 차이가 선택한 소환의 기대 비용과 일치한다.</dd><dt>수집할 증거</dt><dd>전후 OCR · 기대 비용 · 판정</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-04</span><span>재화가 필요 비용과 같은 경우<small>경계 조건 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>보유 재화가 해당 동작 비용과 같은 상태</dd><dt>실행 절차</dt><dd><ol><li>재화 값 확인</li><li>강화 또는 소환 실행</li><li>남은 재화와 후속 동작 확인</li></ol></dd><dt>기대 결과</dt><dd>해당 동작의 소모 규칙대로 처리되고 재화가 음수가 되지 않는다.</dd><dt>수집할 증거</dt><dd>초기 재화 · 결과 캡처</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-05</span><span>버튼 탐지 임계값 점검<small>경계 조건 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>버튼 템플릿과 관심 영역이 준비된 상태</dd><dt>실행 절차</dt><dd><ol><li>동일 화면에서 임계값 비교</li><li>탐지 위치와 점수 기록</li><li>오탐 여부 대조</li></ol></dd><dt>기대 결과</dt><dd>버튼 영역의 탐지와 유사 이미지 오탐을 구분할 수 있다.</dd><dt>수집할 증거</dt><dd>임계값 · 탐지 좌표 · 캡처</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-06</span><span>재화 부족 팝업 대응<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화가 동작 비용보다 부족한 상태</dd><dt>실행 절차</dt><dd><ol><li>강화 시도</li><li>부족 팝업 감지</li><li>처리 결과와 다음 실행 상태 기록</li></ol></dd><dt>기대 결과</dt><dd>팝업을 인지하고 중복 클릭 없이 정의한 처리 흐름으로 이동한다.</dd><dt>수집할 증거</dt><dd>팝업 캡처 · 처리 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-07</span><span>OCR 숫자 판독 실패<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화 영역이 가려지거나 숫자를 읽을 수 없는 상태</dd><dt>실행 절차</dt><dd><ol><li>판독 실패 조건 준비</li><li>OCR 실행</li><li>판정과 후속 동작 확인</li></ol></dd><dt>기대 결과</dt><dd>읽지 못한 값을 정상 차감으로 오판하지 않고 재확인 또는 중단한다.</dd><dt>수집할 증거</dt><dd>원본 영역 · OCR 원문 · 오류 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-08</span><span>결과 갱신 지연과 재시도<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>결과 화면 갱신이 지연되는 상태</dd><dt>실행 절차</dt><dd><ol><li>동작 실행</li><li>대기 시간 내 갱신 여부 확인</li><li>재시도·중단 기준 확인</li></ol></dd><dt>기대 결과</dt><dd>무한 반복과 중복 실행을 피하고 마지막 상태를 기록한다.</dd><dt>수집할 증거</dt><dd>타임스탬프 · 재시도 횟수 · 최종 캡처</dd></dl></div></details></div><p class="case-note">설계 샘플의 실행 상태는 미기록입니다. 위 시연 영상의 결과나 실제 결함 보고서와 구분해 제시합니다.</p><div class="scope"><div><h3>반복 자동화 범위</h3><p>버튼 탐지와 클릭, 전후 재화 비교, 강화 결과 확인, 예외 팝업 감시처럼 반복 가능하고 판정 기준을 세울 수 있는 흐름을 대상으로 합니다.</p></div><div><h3>수동 확인 범위</h3><p>결제·광고의 사용자 경험, 네트워크 오류 안내와 복구 경험, 확률 결과의 해석은 별도 판단이 필요합니다. 자동 실행 결과와 사용자 관점의 확인을 함께 봅니다.</p></div></div></div></section>
 <dialog id="photo-viewer" aria-labelledby="photo-label">
