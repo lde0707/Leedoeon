@@ -388,7 +388,21 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 #ov .project-tests ol{padding-left:20px}
 #ov .project-tests li{padding:0;font-size:inherit}
 #ov .project-tests li:before{display:none}
-#ov .frame-link{font-size:13px;color:var(--ac)}
+#ov .reference-frame{margin:8px 0 16px}
+#ov .zoom-photo{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}
+#ov .zoom-photo img{display:block;cursor:zoom-in}
+#ov .reference-frame img{width:100%;max-height:260px;object-fit:contain;background:#0c1430;border:1px solid #33436e}
+#ov .reference-frame figcaption{margin-top:6px;font-size:13px;color:#b3c3df}
+#photo-viewer{position:fixed;inset:0;margin:auto;padding:12px;width:min(96vw,2000px);height:90vh;height:90dvh;max-width:100vw;max-height:100dvh;background:#0b1225;color:white;border:1px solid #38486a;border-radius:6px;cursor:auto}
+#photo-viewer[open]{display:flex;flex-direction:column}
+#photo-viewer::backdrop{background:rgba(2,5,12,.86)}
+.photo-tools{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.photo-tools strong{flex:1;min-width:0;font-size:14px;line-height:1.5}
+.photo-tools button{flex:none;padding:7px 10px;background:#182744;color:white;border:1px solid #546482;cursor:pointer}
+.photo-stage{min-height:0;flex:1;overflow:auto;background:#050a14}
+.photo-stage img{display:block;width:100%;height:100%;object-fit:contain}
+.photo-stage.original img{width:auto;height:auto;max-width:none;max-height:none;margin:auto}
+@media(max-width:520px){.photo-tools{flex-wrap:wrap}.photo-tools strong{flex-basis:100%}}
 @media(max-width:520px){#ov .project-tests dl{grid-template-columns:1fr;gap:4px}#ov .project-tests dd{margin-bottom:10px}}
 </style></head><body>
 <div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div id="introword">GAME QA &nbsp;/&nbsp; 이도언</div><div id="cur"></div><div id="ring"></div><div id="bar"></div>
@@ -414,17 +428,17 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>인벤토리 재진입 시 수집물 유지</summary>
-<p class="frame-link"><a href="../assets/gameplay/trash-inventory-ui-20261104.webp" target="_blank" rel="noopener">기준 화면 · 04 · 인벤토리 — 수집물과 장비를 한눈에 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 04 · 인벤토리 — 수집물과 장비를 한눈에 확대"><img src="../assets/gameplay/trash-inventory-ui-20261104.webp" alt="기준 화면 · 04 · 인벤토리 — 수집물과 장비를 한눈에" loading="lazy"></button><figcaption>기준 화면 · 04 · 인벤토리 — 수집물과 장비를 한눈에 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>슬롯 4/36, 쓰레기 부피 4/12인 상태에서 하단 네 아이템을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>I로 인벤토리를 닫는다.</li><li>수집·투입 없이 다시 열어 슬롯과 부피를 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>사용 슬롯은 4칸, 부피는 4다. 네 아이템의 종류·순서·가치가 재진입 전과 일치한다.</dd></dl></details>
-<details>
+<details open>
 <summary>분리수거의 정답 입력과 대기열 이동</summary>
-<p class="frame-link"><a href="../assets/gameplay/trash-recycling-ui-20261104.webp" target="_blank" rel="noopener">기준 화면 · 05 · 분리수거 — 수집물을 수익으로 바꾸는 과정 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 05 · 분리수거 — 수집물을 수익으로 바꾸는 과정 확대"><img src="../assets/gameplay/trash-recycling-ui-20261104.webp" alt="기준 화면 · 05 · 분리수거 — 수집물을 수익으로 바꾸는 과정" loading="lazy"></button><figcaption>기준 화면 · 05 · 분리수거 — 수집물을 수익으로 바꾸는 과정 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>대기 12개, 현재 물건은 플라스틱 반찬통이다. 다음 물건을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>2초 제한 안에 4번 플라스틱을 한 번 선택한다.</li><li>다음 문제 표시 직후 대기 수와 현재 물건을 확인한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>한 건만 처리되어 대기 수가 11이 된다. 예고된 다음 물건이 현재 물건으로 바뀌고 오염도가 증가하지 않는다.</dd></dl></details>
-<details>
+<details open>
 <summary>잔액 부족 시 낮 강화 구매 차단</summary>
-<p class="frame-link"><a href="../assets/gameplay/trash-upgrade-ui-20261104.webp" target="_blank" rel="noopener">기준 화면 · 06 · 낮의 강화 — 수익을 다음 탐색에 재투자 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 06 · 낮의 강화 — 수익을 다음 탐색에 재투자 확대"><img src="../assets/gameplay/trash-upgrade-ui-20261104.webp" alt="기준 화면 · 06 · 낮의 강화 — 수익을 다음 탐색에 재투자" loading="lazy"></button><figcaption>기준 화면 · 06 · 낮의 강화 — 수익을 다음 탐색에 재투자 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>보유금 200원, 이동속도 Lv.0, 표시 비용 300원이다.</dd><dt>실행 절차</dt><dd><ol><li>이동속도 강화 항목을 선택한다.</li><li>강화소를 닫았다가 다시 열어 금액과 레벨을 확인한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>보유금은 200원, 이동속도는 Lv.0을 유지한다. 구매가 성립하지 않아야 한다.</dd></dl></details>
 </section>
@@ -445,17 +459,17 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>새 런을 선택한 슬롯에만 저장</summary>
-<p class="frame-link"><a href="../assets/gameplay/rushitadel-slots-ui.webp" target="_blank" rel="noopener">기준 화면 · 02 · 저장 슬롯 — 진행 공간 선택 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 02 · 저장 슬롯 — 진행 공간 선택 확대"><img src="../assets/gameplay/rushitadel-slots-ui.webp" alt="기준 화면 · 02 · 저장 슬롯 — 진행 공간 선택" loading="lazy"></button><figcaption>기준 화면 · 02 · 저장 슬롯 — 진행 공간 선택 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>세 슬롯이 비어 있고 슬롯 2를 사용한다.</dd><dt>실행 절차</dt><dd><ol><li>슬롯 2의 새 게임을 눌러 첫 저장 지점까지 진행한다.</li><li>타이틀로 돌아와 슬롯 목록을 다시 연다.</li></ol></dd>
 <dt>기대 결과</dt><dd>슬롯 2에서 저장된 진행을 확인할 수 있고 슬롯 1·3은 빈 상태다.</dd></dl></details>
-<details>
+<details open>
 <summary>T1 포탑의 변형 선택 확정</summary>
-<p class="frame-link"><a href="../assets/gameplay/rushitadel-growth-ui.webp" target="_blank" rel="noopener">기준 화면 · 05 · 레벨업 — 포탑의 성장 방향 선택 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 05 · 레벨업 — 포탑의 성장 방향 선택 확대"><img src="../assets/gameplay/rushitadel-growth-ui.webp" alt="기준 화면 · 05 · 레벨업 — 포탑의 성장 방향 선택" loading="lazy"></button><figcaption>기준 화면 · 05 · 레벨업 — 포탑의 성장 방향 선택 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>포탑 변형 화면에서 T1을 선택하고 세 후보를 확인한다.</dd><dt>실행 절차</dt><dd><ol><li>후보 하나를 선택한 뒤 다른 후보로 바꾼다.</li><li>변형 확정을 한 번 눌러 T1의 외형과 공격을 관찰한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>최종 선택한 변형만 T1에 반영된다. 다른 포탑에는 같은 변형이 함께 적용되지 않는다.</dd></dl></details>
-<details>
+<details open>
 <summary>일시정지 동안 전투 상태 보존</summary>
-<p class="frame-link"><a href="../assets/gameplay/rushitadel-pause-ui.webp" target="_blank" rel="noopener">기준 화면 · 플레이 중 · 일시정지 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 플레이 중 · 일시정지 확대"><img src="../assets/gameplay/rushitadel-pause-ui.webp" alt="기준 화면 · 플레이 중 · 일시정지" loading="lazy"></button><figcaption>기준 화면 · 플레이 중 · 일시정지 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>적이 이동 중인 전투에서 플레이어 체력과 적 위치를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>일시정지를 열고 3초간 기다린다.</li><li>계속하기를 눌러 위치와 체력을 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>정지 시간에 적 이동이나 접촉 피해가 누적되지 않는다. 계속하기 이후 전투가 이어진다.</dd></dl></details>
 </section>
@@ -477,17 +491,17 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>지우개 대시 획득 전후 통과 조건</summary>
-<p class="frame-link"><a href="../assets/gameplay/unfin-ability-flow.webp" target="_blank" rel="noopener">기준 화면 · 03 · 능력 — 지우개 대시로 이동의 확장 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 03 · 능력 — 지우개 대시로 이동의 확장 확대"><img src="../assets/gameplay/unfin-ability-flow.webp" alt="기준 화면 · 03 · 능력 — 지우개 대시로 이동의 확장" loading="lazy"></button><figcaption>기준 화면 · 03 · 능력 — 지우개 대시로 이동의 확장 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>대시가 필요한 동일한 통로 앞에서 능력 획득 전·후 상태를 각각 준비한다.</dd><dt>실행 절차</dt><dd><ol><li>획득 전에 통로를 향해 Shift를 누른다.</li><li>지우개 대시 획득 후 같은 위치와 방향에서 다시 누른다.</li></ol></dd>
 <dt>기대 결과</dt><dd>획득 전에는 해당 통로를 대시로 통과할 수 없다. 획득 후에는 대시가 발동해 통과할 수 있다.</dd></dl></details>
-<details>
+<details open>
 <summary>지도 조작 후 현재 위치 복원</summary>
-<p class="frame-link"><a href="../assets/gameplay/unfin-map-flow.webp" target="_blank" rel="noopener">기준 화면 · 04 · 탐험 지도 — 기억해 둔 길로 돌아가기 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 04 · 탐험 지도 — 기억해 둔 길로 돌아가기 확대"><img src="../assets/gameplay/unfin-map-flow.webp" alt="기준 화면 · 04 · 탐험 지도 — 기억해 둔 길로 돌아가기" loading="lazy"></button><figcaption>기준 화면 · 04 · 탐험 지도 — 기억해 둔 길로 돌아가기 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>흑연 광산에서 현재 위치와 지도 배율을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>M으로 지도를 열고 확대 및 축소를 수행한다.</li><li>내 위치를 선택한 뒤 M으로 닫고 다시 연다.</li></ol></dd>
 <dt>기대 결과</dt><dd>내 위치가 실제 플레이어 위치와 일치한다. 지도 조작만으로 캐릭터의 월드 위치는 변하지 않는다.</dd></dl></details>
-<details>
+<details open>
 <summary>조작 안내와 실제 공격 입력 대조</summary>
-<p class="frame-link"><a href="../assets/gameplay/unfin-controls-flow.webp" target="_blank" rel="noopener">기준 화면 · 플레이 중 · 조작 방법 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 플레이 중 · 조작 방법 확대"><img src="../assets/gameplay/unfin-controls-flow.webp" alt="기준 화면 · 플레이 중 · 조작 방법" loading="lazy"></button><figcaption>기준 화면 · 플레이 중 · 조작 방법 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>조작 방법 화면에서 공격에 J와 마우스 왼쪽 버튼이 표시된 상태다.</dd><dt>실행 절차</dt><dd><ol><li>안내를 닫고 캐릭터를 정지시킨다.</li><li>J로 한 번 공격하고 동작이 끝난 뒤 마우스 왼쪽 버튼으로 한 번 공격한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>각 입력에서 공격이 한 번씩 발동하며 두 입력 모두 안내와 같은 기능을 수행한다.</dd></dl></details>
 </section>
@@ -509,17 +523,17 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>중력 전환 시 기록 상자의 충돌</summary>
-<p class="frame-link"><a href="../assets/gameplay/booktower-gravity-flow.webp" target="_blank" rel="noopener">기준 화면 · 02 · 중력 조작 — 천장으로 향하는 상자 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 02 · 중력 조작 — 천장으로 향하는 상자 확대"><img src="../assets/gameplay/booktower-gravity-flow.webp" alt="기준 화면 · 02 · 중력 조작 — 천장으로 향하는 상자" loading="lazy"></button><figcaption>기준 화면 · 02 · 중력 조작 — 천장으로 향하는 상자 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>첫 방에서 기록 상자와 천장 사이의 경로를 확인한다.</dd><dt>실행 절차</dt><dd><ol><li>중력을 천장 방향으로 바꾼다.</li><li>상자가 천장에 닿을 때까지 위치를 관찰한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>상자는 새 중력 방향으로 이동하고 천장 경계에서 멈춘다. 천장을 관통하지 않는다.</dd></dl></details>
-<details>
+<details open>
 <summary>두 상자 퍼즐의 부분 완료 판정</summary>
-<p class="frame-link"><a href="../assets/gameplay/booktower-multi-flow.webp" target="_blank" rel="noopener">기준 화면 · 04 · 열람실 — 함께 움직이는 두 상자 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 04 · 열람실 — 함께 움직이는 두 상자 확대"><img src="../assets/gameplay/booktower-multi-flow.webp" alt="기준 화면 · 04 · 열람실 — 함께 움직이는 두 상자" loading="lazy"></button><figcaption>기준 화면 · 04 · 열람실 — 함께 움직이는 두 상자 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>열람실에 두 기록 상자와 서로 다른 목표가 있다.</dd><dt>실행 절차</dt><dd><ol><li>한 상자만 맞는 문양에 놓고 완료 상태를 확인한다.</li><li>두 번째 상자도 맞는 목표로 이동한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>첫 상자만 맞춘 상태에서는 퍼즐이 진행 중이다. 두 상자가 동시에 각각의 목표를 충족할 때 완료된다.</dd></dl></details>
-<details>
+<details open>
 <summary>체크포인트 복귀 후 상자 상태</summary>
-<p class="frame-link"><a href="../assets/gameplay/booktower-pause-flow.webp" target="_blank" rel="noopener">기준 화면 · 플레이 중 · 책갈피 메뉴 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 플레이 중 · 책갈피 메뉴 확대"><img src="../assets/gameplay/booktower-pause-flow.webp" alt="기준 화면 · 플레이 중 · 책갈피 메뉴" loading="lazy"></button><figcaption>기준 화면 · 플레이 중 · 책갈피 메뉴 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>체크포인트의 상자 배치를 기록한 뒤 한 상자를 이동한다.</dd><dt>실행 절차</dt><dd><ol><li>책갈피 메뉴에서 체크포인트로 돌아가기를 선택한다.</li><li>캐릭터와 상자 위치를 기록해 둔 배치와 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>캐릭터와 상자가 해당 체크포인트 상태로 복구되고, 이전 시도의 상자가 중복 생성되지 않는다.</dd></dl></details>
 </section>
@@ -541,17 +555,17 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>덱과 전투 소환 목록 일치</summary>
-<p class="frame-link"><a href="../assets/gameplay/pearl-deck-flow.webp" target="_blank" rel="noopener">기준 화면 · 04 · 덱 편성 — 전장에 데려갈 유닛 선택 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 04 · 덱 편성 — 전장에 데려갈 유닛 선택 확대"><img src="../assets/gameplay/pearl-deck-flow.webp" alt="기준 화면 · 04 · 덱 편성 — 전장에 데려갈 유닛 선택" loading="lazy"></button><figcaption>기준 화면 · 04 · 덱 편성 — 전장에 데려갈 유닛 선택 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>덱 편성에 서로 다른 유닛 세 개를 배치하고 순서를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>편성을 마치고 스테이지 전투에 진입한다.</li><li>전투 상단 소환 슬롯의 유닛과 순서를 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>편성한 세 유닛이 대응하는 슬롯에 나타난다. 비어 있거나 잠긴 슬롯에서는 추가 유닛을 소환할 수 없다.</dd></dl></details>
-<details>
+<details open>
 <summary>소환 한 번당 골드 한 번 차감</summary>
-<p class="frame-link"><a href="../assets/gameplay/pearl-battle-flow.webp" target="_blank" rel="noopener">기준 화면 · 05 · 전투 — 골드를 소환과 강화에 배분 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 05 · 전투 — 골드를 소환과 강화에 배분 확대"><img src="../assets/gameplay/pearl-battle-flow.webp" alt="기준 화면 · 05 · 전투 — 골드를 소환과 강화에 배분" loading="lazy"></button><figcaption>기준 화면 · 05 · 전투 — 골드를 소환과 강화에 배분 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>골드가 충분하고 소환 버튼의 표시 비용을 확인할 수 있다.</dd><dt>실행 절차</dt><dd><ol><li>보상 획득이 없는 구간에서 골드와 유닛 수를 기록한다.</li><li>소환을 한 번 실행한 직후 두 값을 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>전장 유닛 수가 하나 늘고 골드는 표시 비용만큼 한 번 차감된다.</dd></dl></details>
-<details>
+<details open>
 <summary>미네랄 부족 시 유닛 강화 차단</summary>
-<p class="frame-link"><a href="../assets/gameplay/pearl-store-flow.webp" target="_blank" rel="noopener">기준 화면 · 06 · 미네랄 상점 — 보상을 다음 전투의 힘으로 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 06 · 미네랄 상점 — 보상을 다음 전투의 힘으로 확대"><img src="../assets/gameplay/pearl-store-flow.webp" alt="기준 화면 · 06 · 미네랄 상점 — 보상을 다음 전투의 힘으로" loading="lazy"></button><figcaption>기준 화면 · 06 · 미네랄 상점 — 보상을 다음 전투의 힘으로 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>상점 잔액 0, 첫 유닛 Lv.1, 강화 비용 100이다.</dd><dt>실행 절차</dt><dd><ol><li>첫 유닛의 100 미네랄 버튼을 누른다.</li><li>상점을 나갔다 다시 열어 잔액과 첫 유닛 레벨을 확인한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>잔액은 0, 첫 유닛은 Lv.1을 유지한다. 미리보기의 다음 레벨 능력치가 적용되지 않는다.</dd></dl></details>
 </section>
@@ -573,17 +587,17 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>공동 이동 후 되돌리기</summary>
-<p class="frame-link"><a href="../assets/gameplay/puzzle-tilt-flow.webp" target="_blank" rel="noopener">기준 화면 · 04 · 중력 조작 — 한 방향으로 함께 이동 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 04 · 중력 조작 — 한 방향으로 함께 이동 확대"><img src="../assets/gameplay/puzzle-tilt-flow.webp" alt="기준 화면 · 04 · 중력 조작 — 한 방향으로 함께 이동" loading="lazy"></button><figcaption>기준 화면 · 04 · 중력 조작 — 한 방향으로 함께 이동 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>엇갈린 길에서 두 친구의 위치와 이동 횟수를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>한 방향으로 유효한 이동을 실행한다.</li><li>되돌리기를 한 번 누르고 보드와 이동 횟수를 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>두 친구가 모두 직전 위치로 돌아오고 이동 횟수도 직전 값으로 복원된다.</dd></dl></details>
-<details>
+<details open>
 <summary>클리어 기록과 단계 목록 반영</summary>
-<p class="frame-link"><a href="../assets/gameplay/puzzle-clear-flow.webp" target="_blank" rel="noopener">기준 화면 · 05 · 클리어 — 해법과 보상을 확인 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 05 · 클리어 — 해법과 보상을 확인 확대"><img src="../assets/gameplay/puzzle-clear-flow.webp" alt="기준 화면 · 05 · 클리어 — 해법과 보상을 확인" loading="lazy"></button><figcaption>기준 화면 · 05 · 클리어 — 해법과 보상을 확인 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>현재 단계의 기존 별 기록을 확인하고 마지막 이동 직전까지 진행한다.</dd><dt>실행 절차</dt><dd><ol><li>두 친구를 각 목표에 놓아 결과 화면의 별을 기록한다.</li><li>결과 화면 아래 메인 화면으로 버튼을 누르고 단계 목록을 다시 확인한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>단계 기록이 결과 화면에서 획득한 별을 반영하며, 기존 최고 기록보다 낮아지지 않는다.</dd></dl></details>
-<details>
+<details open>
 <summary>크기 변환 후 초기화</summary>
-<p class="frame-link"><a href="../assets/gameplay/puzzle-resize-flow.webp" target="_blank" rel="noopener">기준 화면 · 06 · 새로운 규칙 — 크기까지 맞추기 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 06 · 새로운 규칙 — 크기까지 맞추기 확대"><img src="../assets/gameplay/puzzle-resize-flow.webp" alt="기준 화면 · 06 · 새로운 규칙 — 크기까지 맞추기" loading="lazy"></button><figcaption>기준 화면 · 06 · 새로운 규칙 — 크기까지 맞추기 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>처음 만난 변환대에서 시작 위치와 친구 크기를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>변환대에 진입해 크기 변화를 확인한다.</li><li>초기화를 누른 뒤 보드와 이동 횟수를 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>친구의 위치와 크기가 해당 단계의 시작 상태로 돌아가고 이동 횟수는 0이다.</dd></dl></details>
 </section>
@@ -605,17 +619,17 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>4인 초기 자원 배분</summary>
-<p class="frame-link"><a href="../dice-rulebook.jpg" target="_blank" rel="noopener">기준 화면 · 룰북 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 룰북 확대"><img src="../dice-rulebook.jpg" alt="기준 화면 · 룰북" loading="lazy"></button><figcaption>기준 화면 · 룰북 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>룰북과 실물 구성품을 준비하고 네 색을 한 명씩 선택한다.</dd><dt>실행 절차</dt><dd><ol><li>각자 10·5·1 코인을 종류별로 다섯 개씩 받는다.</li><li>색 주사위와 시작 말을 룰북에 맞춰 배치한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>각자 80코인과 자기 색 주사위 20개를 가진다. 말 네 개가 각자 색의 시작 위치에 놓인다.</dd></dl></details>
-<details>
+<details open>
 <summary>텔레포트 칸의 경계 판정</summary>
-<p class="frame-link"><a href="../dice-board.jpg" target="_blank" rel="noopener">기준 화면 · 게임 보드 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 게임 보드 확대"><img src="../dice-board.jpg" alt="기준 화면 · 게임 보드" loading="lazy"></button><figcaption>기준 화면 · 게임 보드 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>보드의 1·7·13·19번 흰색 칸과 인접 일반 칸을 식별한다.</dd><dt>실행 절차</dt><dd><ol><li>테스트용 이동값으로 일반 칸에 도착해 처리한다.</li><li>같은 조건에서 흰색 칸에 도착해 원하는 땅으로 이동한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>일반 칸에서는 텔레포트를 적용하지 않는다. 흰색 칸에서는 선택한 목적지에 말 하나만 놓인다.</dd></dl></details>
-<details>
+<details open>
 <summary>10턴 종료 시 승리 판정</summary>
-<p class="frame-link"><a href="../dice-rulebook.jpg" target="_blank" rel="noopener">기준 화면 · 룰북 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 룰북 확대"><img src="../dice-rulebook.jpg" alt="기준 화면 · 룰북" loading="lazy"></button><figcaption>기준 화면 · 룰북 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>네 플레이어가 참여하고 본인 색 구역 소유 수가 동률이 아닌 판을 준비한다.</dd><dt>실행 절차</dt><dd><ol><li>9턴 종료 시 진행 여부를 확인한다.</li><li>10턴을 마친 후 색 구역별 소유 수를 집계한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>9턴에는 게임이 계속된다. 10턴 뒤에는 본인 구역의 땅을 가장 많이 보유한 플레이어가 승리한다.</dd></dl></details>
 </section>
@@ -637,17 +651,17 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>SNS 버튼별 인증 경로 연결</summary>
-<p class="frame-link"><a href="../GreenWay.png" target="_blank" rel="noopener">기준 화면 · GreenWay 프로토타입 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · GreenWay 프로토타입 확대"><img src="../GreenWay.png" alt="기준 화면 · GreenWay 프로토타입" loading="lazy"></button><figcaption>기준 화면 · GreenWay 프로토타입 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>로그인 프로토타입에서 네 SNS 아이콘이 보인다.</dd><dt>실행 절차</dt><dd><ol><li>카카오·네이버·Apple·Google 아이콘을 각각 한 번씩 누른다.</li><li>각 진입 화면을 기록하고 시작 화면으로 돌아와 다음 아이콘을 확인한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>선택한 아이콘과 대응하는 가입 경로가 열린다. 다른 제공자나 비회원 경로로 연결되지 않는다.</dd></dl></details>
-<details>
+<details open>
 <summary>비회원 로그인 진입</summary>
-<p class="frame-link"><a href="../GreenWay.png" target="_blank" rel="noopener">기준 화면 · GreenWay 프로토타입 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · GreenWay 프로토타입 확대"><img src="../GreenWay.png" alt="기준 화면 · GreenWay 프로토타입" loading="lazy"></button><figcaption>기준 화면 · GreenWay 프로토타입 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>SNS 계정 연결 없이 로그인 화면에 머문 상태다.</dd><dt>실행 절차</dt><dd><ol><li>하단의 비회원 로그인을 선택한다.</li><li>도착 화면과 사용자 상태를 확인한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>SNS 인증 절차 없이 비회원용 진입 화면으로 이어지고 회원 계정으로 표시되지 않는다.</dd></dl></details>
-<details>
+<details open>
 <summary>작은 화면에서 가입 안내와 버튼 판독</summary>
-<p class="frame-link"><a href="../GreenWay.png" target="_blank" rel="noopener">기준 화면 · GreenWay 프로토타입 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · GreenWay 프로토타입 확대"><img src="../GreenWay.png" alt="기준 화면 · GreenWay 프로토타입" loading="lazy"></button><figcaption>기준 화면 · GreenWay 프로토타입 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>로그인 시안을 서로 다른 모바일 화면 크기에서 연다.</dd><dt>실행 절차</dt><dd><ol><li>SNS 아이콘, 비회원 버튼, 하단 약관 안내를 차례로 확인한다.</li><li>각 버튼의 중앙을 눌러 인접 버튼과 구분되는지 확인한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>약관 문구와 버튼이 겹치거나 잘리지 않고, 누른 위치에 대응하는 버튼만 선택된다.</dd></dl></details>
 </section>
@@ -664,23 +678,31 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <p class="test-status">설계안 · 실행 결과 미기록</p>
 <details open>
 <summary>무기 레벨업 전후 OCR 대조</summary>
-<p class="frame-link"><a href="../assets/qa/weapon-levelup.webp" target="_blank" rel="noopener">기준 화면 · 무기 레벨업 시연 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 무기 레벨업 시연 확대"><img src="../assets/qa/weapon-levelup.webp" alt="기준 화면 · 무기 레벨업 시연" loading="lazy"></button><figcaption>기준 화면 · 무기 레벨업 시연 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>강화 가능한 무기와 충분한 재화를 준비하고 시작 수치를 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>자동화로 레벨업 버튼을 한 번 탐지·클릭한다.</li><li>화면 갱신 후 재화 OCR 결과를 실제 화면 숫자와 대조한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>선택한 무기의 레벨이 오르고 실제 소모량과 OCR 로그의 전후 차이가 일치한다.</dd></dl></details>
-<details>
+<details open>
 <summary>주문서 성공 표시와 로그 대응</summary>
-<p class="frame-link"><a href="../assets/qa/scroll-enhancement.webp" target="_blank" rel="noopener">기준 화면 · 주문서 강화 시연 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 주문서 강화 시연 확대"><img src="../assets/qa/scroll-enhancement.webp" alt="기준 화면 · 주문서 강화 시연" loading="lazy"></button><figcaption>기준 화면 · 주문서 강화 시연 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>주문서 강화 창과 회차별 실행 로그를 동시에 확인할 수 있다.</dd><dt>실행 절차</dt><dd><ol><li>강화를 반복하며 SUCCESS가 표시된 회차를 기록한다.</li><li>같은 회차의 클릭·결과·게이지 정보를 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>성공 표시가 발생한 회차에 대응하는 결과가 한 번만 기록되며 다른 회차에 중복 반영되지 않는다.</dd></dl></details>
-<details>
+<details open>
 <summary>소환 차감량과 기대 비용 비교</summary>
-<p class="frame-link"><a href="../assets/qa/ocr-currency.webp" target="_blank" rel="noopener">기준 화면 · 소환 OCR 시연 ↗</a></p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · 소환 OCR 시연 확대"><img src="../assets/qa/ocr-currency.webp" alt="기준 화면 · 소환 OCR 시연" loading="lazy"></button><figcaption>기준 화면 · 소환 OCR 시연 · 눌러서 확대</figcaption></figure>
 <dl><dt>사전 조건</dt><dd>소환 종류·횟수를 고르고 화면의 필요 재화와 잔액을 기록한다.</dd><dt>실행 절차</dt><dd><ol><li>소환을 한 번 실행한다.</li><li>연출 후 잔액을 다시 읽어 전후 차이를 표시 비용과 비교한다.</li></ol></dd>
 <dt>기대 결과</dt><dd>실제 차감량이 선택한 소환 비용과 일치할 때만 비용 검증을 통과한다.</dd></dl></details>
 </section>
 </template></article>
   </div></div></section>
 <section id="documents" aria-labelledby="casebook-title"><div class="docs-inner"><header class="docs-header"><div class="docs-kicker">TEST DESIGN / CASEBOOK</div><h2 id="casebook-title">조건을 나누면,<br>확인할 것이 보입니다<span>.</span></h2><p>메이플키우기 자동화 사례를 바탕으로 정리한 테스트 설계 샘플입니다.<br>항목을 펼치면 사전 조건·절차·기대 결과·수집할 증거를 볼 수 있습니다.</p></header><div class="case-tools" role="group" aria-label="테스트 유형 필터"><button type="button" data-filter="전체" aria-pressed="true">전체</button><button type="button" data-filter="정상 흐름" aria-pressed="false">정상 흐름</button><button type="button" data-filter="경계 조건" aria-pressed="false">경계 조건</button><button type="button" data-filter="예외 처리" aria-pressed="false">예외 처리</button><a class="csv-link" href="test-cases.csv" download>테스트 케이스 CSV ↓</a></div><p class="case-count" role="status" aria-live="polite">8개 테스트 설계</p><div id="testcases"><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-01</span><span>무기 레벨업 후 재화 감소<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>강화 가능한 무기와 충분한 재화가 있는 상태</dd><dt>실행 절차</dt><dd><ol><li>실행 전 재화 기록</li><li>강화 버튼 탐지·클릭</li><li>화면 갱신 후 재화 재확인</li></ol></dd><dt>기대 결과</dt><dd>재화가 규칙에 따라 차감되고 강화 상태가 갱신된다.</dd><dt>수집할 증거</dt><dd>전후 캡처 · OCR 값 · 탐지 점수</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-02</span><span>주문서 강화 결과 기록<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>주문서 강화 화면과 재료가 준비된 상태</dd><dt>실행 절차</dt><dd><ol><li>강화 실행</li><li>결과 화면 또는 게이지 확인</li><li>회차별 판정 저장</li></ol></dd><dt>기대 결과</dt><dd>게임의 성공·실패 결과와 자동화 실행 상태를 구분해 기록한다.</dd><dt>수집할 증거</dt><dd>결과 화면 · 회차별 로그</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-03</span><span>소환 재화 차감량 비교<small>정상 흐름 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>소환 비용과 실행 전 재화가 확인된 상태</dd><dt>실행 절차</dt><dd><ol><li>실행 전 OCR</li><li>소환 1회 실행</li><li>실행 후 OCR과 기대 소모량 비교</li></ol></dd><dt>기대 결과</dt><dd>실행 전후 차이가 선택한 소환의 기대 비용과 일치한다.</dd><dt>수집할 증거</dt><dd>전후 OCR · 기대 비용 · 판정</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-04</span><span>재화가 필요 비용과 같은 경우<small>경계 조건 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>보유 재화가 해당 동작 비용과 같은 상태</dd><dt>실행 절차</dt><dd><ol><li>재화 값 확인</li><li>강화 또는 소환 실행</li><li>남은 재화와 후속 동작 확인</li></ol></dd><dt>기대 결과</dt><dd>해당 동작의 소모 규칙대로 처리되고 재화가 음수가 되지 않는다.</dd><dt>수집할 증거</dt><dd>초기 재화 · 결과 캡처</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-05</span><span>버튼 탐지 임계값 점검<small>경계 조건 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>버튼 템플릿과 관심 영역이 준비된 상태</dd><dt>실행 절차</dt><dd><ol><li>동일 화면에서 임계값 비교</li><li>탐지 위치와 점수 기록</li><li>오탐 여부 대조</li></ol></dd><dt>기대 결과</dt><dd>버튼 영역의 탐지와 유사 이미지 오탐을 구분할 수 있다.</dd><dt>수집할 증거</dt><dd>임계값 · 탐지 좌표 · 캡처</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-06</span><span>재화 부족 팝업 대응<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화가 동작 비용보다 부족한 상태</dd><dt>실행 절차</dt><dd><ol><li>강화 시도</li><li>부족 팝업 감지</li><li>처리 결과와 다음 실행 상태 기록</li></ol></dd><dt>기대 결과</dt><dd>팝업을 인지하고 중복 클릭 없이 정의한 처리 흐름으로 이동한다.</dd><dt>수집할 증거</dt><dd>팝업 캡처 · 처리 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-07</span><span>OCR 숫자 판독 실패<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화 영역이 가려지거나 숫자를 읽을 수 없는 상태</dd><dt>실행 절차</dt><dd><ol><li>판독 실패 조건 준비</li><li>OCR 실행</li><li>판정과 후속 동작 확인</li></ol></dd><dt>기대 결과</dt><dd>읽지 못한 값을 정상 차감으로 오판하지 않고 재확인 또는 중단한다.</dd><dt>수집할 증거</dt><dd>원본 영역 · OCR 원문 · 오류 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-08</span><span>결과 갱신 지연과 재시도<small>예외 처리 · 설계 샘플</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>결과 화면 갱신이 지연되는 상태</dd><dt>실행 절차</dt><dd><ol><li>동작 실행</li><li>대기 시간 내 갱신 여부 확인</li><li>재시도·중단 기준 확인</li></ol></dd><dt>기대 결과</dt><dd>무한 반복과 중복 실행을 피하고 마지막 상태를 기록한다.</dd><dt>수집할 증거</dt><dd>타임스탬프 · 재시도 횟수 · 최종 캡처</dd></dl></div></details></div><p class="case-note">설계 샘플의 실행 상태는 미기록입니다. 위 시연 영상의 결과나 실제 결함 보고서와 구분해 제시합니다.</p><div class="scope"><div><h3>반복 자동화 범위</h3><p>버튼 탐지와 클릭, 전후 재화 비교, 강화 결과 확인, 예외 팝업 감시처럼 반복 가능하고 판정 기준을 세울 수 있는 흐름을 대상으로 합니다.</p></div><div><h3>수동 확인 범위</h3><p>결제·광고의 사용자 경험, 네트워크 오류 안내와 복구 경험, 확률 결과의 해석은 별도 판단이 필요합니다. 자동 실행 결과와 사용자 관점의 확인을 함께 봅니다.</p></div></div></div></section>
+<dialog id="photo-viewer" aria-labelledby="photo-label">
+  <div class="photo-tools">
+    <strong id="photo-label">기준 화면</strong>
+    <button type="button" id="photo-size" aria-pressed="false">원본 크기</button>
+    <button type="button" id="photo-close" autofocus>닫기</button>
+  </div>
+  <div class="photo-stage"><img alt=""></div>
+</dialog>
 <div id="ov" role="dialog" aria-modal="true" aria-label="QA 사례 자세히 보기" aria-hidden="true" inert><button id="ovClose">CLOSE ✕</button><div class="sheet" id="ovBody"></div></div>
 <section id="proc"><div class="pgrid"><div class="pstick"><div class="k">HOW I TEST</div><h2>검증은<br>네 단계를<br>거칩니다.</h2><div class="cnt"><span class="big" id="pbig">01</span><span class="of">/ 04</span></div><div class="ticks" id="ticks"><i></i><i></i><i></i><i></i></div></div><div class="psteps"><div class="pstep" data-n="01"><div class="n">STEP 01</div><h4>범위와 기대값 정의</h4><p>기능의 규칙과 사용자 흐름을 읽고 정상 동작의 기준을 정합니다. 자동화할 구간과 사람이 판단할 구간을 나눕니다.</p></div><div class="pstep" data-n="02"><div class="n">STEP 02</div><h4>조건과 재현 절차 설계</h4><p>정상·경계·예외 조건으로 나눕니다. 사전 상태, 실행 순서, 기대 결과와 필요한 증거를 구체화합니다.</p></div><div class="pstep" data-n="03"><div class="n">STEP 03</div><h4>실행과 기록</h4><p>반복 흐름을 실행하고 화면·수치·회차별 로그를 함께 남깁니다. 테스트 도구의 인식 실패와 게임의 결과를 구분합니다.</p></div><div class="pstep" data-n="04"><div class="n">STEP 04</div><h4>분석과 재검증</h4><p>차이가 난 조건과 마지막 정상 상태를 좁힙니다. 수정 이후에는 같은 조건을 다시 실행하고 주변 흐름까지 확인합니다.</p></div></div></div></section><section id="edu"><div class="in">
   <div class="k rv">EDUCATION · CERTIFICATE · AWARD</div>
@@ -748,7 +770,55 @@ const CASES=[{"key": "weapon", "title": "무기 레벨업 자동화", "sub": "�
 const ov=$('#ov'),ovBody=$('#ovBody');let opener=null;
 function closeCard(){ovBody.querySelectorAll('video').forEach(v=>v.pause());ov.classList.remove('on');ov.inert=true;ov.setAttribute('aria-hidden','true');document.body.classList.remove('lock');opener?.focus({preventScroll:true});}
 function openCard(card){opener=card;const c=CASES.find(c=>c.key===card.dataset.key);ovBody.innerHTML='<div class="tp"><span>메이플키우기 자동화 · 팀 3인</span><b>실제 시연</b></div><h3>'+c.title+'<s>'+c.sub+'</s></h3><p class="q">'+c.q+'</p><section class="evidence"><h4>검증 대상</h4><p>'+c.goal+'</p><h4>실행 흐름</h4><p>'+c.method+'</p><h4>실제 실행 영상</h4><video controls muted playsinline preload="metadata" poster="../assets/qa/'+c.file+'.webp" aria-label="'+c.title+' 시연"><source src="../assets/qa/'+c.file+'.mp4" type="video/mp4"></video><p class="evidence-note">게임 화면과 실행 로그를 함께 담은 시연입니다. 재생 버튼과 전체화면을 이용해 확인할 수 있습니다.</p>'+(c.evidence?'<figure><a href="../assets/qa/'+c.evidence+'.webp" target="_blank" rel="noopener"><img src="../assets/qa/'+c.evidence+'.webp" alt="'+c.cap+'"></a><figcaption>'+c.cap+'</figcaption></figure>':'')+'<p class="case-source">자료: 도태단 「메이플 키우기 자동화 테스트 시스템」 · 시연 슬라이드 '+c.slide+'<br>발표 자료에 포함된 실제 시연과 기록을 사용했습니다.</p></section>';showDetails('QA 사례 자세히 보기');}
+const photoViewer = $('#photo-viewer');
+const photoStage = $('.photo-stage', photoViewer);
+const largePhoto = $('img', photoStage);
+const sizeButton = $('#photo-size');
+let photoTrigger;
+
+ovBody.addEventListener('click', event => {
+  const button = event.target.closest('button.zoom-photo');
+  if (!button) return;
+  const image = button.querySelector('img');
+  photoTrigger = button;
+  largePhoto.src = image.currentSrc || image.src;
+  largePhoto.alt = image.alt;
+  $('#photo-label').textContent = image.alt;
+  photoStage.classList.remove('original');
+  sizeButton.textContent = '원본 크기';
+  sizeButton.setAttribute('aria-pressed', 'false');
+  photoViewer.showModal();
+  photoStage.scrollTo(0, 0);
+});
+sizeButton.addEventListener('click', () => {
+  const original = photoStage.classList.toggle('original');
+  sizeButton.textContent = original ? '화면 맞춤' : '원본 크기';
+  sizeButton.setAttribute('aria-pressed', String(original));
+  photoStage.scrollTo(0, 0);
+});
+$('#photo-close').addEventListener('click', () => photoViewer.close());
+photoViewer.addEventListener('click', event => {
+  if (event.target !== photoViewer) return;
+  const bounds = photoViewer.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom) photoViewer.close();
+});
+photoViewer.addEventListener('close', () => {
+  largePhoto.removeAttribute('src');
+  photoTrigger?.focus({preventScroll:true});
+});
+
 function showDetails(label){
+  for (const link of ovBody.querySelectorAll('figure a:has(img)')) {
+    const image = link.querySelector('img');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'zoom-photo';
+    button.setAttribute('aria-haspopup', 'dialog');
+    button.setAttribute('aria-label', image.alt + ' 확대');
+    link.replaceWith(button);
+    button.append(image);
+  }
   ov.setAttribute('aria-label',label);
   ov.inert=false;
   ov.classList.add('on');
@@ -765,7 +835,7 @@ $$('button.project-open').forEach(button=>{
     showDetails('참여 프로젝트 자세히 보기');
   });
 });
-$$('.card').forEach(c=>{c.addEventListener('click',()=>openCard(c));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard(c);}})});$('#ovClose').addEventListener('click',closeCard);addEventListener('keydown',e=>{if(!ov.classList.contains('on'))return;if(e.key==='Escape')closeCard();if(e.key==='Tab'){const focusables=[...ov.querySelectorAll('button,a,video,summary')].filter(el=>el.getClientRects().length);const first=focusables[0],last=focusables[focusables.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});ov.addEventListener('click',e=>{if(e.target.closest('a,button,img,video,iframe,.project-tests details'))return;const sel=getSelection();if(sel&&!sel.isCollapsed&&ov.contains(sel.anchorNode))return;closeCard();});
+$$('.card').forEach(c=>{c.addEventListener('click',()=>openCard(c));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard(c);}})});$('#ovClose').addEventListener('click',closeCard);addEventListener('keydown',e=>{if(photoViewer.open || !ov.classList.contains('on'))return;if(e.key==='Escape')closeCard();if(e.key==='Tab'){const focusables=[...ov.querySelectorAll('button,a,video,summary')].filter(el=>el.getClientRects().length);const first=focusables[0],last=focusables[focusables.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});ov.addEventListener('click',e=>{if(e.target.closest('a,button,img,video,iframe,.project-tests details'))return;const sel=getSelection();if(sel&&!sel.isCollapsed&&ov.contains(sel.anchorNode))return;closeCard();});
 $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const filter=b.dataset.filter;$$('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));let count=0;$$('.testcase').forEach(c=>{c.hidden=filter!=='전체'&&c.dataset.category!==filter;if(!c.hidden)count++;});$('.case-count').textContent=count+'개 테스트 설계';}));
 
 const steps=$$('.pstep'),pbig=$('#pbig'),ticks=$$('#ticks i');
