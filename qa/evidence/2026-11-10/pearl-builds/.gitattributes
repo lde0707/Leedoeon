@@ -1,0 +1,2 @@
+# JSON hashes identify the original runtime output bytes.
+*.json -text

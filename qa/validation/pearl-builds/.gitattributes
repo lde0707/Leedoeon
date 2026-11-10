@@ -1,0 +1,3 @@
+# Keep the exact test sources and patch bytes identified by the evidence manifest.
+*.cs -text
+*.patch -text whitespace=-blank-at-eol
