@@ -1,0 +1,955 @@
+{
+  "startedAt": "2026-11-10T09:32:09.737Z",
+  "build": "itch.io upload package 1.2.1 (local)",
+  "method": "Real keyboard and pointer input; read-only IndexedDB assertions",
+  "viewport": {
+    "width": 900,
+    "height": 900
+  },
+  "runs": [
+    {
+      "round": 1,
+      "checks": [
+        {
+          "id": "PZ-E01",
+          "title": "Fresh start → three moves → first reward",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E02",
+          "title": "Pause rejects movement input",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E03",
+          "title": "Input → undo restores position and move count",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E04",
+          "title": "Replay does not duplicate already earned stars",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E05",
+          "title": "Reload preserves progress, best score and wallet",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "observations": [
+        {
+          "label": "initial",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 0,
+          "completed": [],
+          "records": [],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 0,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 1,
+                "clears": 0
+              }
+            ]
+          }
+        },
+        {
+          "label": "first-clear",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 1,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "pause-before",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "pause-after",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "moved",
+          "level": "F0",
+          "moves": 1,
+          "positions": [
+            {
+              "x": 1,
+              "y": 5
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 4,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "undo",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 4,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "repeat-clear",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 7,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 2
+              }
+            ]
+          }
+        },
+        {
+          "label": "reload",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 7,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 2
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "checks": [
+        {
+          "id": "PZ-E01",
+          "title": "Fresh start → three moves → first reward",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E02",
+          "title": "Pause rejects movement input",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E03",
+          "title": "Input → undo restores position and move count",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E04",
+          "title": "Replay does not duplicate already earned stars",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E05",
+          "title": "Reload preserves progress, best score and wallet",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "observations": [
+        {
+          "label": "initial",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 0,
+          "completed": [],
+          "records": [],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 0,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 1,
+                "clears": 0
+              }
+            ]
+          }
+        },
+        {
+          "label": "first-clear",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 1,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "pause-before",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "pause-after",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "moved",
+          "level": "F0",
+          "moves": 1,
+          "positions": [
+            {
+              "x": 1,
+              "y": 5
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 4,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "undo",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 4,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "repeat-clear",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 7,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 2
+              }
+            ]
+          }
+        },
+        {
+          "label": "reload",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 7,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 2
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "checks": [
+        {
+          "id": "PZ-E01",
+          "title": "Fresh start → three moves → first reward",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E02",
+          "title": "Pause rejects movement input",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E03",
+          "title": "Input → undo restores position and move count",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E04",
+          "title": "Replay does not duplicate already earned stars",
+          "status": "PASS"
+        },
+        {
+          "id": "PZ-E05",
+          "title": "Reload preserves progress, best score and wallet",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "observations": [
+        {
+          "label": "initial",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 0,
+          "completed": [],
+          "records": [],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 0,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 1,
+                "clears": 0
+              }
+            ]
+          }
+        },
+        {
+          "label": "first-clear",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 1,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "pause-before",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "pause-after",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 3,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "moved",
+          "level": "F0",
+          "moves": 1,
+          "positions": [
+            {
+              "x": 1,
+              "y": 5
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 4,
+                "restarts": 0,
+                "undos": 0,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "undo",
+          "level": "F0",
+          "moves": 0,
+          "positions": [
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 4,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 1
+              }
+            ]
+          }
+        },
+        {
+          "label": "repeat-clear",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 7,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 2
+              }
+            ]
+          }
+        },
+        {
+          "label": "reload",
+          "level": "F0",
+          "moves": 3,
+          "positions": [
+            {
+              "x": 7,
+              "y": 1
+            }
+          ],
+          "wallet": 3,
+          "completed": [
+            "F0"
+          ],
+          "records": [
+            {
+              "id": "F0",
+              "stars": 3,
+              "bestMoves": 3,
+              "perfect": true
+            }
+          ],
+          "activity": {
+            "stages": [
+              {
+                "room": "F0",
+                "moves": 7,
+                "restarts": 0,
+                "undos": 1,
+                "hints": 0,
+                "visits": 2,
+                "clears": 2
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "files": {
+    "game-assets.json": "6646f5a47f127a38fdb30da3ad406244a7b4e96a7cde6d17ea62166e0c474fd8",
+    "game-loader.js": "ab1b81bbd3c733bd6bf2c1908be04d62e881934b7510402df3c30a812e9bd3fe"
+  },
+  "browser": "157.0.8103.38",
+  "finishedAt": "2026-11-10T09:35:20.084Z",
+  "total": 15,
+  "passed": 15
+}

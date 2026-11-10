@@ -1,0 +1,136 @@
+{
+  "capturedAt": "2026-11-10T09:37:28.7647695Z",
+  "unity": "6000.5.3f1",
+  "baseCommit": "f469492ed87b3f828115126f6fca31c122ef003c",
+  "sourceState": "Includes uncommitted local changes copied to isolated test project; commit alone does not identify this run.",
+  "files": [
+    {
+      "path": "Data/ResearchWeb.asset",
+      "sha256": "38df0bc1fa4f0f76931dbc271f5effa6f20d65d2d0fc3471626dd31e458fad84"
+    },
+    {
+      "path": "Scripts/Editor/DeveloperProgressWindow.cs",
+      "sha256": "7eb63d23fa2e8bd829cc8641cfb7e8b1c862c7df7f3e47e5e22641e176956611"
+    },
+    {
+      "path": "Scripts/Editor/FlightVerification.cs",
+      "sha256": "ff7da2bc652499927794757525d4420a967236f91bff59a92c5650f3ddb1a9b1"
+    },
+    {
+      "path": "Scripts/Editor/PaperFoldingVerification.cs",
+      "sha256": "60ec688ecfa7817bdd0c59ceb58038b18732b533a20a5b1df37eba9370a22a8f"
+    },
+    {
+      "path": "Scripts/Editor/ProjectTools.cs",
+      "sha256": "7aa8386c531d15ed3707168940a06217c6d2c417389e9c91032eddee44af10cb"
+    },
+    {
+      "path": "Scripts/Editor/Research98Verification.cs",
+      "sha256": "beba2f02ae37f0aee3d057ca6a4057838cbf988dc34f5009c9faac7ccbf657be"
+    },
+    {
+      "path": "Scripts/Editor/ResearchEconomyVerification.cs",
+      "sha256": "90d3b024274e7388dff4f255c87c89d386157051dc5cf56e659c3e3282f1ddf4"
+    },
+    {
+      "path": "Scripts/Editor/ResearchWebVerification.cs",
+      "sha256": "a917f65884ba180d740609148781e87e61157d7f3936e362f8096ea45a81e594"
+    },
+    {
+      "path": "Scripts/Editor/ThrowerSpineBake.cs",
+      "sha256": "1ba2d26dcf1143a964629a72b0600962429b84469890732012c8c3f94f206892"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/AircraftHold.cs",
+      "sha256": "ddfa87ced89d0054959ca369808bce8b03c2d33d22e05ba5d4027eb805f548e0"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/ExtendedResearchStats.cs",
+      "sha256": "e04721762ac1955f1c73a14dde0ee03360d2f4785849343326d19e254ba8c206"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/FlightCourse.cs",
+      "sha256": "58023def59a90e89bbb78523e5549eae1cd80d1c2440081247ec877a379b60a0"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/FlightEffects.cs",
+      "sha256": "553562a8f385cc3415040a17b6360cfba4a03f1c5ce9fa60ec629f1d20af2d99"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/FlightEntry.cs",
+      "sha256": "d1e69650036017fd1157e66c7f6ddbe4871c4c49ebcdf61039783766d54503e7"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/FlightModel.cs",
+      "sha256": "cbad9035b2c7125802089bad9c537c92459d2a30bc7ba7cc892535f5bc182a91"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/FlightResearch.cs",
+      "sha256": "4d4486f848766d31945498a7411b6a0fa378711e5dfed9ccf369dbf8e3ffebd9"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/FoldingDesk.cs",
+      "sha256": "9e4ff6ea5267c810491651dff00fe7ce1cdf23f5fc16d745990f142ff1ba5d64"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/FoldMesh.cs",
+      "sha256": "b19da388b5c924336ee4c6c9e68374e949bcc695baa55d287c642ad279146af9"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/LaunchThrower.cs",
+      "sha256": "b23f8aefb23cbc3aaaa629c152d33e209c73593de27947e3df359d58c6a7fff7"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/LaunchTrajectory.cs",
+      "sha256": "2bbc56adb342b4df1b35be958bcf500adee7730dcb2a67800bff32ebfdc8e0ed"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/PaperCornerPull.cs",
+      "sha256": "45c8e1111d35dcc779c7f9d1e04d646a4539e20818b05a888e05a9bb83d14123"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/PaperFlightController.cs",
+      "sha256": "eb3efe5f3fb8ddbb8c01b739d7652175d243fc929030baffbd09368ee71fceea"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/PaperFlightProfile.cs",
+      "sha256": "ee6799082a0d2a87a7297e08f8a906611281ef02a188f32aa34fbd5f07ff6933"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/PaperInsideReverse.cs",
+      "sha256": "228504a98adc5021a6a5cfaa295e22aa1e1f389d3e8ce30d9c6eb2b843283512"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/PaperMirrorFold.cs",
+      "sha256": "b71e5221991dae97ae4b5e116bfa5ca7487a495c1267bfb39675a222a48f5088"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/PaperPatterns.cs",
+      "sha256": "782dc2a5444b54fac77c5ac85f30e47e4ae0fb586e5f0476932bd1e9d6ef12c8"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/PaperSheet.cs",
+      "sha256": "9c003ea785a8650f509912152f7484c57a29d2712c8d170294e4de51637804a2"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/ResearchEconomy.cs",
+      "sha256": "93d05657ffc39c2d75e7b562f4bd2558cab3fa22fd6dbe029cede8a1008d53dd"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/ResearchWebAssets.cs",
+      "sha256": "1c46d611abf4660bd3e548d61fb60fb4d508d92a463d057dc08f4a02d757125b"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/ResearchWebGeometry.cs",
+      "sha256": "e8c89059b7a11f73affe552af670df48112febfe0b6709ec2eb2381b68e134f1"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/ResearchWebNavigation.cs",
+      "sha256": "87d36988be414385fd6f96eb9c62fcf050df8122793a0996fb0aff5e9bfbc7d6"
+    },
+    {
+      "path": "Scripts/Runtime/Gameplay/Flight/ResearchWebView.cs",
+      "sha256": "e8ee59154dc16831ac7cb086d4060359107efcfb1d93fd94116ceb03ab374676"
+    }
+  ]
+}

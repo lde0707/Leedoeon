@@ -1,0 +1,91 @@
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 1 ResearchEconomy PASS 4031ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 1 PaperFolding PASS 51479ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 2 ResearchEconomy PASS 223ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 2 PaperFolding PASS 57712ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 3 ResearchEconomy PASS 532ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 3 PaperFolding PASS 50414ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 4 ResearchEconomy PASS 650ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 4 PaperFolding PASS 41044ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 5 ResearchEconomy PASS 179ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 5 PaperFolding PASS 32240ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 6 ResearchEconomy PASS 204ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 6 PaperFolding PASS 35160ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 7 ResearchEconomy PASS 171ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 7 PaperFolding PASS 39535ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 8 ResearchEconomy PASS 207ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 8 PaperFolding PASS 35161ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 9 ResearchEconomy PASS 166ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 9 PaperFolding PASS 33188ms
+[ResearchWeb] REFERENCE CHECKS PASSED: empty new game, reference branches, previous-layout purchases, flight effects.
+[ResearchWeb] NAVIGATION CHECKS PASSED: cursor anchor, limits, pan FSM, fit, reset.
+[ResearchWeb] FLIGHT ABILITIES PASSED: boost, dive, recovery, HP, collision loss, shield and magnet.
+[Research98] PASSED: 98 nodes, 144 contour endpoints, OR branches, 65 live modifiers, old save, failed-save retry, rewards and abilities.
+[ResearchWeb] ASSET CHECKS PASSED: all 98 nodes, five families, reference geometry and square art.
+[ResearchEconomy] PASS: 98 prices/purchases, 337050 total, seven distance benchmarks, bonus cap, overflow, save retry/reload, flight settlement.
+PORTFOLIO_REGRESSION 10 ResearchEconomy PASS 208ms
+[PaperFolding] PASS: 12+12 axis guides, 196 connected points, area, four/eight plies, opposite sides, undo and replay.
+PORTFOLIO_REGRESSION 10 PaperFolding PASS 32973ms
+PORTFOLIO_REGRESSION_DONE

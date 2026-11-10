@@ -1,0 +1,12 @@
+{
+  "startedAt": "2026-11-10T09:31:22Z",
+  "finishedAt": "2026-11-10T09:39:03.4907434Z",
+  "unity": "6000.5.3f1",
+  "method": "Unity Editor batchmode assertions; isolated source copy",
+  "suites": 2,
+  "iterationsPerSuite": 10,
+  "executions": 20,
+  "passed": 20,
+  "failed": 0,
+  "timingScope": "Assertion suite elapsed time, not game performance"
+}

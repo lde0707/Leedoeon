@@ -1,0 +1,25 @@
+{
+  "version": "1.2.1 local upload package",
+  "files": [
+    {
+      "sha256": "95057c8a10faef39b0c94330646015480b878010cb742969fb2a7b39995d39f2",
+      "path": "Build/iPhoneWebTest.data.gz",
+      "bytes": 21632719
+    },
+    {
+      "sha256": "b6c710f1e001ae0b9e6bc4aad32700a6948d3a501c877d47a25b55c82d172233",
+      "path": "Build/iPhoneWebTest.framework.js",
+      "bytes": 441918
+    },
+    {
+      "sha256": "1e8ab0b6e7a36fcd5aa307f0351bdff12a48d83fa5bc5a7063c8da91e4fb783f",
+      "path": "Build/iPhoneWebTest.loader.js",
+      "bytes": 19430
+    },
+    {
+      "sha256": "59cc65e14c624d79f8b3ecdfc1d47fa531fc6b0aa0a24095abbd822bdb9e2b4c",
+      "path": "Build/iPhoneWebTest.wasm.gz",
+      "bytes": 10163153
+    }
+  ]
+}
