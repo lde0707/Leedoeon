@@ -458,13 +458,13 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 <section id="say"><div class="inner"><div class="kicker"><s></s>MY QA APPROACH</div><p id="sayText">규칙을 읽고 [위험한 조건]을 찾습니다. // 문제는 [재현할 수 있게] 전달합니다. // 수정 후에는 [연결된 흐름]도 확인합니다.</p><div class="quick-counts"><span><b>09</b>참여 프로젝트</span><span><b>06</b>프로젝트별 실행 보고서</span><span><b>04</b>자동화 시연 흐름</span></div></div></section><div id="mq"><div class="row" id="mqrow"></div></div>
 <section id="work"><div id="pin"><div id="stage"><div id="track"><div class="wintro"><div class="k">QA CASE STUDY — 04</div><h2>실행에서<br>판정까지.</h2><p>3인 팀 프로젝트에서 자동화 테스트 전반을 담당했습니다. 버튼 탐지·클릭·OCR 재화 비교와 예외 처리의 네 가지 흐름을 실제 시연으로 확인할 수 있습니다.</p></div><article class="card" data-key="weapon" tabindex="0" role="button" aria-label="무기 레벨업 자동화 자세히 보기"><div class="no">01</div><div class="body"><div class="tp"><span>메이플키우기 · 팀 3인</span><b>자동화 시연</b></div><h3>무기 레벨업 자동화<s>반복 실행 · 화면 인식</s></h3><p class="q">반복 클릭을, 검증 가능한 실행 흐름으로.</p><ul class="short"><li>강화 버튼을 이미지로 탐지해 반복 클릭</li><li>강화 전후 재화를 OCR로 읽어 변화 확인</li><li>실행 과정과 판정 결과를 로그로 기록</li></ul><figure class="shot"><img src="../assets/qa/weapon-levelup.webp" alt="무기 레벨업 자동화 실제 실행 화면" loading="lazy"><figcaption>DEMO 01 / 실제 실행 영상</figcaption></figure><div class="tl"><span>Python</span><span>OpenCV</span><span>PyAutoGUI</span><span>Tesseract OCR</span></div><span class="more">검증 과정 보기 <span aria-hidden="true">↗</span></span></div></article><article class="card" data-key="scroll" tabindex="0" role="button" aria-label="주문서 강화 자동화 자세히 보기"><div class="no">02</div><div class="body"><div class="tp"><span>메이플키우기 · 팀 3인</span><b>자동화 시연</b></div><h3>주문서 강화 자동화<s>결과 인식 · 반복 시나리오</s></h3><p class="q">강화의 성공과, 테스트의 성공을 구분합니다.</p><ul class="short"><li>강화 버튼 탐지와 클릭을 반복</li><li>결과 화면과 게이지 변화로 진행 상태 확인</li><li>성공·변화 없음·팝업 처리 상태를 기록</li></ul><figure class="shot"><img src="../assets/qa/scroll-enhancement.webp" alt="주문서 강화 자동화 실제 실행 화면" loading="lazy"><figcaption>DEMO 02 / 실제 실행 영상</figcaption></figure><div class="tl"><span>OpenCV</span><span>PyAutoGUI</span><span>Python</span><span>CSV</span></div><span class="more">검증 과정 보기 <span aria-hidden="true">↗</span></span></div></article><article class="card" data-key="currency" tabindex="0" role="button" aria-label="OCR 재화 소모 검증 자세히 보기"><div class="no">03</div><div class="body"><div class="tp"><span>메이플키우기 · 팀 3인</span><b>자동화 시연</b></div><h3>OCR 재화 소모 검증<s>기대값 비교 · 데이터 정합성</s></h3><p class="q">클릭이 됐는지보다, 얼마가 차감됐는지.</p><ul class="short"><li>소환 전후 보유 재화를 OCR로 읽기</li><li>전후 차이를 기대 소모량과 비교</li><li>차감 결과를 PASS·FAIL로 판정</li></ul><figure class="shot"><img src="../assets/qa/ocr-currency.webp" alt="OCR 재화 소모 검증 실제 실행 화면" loading="lazy"><figcaption>DEMO 03 / 실제 실행 영상</figcaption></figure><div class="tl"><span>Tesseract OCR</span><span>Python</span><span>화면 캡처</span></div><span class="more">검증 과정 보기 <span aria-hidden="true">↗</span></span></div></article><article class="card" data-key="recovery" tabindex="0" role="button" aria-label="예외 감시와 복구 자세히 보기"><div class="no">04</div><div class="body"><div class="tp"><span>메이플키우기 · 팀 3인</span><b>자동화 시연</b></div><h3>예외 감시와 복구<s>팝업 처리 · 증거 수집</s></h3><p class="q">예상 밖의 화면에서도, 원인을 남깁니다.</p><ul class="short"><li>메인 실행과 별도로 예외 팝업 감시</li><li>팝업 처리와 재시도 흐름 구성</li><li>로그·스크린샷으로 중단 지점 확인</li></ul><figure class="shot"><img src="../assets/qa/popup-recovery.webp" alt="예외 감시와 복구 실제 실행 화면" loading="lazy"><figcaption>DEMO 04 / 실제 실행 영상</figcaption></figure><div class="tl"><span>Python</span><span>Watcher</span><span>재시도</span><span>로그·스크린샷</span></div><span class="more">검증 과정 보기 <span aria-hidden="true">↗</span></span></div></article><div class="wend"><b>참여 프로젝트와<br>테스트 설계.</b>프로젝트에서 맡은 역할과 테스트 조건을 살펴봅니다.</div></div><div id="wprog"><i></i></div></div></div></section>
 <section id="projects" aria-labelledby="projects-title"><div class="docs-inner">
-  <header class="docs-header"><h2 id="projects-title">참여 프로젝트</h2><p>게임 7개와 보드게임·서비스 프로토타입 2개입니다. 각 카드에서 핵심 검증 주제와 실행 상태를 확인하고, 상세 화면에서 케이스별 조건·관찰값·보고서를 살펴볼 수 있습니다.</p><p class="report-index-note">2026.11.06 실행 보고서 · 6개 프로젝트 / 설계 45건 / 실행 28건 / 통과 27건 / 실패 1건 / 미실행 17건. 게임 DLL 로직 20건·STILLDRAWN WebGL UI 3건·GreenWay Figma UI 5건의 합계입니다. 특정 조건의 실행 결과이며 전체 게임의 품질 통과율은 아닙니다.</p><a class="report-download" href="reports/qa-summary.xlsx" download="전체_QA_실행보고서_2026-11-06.xlsx">전체 QA 실행 보고서 다운로드 (.xlsx)</a></header>
+  <header class="docs-header"><h2 id="projects-title">참여 프로젝트</h2><p class="completed-projects"><strong>완성 게임 4개 · 1인 개발 1개 · 팀 개발 3개</strong><br>데굴데굴 퍼즐(1인), 진주도둑들(4인 팀), Rushitadel(3인 팀), 쓰레기 집게 소년(4인 팀)을 완성했습니다. 개발 중인 게임과 보드게임·서비스 프로토타입·자동화 프로젝트는 이 수치에서 제외했습니다.</p><p>게임 7개와 보드게임·서비스 프로토타입 2개입니다. 각 카드에서 핵심 검증 주제와 실행 상태를 확인하고, 상세 화면에서 케이스별 조건·관찰값·보고서를 살펴볼 수 있습니다.</p><p class="report-index-note">2026.11.06 실행 보고서 · 6개 프로젝트 / 설계 45건 / 실행 28건 / 통과 27건 / 실패 1건 / 미실행 17건. 게임 DLL 로직 20건·STILLDRAWN WebGL UI 3건·GreenWay Figma UI 5건의 합계입니다. 특정 조건의 실행 결과이며 전체 게임의 품질 통과율은 아닙니다.</p><a class="report-download" href="reports/qa-summary.xlsx" download="전체_QA_실행보고서_2026-11-06.xlsx">전체 QA 실행 보고서 다운로드 (.xlsx)</a></header>
   <details class="coverage-panel"><summary>실행 결과의 범위와 남은 검증</summary><dl><dt>게임 로직 검사</dt><dd>쓰레기 집게 소년·RUSHITADEL·STILLDRAWN·진주도둑들·데굴데굴 퍼즐의 조건별 로직을 검사했습니다. 실제 화면 조작 전체의 통과 여부와는 구분합니다.</dd><dt>실제 게임 UI</dt><dd>STILLDRAWN의 지도 UI 3건과, 데굴데굴의 실제 입력·보상·재접속 5종 × 3회 검증을 구분해 제시합니다. 데굴데굴 추가 회차는 11월 10일 결과입니다.</dd><dt>프로토타입 검증</dt><dd>GreenWay는 Figma 프레임 전환과 동의·목적지 선택 흐름을 확인했습니다. 실제 GPS·인증 서버·신호 데이터는 검증 대상에 포함되지 않습니다.</dd><dt>별도 수행 이력</dt><dd>진주도둑들 개발 당시 QA와 11월 10일 수정 전후 빌드 비교, 데굴데굴 추가 회차, FlyEditor 반복 검사는 위 11월 6일 합계에 포함하지 않았습니다.</dd><dt>남은 검증</dt><dd>프로젝트별 미실행 화면 절차, 출시 빌드에서의 재현 여부, 기기별 호환성과 장시간 안정성 결과는 추가 확보 대상입니다.</dd></dl></details><div class="project-grid">
 <article class="project-item">
   <img class="project-cover" src="../assets/gameplay/trash-main-ui-20261104.webp" alt="쓰레기 집게 소년 프로젝트 화면" loading="lazy">
-  <div class="project-copy"><small>2026.08 — 현재 · 참여 4명 · 진행 중</small><h3>쓰레기 집게 소년</h3><p>제한된 하루 동안 지하에서 수집한 쓰레기를 분류해 수익을 만들고, 다음 탐색을 준비하는 게임입니다.</p><p class="project-qa"><b>QA · 분류 보상·대기열 정합성</b><span>로직 4건 PASS · 화면 3건 미실행</span></p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
+  <div class="project-copy"><small>2026.08 시작 · 참여 4명 · 개발 완료</small><h3>쓰레기 집게 소년</h3><p>제한된 하루 동안 지하에서 수집한 쓰레기를 분류해 수익을 만들고, 다음 탐색을 준비하는 게임입니다.</p><p class="project-qa"><b>QA · 분류 보상·대기열 정합성</b><span>로직 4건 PASS · 화면 3건 미실행</span></p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
   <template>
-    <div class="tp">2026.08 — 현재 · 참여 4명 · 진행 중</div><h3>쓰레기 집게 소년<s>콘셉트 · 게임 경제 · 시스템 구현</s></h3>
+    <div class="tp">2026.08 시작 · 참여 4명 · 개발 완료</div><h3>쓰레기 집게 소년<s>콘셉트 · 게임 경제 · 시스템 구현</s></h3>
     <p class="q">제한된 하루 동안 지하에서 수집한 쓰레기를 분류해 수익을 만들고, 다음 탐색을 준비하는 게임입니다.</p><section class="qa-brief" aria-label="QA 검증 요약"><h4>분류 보상·대기열 정합성</h4><p><strong>로직 4건 PASS · 화면 3건 미실행</strong></p><p>중복 제출 거절, 최대 30개 수용을 확인했습니다.</p><dl><dt>검증 방법</dt><dd>Windows 테스트 빌드 + 기존 로직 검사</dd><dt>기록 기준</dt><dd>11.06 기본 회차 / 11.10 빌드 비교</dd></dl><p class="qa-links"><a href="reports/trash-boy.xlsx" download>실행 보고서 ↓</a><a href="evidence/trash-boy.txt" download>조건·관찰값 기록 ↓</a></p></section><section class="evidence"><h4>참여 내용</h4><ul><li>핵심 콘셉트와 전체 게임 구조 기획</li>
               <li>할당량 · 시간 · 기력 · 보상 경제 밸런스 구현</li>
               <li>일꾼 고용 · 자동 재활용 수익 루프 개발</li></ul>
@@ -504,9 +504,9 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 </article>
 <article class="project-item">
   <img class="project-cover" src="../assets/gameplay/rushitadel-title-ui.webp" alt="Rushitadel 프로젝트 화면" loading="lazy">
-  <div class="project-copy"><small>2026.05 — 현재 · 창업동아리 · 참여 3명 · 진행 중</small><h3>Rushitadel</h3><p>전진하는 전장에서 적을 막고 포탑과 증강을 선택해 전투 구성을 바꾸는 디펜스 게임입니다.</p><p class="project-qa"><b>QA · 동력 경계값·전투 상태 보존</b><span>로직 4건 PASS · 화면 3건 미실행</span></p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
+  <div class="project-copy"><small>2026.05 시작 · 창업동아리 · 참여 3명 · 개발 완료</small><h3>Rushitadel</h3><p>전진하는 전장에서 적을 막고 포탑과 증강을 선택해 전투 구성을 바꾸는 디펜스 게임입니다.</p><p class="project-qa"><b>QA · 동력 경계값·전투 상태 보존</b><span>로직 4건 PASS · 화면 3건 미실행</span></p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
   <template>
-    <div class="tp">2026.05 — 현재 · 창업동아리 · 참여 3명 · 진행 중</div><h3>Rushitadel<s>로그라이크 디펜스 · 시스템 기획</s></h3>
+    <div class="tp">2026.05 시작 · 창업동아리 · 참여 3명 · 개발 완료</div><h3>Rushitadel<s>로그라이크 디펜스 · 시스템 기획</s></h3>
     <p class="q">전진하는 전장에서 적을 막고 포탑과 증강을 선택해 전투 구성을 바꾸는 디펜스 게임입니다.</p><section class="qa-brief" aria-label="QA 검증 요약"><h4>동력 경계값·전투 상태 보존</h4><p><strong>로직 4건 PASS · 화면 3건 미실행</strong></p><p>하한·상한과 회복 임계값을 검사했습니다. 보스 영상은 패턴 소개 자료입니다.</p><dl><dt>검증 방법</dt><dd>Assembly-CSharp.dll 로직 검사</dd><dt>기록 기준</dt><dd>2026.11.06 실행 기록</dd></dl><p class="qa-links"><a href="reports/rushitadel.xlsx" download>실행 보고서 ↓</a><a href="evidence/rushitadel.txt" download>조건·관찰값 기록 ↓</a></p></section><section class="evidence"><h4>참여 내용</h4><ul><li>증강 6계열 · 변형 16종 포탑 성장 체계 설계</li>
               <li>전진 카메라 + 후방 위험 구역으로 멈출 수 없게 만드는 압박 설계</li></ul>
     <h4>QA 관점에서 볼 지점</h4><p>보스 공격 예고와 실제 피격 시점이 맞는지, 레벨업 선택 후 전투가 정상적으로 이어지는지 살펴볼 수 있습니다.</p></section>
@@ -877,9 +877,13 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
   <div class="k rv">EDUCATION · CERTIFICATE · AWARD</div>
   <h2 class="rv">게임을 만드는 경험을,<br>검증의 바탕으로.</h2>
   <div class="erow rv">
-    <div class="d">2022.03 — 현재</div>
+    <div class="d">2022.03 — 2027.02 예정</div>
     <div><div class="t">유한대학교 컴퓨터공학과 · 게임콘텐츠전공</div>
-      <div class="m">게임 시스템과 콘텐츠 기획을 배우며 동작 규칙과 사용자 흐름을 이해합니다.</div></div>
+      <div class="m">재학 중 · 졸업 예정 · 누적 평점 3.3 / 4.5<br>게임 시스템과 콘텐츠 기획을 배우며 동작 규칙과 사용자 흐름을 이해합니다.</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">2019.03 — 2022.02</div>
+    <div><div class="t">남강고등학교</div><div class="m">졸업</div></div>
   </div>
   <div class="erow rv">
     <div class="d">2025.12</div>
@@ -895,6 +899,16 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
     <div class="d">2026.03 — 2026.12</div>
     <div><div class="t">게임콘텐츠전공 집행부</div>
       <div class="m">전공 학생회 활동 · 학과 행사 기획 및 운영</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">교육 수료</div>
+    <div><div class="t">Yuhan AID 역량강화 특강 : 실무에 바로 쓰는 AI 활용 실습</div>
+      <div class="m">AI 활용 실습 특강 수료</div></div>
+  </div>
+  <div class="erow rv">
+    <div class="d">사용 도구</div>
+    <div><div class="t">Excel · GitHub · Jira</div>
+      <div class="m">테스트 기록 · 버전 및 변경 내역 확인 · 이슈 관리</div></div>
   </div>
 </div></section><section id="end"><div class="k"><s></s>CONTACT / GAME QA</div><h2>함께 확인하고,<br><span class="ac">더 나은 게임으로.</span></h2><a class="mail" href="mailto:doun070789@gmail.com">doun070789@gmail.com ↗</a><div class="fend"><span>© 2026 이도언 · GAME QA PORTFOLIO</span><a href="../links/index.html">QA 이도언 링크 모음 ↗</a><a href="test-cases.csv" download>테스트 설계 CSV ↓</a></div></section><script>
 
