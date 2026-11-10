@@ -1,0 +1,12 @@
+diff --git a/prototype3-2-2/Assets/Scripts/System/GoldSystem.cs b/prototype3-2-2/Assets/Scripts/System/GoldSystem.cs
+index 08b5660..3f88096 100644
+--- a/prototype3-2-2/Assets/Scripts/System/GoldSystem.cs
++++ b/prototype3-2-2/Assets/Scripts/System/GoldSystem.cs
+@@ -25,6 +25,7 @@ public class GoldSystem : MonoBehaviour
+ 
+     public bool TrySpendGold(float amount)
+     {
++        if (float.IsNaN(amount) || float.IsInfinity(amount) || amount < 0f) return false;
+         if (currentGold < amount) return false;
+ 
+         currentGold -= amount;

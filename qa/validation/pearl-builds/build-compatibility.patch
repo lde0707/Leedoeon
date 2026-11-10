@@ -1,0 +1,16 @@
+diff --git a/prototype3-2-2/Assets/Scripts/Unit/LastBossAttack.cs b/prototype3-2-2/Assets/Scripts/Unit/LastBossAttack.cs
+index 1d2b693..0847399 100644
+--- a/prototype3-2-2/Assets/Scripts/Unit/LastBossAttack.cs
++++ b/prototype3-2-2/Assets/Scripts/Unit/LastBossAttack.cs
+@@ -1216,10 +1216,10 @@ public sealed class LastBossAttack : MonoBehaviour, IAttack, IAcquisitionRangePr
+         Gizmos.DrawWireSphere(right, meteorDamageRadius);
+     }
+ 
++#endif
+     private static float ResolveStatsAttackRange(Entity entity)
+     {
+         if (entity == null || entity.GetStats() == null) return 0f;
+         return Mathf.Max(0f, entity.GetStats().attackRange);
+     }
+-#endif
+ }

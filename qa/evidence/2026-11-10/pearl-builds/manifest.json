@@ -1,0 +1,193 @@
+{
+  "recordedDate": "2026-11-10",
+  "engine": "6000.3.10f1",
+  "platform": "Windows 11 x64 / Mono development player / D3D11 / 1920x1080",
+  "sourceRepository": "https://github.com/Antang2/GameEngine_Pearl-Thieves",
+  "originalGoldSourceSHA256": "7fbaa237342b73a70db0f31e2e348307a3e949b2125eee6921666656414ae4b2",
+  "builds": [
+    {
+      "variant": "before",
+      "commit": "b71d2db8d19e682f23a2713523131b9948b09d36",
+      "candidatePatch": false,
+      "files": [
+        {
+          "path": "PearlReward.exe",
+          "sha256": "44697487931ca64d09883de957c845c6f138aaf3cd975397e99865ba6aab987f",
+          "bytes": 667648
+        },
+        {
+          "path": "PearlReward_Data/Managed/Assembly-CSharp.dll",
+          "sha256": "195b262ea507efae5e36f5f8657696d22f12322e3e0fb6019a626fb74abe8600",
+          "bytes": 481792
+        },
+        {
+          "path": "PearlReward_Data/globalgamemanagers",
+          "sha256": "7e72e944b6d210f5b9f7aaf8ded5c957b9ba65369ab53ffd6de5b57d8808295a",
+          "bytes": 117268
+        },
+        {
+          "path": "PearlReward_Data/level0",
+          "sha256": "963bfdb83a35a18841e9f356d8611f4506841901f403df8bbdc2f4b8127b7dd8",
+          "bytes": 83772
+        },
+        {
+          "path": "PearlReward_Data/level1",
+          "sha256": "ccb8902fd3e12d98c0cbaf0e306b3b383bb96db75f28a882a7a53b2d63ecbd89",
+          "bytes": 66040
+        }
+      ]
+    },
+    {
+      "variant": "after",
+      "commit": "2cc97a7dabe9874a452bd703b99918f117c77c0e",
+      "candidatePatch": false,
+      "files": [
+        {
+          "path": "PearlReward.exe",
+          "sha256": "44697487931ca64d09883de957c845c6f138aaf3cd975397e99865ba6aab987f",
+          "bytes": 667648
+        },
+        {
+          "path": "PearlReward_Data/Managed/Assembly-CSharp.dll",
+          "sha256": "e75f682537eb7af72e735ac87d5121777f30fc4c251dacba5802b1392ae77857",
+          "bytes": 481792
+        },
+        {
+          "path": "PearlReward_Data/globalgamemanagers",
+          "sha256": "83128356290682755e96ec298d7af26d8f8747de806a132ba0abc9e60bbcf8ed",
+          "bytes": 117268
+        },
+        {
+          "path": "PearlReward_Data/level0",
+          "sha256": "963bfdb83a35a18841e9f356d8611f4506841901f403df8bbdc2f4b8127b7dd8",
+          "bytes": 83772
+        },
+        {
+          "path": "PearlReward_Data/level1",
+          "sha256": "dade4055b445388a0adc36a5a10e3ad7906f256b3444c8b4afc8de2bb5abb087",
+          "bytes": 66040
+        }
+      ]
+    },
+    {
+      "variant": "candidate",
+      "commit": "2cc97a7dabe9874a452bd703b99918f117c77c0e",
+      "candidatePatch": true,
+      "files": [
+        {
+          "path": "PearlReward.exe",
+          "sha256": "44697487931ca64d09883de957c845c6f138aaf3cd975397e99865ba6aab987f",
+          "bytes": 667648
+        },
+        {
+          "path": "PearlReward_Data/Managed/Assembly-CSharp.dll",
+          "sha256": "535f18301a97d2b9f8b2b8931795187c4d8b3eeeddb6e4faead15b0ff5cb335b",
+          "bytes": 481792
+        },
+        {
+          "path": "PearlReward_Data/globalgamemanagers",
+          "sha256": "81f2dcd6f75a344376ff87dd0920c46a3da24b11a2d6f98a064de511403e1137",
+          "bytes": 117268
+        },
+        {
+          "path": "PearlReward_Data/level0",
+          "sha256": "963bfdb83a35a18841e9f356d8611f4506841901f403df8bbdc2f4b8127b7dd8",
+          "bytes": 83772
+        },
+        {
+          "path": "PearlReward_Data/level1",
+          "sha256": "dade4055b445388a0adc36a5a10e3ad7906f256b3444c8b4afc8de2bb5abb087",
+          "bytes": 66040
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "variant": "before",
+      "phase": "suite",
+      "file": "before-suite.json",
+      "sha256": "716ab190531dd2ce2db617733ece962d03089a6b216fa1c39f4b33bfbe450670",
+      "caseCount": 15,
+      "pass": 9,
+      "fail": 6,
+      "reloadStatus": ""
+    },
+    {
+      "variant": "before",
+      "phase": "reload",
+      "file": "before-reload.json",
+      "sha256": "1b13d536c9e6767ad04a9125897a234ffe4ff6e0ae9ee876ebe9b9919561f902",
+      "caseCount": 0,
+      "pass": 0,
+      "fail": 0,
+      "reloadStatus": "FAIL"
+    },
+    {
+      "variant": "after",
+      "phase": "suite",
+      "file": "after-suite.json",
+      "sha256": "d8396cb3411bcffe24f0ed13f4e687e79ae5d265bc681fe8ed02502aff51b948",
+      "caseCount": 15,
+      "pass": 15,
+      "fail": 0,
+      "reloadStatus": ""
+    },
+    {
+      "variant": "after",
+      "phase": "reload",
+      "file": "after-reload.json",
+      "sha256": "a7903b38def73a06d9749179f93a1061ea737a34bbbe3a80e3b9d8d0ef26f3b8",
+      "caseCount": 0,
+      "pass": 0,
+      "fail": 0,
+      "reloadStatus": "PASS"
+    },
+    {
+      "variant": "after",
+      "phase": "gold",
+      "file": "after-gold.json",
+      "sha256": "34c11a39c24767122bd299c0c398ad55a4e568595d28bc8c010fb58f01b0d02d",
+      "caseCount": 27,
+      "pass": 18,
+      "fail": 9,
+      "reloadStatus": null
+    },
+    {
+      "variant": "candidate",
+      "phase": "gold",
+      "file": "candidate-gold.json",
+      "sha256": "db04cce326a014f512ac17f231dc2e37bfa7c4443fc4d5067e2305c718e5b0cd",
+      "caseCount": 27,
+      "pass": 27,
+      "fail": 0,
+      "reloadStatus": null
+    }
+  ],
+  "testInfrastructure": [
+    {
+      "file": "RewardBuild.cs",
+      "sha256": "384a1d0ed84e698213901b8727bbbf255c3f6c1617b7d8d265456c4905d578e6"
+    },
+    {
+      "file": "RewardProbe.cs",
+      "sha256": "939e03a748c324753bfac5ca022c7861f78bd18c071e89dbc436d992794a9ef6"
+    },
+    {
+      "file": "GoldProbe.cs",
+      "sha256": "27088e36b82c2bbd9f4326886cafc1308f10c9a92a78e17d51eeb36f29d53edb"
+    },
+    {
+      "file": "SceneCapture.cs",
+      "sha256": "131cd25ed7ca1f587c752f9334e17c4148ef9979aa78dfcdaf34e6bf68fd4bb9"
+    },
+    {
+      "file": "build-compatibility.patch",
+      "sha256": "b70a6e3dda7f1419ae73c571ea03f222e39f993f234f3566fc7ea69c825fd3ec"
+    },
+    {
+      "file": "gold-input-guard.patch",
+      "sha256": "fd9b24b6b0b6d1843efb876f79f15e6b026d73679c797734d5d455dc272d8c15"
+    }
+  ]
+}

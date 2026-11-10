@@ -1,0 +1,15 @@
+{
+    "variant": "before",
+    "commit": "b71d2db8d19e682f23a2713523131b9948b09d36",
+    "startedAt": "2026-11-10T10:15:42.7113894Z",
+    "finishedAt": "2026-11-10T10:15:44.8639039Z",
+    "unity": "6000.3.10f1",
+    "gpu": "Intel(R) Arc(TM) 130T GPU (16GB)",
+    "method": "Windows development player; original Stage1 scene and enemy prefab; deterministic damage fixture; automatic waves disabled; external SDK stripped; isolated PlayerPrefs",
+    "phase": "reload",
+    "error": "",
+    "cases": [],
+    "reloadMinerals": 100,
+    "reloadExpected": 145,
+    "reloadStatus": "FAIL"
+}
