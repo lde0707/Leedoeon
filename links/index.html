@@ -17,7 +17,7 @@
   body{background:var(--ink);color:var(--txt);font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;line-height:1.6;word-break:keep-all;min-height:100vh}
   .wrap{max-width:560px;margin:0 auto;padding:64px 20px 56px}
   .me{text-align:center;margin-bottom:34px}
-  .av{width:76px;height:76px;border-radius:50%;margin:0 auto 16px;background:radial-gradient(circle at 30% 30%,#ff7a5c,#E8452C 55%,#7a1e10);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;color:#fff;letter-spacing:-.04em}
+  .av{display:block;width:112px;height:112px;border-radius:50%;margin:0 auto 18px;object-fit:cover;object-position:center top;border:1px solid var(--line)}
   h1{margin:0 0 4px;font-size:26px;letter-spacing:-.02em}
   .role{color:var(--sub);font-size:14.5px;margin:0}
   .chips{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:14px}
@@ -44,7 +44,7 @@
 <div class="wrap">
 
   <div class="me">
-    <div class="av">도언</div>
+    <img class="av" src="../assets/profile-lee-doeon.png" alt="이도언 프로필 사진" width="112" height="112" fetchpriority="high">
     <h1>QA 이도언</h1>
     <p class="role">게임 QA · 기능 검증 · 결함 대응 · 자동화</p>
     <div class="chips"><span class="chip">화면 인식 자동화</span><span class="chip">OCR 검증</span><span class="chip">QA 테스트 설계</span><span class="chip">Unity / C#</span></div>
