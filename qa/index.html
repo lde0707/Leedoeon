@@ -51,18 +51,6 @@ body.hov #cur,body:has(.project-item:hover) #cur{width:4px;height:4px}
 /* ══════════ HUD ══════════ */
 #bar{position:fixed;top:0;left:0;height:4px;background:var(--ac);z-index:800;width:0;
   box-shadow:0 0 14px rgba(31,86,255,.65)}
-#idx{position:fixed;left:18px;bottom:34px;z-index:700;font-family:var(--f6);font-size:10px;
-  letter-spacing:.22em;color:var(--gray);display:flex;flex-direction:column;gap:11px}
-#idx a{opacity:.5;transition:.3s;position:relative;padding-left:22px;line-height:1;white-space:nowrap}
-#idx a:before{content:"";position:absolute;left:0;top:50%;width:11px;height:1px;background:currentColor;transition:.3s}
-#idx a em{font-style:normal;opacity:0;transform:translateX(-8px);display:inline-block;transition:.3s}
-#idx:hover a em{opacity:1;transform:none}
-#idx a.on{opacity:1;color:var(--ac)}
-#idx a.on em{opacity:1;transform:none}
-#idx a.on:before{width:16px;background:var(--ac)}
-body.dark #idx{color:#8b8f97}
-body.dark #idx a.on{color:var(--ac)}
-@media(max-width:900px){#idx{display:none}}
 #top{position:fixed;top:26px;left:var(--pad);right:var(--pad);z-index:700;display:flex;
   justify-content:space-between;font-family:var(--f6);font-size:11px;letter-spacing:.18em;color:var(--gray)}
 #top .nm{color:var(--ink)}
@@ -430,7 +418,18 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 .featured-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.featured-actions button,.featured-actions a{padding:12px 18px;border:1px solid var(--ink);font:inherit;font-size:13px;background:#fff;cursor:pointer}.featured-actions button{background:var(--ink);color:#fff}.evidence-paths{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px}.evidence-paths article{border-top:2px solid var(--ac);padding-top:22px}.evidence-paths small{font-size:12px;color:var(--gray)}.evidence-paths h3{font-size:21px;margin:8px 0 12px}.evidence-paths p{font-size:14px;color:var(--ink2)}.evidence-paths button,.evidence-paths a{display:inline-block;background:none;border:0;border-bottom:1px solid var(--ac);font:inherit;font-size:13px;color:var(--ac);padding:8px 0;margin-top:12px;cursor:pointer}.coverage-panel{margin:0 0 28px;border:1px solid var(--line);padding:18px 22px}.coverage-panel summary{cursor:pointer;font-size:14px}.coverage-panel dl{margin-top:20px}.coverage-panel summary:focus-visible{outline:2px solid var(--ac);outline-offset:5px}
 @media(max-width:750px){.featured-grid,.evidence-paths{grid-template-columns:1fr}.featured-grid{gap:24px}.featured-story dl,.coverage-panel dl{grid-template-columns:1fr;gap:6px}.featured-story dd,.coverage-panel dd{margin-bottom:12px}.featured-actions>*{width:100%;text-align:center}.outcome-table th,.outcome-table td{padding:12px}.featured-note{overflow-wrap:anywhere}}
 /* Project review summaries */
-#top{padding:8px 12px;margin:-8px -12px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px)}body.dark #top{background:rgba(8,15,38,.94)}
+#top{top:0;left:0;right:0;display:block;padding:12px var(--pad) 0;margin:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top-meta{display:flex;justify-content:space-between;align-items:center;min-height:26px;gap:16px}
+#top .nm{font-size:13px;letter-spacing:.06em;white-space:nowrap}
+#toc{display:flex;align-items:stretch;gap:clamp(12px,2.3vw,34px);overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--gray2) transparent;letter-spacing:0}
+#toc a{flex:none;position:relative;padding:13px 2px 12px;border-bottom:3px solid transparent;white-space:nowrap;font-size:14px;color:var(--gray);cursor:pointer;transition:color .18s,border-color .18s}
+#toc a:hover,#toc a[aria-current="location"]{color:var(--ac)}
+#toc a[aria-current="location"]{border-bottom-color:currentColor;font-family:var(--f8)}
+#top a:focus-visible{outline:2px solid var(--ac);outline-offset:-2px;border-radius:2px}
+body.dark #top{background:rgba(8,15,38,.96);border-color:#283552;--ac:var(--ac-l)}
+body.dark #toc a{color:#bdc7de}body.dark #toc a:hover,body.dark #toc a[aria-current="location"]{color:var(--ac-l)}
+body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
+@media(max-width:600px){#top{padding-top:8px}#toc{gap:18px}#toc a{font-size:13px;padding:10px 2px;min-height:44px}.top-meta{min-height:25px}}
 .project-item:focus-visible{outline:2px solid var(--ac);outline-offset:4px}
 .project-qa{margin:18px 0!important;padding-top:14px;border-top:1px solid var(--line);font-size:13px!important}.project-qa b,.project-qa span{display:block}.project-qa b{color:var(--ink);margin-bottom:6px}.project-qa span{color:var(--gray);font-size:12px}
 .qa-brief{padding:24px;background:#121d36;border-left:3px solid var(--ac);margin:24px 0}.qa-brief h4{font-size:20px!important;margin:0 0 12px!important}.qa-brief p{font-size:14px;line-height:1.8;margin:8px 0}.qa-brief dl{display:grid;grid-template-columns:86px minmax(0,1fr);gap:8px;font-size:12px;margin-top:16px}.qa-brief dt{color:var(--gray2)}.qa-links{display:flex;gap:18px;flex-wrap:wrap}.qa-links a{border-bottom:1px solid var(--ac);color:var(--ac)}
@@ -441,8 +440,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 #ov .build-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}#ov .build-verification details{margin-top:24px}#ov .build-verification summary{cursor:pointer;font-weight:700}#ov .build-verification .qa-links{display:flex;gap:14px;flex-wrap:wrap}@media(max-width:600px){#ov .build-comparison{grid-template-columns:1fr}}
 </style></head><body>
 <div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div id="introword">GAME QA &nbsp;/&nbsp; 이도언</div><div id="cur"></div><div id="ring"></div><div id="bar"></div>
-<div id="top"><div class="nm f6">이도언<span class="dot"></span></div><nav class="mode-nav" aria-label="QA 포트폴리오"><a href="../links/index.html">링크 모음</a><a href="#hero" aria-current="page">GAME QA</a></nav></div>
-<div id="idx"><a href="#hero" data-t="hero"><em>INTRO</em></a><a href="#featured" data-t="featured"><em>QA STORY</em></a><a href="#say" data-t="say"><em>APPROACH</em></a><a href="#work" data-t="work"><em>AUTOMATION</em></a><a href="#projects" data-t="projects"><em>PROJECTS</em></a><a href="#documents" data-t="documents"><em>TEST DESIGN</em></a><a href="#proc" data-t="proc"><em>PROCESS</em></a><a href="#edu" data-t="edu"><em>BACKGROUND</em></a><a href="#end" data-t="end"><em>CONTACT</em></a></div>
+<header id="top"><div class="top-meta"><a class="nm f6" href="#hero">이도언<span class="dot"></span></a><nav class="mode-nav" aria-label="관련 링크"><a href="../links/index.html">링크 모음</a><span>GAME QA</span></nav></div><nav id="toc" aria-label="포트폴리오 목차"><a href="#hero" aria-current="location">소개</a><a href="#featured">대표 QA 사례</a><a href="#say">QA 관점</a><a href="#work">자동화</a><a href="#projects">참여 프로젝트</a><a href="#documents">테스트 설계</a><a href="#proc">검증 절차</a><a href="#edu">교육·활동</a><a href="#end">연락처</a></nav></header>
 <section id="hero"><div class="grid"></div><p class="hero-identity hline"><span><strong>이도언</strong><small>GAME QA PORTFOLIO</small></span></p><h1><span class="hline"><span>테스트를 설계하고,</span></span><span class="hline"><span class="out">결과</span><span>를 기록합니다<span class="ac">.</span></span></span></h1><div class="hsub"><p class="hline"><span>게임의 규칙을 이해하고, <b>문제 발견부터 수정 후 확인까지.</b><br>게임 로직·플레이 흐름·화면 인식 자동화를 검증하는 이도언입니다.</span></p><div class="hrole hline"><span>GAME QA<br>TEST AUTOMATION<br>EVIDENCE &amp; REPRODUCTION</span></div></div><div class="hero-actions"><a href="#featured">대표 QA 사례 보기 ↘</a><a href="reports/qa-summary.xlsx" download="전체_QA_실행보고서_2026-11-10.xlsx">프로젝트 QA 보고서 ↓</a><a href="#projects">참여 프로젝트 보기 ↘</a></div><div class="scroller"><i></i>SCROLL TO VERIFY</div></section>
 <section id="featured" aria-labelledby="featured-title"><div class="docs-inner">
 <header class="docs-header"><div class="docs-kicker">QA EXPERIENCE / 기능 검증 · 결함 대응 · 자동화</div><h2 id="featured-title">규칙에서 기대값을,<br>실행에서 근거를 찾습니다<span>.</span></h2><p>재화·저장·진행 조건을 나눠 검사하고, 화면과 관찰값으로 결과를 설명합니다. 프로젝트별로 실행한 범위와 다음 검증을 함께 제시합니다.</p></header>
@@ -1052,7 +1050,34 @@ const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target
 $$('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3*80)+'ms';io.observe(el)});
 
 /* ── 스크롤 루프 ── */
-const links=$$('#idx a'),secs=links.map(a=>$('#'+a.dataset.t));
+const toc=$('#toc'),tocLinks=$$('#toc a'),tocSections=tocLinks.map(a=>$(a.getAttribute('href')));
+let currentSection=-1,tocFrame=0;
+function updateToc(){
+  tocFrame=0;
+  const marker=$('#top').getBoundingClientRect().bottom+Math.min(120,innerHeight*.15);
+  let active=0;
+  tocSections.forEach((section,i)=>{if(section.getBoundingClientRect().top<=marker)active=i;});
+  if(scrollY+innerHeight>=document.documentElement.scrollHeight-2)active=tocLinks.length-1;
+  if(active===currentSection)return;
+  currentSection=active;
+  tocLinks.forEach((a,i)=>{if(i===active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+  const link=tocLinks[active],bounds=link.getBoundingClientRect(),navBounds=toc.getBoundingClientRect();
+  if(bounds.left<navBounds.left||bounds.right>navBounds.right)toc.scrollLeft+=bounds.left-navBounds.left-(toc.clientWidth-link.offsetWidth)/2;
+}
+function queueToc(){if(!tocFrame)tocFrame=requestAnimationFrame(updateToc);}
+function sizeToc(){document.documentElement.style.setProperty('--top-height',$('#top').offsetHeight+'px');queueToc();}
+new ResizeObserver(sizeToc).observe($('#top'));
+addEventListener('scroll',queueToc,{passive:true});
+addEventListener('resize',sizeToc);
+addEventListener('load',sizeToc);
+tocLinks.forEach(a=>a.addEventListener('click',e=>{
+  if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  e.preventDefault();
+  const target=$(a.getAttribute('href'));
+  if(location.hash!==a.hash)history.pushState(null,'',a.hash);
+  scrollTo({top:Math.max(0,scrollY+target.getBoundingClientRect().top-$('#top').offsetHeight-16),behavior:reduce?'instant':'smooth'});
+}));
+sizeToc();
 let last=scrollY;
 function frame(){
   const y=scrollY,h=innerHeight,dy=y-last;last=y;
@@ -1096,17 +1121,10 @@ function frame(){
   if(pbig)pbig.textContent=steps[act].dataset.n;
   ticks.forEach((t,i)=>t.classList.toggle('on',i<=act));
 
-  /* 인덱스 */
-  secs.forEach((s,i)=>{const r=s.getBoundingClientRect();
-    links[i].classList.toggle('on',r.top<h*.5&&r.bottom>h*.5);});
-
   requestAnimationFrame(frame);
 }
 if(!reduce)requestAnimationFrame(frame);
 else{words.forEach(w=>w.classList.add('on'));steps.forEach(s=>s.classList.add('on'));}
 
-/* 앵커 부드럽게 */
-$$('#idx a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();
-  document.getElementById(a.dataset.t).scrollIntoView({behavior:'smooth'});}));
 })();
 </script></body></html>
