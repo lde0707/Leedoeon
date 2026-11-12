@@ -489,9 +489,25 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 @media(max-width:1000px){.profile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){#edu{padding:48px var(--pad)}.profile-grid,.profile-skills{grid-template-columns:1fr}.profile-card{padding:18px}#ov .play-gallery,#ov .play-gallery.portrait,.visual-case-grid{grid-template-columns:1fr}#ov .play-gallery.boss-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}#ov .visual-case{padding:10px}#ov .visual-case img{height:auto;max-height:300px}#ov .visual-role{font-size:12px}#ov .case-essential p{font-size:13px;line-height:23px}}
 
+
+/* Game history: native, keyboard-accessible genre disclosures */
+#play-history{padding:80px var(--pad);background:var(--bg2);border-top:1px solid var(--line);scroll-margin-top:calc(var(--top-height,100px) + 20px)}
+.history-inner{max-width:1200px;margin:auto}.history-kicker{font-family:var(--f6);font-size:11px;letter-spacing:.22em;color:var(--ac)}
+.history-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:14px 0 24px}.history-heading h2{font-size:clamp(28px,4vw,44px);line-height:1.25;letter-spacing:-.04em}.history-heading p{font-size:14px;color:var(--ink2);line-height:1.8}
+.history-jump{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.history-jump a{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1px solid var(--line);background:var(--bg);font-size:14px;color:var(--ac);cursor:pointer}
+.history-notes{border-left:3px solid var(--ac);padding-left:16px;margin-bottom:30px;font-family:var(--f5);font-size:13px;color:var(--ink2);line-height:1.8}.history-notes p+p{margin-top:4px}.history-notes strong{font-family:var(--f7);color:var(--ink)}
+.history-platforms{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}.history-platform{min-width:0;scroll-margin-top:calc(var(--top-height,100px) + 20px)}
+.history-platform-head{padding-bottom:18px;border-bottom:2px solid var(--ink);margin-bottom:10px}.history-platform-head h3{font-size:24px}.history-platform-head p{font-size:13px;color:var(--gray);margin-top:4px}
+.history-genre{background:var(--bg);border:1px solid var(--line);margin-top:8px}.history-genre>summary{display:flex;align-items:center;gap:12px;list-style:none;padding:16px 18px;min-height:60px;cursor:pointer}.history-genre>summary::-webkit-details-marker{display:none}.history-genre>summary:hover{background:#edf2ff}.history-genre>summary:focus-visible,.history-jump a:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.history-genre-name{font-size:16px;flex:1}.history-count{font-family:var(--f5);font-size:12px;color:var(--gray)}.history-toggle{width:20px;text-align:center;color:var(--ac);font-size:22px;line-height:1}.history-toggle::before{content:'+'}.history-genre[open] .history-toggle::before{content:'−'}.history-genre[open]>summary{border-bottom:1px solid var(--line);color:var(--ac)}
+.history-genre table{border-collapse:collapse;width:100%;table-layout:fixed;text-align:left;font-size:14px;line-height:1.65}.history-genre th,.history-genre td{padding:13px 18px;vertical-align:top;overflow-wrap:anywhere}.history-genre thead th{font-family:var(--f6);font-size:11px;color:var(--gray);background:var(--bg2)}.history-genre th:first-child{width:46%}.history-genre tbody th{font-family:var(--f6);font-weight:400}.history-genre td{font-family:var(--f5);color:var(--ink2);font-variant-numeric:tabular-nums}.history-genre tbody tr+tr{border-top:1px solid var(--line)}.history-genre td small{display:block;font-size:12px;color:var(--ac);margin-top:4px}
+.history-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:800px){.history-platforms{grid-template-columns:1fr;gap:32px}.history-heading{display:block}.history-heading p{margin-top:14px}}
+@media(max-width:600px){#play-history{padding:48px var(--pad)}.history-genre>summary{padding:14px;gap:8px}.history-genre th,.history-genre td{padding:12px 10px;font-size:13px}.history-notes{font-size:12px}.history-heading h2{font-size:28px}}
+
 </style></head><body><a class="skip-link" href="#hero">본문으로 건너뛰기</a>
 <div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div id="introword">GAME QA &nbsp;/&nbsp; 이도언</div><div id="cur"></div><div id="ring"></div><div id="bar"></div>
-<header id="top"><div class="top-meta"><a class="nm f6" href="#hero">이도언<span class="dot"></span></a><nav class="mode-nav" aria-label="관련 링크"><a href="../links/index.html">링크 모음</a><span>GAME QA</span></nav></div><nav id="toc" aria-label="포트폴리오 목차"><a href="#hero" aria-current="location">소개</a><a href="#edu">이력</a><a href="#work">대표 사례</a><a href="#projects">프로젝트</a><a href="#end">연락처</a></nav></header>
+<header id="top"><div class="top-meta"><a class="nm f6" href="#hero">이도언<span class="dot"></span></a><nav class="mode-nav" aria-label="관련 링크"><a href="../links/index.html">링크 모음</a><span>GAME QA</span></nav></div><nav id="toc" aria-label="포트폴리오 목차"><a href="#hero" aria-current="location">소개</a><a href="#edu">이력</a><a href="#work">대표 사례</a><a href="#projects">프로젝트</a><a href="#play-history">플레이 이력</a><a href="#end">연락처</a></nav></header>
 <section id="hero" tabindex="-1" aria-label="이도언 게임 QA 소개"><div class="grid"></div><p class="hero-identity hline"><span><strong>이도언</strong><small>GAME QA PORTFOLIO</small></span></p><h1><span class="hline"><span>테스트를 설계하고,</span></span><span class="hline"><span class="out">결과</span><span>를 기록합니다<span class="ac">.</span></span></span></h1><div class="hsub"><p class="hline"><span>여러 팀 프로젝트와 1인 개발 프로젝트에서 <b>기획·구현·테스트를 함께 경험한 이도언입니다.</b><br>기획한 규칙이 실제 플레이에서도 지켜지는지 살피고,<br>진행·보상 오류를 보고한 뒤 연결된 흐름까지 재검증합니다.</span></p><div class="hrole hline"><span>GAME QA<br>TEST AUTOMATION<br>EVIDENCE &amp; REPRODUCTION</span></div></div><div class="hero-actions"><a href="#work">대표 QA 사례 보기 ↘</a><a href="#edu">학력·수상·교육 보기 ↘</a><a href="#projects">참여 프로젝트 보기 ↘</a></div><div class="scroller"><i></i>SCROLL TO VERIFY</div></section>
 <section id="edu" aria-labelledby="profile-title"><div class="in">
 <div class="k">PROFILE / 학력 · 수상 · 교육</div><h2 id="profile-title">이도언의 이력과 도구</h2>
@@ -596,6 +612,165 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 </template>
 </article>
   </div></div></section>
+<section id="play-history" aria-labelledby="play-history-title">
+<div class="history-inner">
+<div class="history-kicker">PLAYER EXPERIENCE</div>
+<div class="history-heading"><h2 id="play-history-title">게임 플레이 이력</h2><p>PC와 모바일에서 경험한 게임들.<br>장르를 펼쳐 플레이 시간과 달성 기록을 확인하세요.</p></div>
+<nav class="history-jump" aria-label="플레이 플랫폼 바로가기"><a href="#history-pc">PC 게임 ↓</a><a href="#history-mobile">모바일 게임 ↓</a></nav>
+<div class="history-notes"><p>장르별 · 플레이 시간 내림차순. 시간이 없는 기록은 각 장르 아래에 표시했습니다.</p><p>시간·등급은 Steam 로컬 기록 및 본인 제공 기준입니다. <strong>†는 실제 게임별 측정 시간이 아닌 균등 배분 추정치</strong>입니다.</p><p>† 기존 40시간 이하 55개 항목에 429시간 55분을 균등 배분해 각 7시간 49분을 더했습니다. ‘6년’은 누적 시간이 아닌 이용 기간입니다.</p></div>
+<div class="history-platforms">
+<section class="history-platform" id="history-pc" aria-labelledby="history-pc-title">
+<header class="history-platform-head"><div><h3 id="history-pc-title">PC 게임</h3><p>Steam · 기타 PC 플랫폼</p></div></header>
+<details class="history-genre" data-genre="RPG"><summary><span class="history-genre-name">RPG</span><span class="history-count">4개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · RPG 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">이환</th><td>40시간 이상</td></tr>
+<tr><th scope="row">Limbus Company</th><td>8시간 18분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">로스트아크</th><td>아브렐슈드까지 콘텐츠 경험</td></tr>
+<tr><th scope="row">아이온2</th><td>기룡 장비 · 엔드 콘텐츠 경험</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="공포"><summary><span class="history-genre-name">공포</span><span class="history-count">4개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 공포 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">Lethal Company</th><td>17시간 28분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">R.E.P.O.</th><td>16시간 36분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Deceit</th><td>10시간 17분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Machine Party</th><td>9시간 53분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="기타"><summary><span class="history-genre-name">기타</span><span class="history-count">1개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 기타 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">로블록스</th><td>70시간 이상</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="레이싱"><summary><span class="history-genre-name">레이싱</span><span class="history-count">2개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 레이싱 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">카트라이더</th><td>무지개 금메달 · 당시 최고 레벨</td></tr>
+<tr><th scope="row">테일즈런너</th><td>프라우드윙 · 당시 상위 0.1%</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="리듬"><summary><span class="history-genre-name">리듬</span><span class="history-count">1개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 리듬 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">A Dance of Fire and Ice</th><td>69시간 38분</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="생존"><summary><span class="history-genre-name">생존</span><span class="history-count">8개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 생존 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">팰월드</th><td>69시간 41분</td></tr>
+<tr><th scope="row">ARK: Survival Evolved</th><td>58시간 49분</td></tr>
+<tr><th scope="row">Once Human</th><td>31시간 8분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">The Forest</th><td>29시간 8분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Hand Simulator: Survival</th><td>13시간 6분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Subnautica 2</th><td>11시간†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Don&#x27;t Starve Together</th><td>8시간 31분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Terraria</th><td>7시간 50분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="슈팅"><summary><span class="history-genre-name">슈팅</span><span class="history-count">11개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 슈팅 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">PUBG: 배틀그라운드</th><td>1,223시간 27분</td></tr>
+<tr><th scope="row">오버워치</th><td>Steam 85시간 27분<small>시즌 1 마스터 · 상위 1%</small></td></tr>
+<tr><th scope="row">Black Squad</th><td>25시간 10분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Arma 3</th><td>20시간 18분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">PUBG: Test Server</th><td>17시간 33분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Chippy</th><td>12시간 34분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Left 4 Dead 2</th><td>8시간 22분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">One-armed robber</th><td>8시간 12분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">3D Aim Trainer</th><td>8시간 10분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">서든어택</th><td>특무대장</td></tr>
+<tr><th scope="row">케로로팡팡</th><td>랭킹 50위권 · 상위 0.05%</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="스포츠"><summary><span class="history-genre-name">스포츠</span><span class="history-count">2개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 스포츠 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">Golf With Your Friends</th><td>8시간 54분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">피파 온라인 3</th><td>월드클래스</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="시뮬레이션"><summary><span class="history-genre-name">시뮬레이션</span><span class="history-count">7개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 시뮬레이션 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">House Flipper 2</th><td>36시간 57분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Tabletop Simulator</th><td>19시간 41분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Schedule I</th><td>15시간 7분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Rock Island</th><td>13시간 24분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Schedule I: Free Sample</th><td>11시간†<span class="history-sr-only"> (균등 배분 추정 시간)</span><small>체험판</small></td></tr>
+<tr><th scope="row">Supermarket Together</th><td>9시간†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Graveyard Keeper</th><td>시간 기록 미확인</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="액션"><summary><span class="history-genre-name">액션</span><span class="history-count">17개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 액션 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">GTA V — Rockstar</th><td>602.6시간</td></tr>
+<tr><th scope="row">레드 데드 리뎀션 2</th><td>47시간 18분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Talented</th><td>31시간 50분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Nine Sols</th><td>21시간 9분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Vampire Survivors</th><td>16시간 31분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">던그리드</th><td>13시간 5분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">PEAK</th><td>12시간 39분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Super Bunny Man</th><td>10시간 57분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">MECCHA CHAMELEON</th><td>10시간 30분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Hollow Knight</th><td>9시간 40분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Wizard of Legend</th><td>9시간 3분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Overcooked! 2</th><td>9시간 1분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">철권 7</th><td>8시간 17분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Ghostrunner Demo</th><td>8시간 11분†<span class="history-sr-only"> (균등 배분 추정 시간)</span><small>체험판</small></td></tr>
+<tr><th scope="row">My Little Universe</th><td>7시간 51분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">The Binding of Isaac</th><td>시간 기록 미확인</td></tr>
+<tr><th scope="row">크레이지아케이드</th><td>레벨 400</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="전략"><summary><span class="history-genre-name">전략</span><span class="history-count">8개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 전략 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">Slay the Spire 2</th><td>88시간 23분</td></tr>
+<tr><th scope="row">이터널 리턴</th><td>13시간 35분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Monsters are Coming!</th><td>11시간 54분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Outhold</th><td>10시간 56분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Buckshot Roulette</th><td>10시간 14분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Stacklands</th><td>8시간†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">리그 오브 레전드</th><td>마스터 · 상위 0.5%</td></tr>
+<tr><th scope="row">전략적 팀 전투(롤토체스)</th><td>마스터</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="추리"><summary><span class="history-genre-name">추리</span><span class="history-count">4개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 추리 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">Goose Goose Duck</th><td>15시간 52분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Liar Game</th><td>9시간 2분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">가리사니 흥신소</th><td>8시간 33분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Among Us</th><td>8시간 31분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="캐주얼"><summary><span class="history-genre-name">캐주얼</span><span class="history-count">1개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 캐주얼 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">Pixel Sketch</th><td>21시간 34분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="퍼즐"><summary><span class="history-genre-name">퍼즐</span><span class="history-count">6개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">PC 게임 · 퍼즐 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">Human Fall Flat</th><td>19시간 18분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Coloring Pixels</th><td>12시간 36분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">The Past Within</th><td>11시간 39분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Puzzle Together</th><td>10시간 6분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Escape Simulator</th><td>8시간 32분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">PICO PARK</th><td>7시간 54분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+</tbody></table></details>
+</section>
+<section class="history-platform" id="history-mobile" aria-labelledby="history-mobile-title">
+<header class="history-platform-head"><div><h3 id="history-mobile-title">모바일 게임</h3><p>플레이 기간 · 성장 · 달성 기록</p></div></header>
+<details class="history-genre" data-genre="RPG"><summary><span class="history-genre-name">RPG</span><span class="history-count">2개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">모바일 게임 · RPG 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">메이플키우기</th><td>전투력 7억</td></tr>
+<tr><th scope="row">쿠키런: 킹덤</th><td>왕국 레벨 80</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="슈팅"><summary><span class="history-genre-name">슈팅</span><span class="history-count">1개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">모바일 게임 · 슈팅 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">브롤스타즈</th><td>50시간 이상</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="액션"><summary><span class="history-genre-name">액션</span><span class="history-count">1개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">모바일 게임 · 액션 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">템플런</th><td>모든 업적 완료</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="전략"><summary><span class="history-genre-name">전략</span><span class="history-count">3개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">모바일 게임 · 전략 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">클래시 로얄</th><td>트로피 3,000+ · 당시 최고 아레나</td></tr>
+<tr><th scope="row">클래시 오브 클랜</th><td>타운홀 14 · 당시 상위 0.1%</td></tr>
+<tr><th scope="row">포켓몬 카드 게임</th><td>크라운 카드 5장</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="캐주얼"><summary><span class="history-genre-name">캐주얼</span><span class="history-count">1개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">모바일 게임 · 캐주얼 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">모두의마블</th><td>6년간 플레이</td></tr>
+</tbody></table></details>
+<details class="history-genre" data-genre="퍼즐"><summary><span class="history-genre-name">퍼즐</span><span class="history-count">1개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
+<table><caption class="history-sr-only">모바일 게임 · 퍼즐 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
+<tr><th scope="row">바운스볼</th><td>전체 스테이지 클리어</td></tr>
+</tbody></table></details>
+</section>
+</div></div></section>
 <section id="documents" aria-labelledby="casebook-title"><div class="docs-inner"><header class="docs-header"><div class="docs-kicker">TEST DESIGN / CASEBOOK</div><h2 id="casebook-title">조건을 나누면,<br>확인할 것이 보입니다<span>.</span></h2><p>메이플키우기 자동화 경험을 바탕으로 정상·경계·예외 조건을 나눈 후속 테스트 설계입니다.<br>항목을 펼치면 사전 조건·절차·기대 결과·수집할 증거를 볼 수 있습니다.</p></header><div class="case-tools" role="group" aria-label="테스트 유형 필터"><button type="button" data-filter="전체" aria-pressed="true">전체</button><button type="button" data-filter="정상 흐름" aria-pressed="false">정상 흐름</button><button type="button" data-filter="경계 조건" aria-pressed="false">경계 조건</button><button type="button" data-filter="예외 처리" aria-pressed="false">예외 처리</button><a class="csv-link" href="test-cases.csv" download>테스트 케이스 CSV ↓</a></div><p class="case-count" role="status" aria-live="polite">8개 테스트 설계</p><div id="testcases"><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-01</span><span>무기 레벨업 후 재화 감소<small>정상 흐름 · 설계안 · 미실행</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>확정 레벨업 항목. 보유 재화 B ≥ 표시 비용 C &gt; 0. 자동 수익·보상 수령 없음.</dd><dt>실행 절차</dt><dd><ol><li>재화 B·비용 C·레벨 L 기록</li><li>버튼을 1회 클릭하고 결과 화면 갱신 대기</li><li>화면과 OCR을 대조해 잔액·레벨 기록</li></ol></dd><dt>기대 결과</dt><dd>잔액 B−C, 레벨 L+1. 한 번의 입력으로 비용이 두 번 차감되지 않는다.</dd><dt>수집할 증거</dt><dd>전후 원본 화면 · OCR 원문 · B/C/L · 클릭 시각</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-02</span><span>주문서 강화 결과 기록<small>정상 흐름 · 설계안 · 미실행</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>강화 재료와 판독 가능한 결과 화면. 매 회차의 게임 결과를 수동 대조할 수 있음.</dd><dt>실행 절차</dt><dd><ol><li>강화 1회 실행</li><li>결과 화면의 성공·실패 판독</li><li>수동 관찰과 자동화 로그를 회차 ID로 대조</li></ol></dd><dt>기대 결과</dt><dd>게임의 성공·실패를 화면과 일치하게 기록한다. 정상적인 강화 실패를 자동화 오류로 기록하지 않는다. 결과를 읽지 못하면 판정 보류.</dd><dt>수집할 증거</dt><dd>회차 ID · 결과 화면 · 게임 결과 · 도구 실행 상태</dd></dl></div></details><details class="testcase" data-category="정상 흐름"><summary><span class="case-id">TC-03</span><span>소환 재화 차감량 비교<small>정상 흐름 · 설계안 · 미실행</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>소환 비용 C, 재화 B ≥ C. 다른 재화 증감이 없거나 별도 측정 가능한 상태.</dd><dt>실행 절차</dt><dd><ol><li>소환 전 재화·표시 비용 기록</li><li>선택한 소환을 1회 실행</li><li>완료 후 재화와 해당 구간의 별도 수익 기록</li></ol></dd><dt>기대 결과</dt><dd>다른 증감이 없으면 전후 차이는 C. 자동 수익 G가 있으면 실행 후 재화는 B+G−C. 판독 불가 시 PASS를 부여하지 않는다.</dd><dt>수집할 증거</dt><dd>전후 캡처 · OCR 값 · 소환 종류·횟수 · 별도 수익</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-04</span><span>재화가 필요 비용과 같은 경우<small>경계 조건 · 설계안 · 미실행</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>확정 레벨업 항목. 보유 재화 B=C&gt;0, 자동 수익 없음.</dd><dt>실행 절차</dt><dd><ol><li>최초 재화·비용·레벨 기록</li><li>레벨업 1회 실행 후 잔액 확인</li><li>추가 재화 획득 없이 한 번 더 시도</li></ol></dd><dt>기대 결과</dt><dd>첫 실행 후 잔액 0, 레벨 1 증가. 두 번째 시도는 구매가 성립하지 않고 잔액 0과 레벨을 유지한다.</dd><dt>수집할 증거</dt><dd>초기 값 · 두 번의 요청·결과 화면 · 잔액</dd></dl></div></details><details class="testcase" data-category="경계 조건"><summary><span class="case-id">TC-05</span><span>버튼 탐지 임계값 점검<small>경계 조건 · 설계안 · 미실행</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>설계 조건: 임계값 T=0.80, 점수 ≥ T일 때 후보 허용. 클릭 대상 영역과 정답 좌표 지정.</dd><dt>실행 절차</dt><dd><ol><li>점수 0.79·0.80·0.81을 주입해 후보 선택 검사</li><li>실제 정답·유사 이미지에서 탐지 좌표 비교</li><li>대상 영역 밖 후보의 클릭 여부 확인</li></ol></dd><dt>기대 결과</dt><dd>0.79 거절, 0.80·0.81 후보 허용. 허용 후보도 대상 영역 밖이면 클릭하지 않는다. 점수 통과와 실제 오탐 여부를 별도로 기록한다.</dd><dt>수집할 증거</dt><dd>설정 T · 입력 점수 · 정답/탐지 좌표 · 클릭 여부</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-06</span><span>재화 부족 팝업 대응<small>예외 처리 · 설계안 · 미실행</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>보유 재화 0 ≤ B &lt; 비용 C, 자동 수익 없음. 부족 팝업을 표시할 수 있는 화면.</dd><dt>실행 절차</dt><dd><ol><li>재화와 성장 상태 기록</li><li>구매 버튼 1회 클릭</li><li>부족 안내 감지 후 자동 루틴 중단 여부 확인</li></ol></dd><dt>기대 결과</dt><dd>구매·성장이 성립하지 않고 재화 B 유지. 팝업과 중단 이유를 기록하며 동일 구매를 반복 클릭하지 않는다.</dd><dt>수집할 증거</dt><dd>부족 안내 · 전후 재화/성장 · 클릭 횟수 · 중단 로그</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-07</span><span>OCR 숫자 판독 실패<small>예외 처리 · 설계안 · 미실행</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>재화 영역이 가려져 OCR 결과가 빈 문자열 또는 숫자 변환 불가.</dd><dt>실행 절차</dt><dd><ol><li>원본 재화 영역 저장</li><li>OCR 실행 및 숫자 변환 시도</li><li>후속 구매와 판정 기록 확인</li></ol></dd><dt>기대 결과</dt><dd>읽지 못한 값을 0으로 처리하지 않는다. 구매를 중단하고 판정 보류로 기록한다. 원본 화면·OCR 원문으로 수동 확인할 수 있다.</dd><dt>수집할 증거</dt><dd>원본 영역 · OCR 원문 · 판정 보류 사유 · 후속 클릭 여부</dd></dl></div></details><details class="testcase" data-category="예외 처리"><summary><span class="case-id">TC-08</span><span>결과 갱신 지연과 중복 요청 방지<small>예외 처리 · 설계안 · 미실행</small></span></summary><div class="test-body"><dl><dt>사전 조건</dt><dd>설계 조건: 결과 대기 한도 5초. 구매 요청 후 결과 화면 갱신을 지연시킬 수 있는 테스트 환경.</dd><dt>실행 절차</dt><dd><ol><li>구매 1회 요청</li><li>4초 이내 갱신과 5초 초과 지연을 각각 준비</li><li>자동화 상태·추가 클릭·마지막 화면 확인</li></ol></dd><dt>기대 결과</dt><dd>4초 이내 갱신 시 결과 비교로 진행. 5초 초과 시 판정 보류·중단·증거 저장. 기존 구매 결과 확인 전 구매를 재요청하지 않는다.</dd><dt>수집할 증거</dt><dd>요청/갱신 시각 · 클릭 횟수 · 최종 캡처 · 중단 이유</dd></dl></div></details></div><p class="case-note">이 판정 기준은 후속 자동화 검증을 위한 설계안입니다. 임계값·대기 시간은 설계용 조건이며 기존 도구의 설정값을 뜻하지 않습니다. 실행 전 게임 버전·해상도·대상 영역·비용을 기록하고, 실행 후에만 PASS·FAIL을 부여합니다.</p><div class="scope"><div><h3>게임 결함과 도구 오류 구분</h3><p>OCR 판독 실패나 버튼 오탐은 재화 결함으로 확정하지 않습니다. 원본 화면·판독값·탐지 위치를 비교한 뒤, 같은 조건을 수동으로 확인하는 후속 절차를 설계했습니다.</p></div><div><h3>추가 검증 설계의 우선순위</h3><p>진행 불가·재화 손실·중복 지급처럼 플레이에 직접 영향을 주는 조건을 먼저 확인합니다. 저장 복원·재접속·호환성·결제 흐름은 환경과 판정 근거를 확보한 후 별도로 실행할 범위입니다.</p></div></div></div></section>
 <dialog id="photo-viewer" aria-labelledby="photo-label">
   <div class="photo-tools">
