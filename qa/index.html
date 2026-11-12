@@ -276,6 +276,18 @@ body.lock{overflow:hidden}
 #ov .publish-panel h4{font-size:14px;color:var(--ac);margin-bottom:10px}
 #ov .publish-panel p{font-size:13px;color:#c3cbdc;margin-bottom:16px}
 #ov .publish-panel iframe{display:block;width:100%;max-width:552px;height:167px;border:0;background:#fff;border-radius:3px}
+
+#ov .store-card{display:grid;grid-template-columns:200px minmax(0,1fr);max-width:680px;overflow:hidden;border:1px solid #d9dde5;border-radius:6px;background:#fff;color:#20242c;text-decoration:none;transition:border-color .18s,box-shadow .18s}
+#ov .store-card:hover,#ov .store-card:focus-visible{border-color:#e04a13;box-shadow:0 0 0 3px rgba(255,105,40,.25)}
+#ov .store-card:focus-visible{outline:3px solid #ff8b55;outline-offset:4px}
+#ov .store-card,#ov .store-card *{cursor:pointer}
+#ov .store-card img{display:block;width:100%;height:100%;min-height:180px;object-fit:contain;background:#092346}
+#ov .store-card-body{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:22px;min-width:0}
+#ov .store-card .store-title{font-family:var(--f7);font-size:24px;line-height:1.3;color:#20242c}
+#ov .store-card .store-description{margin:0;font-size:14px;line-height:1.6;color:#505761}
+#ov .store-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-top:4px;padding:12px 16px;min-height:46px;border-radius:4px;background:#bd3b0d;color:#fff;font-family:var(--f7);font-size:15px;line-height:1.4}
+#ov .store-card:hover .store-cta{background:#982e08}
+@media(max-width:560px){#ov .store-card{grid-template-columns:1fr}#ov .store-card img{height:auto;min-height:0;aspect-ratio:16/9}#ov .store-card-body{padding:18px}#ov .store-cta{width:100%}}
 /* 상세 화면에서는 기본 마우스 포인터 사용 */
 body.lock,#ov,#ov *{cursor:auto}
 #ovClose,#ov a{cursor:pointer}
@@ -517,8 +529,7 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
   <img class="project-cover" src="../assets/gameplay/pearl-battle-flow.webp" alt="진주도둑들 프로젝트 화면" loading="lazy" width="1920" height="1080">
   <div class="project-copy"><small>2025.03 — 2025.07 · 참여 4명 · STOVE INDIE 출시</small><h3>진주도둑들</h3><a class="publish-link project-publish-link" href="https://store.onstove.com/games/104688" target="_blank" rel="noopener noreferrer">STOVE에서 출시 게임 보기 ↗</a><p>덱을 편성한 뒤 유닛을 소환하고 강화해 웨이브와 보스를 상대하는 게임입니다.</p><p class="project-qa"><b>QA · 재화 차감·종료 보상 회귀</b><span>보상 오류 보고·재검증 · 음수 비용은 수정 후보 검증, 출시 반영 대기</span></p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
   <template>
-    <div class="tp">2025.03 — 2025.07 · 참여 4명 · STOVE INDIE 출시</div><h3>진주도둑들<s>시스템 기획 · 보상 오류 보고 · 수정 후 재검증</s></h3><p class="project-context"><strong>제작 환경</strong> Unity · C#<br><strong>담당 범위</strong> 4인 팀 · 시스템 기획·출시 후 대응·보상 오류 보고와 재검증</p>
-    <a class="publish-link project-publish-link" href="https://store.onstove.com/games/104688" target="_blank" rel="noopener noreferrer">STOVE에서 출시 게임 보기 ↗</a>
+    <div class="tp">2025.03 — 2025.07 · 참여 4명 · STOVE INDIE 출시</div><h3>진주도둑들<s>시스템 기획 · 보상 오류 보고 · 수정 후 재검증</s></h3><section class="publish-panel"><h4>STOVE INDIE 출시</h4><a class="store-card" href="https://store.onstove.com/games/104688" target="_blank" rel="noopener noreferrer" aria-label="진주도둑들 STOVE 출시 페이지 바로가기 (새 탭)"><img src="../assets/gameplay/pearl-title-flow.webp" alt="진주도둑들 실제 게임 타이틀 화면" width="1920" height="1080"><span class="store-card-body"><strong class="store-title">진주도둑들</strong><span class="store-description">유닛을 소환하고 강화해 웨이브와 보스를 막는 디펜스 게임</span><span class="store-cta">STOVE에서 게임 보기 <span aria-hidden="true">↗</span></span></span></a></section><p class="project-context"><strong>제작 환경</strong> Unity · C#<br><strong>담당 범위</strong> 4인 팀 · 시스템 기획·출시 후 대응·보상 오류 보고와 재검증</p>
     <p class="q">덱을 편성한 뒤 유닛을 소환하고 강화해 웨이브와 보스를 상대하는 게임입니다.</p><section class="qa-brief" aria-label="QA 검증 요약"><h4>재화 차감·종료 보상 회귀</h4><p><strong>수정 전후 빌드 비교 · 협업 사례 3건</strong></p><p>음수 비용 수정 후보와 패배 보상 과거 수정 빌드를 비교했습니다. 정상·경계 조건과 저장 후 재접속 결과를 함께 제시합니다.</p><dl><dt>직접 확인 이력</dt><dd>2025.09.17 · 본인 확인 날짜</dd><dt>후속 검사</dt><dd>2026.11.06 DLL 로직 검사 / 2026.11.10 과거 소스 재빌드 비교</dd><dt>기록 구분</dt><dd>직접 확인 날짜, 2026년 Git 수정 이력, 후속 실행 기록은 서로 다른 자료입니다.</dd></dl><p class="qa-links"><a href="reports/pearl-thieves.xlsx" download>실행 보고서 ↓</a><a href="evidence/pearl-thieves.txt" download>조건·관찰값 기록 ↓</a></p></section><section class="evidence"><h4>참여 내용</h4><ul><li>랭크 · 스테이지 두 갈래 진행 구조 기획</li>
               <li>웨이브 · 보스 타이밍으로 난이도 곡선 설계</li>
               <li>출시와 출시 후 수정·대응 참여</li><li>보상 오류 3건 발견·문서 보고 및 수정 후 재검증</li></ul>
