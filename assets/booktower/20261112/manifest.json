@@ -1,0 +1,70 @@
+{
+  "capturedOn": "2026-11-12",
+  "engine": "Unity 6000.3.10f1",
+  "capture": "Windows player copy, offscreen render, scripted in-game APIs; room/camera setup for demonstration",
+  "fps": 24,
+  "size": [
+    1920,
+    1080
+  ],
+  "audio": false,
+  "duration": 62.875,
+  "segments": [
+    {
+      "name": "01-title",
+      "start": 0,
+      "duration": 5.0,
+      "frames": 120,
+      "caption": "현재 타이틀 · 게임 시작과 옵션 선택"
+    },
+    {
+      "name": "02-story",
+      "start": 5.0,
+      "duration": 4.0,
+      "frames": 96,
+      "caption": "첫 이야기 · 종이 정령과 모아의 만남"
+    },
+    {
+      "name": "03-light",
+      "start": 9.0,
+      "duration": 18.5,
+      "frames": 444,
+      "caption": "F0 · 덮개와 다리, 두 반사면을 조작해 광로 연결"
+    },
+    {
+      "name": "04-shadow",
+      "start": 27.5,
+      "duration": 13.5,
+      "frames": 324,
+      "caption": "1A · 조명과 종이 오림으로 여우·토끼의 그림자 기록"
+    },
+    {
+      "name": "05-lantern",
+      "start": 41.0,
+      "duration": 21.875,
+      "frames": 525,
+      "caption": "1B · 기억등 충전과 운반, 창 복구 후 출구에 빛 방출"
+    }
+  ],
+  "scope": "Title, F0 light, 1A shadows, 1B lantern. Not a full manual walkthrough or full regression result.",
+  "sourceHashes": {
+    "Assets/Scenes/InGame.unity": "a3409651c04c3b6491f54911c3813a925a4d0ece0dea9f9e406c5e9f7c21b1a5",
+    "Builds/GravityPage/AFoldOfLight_Data/data.unity3d": "4c279adcab2b61471f2a72f512feafea829159ae034d6ecbfe0781711dcf1897",
+    "Builds/GravityPage/AFoldOfLight_Data/Managed/Assembly-CSharp.dll": "a974f192647da33ff8d59871b195a12467df661d5c35caa43472417509da96f4"
+  },
+  "captureDriverSHA256": "acb50d7d406b48e2e9e63e05dd732efbdf936b120e2b1a85b20f60daa5216192",
+  "files": {
+    "gameplay.ko.vtt": "c57c257834ce79af5822ccc9162ee01fc41b6b9f559c9addb018c16e6d8cdc70",
+    "gameplay.mp4": "cd104ebc3b90da0a69f8ccd760e0356d7904e68e3ee588ceba7bf52bd1ac0b9b",
+    "lantern-carried.webp": "1474a912a0408081c4c53b909400de726fbb655cb7cf5ff690272e5b728c5cb8",
+    "library-solved.webp": "a158be22be84f95620eda66b55c22ec37990cc70b5128d054985559ec4a39ec1",
+    "light-before.webp": "88f4eceb5f525ea9da5188abf6e050ace2b818bc62ea4e90e146b9b2053ee96e",
+    "light-connected.webp": "b9b0063c51be7cd389100dc8e18cf96115b1073f92313a78197c197093072135",
+    "shadow-both.webp": "32ab74fbfeba5ee5c1e9f50a9e4d3598f7b2f40181bfe2e4c42b61f27e0594f0",
+    "shadow-fox.webp": "defc309a4d9f90886298cca8950c1b42c24e55b009af7aa657d42558c4fdc7de",
+    "title.webp": "ff819c8275c41e986f51d650d087c2515cbb18aa932fd055afca95b56ce3b4ca",
+    "window-raised.webp": "27ed945897675db73eaafaac6596a7460c5bea4b182fd722334274dc2a783266"
+  },
+  "fullDecode": "PASS",
+  "dynamicSegments": 5
+}

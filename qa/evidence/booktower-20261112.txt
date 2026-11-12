@@ -1,0 +1,71 @@
+접힌 빛 최신 실행 장면 기록
+기준일: 2026.11.12
+Unity 6000.3.10f1 / 최신 Windows 빌드의 별도 복사본 / 1920×1080 / 24fps / 무음
+원본 프로젝트·씬·출시용 빌드 수정 없음. 복사본에 캡처 전용 실행기를 연결하여 RenderTexture로 실제 런타임 화면을 녹화함.
+타이틀·첫 이야기·F0·1A·1B 장면을 편집해 연결함. 방·시점을 준비하고 게임 조작 API를 호출했으므로 연속 수동 플레이, 입력 회귀 전체, 성능 측정 결과로 보지 않음.
+F0: 덮개·다리·두 반사면의 조작 후 광로 연결, 걸쇠 확정과 Solved 상태 확인.
+1A: 여우 기록 뒤 토끼 기록, 두 그림자 완료 상태 확인.
+1B: 충전·잠금·운반·기록대 방출·창 복구·재충전·출구 방출과 완료 상태 확인.
+현재 포트폴리오의 테스트 케이스는 별도의 설계안이며 전체 절차를 수행한 PASS로 집계하지 않음.
+기존 1A 음수 스케일 BoxCollider 경고는 원본 빌드 로그에서도 남아 있음. 이번 미디어 갱신에서 수정하지 않음.
+
+실행 기록
+BEGIN 01-title
+SHOT title
+SHOT title-options
+END 01-title frames=120 exit=0
+SHOT settings
+BEGIN 02-story
+SHOT story
+END 02-story frames=96 exit=0
+BEGIN 03-light
+SHOT light-before
+CONTROL 빛 덮개의 제본 고리=True
+CONTROL 입구 제본 손잡이=True
+SHOT bridge-down
+CONTROL 입구 은박 회전 고리=True
+CONTROL 입구 은박 회전 고리=True
+CONTROL 건너편 은박 회전 고리=True
+CONTROL 건너편 은박 회전 고리=True
+SHOT light-connected
+LIGHT_CONNECTED=True
+CONTROL 빛으로 여는 걸쇠=True
+SHOT light-solved
+F0=Solved bridge=True dirs=2,2 stopped=문을 깨우는 잎 문양
+END 03-light frames=444 exit=0
+SHOT light-overview
+BEGIN 04-shadow
+SHOT shadow-before
+SHOT shadow-fox
+FOX_RECORDED=True
+SHOT shadow-both
+SHADOW_COMPLETE=True
+END 04-shadow frames=324 exit=0
+BEGIN 05-lantern
+SHOT library-before
+CONTROL Charge=True
+CONTROL LeftRing=True
+CONTROL RightRing=True
+CONTROL Pickup=True
+SHOT lantern-carried
+LANTERN_CARRIED=Carried
+CONTROL RecordDock=True
+CONTROL LeftRing=True
+CONTROL RightRing=True
+SHOT record-open
+RECORD_OPEN=True
+CONTROL TakeCrank=True
+CONTROL Crank=True
+CONTROL Latch=True
+CONTROL WindowCharge=True
+SHOT window-raised
+CONTROL LeftRing=True
+CONTROL RightRing=True
+CONTROL Pickup=True
+CONTROL ExitDock=True
+CONTROL LeftRing=True
+CONTROL RightRing=True
+SHOT library-solved
+LANTERN_COMPLETE=True
+END 05-lantern frames=525 exit=0
+CAPTURE_COMPLETE
