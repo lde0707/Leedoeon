@@ -1,0 +1,1036 @@
+{
+  "date": "2026-11-12",
+  "browser": "157.0.8103.50",
+  "viewport": {
+    "width": 780,
+    "height": 960
+  },
+  "actions": [
+    {
+      "action": {
+        "name": "01-guest",
+        "click": [
+          390,
+          723
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794491930.0010014
+    },
+    {
+      "action": {
+        "name": "02-unchecked-submit",
+        "click": [
+          391,
+          705
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794491930.8599234
+    },
+    {
+      "action": {
+        "name": "03-all-on",
+        "click": [
+          239,
+          369
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794491931.7600832
+    },
+    {
+      "action": {
+        "name": "04-all-off",
+        "click": [
+          239,
+          369
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794491932.6432853
+    },
+    {
+      "action": {
+        "name": "04-submit-after-off",
+        "click": [
+          391,
+          705
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794491933.5085738
+    },
+    {
+      "action": {
+        "name": "05-required-first",
+        "click": [
+          237,
+          445
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794491934.3751547
+    },
+    {
+      "action": {
+        "name": "05-required-both",
+        "click": [
+          237,
+          502
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794491935.2397985
+    },
+    {
+      "action": {
+        "name": "05-required-submit",
+        "click": [
+          391,
+          705
+        ]
+      },
+      "before": "363-4854",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794491936.2196994
+    },
+    {
+      "action": {
+        "name": "06-destinations",
+        "click": [
+          389,
+          751
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1080",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1080",
+      "timestamp": 1794491988.9753335
+    },
+    {
+      "action": {
+        "name": "07-sillim",
+        "click": [
+          386,
+          356
+        ]
+      },
+      "before": "406-1080",
+      "after": "406-1082",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1082",
+      "timestamp": 1794491989.8823702
+    },
+    {
+      "action": {
+        "name": "08-guidance",
+        "click": [
+          355,
+          800
+        ]
+      },
+      "before": "406-1082",
+      "after": "406-1088",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1088",
+      "timestamp": 1794491990.7732532
+    },
+    {
+      "action": {
+        "name": "09-cancel",
+        "click": [
+          511,
+          801
+        ]
+      },
+      "before": "406-1088",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794491991.6545753
+    },
+    {
+      "action": {
+        "name": "09-cancel-redraw",
+        "size": [
+          781,
+          960
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492018.4857697
+    },
+    {
+      "action": {
+        "name": "09-cancel-confirm",
+        "size": [
+          780,
+          960
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492019.4326005
+    },
+    {
+      "action": {
+        "name": "10-sns-kakao",
+        "click": [
+          282,
+          654
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492081.998459
+    },
+    {
+      "action": {
+        "name": "10-reset-naver",
+        "node": "363-4866"
+      },
+      "before": "363-4854",
+      "after": "363-4866",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4866",
+      "timestamp": 1794492106.7242024
+    },
+    {
+      "action": {
+        "name": "10-sns-naver",
+        "click": [
+          354,
+          654
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492108.0849326
+    },
+    {
+      "action": {
+        "name": "10-reset-apple",
+        "node": "363-4866"
+      },
+      "before": "363-4854",
+      "after": "363-4866",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4866",
+      "timestamp": 1794492113.747655
+    },
+    {
+      "action": {
+        "name": "10-sns-apple",
+        "click": [
+          426,
+          654
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492115.0886354
+    },
+    {
+      "action": {
+        "name": "10-reset-google",
+        "node": "363-4866"
+      },
+      "before": "363-4854",
+      "after": "363-4866",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4866",
+      "timestamp": 1794492120.248202
+    },
+    {
+      "action": {
+        "name": "10-sns-google",
+        "click": [
+          498,
+          654
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492121.5660806
+    },
+    {
+      "action": {
+        "name": "11-terms-expand",
+        "click": [
+          529,
+          445
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492158.2402759
+    },
+    {
+      "action": {
+        "name": "01-guest",
+        "click": [
+          390,
+          723
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492222.7354753
+    },
+    {
+      "action": {
+        "name": "02-unchecked-submit",
+        "click": [
+          391,
+          705
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492224.001619
+    },
+    {
+      "action": {
+        "name": "03-all-on",
+        "click": [
+          239,
+          369
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492225.3022919
+    },
+    {
+      "action": {
+        "name": "04-all-off",
+        "click": [
+          239,
+          369
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492226.5943873
+    },
+    {
+      "action": {
+        "name": "04-submit-after-off",
+        "click": [
+          391,
+          705
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492227.8441877
+    },
+    {
+      "action": {
+        "name": "05-required-first",
+        "click": [
+          237,
+          445
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492229.117815
+    },
+    {
+      "action": {
+        "name": "05-required-both",
+        "click": [
+          237,
+          502
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492230.4084868
+    },
+    {
+      "action": {
+        "name": "11-terms-expand",
+        "click": [
+          529,
+          445
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492231.7304733
+    },
+    {
+      "action": {
+        "name": "11-terms-expanded-large",
+        "size": [
+          1000,
+          1100
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492319.348699
+    },
+    {
+      "action": {
+        "name": "11-terms-expanded-confirm",
+        "size": [
+          780,
+          960
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492320.6126297
+    },
+    {
+      "action": {
+        "name": "11-terms-collapse",
+        "click": [
+          529,
+          445
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492321.8870084
+    },
+    {
+      "action": {
+        "name": "05-required-submit",
+        "click": [
+          391,
+          705
+        ]
+      },
+      "before": "363-4854",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492323.2212813
+    },
+    {
+      "action": {
+        "name": "06-destinations",
+        "click": [
+          389,
+          751
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1080",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1080",
+      "timestamp": 1794492324.5274131
+    },
+    {
+      "action": {
+        "name": "12-park-route",
+        "click": [
+          386,
+          454
+        ]
+      },
+      "before": "406-1080",
+      "after": "406-1084",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1084",
+      "timestamp": 1794492325.8219514
+    },
+    {
+      "action": {
+        "name": "12-park-back",
+        "click": [
+          256,
+          150
+        ]
+      },
+      "before": "406-1084",
+      "after": "406-1080",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1080",
+      "timestamp": 1794492327.105241
+    },
+    {
+      "action": {
+        "name": "13-trail-route",
+        "click": [
+          386,
+          553
+        ]
+      },
+      "before": "406-1080",
+      "after": "406-1086",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1086",
+      "timestamp": 1794492328.4271514
+    },
+    {
+      "action": {
+        "name": "13-trail-back",
+        "click": [
+          256,
+          150
+        ]
+      },
+      "before": "406-1086",
+      "after": "406-1080",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1080",
+      "timestamp": 1794492329.711286
+    },
+    {
+      "action": {
+        "name": "07-sillim",
+        "click": [
+          386,
+          356
+        ]
+      },
+      "before": "406-1080",
+      "after": "406-1082",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1082",
+      "timestamp": 1794492331.105334
+    },
+    {
+      "action": {
+        "name": "08-guidance",
+        "click": [
+          355,
+          800
+        ]
+      },
+      "before": "406-1082",
+      "after": "406-1088",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1088",
+      "timestamp": 1794492332.3919878
+    },
+    {
+      "action": {
+        "name": "14-arrival",
+        "click": [
+          355,
+          800
+        ]
+      },
+      "before": "406-1088",
+      "after": "406-1108",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1108",
+      "timestamp": 1794492333.6667836
+    },
+    {
+      "action": {
+        "name": "15-report",
+        "click": [
+          390,
+          571
+        ]
+      },
+      "before": "406-1108",
+      "after": "406-1096",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1096",
+      "timestamp": 1794492334.9340045
+    },
+    {
+      "action": {
+        "name": "16-saved",
+        "click": [
+          315,
+          835
+        ]
+      },
+      "before": "406-1096",
+      "after": "406-1094",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1094",
+      "timestamp": 1794492336.2012906
+    },
+    {
+      "action": {
+        "name": "17-saved-park",
+        "click": [
+          386,
+          429
+        ]
+      },
+      "before": "406-1094",
+      "after": "406-1084",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1084",
+      "timestamp": 1794492393.8531537
+    },
+    {
+      "action": {
+        "name": "18-map-fixture",
+        "node": "406-1078"
+      },
+      "before": "406-1084",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492400.1195338
+    },
+    {
+      "action": {
+        "name": "18-settings",
+        "click": [
+          537,
+          835
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492401.402125
+    },
+    {
+      "action": {
+        "name": "19-voice-off",
+        "click": [
+          518,
+          339
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492402.669724
+    },
+    {
+      "action": {
+        "name": "19-profile-away",
+        "click": [
+          462,
+          835
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1098",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1098",
+      "timestamp": 1794492403.9499977
+    },
+    {
+      "action": {
+        "name": "19-settings-return",
+        "click": [
+          537,
+          835
+        ]
+      },
+      "before": "406-1098",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492405.2337697
+    },
+    {
+      "action": {
+        "name": "19-dismiss-toast",
+        "click": [
+          573,
+          880
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492452.1041346
+    },
+    {
+      "action": {
+        "name": "19-signal-off",
+        "click": [
+          518,
+          263
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492453.3671649
+    },
+    {
+      "action": {
+        "name": "19-voice-on",
+        "click": [
+          518,
+          339
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492454.633109
+    },
+    {
+      "action": {
+        "name": "19-vibration-on",
+        "click": [
+          518,
+          415
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492455.9013317
+    },
+    {
+      "action": {
+        "name": "19-buildings-off",
+        "click": [
+          518,
+          550
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492457.1708786
+    },
+    {
+      "action": {
+        "name": "19-departure-on",
+        "click": [
+          518,
+          626
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492458.4515452
+    },
+    {
+      "action": {
+        "name": "19-away",
+        "click": [
+          462,
+          835
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1098",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1098",
+      "timestamp": 1794492459.7305892
+    },
+    {
+      "action": {
+        "name": "19-all-retained",
+        "click": [
+          537,
+          835
+        ]
+      },
+      "before": "406-1098",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492461.0162265
+    },
+    {
+      "action": {
+        "name": "20-map",
+        "click": [
+          241,
+          835
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492462.3093843
+    },
+    {
+      "action": {
+        "name": "20-list",
+        "click": [
+          389,
+          751
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1080",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1080",
+      "timestamp": 1794492463.5839012
+    },
+    {
+      "action": {
+        "name": "20-route",
+        "click": [
+          386,
+          356
+        ]
+      },
+      "before": "406-1080",
+      "after": "406-1082",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1082",
+      "timestamp": 1794492464.9706116
+    },
+    {
+      "action": {
+        "name": "20-bookmark-on",
+        "click": [
+          511,
+          801
+        ]
+      },
+      "before": "406-1082",
+      "after": "406-1094",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1094",
+      "timestamp": 1794492466.2912571
+    },
+    {
+      "action": {
+        "name": "21-login",
+        "node": "363-4866"
+      },
+      "before": "406-1094",
+      "after": "363-4866",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4866",
+      "timestamp": 1794492530.0918436
+    },
+    {
+      "action": {
+        "name": "21-mobile-login",
+        "size": [
+          390,
+          844
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4866",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4866",
+      "timestamp": 1794492531.3365953
+    },
+    {
+      "action": {
+        "name": "21-mobile-dismiss",
+        "click": [
+          369,
+          760
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4866",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4866",
+      "timestamp": 1794492566.5270088
+    },
+    {
+      "action": {
+        "name": "21-mobile-guest",
+        "click": [
+          194,
+          611
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492567.884523
+    },
+    {
+      "action": {
+        "name": "21-mobile-disabled",
+        "click": [
+          194,
+          596
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492583.7272036
+    },
+    {
+      "action": {
+        "name": "21-mobile-all-on",
+        "click": [
+          78,
+          335
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492585.2420332
+    },
+    {
+      "action": {
+        "name": "21-mobile-map",
+        "click": [
+          194,
+          596
+        ]
+      },
+      "before": "363-4854",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492586.601437
+    },
+    {
+      "action": {
+        "name": "22-small-map",
+        "size": [
+          360,
+          800
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492587.8503957
+    },
+    {
+      "action": {
+        "name": "22-small-list",
+        "click": [
+          180,
+          585
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1080",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1080",
+      "timestamp": 1794492629.2011006
+    },
+    {
+      "action": {
+        "name": "23-desktop-reset",
+        "size": [
+          780,
+          960
+        ],
+        "node": "363-4866"
+      },
+      "before": "406-1080",
+      "after": "363-4866",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4866",
+      "timestamp": 1794492666.2067027
+    },
+    {
+      "action": {
+        "name": "23-terms",
+        "click": [
+          390,
+          723
+        ]
+      },
+      "before": "363-4866",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492667.5332005
+    },
+    {
+      "action": {
+        "name": "23-one-required",
+        "click": [
+          237,
+          445
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492668.806998
+    },
+    {
+      "action": {
+        "name": "23-one-required-submit",
+        "click": [
+          391,
+          705
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492670.0810502
+    },
+    {
+      "action": {
+        "name": "24-dismiss-toast",
+        "click": [
+          573,
+          880
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492715.0071251
+    },
+    {
+      "action": {
+        "name": "24-all-selected",
+        "click": [
+          239,
+          369
+        ]
+      },
+      "before": "363-4854",
+      "after": "363-4854",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=363-4854",
+      "timestamp": 1794492716.4881709
+    },
+    {
+      "action": {
+        "name": "24-all-submit",
+        "click": [
+          391,
+          705
+        ]
+      },
+      "before": "363-4854",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492717.893404
+    },
+    {
+      "action": {
+        "name": "24-settings-map",
+        "click": [
+          537,
+          835
+        ]
+      },
+      "before": "406-1078",
+      "after": "406-1100",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1100",
+      "timestamp": 1794492719.1967652
+    },
+    {
+      "action": {
+        "name": "24-map-return",
+        "click": [
+          241,
+          835
+        ]
+      },
+      "before": "406-1100",
+      "after": "406-1078",
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1&node-id=406-1078",
+      "timestamp": 1794492720.4721184
+    }
+  ]
+}
