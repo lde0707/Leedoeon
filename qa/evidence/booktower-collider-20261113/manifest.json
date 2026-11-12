@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-13",
+  "cases": 35,
+  "pass": 35,
+  "beforeNegativeScaleWarnings": 2,
+  "afterNegativeScaleWarnings": 0,
+  "beforeCompatibilityFailures": 2,
+  "beforeFunctionalFailures": 0,
+  "afterFailures": 0,
+  "sceneSha256": "a3409651c04c3b6491f54911c3813a925a4d0ece0dea9f9e406c5e9f7c21b1a5",
+  "beforeAssemblySha256": "a974f192647da33ff8d59871b195a12467df661d5c35caa43472417509da96f4",
+  "afterAssemblySha256": "cfd323234ccc120ef040c3836e6e06649950d0a7b65d44f44380f368d9874f9c",
+  "sourceSha256": "09f19284e70d69e0a89c4f3d8bd0fe7d686def7e8ab76609db5f8d7861c6c929",
+  "worldBoundsMatchPrecision": "0.01 metres (logged precision)",
+  "buildResult": "Succeeded; errors=0; warnings=8; bytes=371922578",
+  "scope": "Scripted mouse input, collider rays, real character capsule contacts, puzzle APIs. Not a full manual playthrough or performance test.",
+  "beforeInstrumentedAssemblySha256": "e0205666a48f7fd39a7508c587bbc3de250fdf42f40055860dbd4a0c1c4e8cd4",
+  "boundaryInstrumentedAssemblySha256": "b172d737acc528570cfba5f512d35b40df812a269df87843d4fe37347a8004eb",
+  "instrumentation": "Before and boundary copies inject opt-in probes; baseline beforeAssemblySha256 identifies the original uninstrumented game. Collider/title/legacy after tests run the source-built afterAssemblySha256."
+}

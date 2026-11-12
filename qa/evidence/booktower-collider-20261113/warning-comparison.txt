@@ -1,0 +1,13 @@
+2026-11-13 / 수정 전 Windows Player 로그 발췌
+BoxCollider does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "Map/1A_접힘방향/V4_팝업북회랑/토끼 그림자 극장/작은 귀 종이 꽂이"
+BoxCollider does not support negative scale or size.
+The effective box size has been forced positive and is likely to give unexpected collision geometry.
+If you absolutely need to use negative scaling you can use the convex MeshCollider. Scene hierarchy path "Map/1A_접힘방향/V4_팝업북회랑/토끼 그림자 극장/토끼와 여우의 세 빛 그림자 극장/여우 꼬리 종이 꽂이"
+
+수정 후 검색 결과
+colliderQA: 해당 경고 0건 / 오류·예외 문자열 미발견 / SHA256 35bfa3f0a156c5c0ce67ae0aacecabfe5c79cc728d4555f854fe004fad45ab04
+titleQA: 해당 경고 0건 / 오류·예외 문자열 미발견 / SHA256 aa05213fc9e7d10e2914fb206ffcda20cc2bc890bc4ad4f3aba1ccadfd394332
+legacyQA: 해당 경고 0건 / 오류·예외 문자열 미발견 / SHA256 ac47403da721bf0126c8f8fba2d1f8a74d078d47922ace1c8d08f0b72542e0e5
+boundaryQA: 해당 경고 0건 / 오류·예외 문자열 미발견 / SHA256 5e453b63849c2cf28cb783629e5ea514fad1d6cbf1479eb07fdc8b66921482b0

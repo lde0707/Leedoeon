@@ -1,0 +1,52 @@
+using UnityEngine;
+using BookTower.Puzzles;
+namespace BookTower.Interaction
+{
+    [RequireComponent(typeof(Interactable))]
+    public sealed class PaperShadowHandle:MonoBehaviour
+    {
+        public StorybookLightPuzzle puzzle;
+        public bool isEar;
+        public int extraPart;
+        public int PieceIndex=>extraPart>=2?extraPart:(isEar?1:0);
+        public bool CanGrab=>puzzle&&!puzzle.Complete&&(!puzzle.Duet||!puzzle.Duet.Recorded(PieceIndex));
+        Mesh mirrorBounds;
+        MeshCollider mirrorCollider;
+        public void FitWholeObject()
+        {
+            Bounds b=default;bool first=true;
+            foreach(var filter in GetComponentsInChildren<MeshFilter>())
+            {
+                if(!filter.sharedMesh)continue;var bounds=filter.sharedMesh.bounds;
+                for(int x=-1;x<=1;x+=2)for(int y=-1;y<=1;y+=2)for(int z=-1;z<=1;z+=2)
+                {var p=transform.InverseTransformPoint(filter.transform.TransformPoint(bounds.center+Vector3.Scale(bounds.extents,new Vector3(x,y,z))));if(first){b=new Bounds(p,Vector3.zero);first=false;}else b.Encapsulate(p);}
+            }
+            if(first)return;
+            b.size=new Vector3(Mathf.Max(b.size.x,.24f),b.size.y+.08f,Mathf.Max(b.size.z,.24f));
+            // Ears and tail mirror their root transform. A primitive BoxCollider
+            // cannot represent a negative scale reliably; keep the same box
+            // volume as an eight-vertex convex mesh on these two pieces only.
+            if(Application.isPlaying&&(isEar||extraPart==3)){FitMirroredBounds(b);return;}
+            var collider=GetComponent<BoxCollider>();if(!collider)collider=gameObject.AddComponent<BoxCollider>();
+            collider.center=b.center;collider.size=b.size;
+        }
+        void FitMirroredBounds(Bounds bounds)
+        {
+            var old=GetComponent<BoxCollider>();
+            if(!mirrorCollider)
+            {
+                mirrorCollider=gameObject.AddComponent<MeshCollider>();
+                mirrorCollider.convex=true;
+                if(old){mirrorCollider.sharedMaterial=old.sharedMaterial;mirrorCollider.isTrigger=old.isTrigger;mirrorCollider.contactOffset=old.contactOffset;}
+            }
+            if(old){old.enabled=false;Destroy(old);}
+            if(!mirrorBounds)mirrorBounds=new Mesh{name="Mirrored paper interaction bounds",hideFlags=HideFlags.DontSave};
+            mirrorCollider.sharedMesh=null;
+            var lo=bounds.min;var hi=bounds.max;
+            mirrorBounds.vertices=new[]{new Vector3(lo.x,lo.y,lo.z),new Vector3(hi.x,lo.y,lo.z),new Vector3(hi.x,hi.y,lo.z),new Vector3(lo.x,hi.y,lo.z),new Vector3(lo.x,lo.y,hi.z),new Vector3(hi.x,lo.y,hi.z),new Vector3(hi.x,hi.y,hi.z),new Vector3(lo.x,hi.y,hi.z)};
+            mirrorBounds.triangles=new[]{0,2,1,0,3,2,4,5,6,4,6,7,0,1,5,0,5,4,3,7,6,3,6,2,0,4,7,0,7,3,1,2,6,1,6,5};
+            mirrorBounds.RecalculateBounds();mirrorCollider.sharedMesh=mirrorBounds;
+        }
+        void OnDestroy(){if(mirrorBounds)Destroy(mirrorBounds);}
+    }
+}

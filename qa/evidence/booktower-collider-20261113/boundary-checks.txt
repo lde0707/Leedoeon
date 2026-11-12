@@ -1,0 +1,78 @@
+PASS no active gravity cargo puzzles
+PASS B01 seal rejected before light
+PASS F0 initially blocks optical path
+PASS F0 control 빛 덮개의 제본 고리
+PASS B02 optics input rejected during movement
+PASS F0 shutter opens actual lower light path
+PASS F0 control 입구 제본 손잡이
+PASS F0 lowered page blocks direct light and remains walkable
+PASS B03 fold on bridge rejected (direct API same-position fixture)
+PASS B04 pit fall recovery restores safe height
+PASS F0 control 입구 은박 회전 고리
+PASS F0 wrong reflection does not solve
+PASS F0 control 입구 은박 회전 고리
+PASS F0 control 건너편 은박 회전 고리
+PASS F0 control 건너편 은박 회전 고리
+PASS F0 reflected path awaits seal confirmation
+PASS F0 control 빛으로 여는 걸쇠
+PASS F0 optical solution opens existing binding door
+PASS F0 control 입구 은박 회전 고리
+PASS B05 solved door remains open after reflector change
+PASS B06 untouched shadow puzzle remains incomplete
+PASS B07 rabbit first remains partial
+PASS B08 rabbit then fox completes both records
+PASS 1B control Pickup expected=False
+PASS 1B control TakeCrank expected=False
+PASS 1B control Crank expected=False
+PASS 1B control Latch expected=False
+PASS 1B control WindowCharge expected=False
+PASS B09 missing prerequisites keep window and exit closed
+PASS 1B control Charge expected=True
+PASS 1B control Pickup expected=False
+PASS 1B control LeftRing expected=True
+PASS 1B control Pickup expected=False
+PASS B10 zero or one ring blocks carrying
+PASS 1B control RightRing expected=True
+PASS 1B control Pickup expected=True
+PASS B11 carried charge survives 12 seconds at timeScale 1
+PASS 1B control LeftRing expected=False
+PASS 1B control RightRing expected=False
+PASS B12 carried rings cannot release light
+PASS 1B control ExitDock expected=True
+PASS 1B control ExitDock expected=False
+PASS 1B control LeftRing expected=True
+PASS 1B control RightRing expected=True
+PASS B13 early exit consumes light but keeps exit blocked
+PASS 1B control Charge expected=True
+PASS 1B control LeftRing expected=True
+PASS 1B control RightRing expected=True
+PASS 1B control Pickup expected=True
+PASS B14 recharge restores progress after early exit
+PASS 1B control RecordDock expected=True
+PASS 1B control RecordDock expected=False
+PASS 1B control LeftRing expected=True
+PASS B15 one open ring cannot release docked light
+PASS 1B control RightRing expected=True
+PASS B16 record release opens crank cabinet and spends charge
+PASS 1B control Pickup expected=False
+PASS 1B control TakeCrank expected=True
+PASS 1B control TakeCrank expected=False
+PASS 1B control Crank expected=True
+PASS 1B control WindowCharge expected=False
+PASS 1B control Latch expected=True
+PASS B17 raised window must be latched before recharging
+PASS 1B control WindowCharge expected=True
+PASS 1B control LeftRing expected=True
+PASS 1B control RightRing expected=True
+PASS 1B control Pickup expected=True
+PASS 1B control ExitDock expected=True
+PASS 1B control LeftRing expected=True
+PASS 1B control RightRing expected=True
+PASS B18 recovered sequence solves and unblocks exit
+PASS 1B control Charge expected=False
+PASS B19 post-completion interaction preserves open exit
+PASS 1A–1B real capsule passage reverse=False
+PASS 1A–1B real capsule passage reverse=True
+PASS F0–1A real capsule passage reverse=False
+PASS F0–1A real capsule passage reverse=True
+RESULT: PASS; failures=0; editor=False
