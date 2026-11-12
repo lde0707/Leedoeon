@@ -1,0 +1,64 @@
+PASS launch opens title before story
+PASS generated title illustration loaded from project asset
+PASS separate paper plaques, glowing leaf and animation shader loaded
+PASS title freezes gameplay and blocks input
+PASS title frees pointer
+PASS opening story waits for Start
+PASS title avoids rendering hidden 3D world
+PASS dedicated title music plays while world is paused
+PASS start selected for keyboard navigation
+PASS title-motion-0 button within viewport: 게임 시작
+PASS title-motion-0 button within viewport: 옵션
+PASS title-motion-0 button within viewport: 나가기
+PASS title-motion-1 button within viewport: 게임 시작
+PASS title-motion-1 button within viewport: 옵션
+PASS title-motion-1 button within viewport: 나가기
+PASS title world animates while gameplay time is zero
+PASS hover transfers golden edge and leaf to exactly one button
+PASS animation keeps menu hit rectangles fixed
+PASS title-hover-options button within viewport: 게임 시작
+PASS title-hover-options button within viewport: 옵션
+PASS title-hover-options button within viewport: 나가기
+PASS actual mouse Options click opens settings
+PASS title key cannot move player
+PASS down arrow navigates to Settings
+PASS Enter opens title Settings
+PASS unchanged Settings returns to title
+PASS dirty title settings asks before discarding
+PASS discard returns to title and keeps gameplay paused
+PASS actual mouse Quit click opens confirmation
+PASS quit confirmation selects Cancel, not hidden title menu
+PASS quit button within viewport: 게임 시작
+PASS quit button within viewport: 옵션
+PASS quit button within viewport: 나가기
+PASS quit button within viewport: 나가기
+PASS quit cancel restores title
+PASS title-1920x1080 button within viewport: 게임 시작
+PASS title-1920x1080 button within viewport: 옵션
+PASS title-1920x1080 button within viewport: 나가기
+PASS title-1280x720 button within viewport: 게임 시작
+PASS title-1280x720 button within viewport: 옵션
+PASS title-1280x720 button within viewport: 나가기
+PASS title-1280x1024 button within viewport: 게임 시작
+PASS title-1280x1024 button within viewport: 옵션
+PASS title-1280x1024 button within viewport: 나가기
+PASS title-2560x1080 button within viewport: 게임 시작
+PASS title-2560x1080 button within viewport: 옵션
+PASS title-2560x1080 button within viewport: 나가기
+PASS title-reduced-motion-0 button within viewport: 게임 시작
+PASS title-reduced-motion-0 button within viewport: 옵션
+PASS title-reduced-motion-0 button within viewport: 나가기
+PASS title-reduced-motion-1 button within viewport: 게임 시작
+PASS title-reduced-motion-1 button within viewport: 옵션
+PASS title-reduced-motion-1 button within viewport: 나가기
+PASS reduced motion freezes title animation
+PASS title-large-text button within viewport: 게임 시작
+PASS title-large-text button within viewport: 옵션
+PASS title-large-text button within viewport: 나가기
+PASS large text and reduced motion keep title usable
+PASS Start enters actual game or opening story
+PASS Start restores world camera layers
+PASS Start stops title music
+PASS opening story starts only after title is dismissed
+PASS in-game Settings still returns to pause menu
+RESULT: PASS; failures=0; editor=False

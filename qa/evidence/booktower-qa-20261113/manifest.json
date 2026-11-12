@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-13",
+  "testPeriod": "2026-11-12 ~ 2026-11-13 KST",
+  "engine": "Unity 6000.3.10f1",
+  "platform": "Windows x64 / D3D11 / background native player",
+  "cases": 29,
+  "pass": 29,
+  "fail": 0,
+  "assertions": {
+    "title": 63,
+    "legacy": 41,
+    "boundary": 77
+  },
+  "source": {
+    "sceneSha256": "a3409651c04c3b6491f54911c3813a925a4d0ece0dea9f9e406c5e9f7c21b1a5",
+    "assemblySha256": "a974f192647da33ff8d59871b195a12467df661d5c35caa43472417509da96f4",
+    "playerSha256": "a24b809c68c731996f3dd09fc18e2bc497f534a63597d4f184093ef2ea00abc3"
+  },
+  "method": "Original native build for title and legacy probes. Isolated instrumented copy for boundary checks; gameplay logic unchanged. Puzzle controls invoked through APIs with scene position fixtures. Not a manual playthrough or performance certification.",
+  "knownWarning": "1A negative-scale BoxCollider warning at rabbit ear and fox tail holders. Collision impact not yet verified.",
+  "harnessNote": "Initial boundary run stopped when test helper searched active-only crank objects after pickup. Search includes inactive objects in final run. Game source and original build were not edited."
+}
