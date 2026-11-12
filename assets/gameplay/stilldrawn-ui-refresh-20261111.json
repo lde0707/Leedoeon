@@ -1,0 +1,28 @@
+{
+  "captured_on": "2026-11-11",
+  "project": "Unfinished-Sketchbook/Builds/WebGLSite/dist",
+  "build_updated_on": "2026-11-04",
+  "unity": "6000.5.3f1",
+  "method": "Actual Unity WebGL canvas screenshot with headless Chrome at 1920x1080; real mouse navigation",
+  "brightness": "100% via built-in game display settings; isolated browser storage",
+  "image_processing": "WebP encoding only; no post-processing brightness, contrast or color edits",
+  "controls_state": "Fresh save; only currently available abilities are shown",
+  "files": [
+    {
+      "file": "stilldrawn-title-20261111.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 518744,
+      "source_png_sha256": "4eaa2c9d030558cb0f086919ae16bdd211888e1e22a5818066affad12e53487d",
+      "sha256": "620e0c44c47fbe1fcc50671804853e20a027fe766b098cebaad5755d9404504c"
+    },
+    {
+      "file": "stilldrawn-controls-20261111.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 469880,
+      "source_png_sha256": "68490a7e7595a4fcb5ce9418440d2cec308bac696a0f29783d0be9bdbce33c2a",
+      "sha256": "51a43ae26498690587cd76f82f99f092f956cf3e68975e3e49566d360cf85fe2"
+    }
+  ]
+}
