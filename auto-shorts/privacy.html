@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 · auto-shorts</title>
+<style>
+  :root{ --ink:#0d0e12; --sub:#8b8f98; --line:#23252b; --ac:#E8452C; }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--ink); color:#f2f2f0; font-family:-apple-system,BlinkMacSystemFont,'Pretendard','Noto Sans KR',sans-serif; line-height:1.75; }
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px;}
+  header{padding:90px 0 40px; border-bottom:1px solid var(--line);}
+  .back{display:inline-flex; font-size:12.5px; color:var(--sub); text-decoration:none; letter-spacing:.06em; margin-bottom:34px;}
+  .back:hover{color:var(--ac);}
+  h1{font-size:clamp(30px,5vw,44px); margin:0 0 12px; letter-spacing:-.02em; font-weight:800;}
+  header p{color:var(--sub); font-size:14px; margin:0;}
+  main{padding:30px 0 80px;}
+  h2{font-size:17px; margin:36px 0 10px;}
+  p,li{color:#d6d6d3; font-size:15px;}
+  ul{padding-left:20px;}
+  a{color:var(--ac);}
+  footer{padding:30px 0 60px; border-top:1px solid var(--line); font-size:12px; color:#55585f;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="index.html">← auto-shorts</a>
+    <h1>개인정보처리방침</h1>
+    <p>시행일: 2026년 11월 12일</p>
+  </header>
+
+  <main>
+    <h2>1. 개요</h2>
+    <p>auto-shorts(이하 "앱")는 이도언(이하 "운영자")이 본인의 YouTube 채널 운영을 위해 만든 개인 자동화 도구입니다. 이 앱은 운영자 본인의 Google 계정에만 연결되며, 다른 사람의 Google 계정 정보를 수집하거나 이용하지 않습니다.</p>
+
+    <h2>2. 접근하는 Google 사용자 데이터</h2>
+    <ul>
+      <li><strong>Google Drive:</strong> 앱이 생성한 파일(영상, 대본, 음성, 검수 기록)을 만들고 관리합니다.</li>
+      <li><strong>Google Sheets:</strong> 운영자의 관리 시트에서 주제 목록, 생성 상태, 승인 기록을 읽고 씁니다.</li>
+      <li><strong>YouTube:</strong> 운영자 본인의 채널에 운영자가 승인한 영상을 업로드합니다.</li>
+    </ul>
+
+    <h2>3. 데이터 이용 목적</h2>
+    <p>위 데이터는 영상 제작 파이프라인을 실행하고 결과물을 보관·업로드하는 목적으로만 이용됩니다. 광고, 판매, 프로파일링 또는 AI 모델 학습에 이용하지 않습니다.</p>
+
+    <h2>4. 데이터 보관과 공유</h2>
+    <ul>
+      <li>생성된 파일과 기록은 운영자의 Google Drive와 Google Sheets에 보관됩니다.</li>
+      <li>Google 사용자 데이터는 제3자에게 판매하거나 공유하지 않습니다.</li>
+      <li>대본 작성과 검수를 위해 영상 주제와 공개 웹 자료를 외부 AI API(Anthropic, Google Gemini)로 보냅니다. 이때 Google Drive·Sheets·YouTube 계정 데이터는 보내지 않습니다.</li>
+      <li>인증 정보(OAuth 토큰, API 키)는 운영자가 관리하는 비공개 저장소의 암호화된 비밀 값으로만 보관합니다.</li>
+    </ul>
+
+    <h2>5. Google API 서비스 사용자 데이터 정책 준수</h2>
+    <p>앱이 Google API로부터 받은 정보의 사용 및 다른 앱으로의 전송은 제한적 사용 요구사항을 포함한 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API 서비스 사용자 데이터 정책</a>을 준수합니다.</p>
+
+    <h2>6. 접근 권한 철회와 삭제</h2>
+    <p>운영자는 <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google 계정 권한 페이지</a>에서 언제든지 앱의 접근 권한을 철회할 수 있으며, Drive와 Sheets에 저장된 파일은 직접 삭제할 수 있습니다.</p>
+
+    <h2>7. 문의</h2>
+    <p>이 방침에 대한 문의는 <a href="mailto:doun070789@gmail.com">doun070789@gmail.com</a>으로 보내 주세요.</p>
+  </main>
+
+  <footer>© 이도언 · auto-shorts</footer>
+</div>
+</body>
+</html>
