@@ -1,0 +1,85 @@
+{
+  "capturedDate": "2026-11-12",
+  "source": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039?node-id=363-4866&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1",
+  "method": "Live Figma prototype clicks and CDP screen recording; cropped to device, no simulated transitions",
+  "width": 388,
+  "height": 840,
+  "duration": 39.10049033164978,
+  "frames": 262,
+  "steps": [
+    {
+      "name": "terms",
+      "node": "363-4854",
+      "second": 2.21,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=363-4854&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "consent",
+      "node": "363-4854",
+      "second": 4.55,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=363-4854&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "map",
+      "node": "406-1078",
+      "second": 6.61,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1078&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "destinations",
+      "node": "406-1080",
+      "second": 10.19,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1080&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "route",
+      "node": "406-1082",
+      "second": 13.74,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1082&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "guidance",
+      "node": "406-1088",
+      "second": 17.8,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1088&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "arrival",
+      "node": "406-1108",
+      "second": 21.35,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1108&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "report",
+      "node": "406-1096",
+      "second": 24.4,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1096&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "saved",
+      "node": "406-1094",
+      "second": 27.94,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1094&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "profile",
+      "node": "406-1098",
+      "second": 30.98,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1098&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "settings",
+      "node": "406-1100",
+      "second": 33.53,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1100&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    },
+    {
+      "name": "map-return",
+      "node": "406-1078",
+      "second": 37.07,
+      "url": "https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-%EC%9D%B4%EB%8F%84%EC%96%B8?node-id=406-1078&starting-point-node-id=363%3A4875&scaling=contain&hide-ui=1"
+    }
+  ],
+  "encodedDurationSeconds": 40.766667,
+  "videoCodec": "H.264 / 30 fps / yuv420p"
+}

@@ -409,7 +409,7 @@ body.lock #cur,body.lock #ring{opacity:0;visibility:hidden}
 @media(max-width:520px){.photo-tools{flex-wrap:wrap}.photo-tools strong{flex-basis:100%}}
 @media(max-width:520px){#ov .project-tests dl{grid-template-columns:1fr;gap:4px}#ov .project-tests dd{margin-bottom:10px}}
 #ov .greenway-player{display:grid;grid-template-columns:minmax(160px,245px) 1fr;gap:24px;align-items:center}
-#ov .greenway-player video{width:100%;height:auto;aspect-ratio:378/840}
+#ov .greenway-player video{width:100%;height:auto;aspect-ratio:388/840}
 #ov .greenway-demo{margin:32px 0}
 @media(max-width:600px){#ov .greenway-player{grid-template-columns:1fr;gap:14px}#ov .greenway-player video{width:min(100%,240px);margin:auto}}
 #ov .qa-run-report{margin:32px 0}
@@ -784,61 +784,39 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
   </template>
 </article>
 <article class="project-item">
-  <img class="project-cover" src="../assets/greenway/navigation.png" alt="GreenWay 신림역 보행 경로와 신호 시간 지도" loading="lazy" width="378" height="840">
-  <div class="project-copy"><small>2025.03 — 2025.07 · 단독 기획 · 프로토타입 구축</small><h3>GreenWay</h3><p>목적지별 이동 시간과 신호 대기를 비교하고, 선택한 보행 경로를 지도에서 확인하는 Figma 프로토타입입니다.</p><p class="project-qa"><b>QA · 동의 분기·목적지 선택 흐름</b><span>Figma 동의·목적지 선택 흐름 확인 · 실제 GPS·인증 제외</span></p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
+  <img class="project-cover" src="../assets/greenway/20261112/map.png" alt="GreenWay 최신 입체 지도와 목적지 찾기 화면" loading="lazy" width="388" height="840">
+  <div class="project-copy"><small>2025.03 — 2025.07 · 단독 기획 · 2026.11 UI 개선</small><h3>GreenWay</h3><p>신호가 적은 보행 경로를 찾고, 길안내 시작부터 도착·이동 기록 확인까지 연결한 모바일 서비스 Figma 프로토타입입니다.</p><p class="project-qa"><b>QA · 목적지 선택부터 도착까지</b><span>최신 Figma의 동의·길안내·도착·탭 전환 확인 · 실제 GPS·인증 제외</span></p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
   <template>
-    <div class="tp">2025.03 — 2025.07 · 단독 기획 · 프로토타입 구축</div><h3>GreenWay<s>모빌리티 앱 서비스 기획</s></h3><p class="project-context"><strong>제작 환경</strong> Figma · 화면 전환 프로토타입<br><strong>담당 범위</strong> 단독 기획 · 사용자 흐름과 Figma 프로토타입 제작</p>
-    <p class="q">목적지별 이동 시간과 신호 대기를 비교하고, 선택한 보행 경로를 지도에서 확인하는 Figma 프로토타입입니다.</p><section class="qa-brief" aria-label="QA 검증 요약"><h4>동의 분기·목적지 선택 흐름</h4><p><strong>Figma UI 5건 PASS · 2건 미실행</strong></p><p>비회원 진입부터 경로 선택까지 확인했습니다. 실제 인증·GPS 기능은 검증 범위 밖입니다.</p><dl><dt>검증 방법</dt><dd>Figma 프로토타입 화면 조작</dd><dt>기록 기준</dt><dd>2026.11.06 실행 기록</dd></dl><p class="qa-links"><a href="reports/greenway.xlsx" download>실행 보고서 ↓</a><a href="evidence/greenway.txt" download>조건·관찰값 기록 ↓</a></p></section><section class="evidence"><h4>참여 내용</h4><ul><li>시장 · 유사 서비스 분석으로 사용자 문제 도출</li>
-              <li>페르소나 · SWOT · BM 캔버스 작성</li>
-              <li>주요 5개 화면 프로토타입 제작</li></ul>
-    <h4>QA 관점에서 볼 지점</h4><p>비회원 이용 동의 후 지도가 열리는지, 목록에서 선택한 목적지와 지도에 표시된 경로가 일치하는지 확인할 수 있습니다.</p></section>
-<section class="evidence greenway-demo" aria-labelledby="greenway-demo-title">
-  <h4 id="greenway-demo-title">Figma 프로토타입 시연</h4>
-  <div class="greenway-player">
-    <video controls playsinline preload="metadata" width="378" height="840" poster="../assets/greenway/map.png" aria-label="GreenWay 비회원 로그인부터 신림역 경로 선택까지 실제 Figma 시연">
-      <source src="../assets/greenway/prototype.mp4" type="video/mp4">
-    </video>
-    <div><p>비회원으로 이용 약관에 동의하면 주변 신호의 남은 시간이 지도에 나타납니다. 목적지 목록을 펼쳐 이동 시간과 신호 대기를 비교하고, 신림역을 선택하면 초록색 경로가 표시됩니다.</p>
-      <a class="publish-link" href="https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-이도언?node-id=363-4866&amp;starting-point-node-id=363%3A4875&amp;scaling=contain" target="_blank" rel="noopener">Figma에서 직접 체험하기 ↗</a>
-    </div>
-  </div>
-</section>
-<section class="qa-run-report" aria-label="실제 테스트 결과">
-<h4>QA 실행 결과</h4>
+    <div class="tp">2025.03 — 2025.07 · 단독 기획 · 2026.11 UI 개선</div><h3>GreenWay<s>보행 경로 탐색 · 길안내 · 이동 기록</s></h3>
+    <p class="project-context"><strong>제작 환경</strong> Figma · 화면 전환 프로토타입<br><strong>담당 범위</strong> 단독 기획 · 사용자 흐름과 Figma 프로토타입 제작</p>
+    <p class="q">신호가 적은 보행 경로를 찾고, 길안내 시작부터 도착·이동 기록 확인까지 연결한 모바일 서비스 Figma 프로토타입입니다.</p>
+    <section class="qa-brief" aria-label="QA 검증 요약"><h4>목적지 선택부터 도착까지의 연결 확인</h4><p><strong>동의 → 지도 → 경로 → 안내 → 도착 → 리포트</strong></p><p>최신 프로토타입을 직접 조작해 화면 전환과 표시 정보를 확인했습니다. 실제 GPS·SNS 인증·경로 계산·이동 기록 저장은 검증 범위 밖입니다.</p><dl><dt>확인 방법</dt><dd>Figma 재생 화면 조작 · 도착 프레임 비교 · 실제 화면 녹화</dd><dt>최신 화면 기준</dt><dd>2026.11.12</dd></dl><p class="qa-links"><a href="evidence/greenway-20261112.txt" download>최신 UI 확인 기록 ↓</a><a href="reports/greenway.xlsx" download>이전 버전 보고서 · 2026.11.06 ↓</a></p></section>
+    <section class="evidence"><h4>참여 내용과 화면 설계</h4><ul><li>시장·유사 서비스 분석, 페르소나·SWOT·BM 캔버스로 사용자 문제 정리</li><li>지도와 추천 목적지, 경로 상세를 연결해 출발 전 선택 흐름 구성</li><li>길안내·도착·리포트와 저장·내 정보·설정까지 사용자 동선 확장</li></ul><h4>QA 관점에서 볼 지점</h4><p>선택한 목적지의 이름·시간·거리가 다음 화면에서도 일치하는지, 안내 종료 이후 리포트와 지도 복귀가 연결되는지 살펴봅니다. 설정·저장 UI가 보이는 것과 실제 데이터가 유지되는 것은 나누어 검증합니다.</p></section>
+    <section class="evidence greenway-demo" aria-labelledby="greenway-demo-title"><h4 id="greenway-demo-title">최신 Figma 프로토타입 시연 · 2026.11.12</h4><div class="greenway-player">
+      <video controls playsinline preload="metadata" width="388" height="840" poster="../assets/greenway/20261112/map.png" aria-label="GreenWay 최신 프로토타입 동의부터 길안내·도착·리포트와 탭 전환까지 실제 시연"><source src="../assets/greenway/20261112/prototype.mp4" type="video/mp4"></video>
+      <div><p>약 40초 실제 조작 영상입니다. 비회원 동의 후 신림역 경로를 고르고, 안내 시작·도착 확인·이동 리포트로 이어지는 흐름을 담았습니다. 저장·내 정보·설정 탭과 지도 복귀도 확인할 수 있습니다.</p><p>지도와 경로는 프로토타입 화면이며, 이동 시간·거리·리포트는 시연용 예시입니다.</p><a class="publish-link" href="https://www.figma.com/proto/OMUHtvMDDIlh34Pf97oKMB/202227039-이도언?node-id=363-4866&amp;starting-point-node-id=363%3A4875&amp;scaling=contain" target="_blank" rel="noopener">Figma에서 직접 체험하기 ↗</a></div>
+    </div></section>
+    <section class="play-gallery portrait"><h4>최신 Figma 실제 화면 · 2026.11.12</h4><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="01 · 지도에서 목적지 찾기 확대"><img src="../assets/greenway/20261112/map.png" alt="01 · 지도에서 목적지 찾기" loading="lazy" width="388" height="840"></button><figcaption><strong>01 · 지도에서 목적지 찾기</strong>입체 건물과 주변 장소를 보여주고 검색창·목적지 찾기 버튼으로 다음 행동을 안내합니다.</figcaption></figure><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="02 · 목적지별 시간·거리 비교 확대"><img src="../assets/greenway/20261112/destinations.png" alt="02 · 목적지별 시간·거리 비교" loading="lazy" width="388" height="840"></button><figcaption><strong>02 · 목적지별 시간·거리 비교</strong>신림역 12분·850m, 보라매공원 24분·1.8km, 도림천 산책로 8분·560m를 목록에서 비교합니다. 값은 시연용 예시입니다.</figcaption></figure><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="03 · 경로 확인과 안내 시작 확대"><img src="../assets/greenway/20261112/route.png" alt="03 · 경로 확인과 안내 시작" loading="lazy" width="388" height="840"></button><figcaption><strong>03 · 경로 확인과 안내 시작</strong>선택한 장소의 경로선, 예상 시간·거리와 횡단보도 수를 함께 제시합니다. 신림역은 ‘신호 적은 길’로 안내합니다.</figcaption></figure><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="04 · 이동 중 길안내 확대"><img src="../assets/greenway/20261112/guidance.png" alt="04 · 이동 중 길안내" loading="lazy" width="388" height="840"></button><figcaption><strong>04 · 이동 중 길안내</strong>다음 방향과 남은 거리를 읽고 도착 확인으로 진행하는 화면입니다. 위치 추적이 아닌 화면 전환 시연입니다.</figcaption></figure><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="05 · 도착 후 다음 행동 확대"><img src="../assets/greenway/20261112/arrival.png" alt="05 · 도착 후 다음 행동" loading="lazy" width="388" height="840"></button><figcaption><strong>05 · 도착 후 다음 행동</strong>도착 화면에서 이동 리포트 보기, 다른 목적지 찾기, 지도로 돌아가기를 선택할 수 있습니다.</figcaption></figure><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="06 · 저장한 장소 다시 찾기 확대"><img src="../assets/greenway/20261112/saved.png" alt="06 · 저장한 장소 다시 찾기" loading="lazy" width="388" height="840"></button><figcaption><strong>06 · 저장한 장소 다시 찾기</strong>자주 가는 장소를 한 목록에 모아 재탐색 동선을 줄이도록 구성했습니다. 저장 데이터의 영구 보관은 별도 검증 대상입니다.</figcaption></figure><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="07 · 이동 리포트 확대"><img src="../assets/greenway/20261112/report.png" alt="07 · 이동 리포트" loading="lazy" width="388" height="840"></button><figcaption><strong>07 · 이동 리포트</strong>주간 거리·걸음 수·활동일을 한 화면에 정리했습니다. 화면의 18.4km 등 기록은 시연용 예시 데이터입니다.</figcaption></figure><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="08 · 내 정보와 보행 기준 확대"><img src="../assets/greenway/20261112/profile.png" alt="08 · 내 정보와 보행 기준" loading="lazy" width="388" height="840"></button><figcaption><strong>08 · 내 정보와 보행 기준</strong>보행 속도와 선호 경로, 저장 장소를 한곳에서 확인하는 구성입니다. 실제 경로 계산 반영은 구현 앱에서 검증할 항목입니다.</figcaption></figure><figure class=""><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="09 · 길안내와 지도 설정 확대"><img src="../assets/greenway/20261112/settings.png" alt="09 · 길안내와 지도 설정" loading="lazy" width="388" height="840"></button><figcaption><strong>09 · 길안내와 지도 설정</strong>신호 정보·음성·진동 안내, 입체 건물, 출발 알림을 구분해 배치했습니다. 토글 변경과 설정 유지 여부는 후속 검증 항목입니다.</figcaption></figure></section>
+    <section class="project-tests" aria-label="최신 프로토타입 화면 확인"><h4>최신 화면 기준 테스트와 관찰</h4><p class="test-status">2026.11.12 · 공개 Figma 프로토타입 · Chrome PC에서 실제 조작한 범위</p><details open><summary><span class="case-id">GW-R01</span>비회원 동의 후 새 지도 진입</summary><p class="test-status">2026.11.12 · 프로토타입 화면 전환 확인</p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="동의 선택과 버튼 활성화 확대"><img src="../assets/greenway/20261112/consent.png" alt="동의 선택과 버튼 활성화" loading="lazy" width="388" height="840"></button><figcaption><strong>동의 선택과 버튼 활성화</strong>2026.11.12 실제 Figma 캡처 · 눌러서 확대</figcaption></figure>
+<dl><dt>사전 조건</dt><dd>비회원 로그인 화면에서 시작한다.</dd><dt>실행 절차</dt><dd>비회원 로그인 → 모두 동의 → 동의합니다를 누른다.</dd><dt>기대 결과</dt><dd>선택한 동의 상태가 표시되고 최신 지도 화면으로 이동한다.</dd><dt>관찰 결과</dt><dd>전체 동의와 버튼이 초록색으로 바뀌고, 새 지도 프레임 406-1078로 이동했다.</dd></dl></details><details open><summary><span class="case-id">GW-R02</span>선택한 목적지와 경로 정보의 일치</summary><p class="test-status">2026.11.12 · 프로토타입 화면 전환 확인</p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="신림역 경로 상세 확대"><img src="../assets/greenway/20261112/route.png" alt="신림역 경로 상세" loading="lazy" width="388" height="840"></button><figcaption><strong>신림역 경로 상세</strong>2026.11.12 실제 Figma 캡처 · 눌러서 확대</figcaption></figure>
+<dl><dt>사전 조건</dt><dd>새 지도에서 목적지 찾기를 연다.</dd><dt>실행 절차</dt><dd>목적지 목록의 신림역을 선택하고 목록·상세의 장소명, 시간, 거리를 비교한다.</dd><dt>기대 결과</dt><dd>선택한 장소명과 시간·거리가 상세 화면에서도 일치하고 경로선이 보인다.</dd><dt>관찰 결과</dt><dd>신림역 목록과 상세에 12분·850m가 동일하게 표시됐다. 상세 프레임 406-1082에서 초록색 경로선과 안내 시작 버튼을 확인했다.</dd></dl></details><details open><summary><span class="case-id">GW-R03</span>길안내에서 도착·리포트까지 이어지는 흐름</summary><p class="test-status">2026.11.12 · 프로토타입 화면 전환 확인</p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="도착 확인과 후속 행동 확대"><img src="../assets/greenway/20261112/arrival.png" alt="도착 확인과 후속 행동" loading="lazy" width="388" height="840"></button><figcaption><strong>도착 확인과 후속 행동</strong>2026.11.12 실제 Figma 캡처 · 눌러서 확대</figcaption></figure>
+<dl><dt>사전 조건</dt><dd>신림역 경로 상세 화면에서 시작한다.</dd><dt>실행 절차</dt><dd>안내 시작 → 도착 확인 → 이동 리포트 보기를 차례로 누른다.</dd><dt>기대 결과</dt><dd>안내 중 상태, 도착 화면, 이동 리포트로 순서대로 이어진다.</dd><dt>관찰 결과</dt><dd>406-1088 → 406-1108 → 406-1096으로 이동했다. 안내 화면의 120m 앞 우회전 문구와 도착 화면의 리포트 진입 버튼을 확인했다. 실제 위치 도착 판정과 기록 계산은 검증하지 않았다.</dd></dl></details><details open><summary><span class="case-id">GW-R04</span>하단 탭 전환과 지도 복귀</summary><p class="test-status">2026.11.12 · 프로토타입 화면 전환 확인</p>
+<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="설정 화면과 공통 탭 확대"><img src="../assets/greenway/20261112/settings.png" alt="설정 화면과 공통 탭" loading="lazy" width="388" height="840"></button><figcaption><strong>설정 화면과 공통 탭</strong>2026.11.12 실제 Figma 캡처 · 눌러서 확대</figcaption></figure>
+<dl><dt>사전 조건</dt><dd>이동 리포트 화면에서 시작한다.</dd><dt>실행 절차</dt><dd>저장 → 내 정보 → 설정 → 지도 탭을 누른다.</dd><dt>기대 결과</dt><dd>탭에 대응하는 화면으로 이동하고 마지막에 지도로 돌아온다.</dd><dt>관찰 결과</dt><dd>저장 406-1094, 내 정보 406-1098, 설정 406-1100을 거쳐 지도 406-1078로 돌아왔다. 각 화면에서 선택된 탭 표시를 확인했다.</dd></dl></details></section>
+    <section class="evidence qa-scope"><h4>다음 검증과 판단 기준</h4><p><b>후속 UI 검증</b> 동의 해제·필수 항목만 선택하는 분기, SNS 버튼 연결, 안내 취소·뒤로가기, 저장 추가·해제, 설정 토글 변경과 재진입 시 유지 여부를 확인합니다.</p><p><b>구현 앱에서 확인할 항목</b> GPS 권한 거부·위치 오차, 실제 신호와 경로 계산, 도착 판정, 이동 기록 저장을 별도 검증합니다. 현재 화면 전환 결과로 해당 기능의 정상 동작을 단정하지 않습니다.</p></section>
+    <details class="greenway-history"><summary>이전 버전 검증 기록 · 2026.11.06</summary><p class="report-meta">아래 결과와 Excel은 당시 화면 기준입니다. 2026.11.12 개편 화면의 검증 결과와 구분하며, 기존 실행 일자와 관찰값을 보존했습니다.</p><section class="qa-run-report" aria-label="실제 테스트 결과">
+<h4>이전 버전 QA 실행 결과</h4>
 <p class="report-meta">2026.11.06 · 설계 7건 · PASS 5 · FAIL 0 · 미실행 2</p>
-<a class="report-download" href="reports/greenway.xlsx" download="GreenWay_QA_실행보고서.xlsx">프로젝트 실행 보고서 다운로드 (.xlsx)</a>
+<a class="report-download" href="reports/greenway.xlsx" download="GreenWay_QA_실행보고서.xlsx">이전 버전 실행 보고서 다운로드 · 2026.11.06 (.xlsx)</a>
 <div class="run-entry"><span class="run-state pass">PASS</span><div><h5>비회원 로그인 진입</h5><small>GW-01 · Figma UI</small><details class="run-conditions"><summary>사전 조건·재현 절차</summary><p><b>사전 조건</b> Figma 시작 프레임 363-4866</p><ol><li>비회원 로그인 버튼을 누른다.</li><li>도착한 프레임을 확인한다.</li></ol></details><p><b>기대</b> 이용 동의 화면 363-4854로 이동한다.</p><p><b>관찰</b> 비회원 로그인 전 363-4866 → 클릭 후 363-4854</p></div></div>
 <div class="run-entry"><span class="run-state pass">PASS</span><div><h5>동의 미선택 진행 차단</h5><small>GW-02 · Figma UI</small><details class="run-conditions"><summary>사전 조건·재현 절차</summary><p><b>사전 조건</b> 체크박스를 선택하지 않은 이용 동의 화면</p><ol><li>회색 동의 버튼을 누른다.</li><li>프레임 ID를 비교한다.</li></ol></details><p><b>기대</b> 현재 이용 동의 화면에 머문다.</p><p><b>관찰</b> 동의 상자 미선택 / 동의 버튼 클릭 후 363-4854</p></div></div>
 <div class="run-entry"><span class="run-state pass">PASS</span><div><h5>모두 동의 후 지도 진입</h5><small>GW-03 · Figma UI</small><details class="run-conditions"><summary>사전 조건·재현 절차</summary><p><b>사전 조건</b> 이용 동의 화면, 체크 해제 상태</p><ol><li>모두 동의합니다를 선택한다.</li><li>동의합니다를 눌러 목적지 화면을 확인한다.</li></ol></details><p><b>기대</b> 주변 신호가 보이는 지도 프레임 363-4580이 열린다.</p><p><b>관찰</b> 모두 동의 → 동의합니다 클릭 / 도착 프레임 363-4580</p></div></div>
 <div class="run-entry"><span class="run-state pass">PASS</span><div><h5>목적지 목록 펼치기</h5><small>GW-04 · Figma UI</small><details class="run-conditions"><summary>사전 조건·재현 절차</summary><p><b>사전 조건</b> 지도에서 목록이 접힌 상태</p><ol><li>상단 화살표를 눌러 목록을 펼친다.</li><li>목적지 이름과 시간 안내를 확인한다.</li></ol></details><p><b>기대</b> 같은 지도 위에 신림역 16분·서원역 6분·우리집 3분이 표시된다.</p><p><b>관찰</b> 지도 프레임 363-4580 유지 / 목록 영역 색상 변경 9889픽셀 (286×120) / 캡처에서 신림역 16분·서원역 6분·우리집 3분 확인</p></div></div>
 <div class="run-entry"><span class="run-state pass">PASS</span><div><h5>신림역 경로 선택과 목록 닫기</h5><small>GW-05 · Figma UI</small><details class="run-conditions"><summary>사전 조건·재현 절차</summary><p><b>사전 조건</b> 목적지 목록이 펼쳐진 상태</p><ol><li>신림역을 누른 뒤 도착 프레임을 기록한다.</li><li>상단 화살표로 목록을 접고 경로를 확인한다.</li></ol></details><p><b>기대</b> 신림역 경로 프레임 363-4442가 열리며, 목록을 접어도 초록색 보행 경로가 보인다.</p><p><b>관찰</b> 신림역 선택 363-4442 / 목록 접기 후 363-4442 / 경로선 표시 유지 확인</p></div></div>
-</section>
-<section class="evidence qa-scope"><h4>검증 우선순위와 범위</h4><p>P1 · 이용 동의와 지도 진입의 분기를 확인한다. P2 · 목적지 선택·목록 닫기 후 안내 경로가 유지되는지 검사한다.</p><p><b>확인한 범위</b> GW-01~05 · Figma 재생 화면의 비회원 진입·동의·지도·경로 선택을 확인했다.</p><p><b>다음 검증</b> SNS 버튼의 연결 프레임과 작은 화면에서의 안내·버튼 판독을 확인한다. 네트워크 인증·실제 위치·신호 시간은 구현 앱이 준비된 뒤 별도 검증한다.</p><p><b>남은 확인</b> SNS 연결과 작은 화면 판독 2건은 미실행이다. 현재 결과의 범위는 Figma 화면 전환이다.</p><p><b>수정·배포 판단</b> 필수 동선의 연결 누락이나 동의 분기 오류가 발견되면 수정 후 같은 시작 프레임에서 재검증한다.</p></section>
-<section class="project-tests" aria-label="화면 기반 테스트 케이스">
-<h4>화면 기반 테스트 케이스</h4>
-<p class="test-status">후속 화면 테스트 · 케이스별 실행 상태</p>
-<details open>
-<summary><span class="case-id">GW-U01</span>SNS 버튼별 인증 경로 연결</summary><p class="test-status">화면 절차 미실행</p>
-<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · GreenWay 프로토타입 확대"><img src="../GreenWay.png" alt="기준 화면 · GreenWay 프로토타입" loading="lazy" width="380" height="830"></button><figcaption>기준 화면 · GreenWay 프로토타입 · 눌러서 확대</figcaption></figure>
-<dl><dt>사전 조건</dt><dd>로그인 프로토타입에서 네 SNS 아이콘이 보인다.</dd><dt>실행 절차</dt><dd><ol><li>카카오·네이버·Apple·Google 아이콘을 각각 한 번씩 누른다.</li><li>각 진입 화면을 기록하고 시작 화면으로 돌아와 다음 아이콘을 확인한다.</li></ol></dd>
-<dt>기대 결과</dt><dd>선택한 아이콘과 대응하는 가입 경로가 열린다. 다른 제공자나 비회원 경로로 연결되지 않는다.</dd></dl></details>
-<details open>
-<summary>비회원 로그인 진입</summary><p class="test-status">일부 확인 · GW-01~03에서 비회원 진입과 동의 후 지도 전환 확인. 계정 상태 표시는 추가 확인 필요.</p>
-<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · GreenWay 프로토타입 확대"><img src="../GreenWay.png" alt="기준 화면 · GreenWay 프로토타입" loading="lazy" width="380" height="830"></button><figcaption>기준 화면 · GreenWay 프로토타입 · 눌러서 확대</figcaption></figure>
-<dl><dt>사전 조건</dt><dd>SNS 계정 연결 없이 로그인 화면에 머문 상태다.</dd><dt>실행 절차</dt><dd><ol><li>하단의 비회원 로그인을 선택한다.</li><li>도착 화면과 사용자 상태를 확인한다.</li></ol></dd>
-<dt>기대 결과</dt><dd>SNS 인증 절차 없이 비회원용 진입 화면으로 이어지고 회원 계정으로 표시되지 않는다.</dd></dl></details>
-<details open>
-<summary><span class="case-id">GW-U03</span>작은 화면에서 가입 안내와 버튼 판독</summary><p class="test-status">화면 절차 미실행</p>
-<figure class="reference-frame"><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="기준 화면 · GreenWay 프로토타입 확대"><img src="../GreenWay.png" alt="기준 화면 · GreenWay 프로토타입" loading="lazy" width="380" height="830"></button><figcaption>기준 화면 · GreenWay 프로토타입 · 눌러서 확대</figcaption></figure>
-<dl><dt>사전 조건</dt><dd>로그인 시안을 서로 다른 모바일 화면 크기에서 연다.</dd><dt>실행 절차</dt><dd><ol><li>SNS 아이콘, 비회원 버튼, 하단 약관 안내를 차례로 확인한다.</li><li>각 버튼의 중앙을 눌러 인접 버튼과 구분되는지 확인한다.</li></ol></dd>
-<dt>기대 결과</dt><dd>약관 문구와 버튼이 겹치거나 잘리지 않고, 누른 위치에 대응하는 버튼만 선택된다.</dd></dl></details>
-</section>
-
-    <section class="play-gallery portrait"><h4>Figma 실제 화면</h4>
-      <figure><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="주변 신호 확인 확대"><img loading="lazy" src="../assets/greenway/map.png" alt="주변 신호 확인" width="378" height="840"></button><figcaption><strong>주변 신호 확인</strong>지도 위 숫자와 색으로 주변 신호의 남은 시간을 보여줍니다.</figcaption></figure>
-      <figure><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="목적지별 시간 비교 확대"><img loading="lazy" src="../assets/greenway/choices.png" alt="목적지별 시간 비교" width="378" height="840"></button><figcaption><strong>목적지별 시간 비교</strong>신림역·서원역·우리집의 이동 시간과 출발 시점에 따른 신호 대기 안내를 한 목록에서 비교합니다.</figcaption></figure>
-      <figure><button type="button" class="zoom-photo" aria-haspopup="dialog" aria-label="선택한 보행 경로 확대"><img loading="lazy" src="../assets/greenway/navigation.png" alt="선택한 보행 경로" width="378" height="840"></button><figcaption><strong>선택한 보행 경로</strong>신림역을 선택하고 목록을 접은 상태입니다. 보행자 위치에서 이어지는 초록색 경로와 주변 신호를 함께 볼 수 있습니다.</figcaption></figure>
-    </section>
+</section><a class="publish-link" href="evidence/greenway.txt" download>이전 버전 조건·관찰값 기록 ↓</a></details>
   </template>
 </article>
 <article class="project-item">
