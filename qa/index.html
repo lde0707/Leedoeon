@@ -534,10 +534,8 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 
 
 
-/* AI Shorts: separate flat icons and responsive stage flow */
-.project-cover.shorts-cover-preview{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:18px 20px;background:#f4f7ff;border-bottom:1px solid var(--line);color:#10162f}
-.shorts-preview-label{font-family:var(--f6);font-size:9px;letter-spacing:.12em;color:#315bff}
-.shorts-preview-flow{display:flex;align-items:center;justify-content:space-between;gap:8px}.shorts-preview-step{display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--f6);font-size:11px}.shorts-preview-step img{display:block;width:clamp(46px,5.2vw,72px);height:clamp(46px,5.2vw,72px);object-fit:contain}.shorts-preview-arrow{font-size:20px;color:#315bff}
+/* AI Shorts: actual channel cover and separate pipeline icons */
+.project-cover.shorts-channel-cover{object-fit:contain;background:#0f0f0f}
 #ov .shorts-overview{margin-top:32px}#ov .shorts-overview h4,#ov .shorts-strengths h4{font-size:20px;margin-bottom:16px}
 #ov .shorts-overview figure{margin:0}#ov .shorts-overview .zoom-photo{width:100%;display:block;border:1px solid var(--line);padding:0;background:#f4f7ff;cursor:zoom-in}#ov .shorts-overview figure img{display:block;width:100%;height:auto}#ov .shorts-overview figcaption,#ov .shorts-flow-intro{font-size:13px;color:#a9b7d2;line-height:1.7;margin:10px 0 18px}
 #ov .shorts-flow{list-style:none;padding:0;margin:24px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 20px}
@@ -548,7 +546,7 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 #ov .shorts-flow h5,#ov .shorts-strengths h5{font-size:16px;margin:8px 0}#ov .shorts-flow h5{color:#10162f}
 #ov .shorts-flow p,#ov .shorts-strengths p{font-size:13px;line-height:1.7;margin:0}#ov .shorts-flow p{color:#26354c}#ov .shorts-strengths p{color:#c8d0e2}
 #ov .shorts-strengths{margin:32px 0}#ov .shorts-strengths>div{display:grid;grid-template-columns:1fr 1fr;gap:16px}#ov .shorts-strengths article{border-left:3px solid var(--ac);padding:4px 16px}
-@media(max-width:800px){#ov .shorts-flow{grid-template-columns:repeat(2,minmax(0,1fr))}#ov .shorts-flow li:nth-child(2n)::after{content:none}.shorts-preview-step img{width:64px;height:64px}}
+@media(max-width:800px){#ov .shorts-flow{grid-template-columns:repeat(2,minmax(0,1fr))}#ov .shorts-flow li:nth-child(2n)::after{content:none}}
 @media(max-width:480px){#ov .shorts-flow{grid-template-columns:1fr;gap:24px}#ov .shorts-flow li{display:grid;grid-template-columns:64px 1fr;column-gap:14px;padding:16px}#ov .shorts-step-num{grid-column:2}#ov img.shorts-step-icon{grid-column:1;grid-row:1/4;width:64px;height:64px;margin:0;align-self:center}#ov .shorts-flow h5,#ov .shorts-flow p{grid-column:2}#ov .shorts-flow h5{margin:4px 0 6px}#ov .shorts-flow li:not(:last-child)::after{content:'↓';position:absolute;right:50%;top:auto;bottom:-24px;transform:translateX(50%);width:18px;height:24px;line-height:24px;text-align:center;color:#86a5ff;font-size:18px}#ov .shorts-strengths>div{grid-template-columns:1fr}}
 </style></head><body><a class="skip-link" href="#hero">본문으로 건너뛰기</a>
 <div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div id="introword">GAME QA &nbsp;/&nbsp; 이도언</div><div id="cur"></div><div id="ring"></div><div id="bar"></div>
@@ -726,7 +724,7 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 </template>
 </article>
 <article class="project-item">
-  <div class="project-cover shorts-cover-preview" role="img" aria-label="대본 생성에서 영상 제작, 업로드로 이어지는 자동화 파이프라인"><span class="shorts-preview-label">AI SHORTS / AUTOMATION</span><div class="shorts-preview-flow"><span class="shorts-preview-step"><img src="../assets/auto-shorts/icons/01-script.png" alt="" loading="lazy" width="1280" height="1280"><span>대본</span></span><span class="shorts-preview-arrow" aria-hidden="true">→</span><span class="shorts-preview-step"><img src="../assets/auto-shorts/icons/03-video.png" alt="" loading="lazy" width="1280" height="1280"><span>영상</span></span><span class="shorts-preview-arrow" aria-hidden="true">→</span><span class="shorts-preview-step"><img src="../assets/auto-shorts/icons/08-upload.png" alt="" loading="lazy" width="1280" height="1280"><span>업로드</span></span></div></div>
+  <img class="project-cover shorts-channel-cover" src="../assets/auto-shorts/undo-channel-20261113.png" alt="Undo 게임 지식 실제 YouTube 채널과 공개 Shorts 목록" loading="lazy" width="1897" height="939">
   <div class="project-copy"><small>개인 프로젝트 · AI 콘텐츠 자동화 · 채널 운영</small><h3>AI Shorts 자동화</h3><a class="publish-link project-publish-link" href="https://www.youtube.com/channel/UCXEhq6pza56xGDjwuZDQFSA" target="_blank" rel="noopener noreferrer">Undo 게임 지식 채널 보기 ↗</a><p>대본 생성부터 검수·영상 제작·업로드까지 연결한 YouTube Shorts 자동화 파이프라인입니다.</p><p class="project-qa"><b>AI 활용 · 제작 전 과정 자동화</b><span>대본·영상·자막·TTS와 두 차례 검수를 하나의 실행 흐름으로 연결</span></p><button class="project-open" type="button" aria-haspopup="dialog">프로젝트 자세히 보기 →</button></div>
   <template>
 <div class="tp">개인 프로젝트 · YouTube Shorts · Undo 게임 지식</div><h3>AI Shorts 자동화</h3><p class="visual-intro">AI로 콘텐츠를 만들고, 검수부터 업로드까지 자동으로 이어가는 제작 파이프라인.</p><p class="visual-role">직접 구축 · 대본·영상·자막·TTS·검수·업로드 자동화</p>
