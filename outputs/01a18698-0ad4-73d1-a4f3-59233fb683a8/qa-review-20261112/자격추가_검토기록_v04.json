@@ -1,0 +1,26 @@
+{
+  "source": "C:\\Users\\doun0\\OneDrive\\바탕 화면\\File\\GitHub\\Leedoeon\\outputs\\01a18698-0ad4-73d1-a4f3-59233fb683a8\\qa-review-20261112\\이도언_이력서_자기소개서_QA_검토본_v03.docx",
+  "output": "C:\\Users\\doun0\\OneDrive\\바탕 화면\\File\\GitHub\\Leedoeon\\outputs\\01a18698-0ad4-73d1-a4f3-59233fb683a8\\qa-review-20261112\\이도언_이력서_자기소개서_QA_검토본_v04.docx",
+  "qualifications": [
+    {
+      "status": "취득",
+      "issuer": "대한상공회의소",
+      "date": "2026.07.07",
+      "name": "컴퓨터활용능력 2급"
+    },
+    {
+      "status": "취득",
+      "issuer": "한국생산성본부",
+      "date": "2026.07.30",
+      "name": "정보기술자격(ITQ) 아래한글"
+    },
+    {
+      "status": "취득",
+      "issuer": "한국생산성본부",
+      "date": "",
+      "name": "정보기술자격(ITQ) 한글엑셀"
+    }
+  ],
+  "sourceOfPersonalFacts": "사용자 직접 확인 2026-11-12",
+  "gradeOmission": "확인되지 않은 ITQ 등급은 기재하지 않음"
+}

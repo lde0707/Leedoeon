@@ -1,0 +1,20 @@
+{
+  "reviewedOn": "2026-11-12",
+  "target": "게임 회사 신입 QA 공통 지원서",
+  "companySpecificTailoring": "회사 미정으로 공고별 지원 동기는 미작성",
+  "source": "C:\\Users\\doun0\\OneDrive\\바탕 화면\\이도언_이력서_QA.docx",
+  "confirmed": {
+    "awardInstitution": "유한대학교",
+    "motivation": "여러 제작 프로젝트에서 QA 수행 여부에 따른 완성도 차이를 경험해 QA 역할에 매력을 느낌",
+    "pearlPersonalVerification": "2025.09.17",
+    "Jira": "메이플키우기 버그 및 개선사항 간단 기록",
+    "pearlDevelopment": "2025.03~2025.07"
+  },
+  "preserved": "원본 DOCX, 기존 검토본, 원본 사진과 양식, 2026년 실제 실행 기록",
+  "validation": {
+    "docx": "Word PNG 렌더링 3쪽 육안 확인, 원본 및 미수정 패키지 보존",
+    "portfolio": "390px 및 1440px 소개·진주도둑들 카드/상세 날짜 확인, 가로 넘침 및 JS 오류 없음"
+  },
+  "deployment": "로컬 수정, 커밋 및 배포 미실행",
+  "remainingPersonalQuestions": []
+}
