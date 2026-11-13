@@ -495,7 +495,7 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 .history-inner{max-width:1200px;margin:auto}.history-kicker{font-family:var(--f6);font-size:11px;letter-spacing:.22em;color:var(--ac)}
 .history-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:14px 0 24px}.history-heading h2{font-size:clamp(28px,4vw,44px);line-height:1.25;letter-spacing:-.04em}.history-heading p{font-size:14px;color:var(--ink2);line-height:1.8}
 .history-jump{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.history-jump a{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1px solid var(--line);background:var(--bg);font-size:14px;color:var(--ac);cursor:pointer}
-.history-notes{border-left:3px solid var(--ac);padding-left:16px;margin-bottom:30px;font-family:var(--f5);font-size:13px;color:var(--ink2);line-height:1.8}.history-notes p+p{margin-top:4px}.history-notes strong{font-family:var(--f7);color:var(--ink)}
+
 .history-platforms{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}.history-platform{min-width:0;scroll-margin-top:calc(var(--top-height,100px) + 20px)}
 .history-platform-head{padding-bottom:18px;border-bottom:2px solid var(--ink);margin-bottom:10px}.history-platform-head h3{font-size:24px}.history-platform-head p{font-size:13px;color:var(--gray);margin-top:4px}
 .history-genre{background:var(--bg);border:1px solid var(--line);margin-top:8px}.history-genre>summary{display:flex;align-items:center;gap:12px;list-style:none;padding:16px 18px;min-height:60px;cursor:pointer}.history-genre>summary::-webkit-details-marker{display:none}.history-genre>summary:hover{background:#edf2ff}.history-genre>summary:focus-visible,.history-jump a:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
@@ -503,7 +503,7 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 .history-genre table{border-collapse:collapse;width:100%;table-layout:fixed;text-align:left;font-size:14px;line-height:1.65}.history-genre th,.history-genre td{padding:13px 18px;vertical-align:top;overflow-wrap:anywhere}.history-genre thead th{font-family:var(--f6);font-size:11px;color:var(--gray);background:var(--bg2)}.history-genre th:first-child{width:46%}.history-genre tbody th{font-family:var(--f6);font-weight:400}.history-genre td{font-family:var(--f5);color:var(--ink2);font-variant-numeric:tabular-nums}.history-genre tbody tr+tr{border-top:1px solid var(--line)}.history-genre td small{display:block;font-size:12px;color:var(--ac);margin-top:4px}
 .history-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:800px){.history-platforms{grid-template-columns:1fr;gap:32px}.history-heading{display:block}.history-heading p{margin-top:14px}}
-@media(max-width:600px){#play-history{padding:48px var(--pad)}.history-genre>summary{padding:14px;gap:8px}.history-genre th,.history-genre td{padding:12px 10px;font-size:13px}.history-notes{font-size:12px}.history-heading h2{font-size:28px}}
+@media(max-width:600px){#play-history{padding:48px var(--pad)}.history-genre>summary{padding:14px;gap:8px}.history-genre th,.history-genre td{padding:12px 10px;font-size:13px}.history-heading h2{font-size:28px}}
 
 
 /* Featured player experience */
@@ -513,16 +513,17 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 .history-showcase .history-heading{align-items:center;margin:22px 0 0}.history-showcase h2{font-size:clamp(32px,4.5vw,52px);letter-spacing:-.04em}.history-showcase h2>span{display:block;margin-top:12px;font-size:17px;letter-spacing:-.02em;color:#b6c8ff;font-family:var(--f6)}.history-showcase .history-heading p{color:#c5cee3;font-family:var(--f5);font-size:14px}
 
 .history-jump{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:22px 0 36px}.history-jump a{min-width:0;gap:16px;padding:20px 24px;border:1px solid #d6deef;border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,background .15s}.history-jump a:hover{border-color:var(--ac);background:#edf2ff}.history-jump strong{display:block;font-family:var(--f8);font-size:19px}.history-jump small{display:block;margin-top:3px;font-family:var(--f5);font-size:12px;color:var(--gray)}.history-platform-icon{display:grid;place-items:center;width:42px;height:42px;flex:none;background:#edf2ff;border-radius:10px;color:var(--ac);font-size:28px;line-height:1}.history-arrow{margin-left:auto;font-size:24px;color:var(--ac)}
-.history-list-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px}.history-list-heading h3{font-size:21px}.history-list-heading p{font-family:var(--f5);font-size:12px;color:var(--gray)}.history-notes{margin-bottom:24px;padding-left:12px;font-size:12px;border-left:2px solid #b6c7ee}.history-notes strong{color:var(--ink2);font-family:var(--f5);font-weight:400}.history-method{margin-top:4px}.history-method summary{width:fit-content;min-height:30px;cursor:pointer;color:var(--ac);font-family:var(--f6)}.history-method p{max-width:840px;margin-top:6px}.history-method summary:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.history-list-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px}.history-list-heading h3{font-size:21px}.history-list-heading p{font-family:var(--f5);font-size:12px;color:var(--gray)}
 .history-platform-head{display:flex;align-items:center;gap:12px;border-bottom-color:#d5ddec}.history-platform-head h3{font-size:20px}.history-platform-head p{font-size:12px}.history-genre{border-radius:10px;overflow:hidden}.history-genre:has(>summary:focus-visible){outline:3px solid var(--ac);outline-offset:3px}.history-genre>summary:focus-visible{outline:none}.history-count{background:#f1f4fb;border-radius:20px;padding:2px 8px}.history-genre[open]{border-color:#b9c9eb}.history-genre[open]>summary{background:#edf2ff}
 .hero-actions a.hero-history-link{border-color:var(--ac);color:var(--ac);background:#edf2ff}
 @media(max-width:800px){.history-showcase{padding:28px}.history-showcase .history-heading{display:block}.history-jump a{padding:18px;gap:12px}.history-platform-icon{display:none}}
-@media(max-width:600px){#play-history{padding-top:36px;padding-bottom:48px}.history-showcase{padding:20px 16px;border-radius:16px}.history-showcase .history-kicker{font-size:9px;letter-spacing:.14em}.history-kicker>span{font-size:9px}.history-showcase .history-heading{margin:18px 0 0}.history-showcase h2{font-size:30px}.history-showcase h2>span{font-size:14px;margin-top:10px}.history-showcase .history-heading p{font-size:13px}.history-jump{grid-template-columns:1fr;gap:10px;margin:16px 0 28px}.history-jump a{padding:16px}.history-platform-icon{display:grid;width:36px;height:36px;font-size:25px}.history-jump strong{font-size:17px}.history-list-heading{display:block}.history-list-heading p{margin-top:5px}.history-notes{font-size:11px}}
+@media(max-width:600px){#play-history{padding-top:36px;padding-bottom:48px}.history-showcase{padding:20px 16px;border-radius:16px}.history-showcase .history-kicker{font-size:9px;letter-spacing:.14em}.history-kicker>span{font-size:9px}.history-showcase .history-heading{margin:18px 0 0}.history-showcase h2{font-size:30px}.history-showcase h2>span{font-size:14px;margin-top:10px}.history-showcase .history-heading p{font-size:13px}.history-jump{grid-template-columns:1fr;gap:10px;margin:16px 0 28px}.history-jump a{padding:16px}.history-platform-icon{display:grid;width:36px;height:36px;font-size:25px}.history-jump strong{font-size:17px}.history-list-heading{display:block}.history-list-heading p{margin-top:5px}}
 
 
 
 
 
+.history-estimate{font-size:11px;color:var(--gray);white-space:nowrap}
 </style></head><body><a class="skip-link" href="#hero">본문으로 건너뛰기</a>
 <div id="blinds"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div id="introword">GAME QA &nbsp;/&nbsp; 이도언</div><div id="cur"></div><div id="ring"></div><div id="bar"></div>
 <header id="top"><div class="top-meta"><a class="nm f6" href="#hero">이도언<span class="dot"></span></a><nav class="mode-nav" aria-label="관련 링크"><a href="../links/index.html">링크 모음</a><span>GAME QA</span></nav></div><nav id="toc" aria-label="포트폴리오 목차"><a href="#hero" aria-current="location">소개</a><a href="#edu">이력</a><a href="#work">대표 사례</a><a href="#play-history">플레이 이력</a><a href="#projects">프로젝트</a><a href="#end">연락처</a></nav></header>
@@ -562,7 +563,6 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 </div>
 <nav class="history-jump" aria-label="플레이 플랫폼 바로가기"><a href="#history-pc"><span class="history-platform-icon" aria-hidden="true">▱</span><span><strong>PC 게임</strong><small>76개 기록 · Steam 및 기타 플랫폼</small></span><span class="history-arrow" aria-hidden="true">↘</span></a><a href="#history-mobile"><span class="history-platform-icon" aria-hidden="true">▯</span><span><strong>모바일 게임</strong><small>9개 기록 · 성장과 달성 경험</small></span><span class="history-arrow" aria-hidden="true">↘</span></a></nav>
 <div class="history-list-heading"><h3>장르별 전체 기록</h3><p>장르를 눌러 펼치기 · 플레이 시간 내림차순</p></div>
-<div class="history-notes"><p><strong>†는 실제 게임별 측정 시간이 아닌 균등 배분 추정치입니다.</strong></p><details class="history-method"><summary>기록 기준 보기</summary><p>시간·등급은 Steam 로컬 기록 및 본인 제공 기준입니다. 시간이 없는 기록은 각 장르 아래에 표시했습니다.</p><p>† 기존 40시간 이하 55개 항목에 429시간 55분을 균등 배분해 각 7시간 49분을 더했습니다. ‘6년’은 누적 시간이 아닌 이용 기간입니다.</p></details></div>
 <div class="history-platforms">
 <section class="history-platform" id="history-pc" aria-labelledby="history-pc-title">
 <header class="history-platform-head"><div><h3 id="history-pc-title">PC 게임</h3><p>Steam · 기타 PC 플랫폼</p></div></header>
@@ -572,49 +572,49 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 <tr><th scope="row">팰월드</th><td>69시간 41분</td></tr>
 <tr><th scope="row">ARK: Survival Evolved</th><td>58시간 49분</td></tr>
 <tr><th scope="row">이환</th><td>40시간 이상</td></tr>
-<tr><th scope="row">Once Human</th><td>31시간 8분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">The Forest</th><td>29시간 8분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Hand Simulator: Survival</th><td>13시간 6분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Subnautica 2</th><td>11시간†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Don&#x27;t Starve Together</th><td>8시간 31분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Limbus Company</th><td>8시간 18분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Terraria</th><td>7시간 50분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Once Human</th><td>31시간 8분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">The Forest</th><td>29시간 8분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Hand Simulator: Survival</th><td>13시간 6분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Subnautica 2</th><td>11시간<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Don&#x27;t Starve Together</th><td>8시간 31분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Limbus Company</th><td>8시간 18분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Terraria</th><td>7시간 50분<span class="history-estimate"> (추정)</span></td></tr>
 <tr><th scope="row">로스트아크</th><td>아브렐슈드까지 콘텐츠 경험</td></tr>
 <tr><th scope="row">아이온2</th><td>기룡 장비 · 엔드 콘텐츠 경험</td></tr>
 </tbody></table></details>
 <details class="history-genre" data-genre="공포 · 협동"><summary><span class="history-genre-name">공포 · 협동</span><span class="history-count">4개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
 <table><caption class="history-sr-only">PC 게임 · 공포 · 협동 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
-<tr><th scope="row">Lethal Company</th><td>17시간 28분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">R.E.P.O.</th><td>16시간 36분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Deceit</th><td>10시간 17분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Machine Party</th><td>9시간 53분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Lethal Company</th><td>17시간 28분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">R.E.P.O.</th><td>16시간 36분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Deceit</th><td>10시간 17분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Machine Party</th><td>9시간 53분<span class="history-estimate"> (추정)</span></td></tr>
 </tbody></table></details>
 <details class="history-genre" data-genre="슈팅 · 액션"><summary><span class="history-genre-name">슈팅 · 액션</span><span class="history-count">28개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
 <table><caption class="history-sr-only">PC 게임 · 슈팅 · 액션 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
 <tr><th scope="row">PUBG: 배틀그라운드</th><td>1,223시간 27분</td></tr>
 <tr><th scope="row">GTA V — Rockstar</th><td>602.6시간</td></tr>
 <tr><th scope="row">오버워치</th><td>Steam 85시간 27분<small>시즌 1 마스터 · 상위 1%</small></td></tr>
-<tr><th scope="row">레드 데드 리뎀션 2</th><td>47시간 18분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Talented</th><td>31시간 50분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Black Squad</th><td>25시간 10분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Nine Sols</th><td>21시간 9분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Arma 3</th><td>20시간 18분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">PUBG: Test Server</th><td>17시간 33분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Vampire Survivors</th><td>16시간 31분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">던그리드</th><td>13시간 5분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">PEAK</th><td>12시간 39분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Chippy</th><td>12시간 34분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Super Bunny Man</th><td>10시간 57분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">MECCHA CHAMELEON</th><td>10시간 30분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Hollow Knight</th><td>9시간 40분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Wizard of Legend</th><td>9시간 3분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Overcooked! 2</th><td>9시간 1분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Left 4 Dead 2</th><td>8시간 22분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">철권 7</th><td>8시간 17분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">One-armed robber</th><td>8시간 12분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Ghostrunner Demo</th><td>8시간 11분†<span class="history-sr-only"> (균등 배분 추정 시간)</span><small>체험판</small></td></tr>
-<tr><th scope="row">3D Aim Trainer</th><td>8시간 10분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">My Little Universe</th><td>7시간 51분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">레드 데드 리뎀션 2</th><td>47시간 18분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Talented</th><td>31시간 50분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Black Squad</th><td>25시간 10분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Nine Sols</th><td>21시간 9분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Arma 3</th><td>20시간 18분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">PUBG: Test Server</th><td>17시간 33분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Vampire Survivors</th><td>16시간 31분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">던그리드</th><td>13시간 5분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">PEAK</th><td>12시간 39분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Chippy</th><td>12시간 34분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Super Bunny Man</th><td>10시간 57분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">MECCHA CHAMELEON</th><td>10시간 30분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Hollow Knight</th><td>9시간 40분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Wizard of Legend</th><td>9시간 3분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Overcooked! 2</th><td>9시간 1분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Left 4 Dead 2</th><td>8시간 22분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">철권 7</th><td>8시간 17분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">One-armed robber</th><td>8시간 12분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Ghostrunner Demo</th><td>8시간 11분<span class="history-estimate"> (추정)</span><small>체험판</small></td></tr>
+<tr><th scope="row">3D Aim Trainer</th><td>8시간 10분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">My Little Universe</th><td>7시간 51분<span class="history-estimate"> (추정)</span></td></tr>
 <tr><th scope="row">The Binding of Isaac</th><td>시간 기록 미확인</td></tr>
 <tr><th scope="row">서든어택</th><td>특무대장</td></tr>
 <tr><th scope="row">케로로팡팡</th><td>랭킹 50위권 · 상위 0.05%</td></tr>
@@ -622,7 +622,7 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 </tbody></table></details>
 <details class="history-genre" data-genre="스포츠 · 레이싱"><summary><span class="history-genre-name">스포츠 · 레이싱</span><span class="history-count">4개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
 <table><caption class="history-sr-only">PC 게임 · 스포츠 · 레이싱 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
-<tr><th scope="row">Golf With Your Friends</th><td>8시간 54분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Golf With Your Friends</th><td>8시간 54분<span class="history-estimate"> (추정)</span></td></tr>
 <tr><th scope="row">카트라이더</th><td>무지개 금메달 · 당시 최고 레벨</td></tr>
 <tr><th scope="row">테일즈런너</th><td>프라우드윙 · 당시 상위 0.1%</td></tr>
 <tr><th scope="row">피파 온라인 3</th><td>월드클래스</td></tr>
@@ -630,17 +630,17 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 <details class="history-genre" data-genre="전략 · 시뮬레이션"><summary><span class="history-genre-name">전략 · 시뮬레이션</span><span class="history-count">15개 기록</span><span class="history-toggle" aria-hidden="true"></span></summary>
 <table><caption class="history-sr-only">PC 게임 · 전략 · 시뮬레이션 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
 <tr><th scope="row">Slay the Spire 2</th><td>88시간 23분</td></tr>
-<tr><th scope="row">House Flipper 2</th><td>36시간 57분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Tabletop Simulator</th><td>19시간 41분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Schedule I</th><td>15시간 7분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">이터널 리턴</th><td>13시간 35분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Rock Island</th><td>13시간 24분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Monsters are Coming!</th><td>11시간 54분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Schedule I: Free Sample</th><td>11시간†<span class="history-sr-only"> (균등 배분 추정 시간)</span><small>체험판</small></td></tr>
-<tr><th scope="row">Outhold</th><td>10시간 56분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Buckshot Roulette</th><td>10시간 14분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Supermarket Together</th><td>9시간†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Stacklands</th><td>8시간†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">House Flipper 2</th><td>36시간 57분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Tabletop Simulator</th><td>19시간 41분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Schedule I</th><td>15시간 7분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">이터널 리턴</th><td>13시간 35분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Rock Island</th><td>13시간 24분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Monsters are Coming!</th><td>11시간 54분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Schedule I: Free Sample</th><td>11시간<span class="history-estimate"> (추정)</span><small>체험판</small></td></tr>
+<tr><th scope="row">Outhold</th><td>10시간 56분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Buckshot Roulette</th><td>10시간 14분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Supermarket Together</th><td>9시간<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Stacklands</th><td>8시간<span class="history-estimate"> (추정)</span></td></tr>
 <tr><th scope="row">Graveyard Keeper</th><td>시간 기록 미확인</td></tr>
 <tr><th scope="row">리그 오브 레전드</th><td>마스터 · 상위 0.5%</td></tr>
 <tr><th scope="row">전략적 팀 전투(롤토체스)</th><td>마스터</td></tr>
@@ -649,17 +649,17 @@ body>section[id]{scroll-margin-top:calc(var(--top-height,90px) + 16px)}
 <table><caption class="history-sr-only">PC 게임 · 퍼즐 · 캐주얼 플레이 이력</caption><thead><tr><th scope="col">게임</th><th scope="col">시간 · 달성 기록</th></tr></thead><tbody>
 <tr><th scope="row">로블록스</th><td>70시간 이상</td></tr>
 <tr><th scope="row">A Dance of Fire and Ice</th><td>69시간 38분</td></tr>
-<tr><th scope="row">Pixel Sketch</th><td>21시간 34분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Human Fall Flat</th><td>19시간 18분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Goose Goose Duck</th><td>15시간 52분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Coloring Pixels</th><td>12시간 36분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">The Past Within</th><td>11시간 39분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Puzzle Together</th><td>10시간 6분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Liar Game</th><td>9시간 2분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">가리사니 흥신소</th><td>8시간 33분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Escape Simulator</th><td>8시간 32분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">Among Us</th><td>8시간 31분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
-<tr><th scope="row">PICO PARK</th><td>7시간 54분†<span class="history-sr-only"> (균등 배분 추정 시간)</span></td></tr>
+<tr><th scope="row">Pixel Sketch</th><td>21시간 34분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Human Fall Flat</th><td>19시간 18분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Goose Goose Duck</th><td>15시간 52분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Coloring Pixels</th><td>12시간 36분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">The Past Within</th><td>11시간 39분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Puzzle Together</th><td>10시간 6분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Liar Game</th><td>9시간 2분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">가리사니 흥신소</th><td>8시간 33분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Escape Simulator</th><td>8시간 32분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">Among Us</th><td>8시간 31분<span class="history-estimate"> (추정)</span></td></tr>
+<tr><th scope="row">PICO PARK</th><td>7시간 54분<span class="history-estimate"> (추정)</span></td></tr>
 </tbody></table></details>
 </section>
 <section class="history-platform" id="history-mobile" aria-labelledby="history-mobile-title">
