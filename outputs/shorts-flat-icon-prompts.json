@@ -1,0 +1,34 @@
+[
+  {
+    "name": "01-script",
+    "prompt": "Generate exactly ONE standalone flat editorial UI icon as a transparent PNG square. Style: clean 2D vector-like geometry, navy #10162F outlines and cobalt #315BFF solid accents, optional very pale blue flat fill #EAF0FF. Consistent medium-weight monoline strokes, rounded joins, centered symbol fills about 72% of frame with generous even transparent padding. Professional minimal game QA developer portfolio. No 3D, no perspective, no isometric, no gloss, no lighting, no shadows, no gradients, no texture, no background tile, no text, no letters, no numbers, no decorative sparkle. Keep simple and clear at 64px. Transparent background is required. Subject: one document page with three short horizontal lines and a diagonal writing pen, representing script generation."
+  },
+  {
+    "name": "02-review",
+    "prompt": "Generate exactly ONE standalone flat editorial UI icon as a transparent PNG square. Style: clean 2D vector-like geometry, navy #10162F outlines and cobalt #315BFF solid accents, optional very pale blue flat fill #EAF0FF. Consistent medium-weight monoline strokes, rounded joins, centered symbol fills about 72% of frame with generous even transparent padding. Professional minimal game QA developer portfolio. No 3D, no perspective, no isometric, no gloss, no lighting, no shadows, no gradients, no texture, no background tile, no text, no letters, no numbers, no decorative sparkle. Keep simple and clear at 64px. Transparent background is required. Subject: one document with a magnifying glass over its lower right and a single small check mark, representing script review."
+  },
+  {
+    "name": "03-video",
+    "prompt": "Generate exactly ONE standalone flat editorial UI icon as a transparent PNG square. Style: clean 2D vector-like geometry, navy #10162F outlines and cobalt #315BFF solid accents, optional very pale blue flat fill #EAF0FF. Consistent medium-weight monoline strokes, rounded joins, centered symbol fills about 72% of frame with generous even transparent padding. Professional minimal game QA developer portfolio. No 3D, no perspective, no isometric, no gloss, no lighting, no shadows, no gradients, no texture, no background tile, no text, no letters, no numbers, no decorative sparkle. Keep simple and clear at 64px. Transparent background is required. Subject: one simple upright portrait video frame with a cobalt play triangle in its center, and a small offset second frame behind it, representing video generation."
+  },
+  {
+    "name": "04-edit",
+    "prompt": "Generate exactly ONE standalone flat editorial UI icon as a transparent PNG square. Style: clean 2D vector-like geometry, navy #10162F outlines and cobalt #315BFF solid accents, optional very pale blue flat fill #EAF0FF. Consistent medium-weight monoline strokes, rounded joins, centered symbol fills about 72% of frame with generous even transparent padding. Professional minimal game QA developer portfolio. No 3D, no perspective, no isometric, no gloss, no lighting, no shadows, no gradients, no texture, no background tile, no text, no letters, no numbers, no decorative sparkle. Keep simple and clear at 64px. Transparent background is required. Subject: a small video timeline with three simple clip blocks in two rows and a clean scissors symbol, representing video editing."
+  },
+  {
+    "name": "05-captions",
+    "prompt": "Generate exactly ONE standalone flat editorial UI icon as a transparent PNG square. Style: clean 2D vector-like geometry, navy #10162F outlines and cobalt #315BFF solid accents, optional very pale blue flat fill #EAF0FF. Consistent medium-weight monoline strokes, rounded joins, centered symbol fills about 72% of frame with generous even transparent padding. Professional minimal game QA developer portfolio. No 3D, no perspective, no isometric, no gloss, no lighting, no shadows, no gradients, no texture, no background tile, no text, no letters, no numbers, no decorative sparkle. Keep simple and clear at 64px. Transparent background is required. Subject: a simple video rectangle containing two horizontal caption bars along the bottom and a small play triangle above, representing subtitle generation. No actual letters."
+  },
+  {
+    "name": "06-tts",
+    "prompt": "Generate exactly ONE standalone flat editorial UI icon as a transparent PNG square. Style: clean 2D vector-like geometry, navy #10162F outlines and cobalt #315BFF solid accents, optional very pale blue flat fill #EAF0FF. Consistent medium-weight monoline strokes, rounded joins, centered symbol fills about 72% of frame with generous even transparent padding. Professional minimal game QA developer portfolio. No 3D, no perspective, no isometric, no gloss, no lighting, no shadows, no gradients, no texture, no background tile, no text, no letters, no numbers, no decorative sparkle. Keep simple and clear at 64px. Transparent background is required. Subject: one upright microphone in a U shaped stand, with three short vertical waveform bars on each side, representing text to speech."
+  },
+  {
+    "name": "07-final-qa",
+    "prompt": "Generate exactly ONE standalone flat editorial UI icon as a transparent PNG square. Style: clean 2D vector-like geometry, navy #10162F outlines and cobalt #315BFF solid accents, optional very pale blue flat fill #EAF0FF. Consistent medium-weight monoline strokes, rounded joins, centered symbol fills about 72% of frame with generous even transparent padding. Professional minimal game QA developer portfolio. No 3D, no perspective, no isometric, no gloss, no lighting, no shadows, no gradients, no texture, no background tile, no text, no letters, no numbers, no decorative sparkle. Keep simple and clear at 64px. Transparent background is required. Subject: a video rectangle with a small play triangle and a checkmark badge overlapping the lower right corner, representing final video quality review."
+  },
+  {
+    "name": "08-upload",
+    "prompt": "Generate exactly ONE standalone flat editorial UI icon as a transparent PNG square. Style: clean 2D vector-like geometry, navy #10162F outlines and cobalt #315BFF solid accents, optional very pale blue flat fill #EAF0FF. Consistent medium-weight monoline strokes, rounded joins, centered symbol fills about 72% of frame with generous even transparent padding. Professional minimal game QA developer portfolio. No 3D, no perspective, no isometric, no gloss, no lighting, no shadows, no gradients, no texture, no background tile, no text, no letters, no numbers, no decorative sparkle. Keep simple and clear at 64px. Transparent background is required. Subject: a simple outlined cloud with an upward cobalt arrow and a tiny play triangle on a small video file entering the cloud, representing automated video upload."
+  }
+]
