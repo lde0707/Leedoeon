@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>개인정보처리방침 · auto-shorts</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · auto-shorts</title>
 <style>
   :root{ --ink:#0d0e12; --sub:#8b8f98; --line:#23252b; --ac:#E8452C; }
   *{box-sizing:border-box}
@@ -18,52 +18,66 @@
   main{padding:30px 0 80px;}
   h2{font-size:17px; margin:36px 0 10px;}
   p,li{color:#d6d6d3; font-size:15px;}
+  .ko{color:var(--sub); font-size:14px;}
   ul{padding-left:20px;}
   a{color:var(--ac);}
   footer{padding:30px 0 60px; border-top:1px solid var(--line); font-size:12px; color:#55585f;}
+  footer a{color:var(--sub);}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <a class="back" href="index.html">← auto-shorts</a>
-    <h1>개인정보처리방침</h1>
-    <p>시행일: 2026년 11월 12일</p>
-  </header>
+<header><div class="wrap">
+  <a class="back" href="./">← auto-shorts</a>
+  <h1>Privacy Policy</h1>
+  <p>Effective date: November 13, 2026 · 시행일: 2026년 11월 13일</p>
+</div></header>
+<main><div class="wrap">
 
-  <main>
-    <h2>1. 개요</h2>
-    <p>auto-shorts(이하 "앱")는 이도언(이하 "운영자")이 본인의 YouTube 채널 운영을 위해 만든 개인 자동화 도구입니다. 이 앱은 운영자 본인의 Google 계정에만 연결되며, 다른 사람의 Google 계정 정보를 수집하거나 이용하지 않습니다.</p>
+<h2>1. Overview</h2>
+<p>auto-shorts ("the App") is a personal automation tool built and operated by Doeon Lee ("the Operator") to publish the Operator's own YouTube Shorts on the Operator's own channel. <strong>The App uses YouTube API Services.</strong> It connects only to the Operator's own Google account and does not collect or use any other person's Google account data.</p>
+<p class="ko">auto-shorts(이하 "앱")는 이도언(이하 "운영자")이 본인 채널에 본인이 만든 YouTube Shorts를 올리기 위해 만든 개인 자동화 도구입니다. 앱은 YouTube API 서비스를 사용하며, 운영자 본인의 Google 계정에만 연결됩니다. 다른 사람의 Google 계정 데이터는 수집하거나 이용하지 않습니다.</p>
 
-    <h2>2. 접근하는 Google 사용자 데이터</h2>
-    <ul>
-      <li><strong>Google Drive:</strong> 앱이 생성한 파일(영상, 대본, 음성, 검수 기록)을 만들고 관리합니다.</li>
-      <li><strong>Google Sheets:</strong> 운영자의 관리 시트에서 주제 목록, 생성 상태, 승인 기록을 읽고 씁니다.</li>
-      <li><strong>YouTube:</strong> 운영자 본인의 채널에 운영자가 승인한 영상을 업로드합니다.</li>
-    </ul>
+<h2>2. YouTube Terms and Google Privacy Policy</h2>
+<p>By using the App, users agree to be bound by the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. Data accessed through YouTube API Services is also handled under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+<p class="ko">앱을 사용하면 <a href="https://www.youtube.com/t/terms">YouTube 서비스 약관</a>에 동의하는 것으로 봅니다. YouTube API 서비스를 통해 다루는 데이터에는 <a href="https://policies.google.com/privacy">Google 개인정보처리방침</a>도 적용됩니다.</p>
 
-    <h2>3. 데이터 이용 목적</h2>
-    <p>위 데이터는 영상 제작 파이프라인을 실행하고 결과물을 보관·업로드하는 목적으로만 이용됩니다. 광고, 판매, 프로파일링 또는 AI 모델 학습에 이용하지 않습니다.</p>
+<h2>3. What data the App accesses</h2>
+<ul>
+  <li><strong>YouTube (scope: youtube.upload):</strong> the App uploads videos and sets their metadata (title, description, tags, category, privacy status, made-for-kids and altered/synthetic content declarations) on the Operator's own channel.</li>
+  <li>The App does <strong>not</strong> read viewers' data, comments, subscribers, analytics, or any other channel's information.</li>
+</ul>
+<p class="ko">YouTube(권한: youtube.upload) — 운영자 본인 채널에 영상을 올리고 제목·설명·태그·카테고리·공개 범위·아동용 여부·AI 생성 표시를 설정합니다. 시청자 정보, 댓글, 구독자, 통계, 다른 채널 정보는 읽지 않습니다.</p>
 
-    <h2>4. 데이터 보관과 공유</h2>
-    <ul>
-      <li>생성된 파일과 기록은 운영자의 Google Drive와 Google Sheets에 보관됩니다.</li>
-      <li>Google 사용자 데이터는 제3자에게 판매하거나 공유하지 않습니다.</li>
-      <li>대본 작성과 검수를 위해 영상 주제와 공개 웹 자료를 외부 AI API(Anthropic, Google Gemini)로 보냅니다. 이때 Google Drive·Sheets·YouTube 계정 데이터는 보내지 않습니다.</li>
-      <li>인증 정보(OAuth 토큰, API 키)는 운영자가 관리하는 비공개 저장소의 암호화된 비밀 값으로만 보관합니다.</li>
-    </ul>
+<h2>4. How the data is used</h2>
+<p>Data is used only to upload the Operator's videos. It is not used for advertising, sale, profiling, or training AI models.</p>
+<p class="ko">데이터는 운영자의 영상을 올리는 데에만 쓰며, 광고·판매·프로파일링·AI 학습에 쓰지 않습니다.</p>
 
-    <h2>5. Google API 서비스 사용자 데이터 정책 준수</h2>
-    <p>앱이 Google API로부터 받은 정보의 사용 및 다른 앱으로의 전송은 제한적 사용 요구사항을 포함한 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API 서비스 사용자 데이터 정책</a>을 준수합니다.</p>
+<h2>5. Storage and sharing</h2>
+<ul>
+  <li>The only stored credential is the OAuth refresh token for the Operator's channel. It is kept encrypted in Google Cloud Secret Manager in the Operator's project, is never printed to logs, and older versions are destroyed when it is replaced.</li>
+  <li>The App does not store any YouTube API data beyond the ID of each uploaded video, which is shown in the run log.</li>
+  <li>Google user data is never sold or shared with third parties.</li>
+  <li>Voice-over is generated with Google Cloud Text-to-Speech from the Operator's own script text. No Google account or YouTube data is sent to it.</li>
+</ul>
+<p class="ko">저장하는 인증 정보는 운영자 채널의 OAuth refresh token 하나뿐이며, 운영자 프로젝트의 Google Cloud Secret Manager에 암호화해 보관하고 로그에 출력하지 않습니다. 업로드된 영상 ID 외에 YouTube API 데이터는 저장하지 않습니다. Google 사용자 데이터는 판매하거나 제3자와 공유하지 않습니다. 음성은 운영자가 쓴 대본으로 Google Cloud TTS에서 만들며, 계정·YouTube 데이터는 보내지 않습니다.</p>
 
-    <h2>6. 접근 권한 철회와 삭제</h2>
-    <p>운영자는 <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google 계정 권한 페이지</a>에서 언제든지 앱의 접근 권한을 철회할 수 있으며, Drive와 Sheets에 저장된 파일은 직접 삭제할 수 있습니다.</p>
+<h2>6. Limited Use</h2>
+<p>The App's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+<p class="ko">앱의 Google API 정보 사용과 전송은 제한적 사용 요구사항을 포함한 Google API 서비스 사용자 데이터 정책을 따릅니다.</p>
 
-    <h2>7. 문의</h2>
-    <p>이 방침에 대한 문의는 <a href="mailto:doun070789@gmail.com">doun070789@gmail.com</a>으로 보내 주세요.</p>
-  </main>
+<h2>7. Revoking access and deleting data</h2>
+<p>Access can be revoked at any time at the <a href="https://security.google.com/settings/security/permissions">Google security settings page</a>. After revocation the stored token stops working, and the Operator destroys it in Secret Manager. Uploaded videos can be deleted in YouTube Studio.</p>
+<p class="ko"><a href="https://security.google.com/settings/security/permissions">Google 보안 설정 페이지</a>에서 언제든 앱의 접근 권한을 철회할 수 있습니다. 철회하면 저장된 토큰은 더 이상 작동하지 않으며 운영자가 Secret Manager에서 폐기합니다. 올라간 영상은 YouTube 스튜디오에서 삭제할 수 있습니다.</p>
 
-  <footer>© 이도언 · auto-shorts</footer>
-</div>
+<h2>8. Changes</h2>
+<p>Changes to this policy are posted on this page with a new effective date.</p>
+<p class="ko">방침이 바뀌면 이 페이지에 새 시행일과 함께 게시합니다.</p>
+
+<h2>9. Contact</h2>
+<p>Questions about this policy: <a href="mailto:undo.games0707@gmail.com">undo.games0707@gmail.com</a></p>
+<p class="ko">문의: undo.games0707@gmail.com</p>
+
+</div></main>
+<footer><div class="wrap">© Doeon Lee · auto-shorts · <a href="./">Home</a> · <a href="terms.html">Terms of Service</a></div></footer>
 </body>
 </html>
