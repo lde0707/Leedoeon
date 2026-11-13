@@ -1,12 +1,18 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="이도언의 게임 QA 포트폴리오. 보상 오류 발견·보고와 수정 후 재검증, Unity 게임 로직 검사, 화면 인식 자동화 사례를 소개합니다."><title>QA 이도언 · GAME QA PORTFOLIO</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="이도언의 게임 QA 포트폴리오. 보상 오류 발견·보고와 수정 후 재검증, Unity 게임 로직 검사, 화면 인식 자동화 사례를 소개합니다."><title>QA 이도언 · GAME QA PORTFOLIO</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
 .additional-run{font-family:var(--f6);font-size:15px;line-height:1.75;border-top:2px solid var(--ac);margin:28px 0;padding-top:22px}.additional-run>p{margin:12px 0}.additional-run .featured-actions a{color:#101c36;background:#edf2ff}.runtime-case{border-top:1px solid #34405b;padding:18px 0}.runtime-case summary{cursor:pointer;font-size:16px}.runtime-case dl{display:grid;grid-template-columns:90px minmax(0,1fr);gap:12px;margin-top:18px}.runtime-case dd{min-width:0}.runtime-case ol{padding-left:20px}.additional-run ol li::before{content:none}
 
 /* ══════════ FONT : 프리젠테이션(Freesentation) 5 · 6 · 7 (로컬 설치 폰트) ══════════ */
 :root{
-  --f5:"Freesentation 5Medium","Freesentation 5 Medium","Freesentation-5Medium","프리젠테이션 5","프레젠테이션 5",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
-  --f6:"Freesentation 6SemiBold","Freesentation 6 SemiBold","Freesentation-6SemiBold","프리젠테이션 6","프레젠테이션 6",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
-  --f7:"Freesentation 7Bold","Freesentation 7 Bold","Freesentation-7Bold","프리젠테이션 7","프레젠테이션 7",Freesentation,Pretendard,-apple-system,"Malgun Gothic",sans-serif;
-  --f8:"Freesentation 8ExtraBold","Freesentation 8 ExtraBold","Freesentation-8ExtraBold","프리젠테이션 8","프레젠테이션 8","Freesentation 7Bold","프리젠테이션 7",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
+  --pre:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif;
+  --f5:"Freesentation 5Medium","Freesentation 5 Medium","프리젠테이션 5",var(--pre);
+  --f6:"Freesentation 6SemiBold","Freesentation 6 SemiBold","프리젠테이션 6",var(--pre);
+  --f7:"Freesentation 7Bold","Freesentation 7 Bold","프리젠테이션 7",var(--pre);
+  --f8:"Freesentation 8ExtraBold","Freesentation 8 ExtraBold","프리젠테이션 8","Freesentation 7Bold",var(--pre);
+  --en:"Space Grotesk","Pretendard Variable",Pretendard,sans-serif;   /* 영문·숫자 전용 */
 
   --ac:#1F56FF;              /* 포인트 컬러 — 일렉트릭 코발트 */
   --ac-l:#6E9BFF;            /* 다크 섹션용 밝은 블루 */
@@ -17,13 +23,19 @@
 #work,#end,#ov{--ac:var(--ac-l)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--f7);line-height:1.7;
+body{background:var(--bg);color:var(--ink);font-family:var(--f7);font-weight:600;line-height:1.72;
+  letter-spacing:-.012em;text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","case";font-variant-numeric:tabular-nums;
   word-break:keep-all;overflow-wrap:break-word;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
 @media(max-width:900px){body{cursor:auto}}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--ac);color:#fff}
-h1,h2,h3,h4,.f7{font-family:var(--f8);font-weight:400}
+h1,h2,h3,h4,.f7{font-family:var(--f8);font-weight:800;letter-spacing:-.04em}
+/* 영문 라벨·숫자는 Space Grotesk 로 — 한글과 섞여도 어긋나지 않게 */
+#top,#idx,.kick,.tag,.tp,.tool,.more,.scroller,.hrole,.doc-index span:first-child,
+.card .no,.kpi .n,.pstep .n,.erow .d,.docs-kicker,.fend,.tl .dt,.cr,footer .in{
+  font-family:var(--en);font-feature-settings:"ss01","tnum";font-variant-numeric:tabular-nums}
 .f6{font-family:var(--f6)}
 
 /* ══════════ 0. 인트로 블라인드 (싸라락) ══════════ */
@@ -71,11 +83,11 @@ body.dark #top .nm{color:#fff}
 @keyframes up{to{transform:none;opacity:1}}
 #hero .hero-identity{position:relative;z-index:2;margin-bottom:24px;line-height:1.25}
 #hero .hero-identity>span{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:10px 18px}
-#hero .hero-identity strong{font-family:var(--f8);font-size:clamp(32px,3.6vw,52px);font-weight:700;letter-spacing:-.04em;color:var(--ac)}
+#hero .hero-identity strong{font-family:var(--f8);font-size:clamp(32px,3.6vw,52px);font-weight:800;letter-spacing:-.045em;color:var(--ac)}
 #hero .hero-identity small{font-family:var(--f6);font-size:11px;letter-spacing:.16em;color:var(--gray)}
-#hero h1{font-family:var(--f7);font-size:clamp(32px,6.4vw,96px);line-height:1.12;letter-spacing:-.05em;-webkit-text-stroke:.4px currentColor;position:relative;z-index:2}
+#hero h1{font-family:var(--f7);font-weight:700;font-size:clamp(34px,6.6vw,100px);line-height:1.09;letter-spacing:-.055em;position:relative;z-index:2}
 #hero h1 .ac{color:var(--ac)}
-#hero h1 .out{-webkit-text-stroke:1.8px var(--ink);color:transparent}
+#hero h1 .out{-webkit-text-stroke:1.7px var(--ink);color:transparent;padding-right:.04em}
 .hsub{margin-top:clamp(28px,4vw,52px);display:flex;gap:clamp(20px,5vw,90px);flex-wrap:wrap;
   align-items:flex-end;position:relative;z-index:2}
 .hsub p{max-width:560px;font-size:clamp(14.5px,1.6vw,18px);color:var(--ink2);line-height:1.75}
