@@ -3,101 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QA 이도언 · 링크 모음</title>
-<meta name="description" content="이도언의 게임 QA 포트폴리오. 프로젝트별 기능 검증, 결함 대응, 자동화 시연과 실행 보고서.">
+<title>이도언 · GAME QA</title>
+<meta name="description" content="이도언의 게임 QA 포트폴리오. 기능 검증, 결함 대응, 화면 인식 자동화와 테스트 설계 문서를 모았습니다.">
 <meta property="og:title" content="이도언 · 게임 QA 포트폴리오">
-<meta property="og:description" content="QA 포트폴리오 · 자동화 시연 · 테스트 케이스">
+<meta property="og:description" content="QA 포트폴리오 · 자동화 시연 · 테스트 케이스 · 게임 분석">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leedoeon.vercel.app/links/">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="icon" href="../qa/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
-  :root{--ink:#0d0e12;--card:#15171d;--line:#262932;--sub:#8b8f98;--txt:#ededea;--ac:#E8452C}
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{background:var(--ink);color:var(--txt);font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;line-height:1.6;word-break:keep-all;min-height:100vh}
-  .wrap{max-width:560px;margin:0 auto;padding:64px 20px 56px}
-  .me{text-align:center;margin-bottom:34px}
-  .av{display:block;width:112px;height:112px;border-radius:50%;margin:0 auto 18px;object-fit:cover;object-position:center top;border:1px solid var(--line)}
-  h1{margin:0 0 4px;font-size:26px;letter-spacing:-.02em}
-  .role{color:var(--sub);font-size:14.5px;margin:0}
-  .chips{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:14px}
-  .chip{font-size:11.5px;color:#cfcfcb;border:1px solid var(--line);border-radius:99px;padding:3px 10px}
-  .label{font-size:11px;letter-spacing:.2em;color:var(--sub);text-transform:uppercase;margin:30px 0 12px}
-  a.lk{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin-bottom:10px;text-decoration:none;color:inherit;transition:.18s}
-  a.lk:hover{border-color:rgba(232,69,44,.6);transform:translateY(-1px)}
-  a.lk.main{background:linear-gradient(135deg,rgba(232,69,44,.22),rgba(232,69,44,.06));border-color:rgba(232,69,44,.45)}
-  .ic{width:38px;height:38px;flex-shrink:0;border-radius:9px;background:#1e2128;display:flex;align-items:center;justify-content:center;color:var(--ac)}
-  .ic svg{width:19px;height:19px}
-  .tx{flex:1;min-width:0}
-  .tt{display:block;font-weight:700;font-size:15.5px}
-  .ds{display:block;font-size:13px;color:var(--sub);margin-top:1px}
-  .ar{color:#555a66;flex-shrink:0}
-  .tag{font-size:10px;letter-spacing:.06em;color:var(--ac);border:1px solid rgba(232,69,44,.4);border-radius:3px;padding:0 6px;margin-left:6px;vertical-align:2px;font-weight:600}
-  .share{display:flex;gap:8px;justify-content:center;margin-top:30px}
-  button{font:inherit;font-size:13.5px;background:transparent;color:var(--txt);border:1px solid var(--line);border-radius:99px;padding:9px 18px;cursor:pointer}
-  button:hover{border-color:var(--ac);color:#fff}
-  .toast{text-align:center;font-size:12.5px;color:var(--ac);height:18px;margin-top:10px}
-  footer{text-align:center;font-size:11px;letter-spacing:.12em;color:#55585f;margin-top:30px}
+:root{
+  --pre:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif;
+  --f6:"Freesentation 6SemiBold","Freesentation 6 SemiBold","프리젠테이션 6",var(--pre);
+  --f7:"Freesentation 7Bold","Freesentation 7 Bold","프리젠테이션 7",var(--pre);
+  --f8:"Freesentation 8ExtraBold","Freesentation 8 ExtraBold","프리젠테이션 8","Freesentation 7Bold",var(--pre);
+  --en:"Space Grotesk","Pretendard Variable",Pretendard,sans-serif;
+  --ac:#1F56FF; --ink:#080F26; --ink2:#262f4d; --gray:#636d8c; --gray2:#a7b0c6;
+  --line:#e2e6f0; --bg:#fff; --bg2:#f3f5fa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f7);font-weight:600;
+  line-height:1.72;letter-spacing:-.012em;word-break:keep-all;-webkit-font-smoothing:antialiased;
+  font-feature-settings:"ss01";font-variant-numeric:tabular-nums;min-height:100vh;position:relative}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--ac);color:#fff}
+
+/* 배경 그리드 — 포트폴리오와 동일한 질감 */
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:72px 72px;opacity:.5;
+  -webkit-mask-image:radial-gradient(120% 80% at 70% 0%,#000 8%,transparent 70%);
+  mask-image:radial-gradient(120% 80% at 70% 0%,#000 8%,transparent 70%)}
+
+.wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:clamp(44px,8vw,78px) clamp(20px,5vw,34px) 60px}
+
+/* ── 헤더 ── */
+.top{display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--gray);margin-bottom:clamp(34px,7vw,56px)}
+.top .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ac);
+  margin-right:7px;box-shadow:0 0 0 4px rgba(31,86,255,.14)}
+.top b{color:var(--ink);font-weight:700}
+
+.me{display:flex;gap:clamp(16px,4vw,26px);align-items:center}
+.av{width:clamp(74px,16vw,96px);height:clamp(74px,16vw,96px);border-radius:3px;object-fit:cover;
+  object-position:center top;border:1px solid var(--line);flex-shrink:0;background:var(--bg2)}
+.me h1{font-family:var(--f8);font-weight:800;font-size:clamp(30px,8vw,52px);
+  line-height:1.05;letter-spacing:-.045em}
+.me h1 span{color:var(--ac)}
+.me .role{margin-top:8px;font-size:clamp(13px,3.4vw,15px);color:var(--ink2)}
+.me .meta{margin-top:11px;font-family:var(--en);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;color:var(--gray)}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.chip{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--ink2);
+  border:1px solid var(--line);background:var(--bg2);border-radius:2px;padding:6px 10px}
+
+/* ── 섹션 라벨 ── */
+.label{display:flex;align-items:center;gap:12px;margin:clamp(34px,7vw,52px) 0 4px;
+  font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.2em;color:var(--gray)}
+.label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ── 링크 행 ── */
+.lk{display:grid;grid-template-columns:38px minmax(0,1fr) 26px;gap:14px;align-items:center;
+  padding:19px 10px 19px 4px;border-bottom:1px solid var(--line);position:relative;transition:.22s}
+.lk::before{content:"";position:absolute;left:-12px;right:-12px;top:0;bottom:0;background:var(--bg2);
+  opacity:0;transition:.22s;border-radius:3px;z-index:-1}
+.lk:hover::before{opacity:1}
+.lk:hover{padding-left:12px}
+.no{font-family:var(--en);font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--gray2);transition:.22s}
+.lk:hover .no{color:var(--ac)}
+.tt{display:block;font-family:var(--f7);font-weight:700;font-size:clamp(15px,3.8vw,17px);letter-spacing:-.025em}
+.ds{display:block;font-size:12.5px;color:var(--gray);margin-top:2px;line-height:1.55}
+.ar{font-family:var(--en);font-size:15px;color:var(--gray2);text-align:right;transition:.22s}
+.lk:hover .ar{color:var(--ac);transform:translate(3px,-3px)}
+.tag{display:inline-block;font-family:var(--en);font-size:9.5px;font-weight:700;letter-spacing:.1em;
+  color:#fff;background:var(--ac);border-radius:2px;padding:2px 6px;margin-left:7px;vertical-align:2px}
+
+/* 대표 링크 */
+.lk.main{grid-template-columns:minmax(0,1fr) 26px;background:var(--ink);color:#fff;border:0;
+  border-radius:3px;padding:24px 22px;margin-top:8px;
+  box-shadow:0 20px 40px -28px rgba(8,15,38,.8)}
+.lk.main::before{display:none}
+.lk.main:hover{background:var(--ac);padding-left:22px;transform:translateY(-2px);
+  box-shadow:0 24px 46px -24px rgba(31,86,255,.7)}
+.lk.main .kick{display:block;font-family:var(--en);font-size:10px;font-weight:600;
+  letter-spacing:.2em;color:var(--gray2);margin-bottom:7px}
+.lk.main:hover .kick{color:rgba(255,255,255,.75)}
+.lk.main .tt{font-family:var(--f8);font-weight:800;font-size:clamp(19px,5vw,25px);letter-spacing:-.04em}
+.lk.main .ds{color:#b9c2da;font-size:13px;margin-top:5px}
+.lk.main:hover .ds{color:rgba(255,255,255,.85)}
+.lk.main .ar{color:#fff;font-size:19px}
+
+/* ── 하단 ── */
+.share{display:flex;gap:8px;margin-top:clamp(34px,7vw,48px)}
+button{font:inherit;font-family:var(--en);font-weight:600;font-size:11.5px;letter-spacing:.14em;
+  background:transparent;color:var(--ink2);border:1px solid var(--line);border-radius:2px;
+  padding:12px 18px;cursor:pointer;transition:.22s}
+button:hover{border-color:var(--ac);color:var(--ac);background:var(--bg2)}
+.toast{font-family:var(--en);font-size:11px;letter-spacing:.1em;color:var(--ac);height:17px;margin-top:11px}
+footer{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.14em;color:var(--gray2)}
+
+@media(max-width:420px){
+  .me{flex-direction:column;align-items:flex-start;gap:16px}
+  .lk{grid-template-columns:30px minmax(0,1fr) 22px;gap:10px}
+}
 </style>
 </head>
 <body>
+<div class="grid"></div>
 <div class="wrap">
 
-  <div class="me">
-    <img class="av" src="../assets/profile-lee-doeon.png" alt="이도언 프로필 사진" width="112" height="112" fetchpriority="high">
-    <h1>QA 이도언</h1>
-    <p class="role">게임 QA · 기능 검증 · 결함 대응 · 자동화</p>
-    <div class="chips"><span class="chip">화면 인식 자동화</span><span class="chip">OCR 검증</span><span class="chip">QA 테스트 설계</span><span class="chip">Unity / C#</span></div>
+  <div class="top">
+    <span><span class="dot"></span><b>GAME QA</b> PORTFOLIO</span>
+    <span>2026</span>
+  </div>
+
+  <header class="me">
+    <img class="av" src="../assets/profile-lee-doeon.png" alt="이도언 프로필 사진" width="96" height="96" fetchpriority="high">
+    <div>
+      <h1>이도언<span>.</span></h1>
+      <p class="role">기능 검증 · 결함 대응 · 화면 인식 자동화</p>
+      <p class="meta">YUHAN UNIV. · 게임콘텐츠전공 · 2027.02 졸업예정</p>
+    </div>
+  </header>
+
+  <div class="chips">
+    <span class="chip">테스트 설계</span><span class="chip">재현 조건 분석</span>
+    <span class="chip">OCR 검증</span><span class="chip">PYTHON · OPENCV</span>
+    <span class="chip">UNITY · C#</span><span class="chip">JIRA</span>
   </div>
 
   <a class="lk main" href="../qa/index.html">
-    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-    <span class="tx"><span class="tt">QA 포트폴리오</span><span class="ds">게임별 검증 결과 · 결함 대응 · 자동화 시연</span></span>
+    <span>
+      <span class="kick">START HERE</span>
+      <span class="tt">QA 포트폴리오 전체 보기</span>
+      <span class="ds">프로젝트별 검증 범위 · 결함 대응 기록 · 자동화 시연</span>
+    </span>
     <span class="ar">→</span>
   </a>
 
-  <div class="label">QA 자료</div>
+  <div class="label">QA WORK</div>
+
   <a class="lk" href="../qa/index.html#work">
-    <span class="tx"><span class="tt">자동화 시연 영상</span><span class="ds">메이플키우기 강화·재화 검증·예외 처리</span></span>
+    <span class="no">01</span>
+    <span><span class="tt">자동화 시연<span class="tag">VIDEO</span></span>
+    <span class="ds">메이플키우기 강화·재화 검증과 예외 처리 실행 화면</span></span>
     <span class="ar">→</span>
   </a>
   <a class="lk" href="../qa/index.html#documents">
-    <span class="tx"><span class="tt">테스트 케이스 설계</span><span class="ds">정상·경계·예외 조건별 절차와 기대 결과</span></span>
+    <span class="no">02</span>
+    <span><span class="tt">테스트 케이스 설계</span>
+    <span class="ds">정상 · 경계 · 예외 조건별 절차와 기대 결과, CSV 제공</span></span>
     <span class="ar">→</span>
   </a>
-
   <a class="lk" href="../qa/index.html#projects">
-    <span class="tx"><span class="tt">참여 프로젝트</span><span class="ds">9개 프로젝트 · 검증 범위 · 실행 보고서</span></span>
+    <span class="no">03</span>
+    <span><span class="tt">참여 프로젝트</span>
+    <span class="ds">9개 프로젝트의 검증 범위와 실행 보고서</span></span>
     <span class="ar">→</span>
   </a>
-  <div class="label">More</div>
+  <a class="lk" href="../qa/index.html#play-history">
+    <span class="no">04</span>
+    <span><span class="tt">게임 플레이 이력</span>
+    <span class="ds">장르별 플레이 경험과 거기서 얻은 검증 관점</span></span>
+    <span class="ar">→</span>
+  </a>
 
+  <div class="label">GAME ANALYSIS</div>
+
+  <a class="lk" href="../lab/trickcal-game-analysis.html" target="_blank" rel="noopener">
+    <span class="no">05</span>
+    <span><span class="tt">트릭컬 리바이브 · 게임 분석</span>
+    <span class="ds">기·승·전·결로 읽는 코어 루프 · 성장 · BM · 운영</span></span>
+    <span class="ar">↗</span>
+  </a>
+  <a class="lk" href="../lab/trickcal-system-analysis.html" target="_blank" rel="noopener">
+    <span class="no">06</span>
+    <span><span class="tt">트릭컬 리바이브 · 재미요소 분석</span>
+    <span class="ds">복귀 비용을 낮추는 시스템 순환 구조</span></span>
+    <span class="ar">↗</span>
+  </a>
+  <a class="lk" href="../aion2/index.html" target="_blank" rel="noopener">
+    <span class="no">07</span>
+    <span><span class="tt">AION2 · 성장 순환 구조</span>
+    <span class="ds">강화 · 원정 · 초월 · 성역 · 내실로 읽는 성장과 재화 흐름</span></span>
+    <span class="ar">↗</span>
+  </a>
+  <a class="lk" href="../nikke/index.html" target="_blank" rel="noopener">
+    <span class="no">08</span>
+    <span><span class="tt">니케 · 4주년 매출 급등 분석<span class="tag">NEW</span></span>
+    <span class="ds">순위 데이터와 콘텐츠 설계로 읽는 라이브 운영</span></span>
+    <span class="ar">↗</span>
+  </a>
+  <a class="lk" href="../lab/lucky-defense-bm-analysis.html" target="_blank" rel="noopener">
+    <span class="no">09</span>
+    <span><span class="tt">운빨존많겜 · 과금 구조와 개선</span>
+    <span class="ds">상품 구성과 과금 가치, 개선 아이디어</span></span>
+    <span class="ar">↗</span>
+  </a>
+
+  <div class="label">MORE</div>
+
+  <a class="lk" href="../lab/index.html" target="_blank" rel="noopener">
+    <span class="no">10</span>
+    <span><span class="tt">기획 · 분석 자료 전체</span>
+    <span class="ds">LAB — 리서치 · 분석 · 기획 문서 모음</span></span>
+    <span class="ar">↗</span>
+  </a>
   <a class="lk" href="../google-ai-certificate.pdf" target="_blank" rel="noopener">
-    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L8 22l4-2 4 2-1-7.5"/></svg></span>
-    <span class="tx"><span class="tt">Google AI 전문 인증서</span><span class="ds">수료증 PDF</span></span>
+    <span class="no">11</span>
+    <span><span class="tt">Google AI 전문 인증서</span>
+    <span class="ds">수료증 PDF · 2026.05</span></span>
     <span class="ar">↗</span>
   </a>
-
   <a class="lk" href="https://github.com/lde0707/Leedoeon/tree/main/qa" target="_blank" rel="noopener">
-    <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.46-1.1-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></span>
-    <span class="tx"><span class="tt">QA 포트폴리오 GitHub</span><span class="ds">포트폴리오 소스와 테스트 케이스 CSV</span></span>
+    <span class="no">12</span>
+    <span><span class="tt">GitHub</span>
+    <span class="ds">포트폴리오 소스와 테스트 케이스 CSV</span></span>
     <span class="ar">↗</span>
   </a>
-
   <a class="lk" href="mailto:doun070789@gmail.com">
-    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-    <span class="tx"><span class="tt">이메일 보내기</span><span class="ds">doun070789@gmail.com</span></span>
+    <span class="no">13</span>
+    <span><span class="tt">이메일 보내기</span>
+    <span class="ds">doun070789@gmail.com</span></span>
     <span class="ar">→</span>
   </a>
 
   <div class="share">
-    <button id="copy">링크 복사</button>
-    <button id="shr">공유하기</button>
+    <button id="copy">COPY LINK</button>
+    <button id="shr">SHARE</button>
   </div>
   <div class="toast" id="toast"></div>
 
-  <footer>© 2026 이도언 · GAME QA</footer>
+  <footer>
+    <span>© 2026 LEE DOEON</span>
+    <span>GAME QA · TEST AUTOMATION</span>
+  </footer>
 </div>
+
 <script>
   const url = location.protocol === 'file:' ? 'https://leedoeon.vercel.app/links/' : location.origin + '/links/';
   const t = document.getElementById('toast');
