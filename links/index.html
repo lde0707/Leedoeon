@@ -48,7 +48,7 @@ a{color:inherit;text-decoration:none}
 .top b{color:var(--ink);font-weight:700}
 
 .me{display:flex;gap:clamp(16px,4vw,26px);align-items:center}
-.av{width:clamp(74px,16vw,96px);height:clamp(74px,16vw,96px);border-radius:3px;object-fit:cover;
+.av{width:clamp(74px,16vw,96px);height:clamp(74px,16vw,96px);border-radius:3px;object-fit:cover;image-rendering:-webkit-optimize-contrast;
   object-position:center top;border:1px solid var(--line);flex-shrink:0;background:var(--bg2)}
 .me h1{font-family:var(--f8);font-weight:800;font-size:clamp(30px,8vw,52px);
   line-height:1.05;letter-spacing:-.045em}
@@ -124,7 +124,7 @@ footer{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);
   </div>
 
   <header class="me">
-    <img class="av" src="../assets/profile-lee-doeon.png" alt="이도언 프로필 사진" width="96" height="96" fetchpriority="high">
+    <img class="av" src="../assets/profile-lee-doeon-sq.png" alt="이도언 프로필 사진" width="96" height="96" decoding="async" fetchpriority="high">
     <div>
       <h1>이도언<span>.</span></h1>
       <p class="role">기능 검증 · 결함 대응 · 화면 인식 자동화</p>
