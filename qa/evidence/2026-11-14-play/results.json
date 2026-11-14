@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-14",
+  "method": "Standalone QA build; isolated saves; real keyboard/mouse input; observational probe; release build excludes probe",
+  "projects": [
+    {
+      "id": "puzzle",
+      "name": "데굴데굴 퍼즐",
+      "flow": "홈 → 퍼즐 입력 → 완료·다음 단계 → 재실행",
+      "verified": "방향 입력, 되돌리기, 초기화 확인창, 일시정지, 첫 두 단계 완료와 보상 증가를 확인했습니다. 종료 후 다시 실행해 획득 재화가 유지됐습니다.",
+      "limits": "전체 128개 단계와 모든 특수 기믹 완주는 이번 범위에서 제외했습니다.",
+      "release_tag": "deguldegul-2026-11-14",
+      "screenshots": [
+        "puzzle-01-home.webp",
+        "puzzle-03-first-stage-cleared.webp",
+        "puzzle-06-restarted-save.webp"
+      ]
+    },
+    {
+      "id": "pearl-thieves",
+      "name": "진주도둑들",
+      "flow": "모드 선택 → 스테이지 전투 → 패배 보상 → 상점",
+      "verified": "병력 소환·전투 중 강화·패배 결과와 재화 반영, 재실행 후 보유량 유지, 재화 부족 시 구매 차단, 상점 탭 전환과 강화 구매에 따른 레벨 상승·재화 차감을 확인했습니다.",
+      "limits": "STOVE 로그인·구매·온라인 서비스와 전체 스테이지 클리어는 확인하지 않았습니다. 공식 판매 빌드는 이번 GitHub 수정으로 교체되지 않습니다.",
+      "release_tag": null,
+      "screenshots": [
+        "pearl-thieves-12-category-fixed.webp",
+        "pearl-thieves-23-store-before.webp",
+        "pearl-thieves-26-store-fixed.webp",
+        "pearl-thieves-20-stage-progress.webp",
+        "pearl-thieves-30-stage-background-fixed.webp",
+        "pearl-thieves-34-store-purchased.webp"
+      ]
+    },
+    {
+      "id": "rushitadel",
+      "name": "Rushitadel",
+      "flow": "저장 불러오기 → 전투·경험치 → 다음 라운드 → 포탑 변형",
+      "verified": "이동·공격, 경험치 획득, 라운드 전환, 포탑 변형 선택, 일시정지와 타이틀 복귀를 확인했습니다. 상단 이동·반동의 화면 이탈 수정도 같은 입력으로 재검증했습니다.",
+      "limits": "모든 테마·보스 완주와 이전 버전 전체 저장 파일 호환성은 확인하지 않았습니다.",
+      "release_tag": "rushitadel-2026-11-14-r2",
+      "screenshots": [
+        "rushitadel-10-augment-earned.webp",
+        "rushitadel-11-top-boundary-before.webp",
+        "rushitadel-12-top-boundary-fixed.webp",
+        "rushitadel-13-recoil-boundary-fixed.webp"
+      ]
+    },
+    {
+      "id": "trash-boy",
+      "name": "쓰레기 집게 소년",
+      "flow": "타이틀 → 이동·채굴 → 수집·맡기기 → 분리수거",
+      "verified": "실제 키 입력으로 지하에 내려가 수집물을 모으고 분리수거 작업대에 맡겼습니다. 올바른 분류의 재화 지급, 오분류·시간 초과의 오염도 증가와 일시정지를 확인했습니다.",
+      "limits": "Direct3D 11로 수정한 빌드에서 확인했습니다. 다른 GPU·장시간 플레이·모든 날짜의 정산은 이번 범위에서 제외했습니다.",
+      "release_tag": "trashboy-2026-11-14-r2",
+      "screenshots": [
+        "trash-boy-12-fixed-default-collection.webp",
+        "trash-boy-14-correct-sorting.webp"
+      ]
+    },
+    {
+      "id": "stilldrawn",
+      "name": "StillDrawn",
+      "flow": "새 게임 → 프롤로그 이동·점프 → 본편 → 이어하기",
+      "verified": "프롤로그를 이동·점프로 통과해 본편으로 진입했습니다. 지도 열기·닫기, 일시정지 중 이동 정지, 타이틀 복귀 후 재실행·체크포인트 이어하기를 확인했습니다.",
+      "limits": "일반 공격 입력은 보냈지만 적 처치·모든 능력·전체 맵 완주는 확인하지 않았습니다.",
+      "release_tag": "stilldrawn-2026-11-14",
+      "screenshots": [
+        "stilldrawn-02-prologue-start.webp",
+        "stilldrawn-04-map.webp",
+        "stilldrawn-06-cold-continue.webp"
+      ]
+    },
+    {
+      "id": "folded-light",
+      "name": "접힌 빛",
+      "flow": "타이틀 → 시작 대사 → 이동·시점 → 제본 다리",
+      "verified": "시작 대사를 넘겨 직접 이동하고 시점을 조작했습니다. F 입력으로 제본 다리를 내리고 다시 올렸으며 점프와 일시정지 중 위치 유지를 확인했습니다.",
+      "limits": "실제 입력 검증은 첫 방까지입니다. 1A·1B 퍼즐 및 연결 통로는 별도 내부 기능 검사 결과이며, 실제 입력 완주 결과와 구분합니다.",
+      "release_tag": "afoldoflight-2026-11-14",
+      "screenshots": [
+        "folded-light-03-foyer.webp",
+        "folded-light-16-bridge-control.webp",
+        "folded-light-18-pause.webp"
+      ]
+    },
+    {
+      "id": "flyeditor",
+      "name": "FlyEditor",
+      "flow": "발사·비행 → 착륙 보상 → 연구 구매 → 접기·재실행",
+      "verified": "마우스로 발사·비행하고 착륙 보상으로 연구를 구매했습니다. 접기·되돌리기·적용 후 종료하고 다시 실행해 연구점과 접힌 형태가 유지되는지 확인했습니다.",
+      "limits": "모든 접기 조합·연구 노드·비행 조건을 검증한 결과는 아닙니다.",
+      "release_tag": "flyeditor-2026-11-14",
+      "screenshots": [
+        "flyeditor-03-flight-complete.webp",
+        "flyeditor-05-research-purchase.webp",
+        "flyeditor-11-cold-save-fold.webp"
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "project": "쓰레기 집게 소년",
+      "before": "게임 시작 후 Direct3D 12 렌더러에서 네이티브 종료가 발생했습니다.",
+      "after": "Windows 그래픽 API를 Direct3D 11로 지정했습니다. 별도 실행 옵션 없이 수집·분리수거·보상 흐름을 재검증했습니다."
+    },
+    {
+      "project": "진주도둑들",
+      "before": "1280×720에서 모드 카드가 겹치고 상점 버튼이 화면 밖으로 나갔습니다. 전투 배경도 UI 배율을 따라 축소됐습니다.",
+      "after": "메뉴를 기준 해상도에 맞게 확대·축소하고 전투 배경을 UI Canvas에서 분리했습니다. 수정 빌드의 같은 해상도에서 재확인했습니다."
+    },
+    {
+      "project": "Rushitadel",
+      "before": "W를 길게 누르면 카메라보다 앞서 캐릭터가 화면 위로 사라졌습니다.",
+      "after": "확인받은 동작에 따라 본체 반지름을 포함해 화면 위·아래 경계로 이동과 반동을 제한했습니다. 전방 벽 오브젝트는 다시 만들지 않았습니다."
+    }
+  ]
+}
