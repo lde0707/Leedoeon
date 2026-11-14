@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제우스: 오만의 신 분석 · 이도언</title>
+<meta name="description" content="18시간 만에 매출 1위. 그런데 왜 '접속할 이유'가 얇아졌나 — 컴투스 제우스: 오만의 신 설계 분석과 개선 제안 · 202227039 이도언">
+<meta property="og:title" content="접속하지 않아도 되는 게임">
+<meta property="og:description" content="제우스는 MMORPG의 피로를 지웠다. 문제는 이유까지 같이 지워졌다는 것.">
+<meta property="og:image" content="https://cdn.gameple.co.kr/news/photo/202610/216699_249691_4459.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root{
+  --mar:#0B0C11; --mar2:#14161E; --mar3:#1D212C;
+  --paper:#EFEAE0; --paper2:#E2DBCC;
+  --ink:#14161E; --mute:#8A8578; --mute2:#9AA0B0;
+  --gold:#D4AC52; --gold2:#F1DCA7; --cr:#D4543A; --sky:#6E9BFF;
+  --sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;
+  --disp:'Cinzel',Georgia,serif;
+  --grot:'Space Grotesk','Pretendard Variable',sans-serif;
+  --gut:clamp(18px,4vw,56px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;overflow-x:clip}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--mar);color:var(--paper);font-family:var(--sans);font-size:17px;line-height:1.72;
+  word-break:keep-all;text-wrap:pretty;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+a{color:inherit}
+img{display:block;max-width:100%}
+p{margin:0 0 14px}
+::selection{background:var(--gold);color:var(--mar)}
+
+/* 대리석 결 + 노이즈 */
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:90;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* 상단바 */
+.top{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;
+  padding:15px var(--gut);font:500 11.5px/1 var(--grot);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--paper);mix-blend-mode:difference}
+.top a{text-decoration:none}
+.top .now{display:flex;gap:13px;align-items:center}
+.top .now b{font-weight:700}
+.bar{position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0;z-index:81}
+
+/* 공통 */
+.sec{padding:clamp(84px,13vh,160px) var(--gut);position:relative}
+.wrap{max-width:1180px;margin:0 auto}
+.no{font:500 11.5px/1 var(--grot);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.no::before{content:"";width:32px;height:1px;background:currentColor;flex:none}
+.h2{font-weight:800;letter-spacing:-.045em;line-height:1.12;font-size:clamp(32px,5.2vw,70px);margin:0 0 20px}
+.h2 em{font-style:normal;color:var(--gold2)}
+.h2 .cr{color:var(--cr)}
+.lead{font-size:clamp(16.5px,1.4vw,19px);color:var(--mute2);max-width:620px;margin:0 0 34px}
+.lt{background:var(--paper);color:var(--ink)}
+.lt .no{color:#9a7a26}
+.lt .lead{color:#55514a}
+.lt .h2 em{color:#9a7a26}
+.card{border:1px solid rgba(239,234,224,.14);border-radius:20px;padding:26px 24px;background:var(--mar2)}
+.lt .card{border-color:rgba(20,22,30,.12);background:var(--paper2)}
+small{font-size:.8em}
+
+figure{margin:0;position:relative;overflow:hidden;border-radius:18px;background:var(--mar3)}
+figure img{width:100%;height:100%;object-fit:cover}
+figure.tall{aspect-ratio:4/5}
+figure.wide{aspect-ratio:16/9}
+figure figcaption{position:absolute;left:10px;bottom:9px;right:10px;font:500 11px/1.35 var(--grot);
+  letter-spacing:.04em;background:rgba(11,12,17,.78);color:var(--paper);padding:6px 10px;border-radius:14px;
+  backdrop-filter:blur(6px)}
+figure figcaption b{color:var(--gold2);font-weight:700}
+
+/* 등장 */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
+.rv.on{opacity:1;transform:none}
+
+/* HERO */
+.hero{height:100svh;min-height:640px;position:relative;overflow:hidden;background:#07080c}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover;opacity:.62;transform:scale(1.06)}
+.hero .shade{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(7,8,12,.72) 0%,rgba(7,8,12,.18) 32%,rgba(7,8,12,.78) 72%,rgba(7,8,12,.97) 100%)}
+.hero .in{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(30px,6vh,66px)}
+.kick{font:600 11.5px/1.6 var(--grot);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.hero h1{font-size:clamp(40px,8.2vw,124px);font-weight:800;letter-spacing:-.052em;line-height:1.02;margin:0}
+.hero h1 span{display:block}
+.hero h1 .g{font-family:var(--disp);font-weight:600;letter-spacing:.01em;color:var(--gold2);font-size:.84em}
+.hero .sub{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;flex-wrap:wrap;margin-top:24px}
+.hero .sub p{margin:0;max-width:540px;font-size:clamp(16px,1.6vw,20px);color:#cfcabe}
+.credit{font:500 11px/1.5 var(--grot);letter-spacing:.07em;color:var(--mute2)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 24px;font:500 11.5px/1.7 var(--grot);letter-spacing:.13em;
+  text-transform:uppercase;color:#b9b3a6;margin-bottom:16px}
+.meta b{color:var(--paper);font-weight:700}
+
+/* 결론 먼저 */
+.finds{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.fd{background:var(--mar2);border:1px solid rgba(239,234,224,.12);border-radius:20px;padding:26px 24px;
+  display:flex;flex-direction:column;min-height:300px}
+.fd .k{font:700 11px/1 var(--grot);letter-spacing:.18em;color:var(--gold)}
+.fd h4{font-size:21px;letter-spacing:-.03em;margin:26px 0 10px;line-height:1.32}
+.fd p{font-size:14.5px;color:var(--mute2);margin:0}
+.fd .tag{margin-top:auto;padding-top:20px;font:600 11px/1 var(--grot);letter-spacing:.12em;color:var(--cr)}
+.verdict{font-size:clamp(27px,4.2vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1.26;margin:0 0 46px;max-width:1040px}
+.verdict em{font-style:normal;color:var(--gold2)}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 20px}
+.kpi{border-radius:18px;padding:22px 20px;background:var(--paper2)}
+.kpi .n{font:700 clamp(30px,3.6vw,48px)/1 var(--grot);letter-spacing:-.045em;color:var(--ink)}
+.kpi .n small{font-size:.42em;letter-spacing:0;margin-left:3px;color:#7a7568}
+.kpi .u{font-size:13px;color:#6a655b;margin-top:9px;line-height:1.5}
+
+/* 2단 */
+.two{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(20px,3vw,46px);align-items:start}
+.two.rev{grid-template-columns:.95fr 1.05fr}
+.gal2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.gal3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+
+/* 균열 블록 */
+.crack .no{color:var(--cr)}
+.crack .h2 em{color:var(--cr)}
+.quote{border-left:2px solid var(--cr);padding:4px 0 4px 18px;margin:26px 0;font-size:16px;color:#cfcabe}
+.quote cite{display:block;margin-top:9px;font:500 11.5px/1 var(--grot);letter-spacing:.09em;color:var(--mute2);font-style:normal}
+.ptr{display:flex;gap:13px;padding:15px 0;border-top:1px solid rgba(239,234,224,.12)}
+.ptr:last-child{border-bottom:1px solid rgba(239,234,224,.12)}
+.ptr .i{font:700 12px/1.5 var(--grot);color:var(--cr);flex:none;width:30px}
+.ptr .t{font-size:15px;line-height:1.6}
+.ptr .t b{color:var(--gold2);font-weight:700}
+.lt .ptr{border-color:rgba(20,22,30,.12)}
+.lt .ptr .t b{color:#9a7a26}
+
+/* 개선 제안 */
+.fix{display:grid;gap:12px}
+.fx{display:grid;grid-template-columns:52px 1fr;gap:18px;background:var(--paper2);border-radius:18px;padding:24px 24px}
+.fx .n{font:700 22px/1 var(--grot);color:#9a7a26;letter-spacing:-.03em}
+.fx h4{margin:0 0 9px;font-size:20px;letter-spacing:-.03em;line-height:1.35}
+.fx p{margin:0;font-size:15px;color:#55514a}
+.fx .why{margin-top:12px;font:500 12px/1.6 var(--grot);letter-spacing:.04em;color:#8a8070}
+.fx .why b{color:#9a7a26}
+
+/* 한계 */
+.lim{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.lim .card p{margin:0;font-size:14.5px;color:var(--mute2)}
+.lim .card h4{margin:0 0 9px;font-size:16px;letter-spacing:-.02em}
+
+/* 출처 */
+.src a{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid rgba(239,234,224,.1);
+  text-decoration:none;font-size:14.5px;color:var(--mute2);transition:color .2s}
+.src a:hover{color:var(--paper)}
+.src a span:first-child{font:500 11px/1.6 var(--grot);letter-spacing:.1em;color:var(--gold);flex:none;width:104px}
+
+footer{padding:clamp(60px,9vh,110px) var(--gut);border-top:1px solid rgba(239,234,224,.12)}
+footer .in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-end;max-width:1180px;margin:0 auto}
+footer .big{font-family:var(--disp);font-weight:600;font-size:clamp(28px,5vw,64px);letter-spacing:.02em;color:var(--gold2);line-height:1}
+footer a{font:600 12px/1 var(--grot);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--paper);
+  border:1px solid rgba(239,234,224,.3);border-radius:999px;padding:12px 20px;display:inline-block}
+
+@media(max-width:900px){
+  .finds,.kpis,.lim,.gal3{grid-template-columns:1fr 1fr}
+  .two,.two.rev{grid-template-columns:1fr}
+  .top .now{display:none}
+}
+@media(max-width:560px){
+  body{font-size:16px}
+  .finds,.lim{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .fx{grid-template-columns:1fr;gap:10px}
+  .src a{flex-direction:column;gap:3px}
+  .src a span:first-child{width:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar"></div>
+<div class="top">
+  <a href="../qa/index.html">← 이도언 · PORTFOLIO</a>
+  <div class="now"><b id="secNo">00</b><span id="secName">Intro</span></div>
+</div>
+
+<!-- HERO -->
+<section class="hero" data-name="Intro" data-no="00">
+  <div class="bg"><img src="https://cdn.gameple.co.kr/news/photo/202610/216699_249691_4459.jpg" alt="제우스: 오만의 신 공성전 업데이트 키 비주얼"></div>
+  <div class="shade"></div>
+  <div class="in">
+    <div class="meta"><span>게임 분석 <b>No.06</b></span><span>컴투스 · 에이버튼</span><span>2026.08.26 출시</span><span><b>202227039 이도언</b></span></div>
+    <h1><span class="g">ZEUS</span><span>접속하지 않아도</span><span>되는 게임</span></h1>
+    <div class="sub">
+      <p>제우스는 MMORPG의 피로를 지우려고 만들어졌다. 18시간 만에 매출 1위를 찍었다. 문제는, 피로와 함께 <em style="color:var(--gold2);font-style:normal">접속할 이유</em>도 얇아졌다는 것이다.</p>
+      <div class="credit">이미지 © 컴투스 · 에이버튼 / 게임플</div>
+    </div>
+  </div>
+</section>
+
+<!-- 결론 먼저 -->
+<section class="sec" data-name="Verdict" data-no="00">
+  <div class="wrap">
+    <div class="no rv">결론 먼저</div>
+    <h2 class="verdict rv">제우스는 <em>경쟁의 문턱</em>을 낮추는 데 성공했지만,<br>낮춘 자리에 <em>플레이할 이유</em>를 다시 채워 넣지 못했다.</h2>
+    <div class="finds">
+      <div class="fd rv">
+        <div class="k">FINDING 01</div>
+        <h4>피로를 지우니<br>플레이도 같이 지워졌다</h4>
+        <p>AI 모드는 클라이언트를 꺼도 사냥이 돌아간다. 반복을 없앤 대신, 접속 자체의 이유가 약해졌다.</p>
+        <div class="tag">→ 03 균열 ①</div>
+      </div>
+      <div class="fd rv">
+        <div class="k">FINDING 02</div>
+        <h4>과금은 사라지지 않고<br>자리를 옮겼다</h4>
+        <p>무기·방어구·스킬은 비과금으로 뺐다. 대신 월 9,900원이 AI 모드 12시간을 24시간으로 바꾼다.</p>
+        <div class="tag">→ 04 균열 ②</div>
+      </div>
+      <div class="fd rv">
+        <div class="k">FINDING 03</div>
+        <h4>경쟁을 넓혔는데<br>경쟁할 사람은 나눴다</h4>
+        <p>스트리머 서버 6개를 분리하고, 50일 만에 서버를 30→39개로 늘렸다. 쏠림은 미뤄졌을 뿐이다.</p>
+        <div class="tag">→ 05 균열 ③</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 성적표 -->
+<section class="sec lt" data-name="Numbers" data-no="01">
+  <div class="wrap">
+    <div class="no rv">01 — 성적표</div>
+    <h2 class="h2 rv">숫자는 <em>이겼다</em></h2>
+    <p class="lead rv">컴투스는 서머너즈 워 이후 10년 가까이 새 캐시카우를 만들지 못했다. 제우스는 그 공백을 한 분기 만에 메웠다. 먼저 이 사실부터 인정하고 시작해야 비판이 성립한다.</p>
+    <div class="kpis">
+      <div class="kpi rv"><div class="n">18<small>시간</small></div><div class="u">출시 18시간 만에 애플·구글 양대 마켓 매출 1위</div></div>
+      <div class="kpi rv"><div class="n">374<small>억원</small></div><div class="u">2026년 10월 월간 모바일 매출 1위 (모바일인덱스 추정)</div></div>
+      <div class="kpi rv"><div class="n">+69.6<small>%</small></div><div class="u">컴투스 3분기 RPG 매출 1,082억원 — 36일만 반영된 수치</div></div>
+      <div class="kpi rv"><div class="n">139<small>억원</small></div><div class="u">3분기 영업이익. 전년 동기 179억원 적자에서 흑자 전환</div></div>
+    </div>
+    <div class="two rv" style="margin-top:34px">
+      <div>
+        <p>출시 초기 지표도 숫자상으론 건강하다. 출시 50일 시점 전체 이용자의 <b>84%가 길드에 가입</b>했고, 길드 레이드 누적 도전은 5만 회를 넘겼다. 서버는 30개에서 39개로 약 30% 늘었다.</p>
+        <p style="color:var(--mute);font-size:15px">다만 컴투스는 제우스 <em style="font-style:normal;color:#9a7a26">단독 매출을 공개한 적이 없다</em>. 위 수치는 RPG 카테고리 합계와 시장 추정치이고, DAU·잔존율은 어느 자료에도 나오지 않는다. 이 글이 매출이 아니라 설계를 보는 이유다.</p>
+      </div>
+      <figure class="wide"><img src="https://cdn.gameple.co.kr/news/photo/202610/216723_249774_417.jpg" alt="제우스 출시 50일 흥행 관련 이미지" loading="lazy"><figcaption><b>출시 50일</b> · 서버 39개, 길드 가입률 84%</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 02 설계 의도 -->
+<section class="sec" data-name="Design" data-no="02">
+  <div class="wrap">
+    <div class="no rv">02 — 설계 의도</div>
+    <h2 class="h2 rv">그들이 풀려던 건<br><em>장르의 피로</em>였다</h2>
+    <p class="lead rv">개발사 에이버튼의 진단은 정확했다. 상위 플레이어가 고착되고, 성장·과금 격차가 벌어지고, 중하위 유저가 “할 게 없다”고 느끼면서 MMORPG의 유저 풀 자체가 말라간다는 것.</p>
+    <div class="gal3 rv" style="margin-bottom:30px">
+      <figure class="wide"><img src="https://cdn.gameple.co.kr/news/photo/202610/216772_249937_1748.png" alt="제우스 신규 던전 선택 UI" loading="lazy"><figcaption>단계별 시련 — 난이도 선택 구조</figcaption></figure>
+      <figure class="wide"><img src="https://cdn.gameple.co.kr/news/photo/202610/216835_250166_3149.png" alt="제우스 인게임 전투 장면" loading="lazy"><figcaption>인게임 전투 — 언리얼 엔진 5</figcaption></figure>
+      <figure class="wide"><img src="https://cdn.gameple.co.kr/news/photo/202610/216699_249693_4535.png" alt="제우스 공성전 중앙 점령지" loading="lazy"><figcaption>공성전 중앙 점령지</figcaption></figure>
+    </div>
+    <div class="two">
+      <div class="rv">
+        <div class="ptr"><div class="i">A</div><div class="t"><b>AI 모드</b> — 클라이언트를 종료해도 사냥이 이어진다. 시간대별 사냥터·좌표 지정 가능. 기본 12시간.</div></div>
+        <div class="ptr"><div class="i">B</div><div class="t"><b>무기 비과금</b> — 무기·방어구·스킬·핵심 재화 오리하르콘을 유료 상품에서 제외했다.</div></div>
+        <div class="ptr"><div class="i">C</div><div class="t"><b>페르소나</b> — 내 능력치·외형을 복제한 AI와 싸운다. 상대 수준을 고를 수 있는 PvP.</div></div>
+        <div class="ptr"><div class="i">D</div><div class="t"><b>미다스의 금고</b> — 시스템이 아이템을 사고팔며 다이아를 풀고 회수한다. 인플레 조절 장치.</div></div>
+      </div>
+      <div class="card rv">
+        <div class="k" style="font:700 11px/1 var(--grot);letter-spacing:.18em;color:var(--gold)">여기서부터가 분석이다</div>
+        <p style="margin:18px 0 0;font-size:16.5px;line-height:1.7">네 장치 모두 <em style="font-style:normal;color:var(--gold2)">“하기 싫은 걸 안 하게 해주는”</em> 방향으로 설계됐다. 반복 사냥을 안 해도 되고, 무기를 안 질러도 되고, 사람을 안 만나도 PvP가 되고, 시세를 안 봐도 경제가 돈다.</p>
+        <p style="margin:16px 0 0;font-size:16.5px;line-height:1.7;color:var(--cr)">문제는 <b>“하고 싶은 것”을 새로 만든 장치가 하나도 없다</b>는 점이다. 아래 세 균열은 전부 여기서 나온다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 균열 1 -->
+<section class="sec crack" data-name="Crack 01" data-no="03">
+  <div class="wrap">
+    <div class="no rv">03 — 균열 ① AI 모드</div>
+    <h2 class="h2 rv">게임을 켤 이유를<br><em>게임이 없앴다</em></h2>
+    <div class="two rev">
+      <figure class="tall rv"><img src="https://cdn.gameple.co.kr/news/photo/202610/216772_249938_1758.jpg" alt="제우스 던전 내부 화면" loading="lazy"><figcaption>클라이언트를 꺼도 캐릭터는 사냥을 계속한다</figcaption></figure>
+      <div class="rv">
+        <p>AI 모드는 제우스의 가장 큰 차별점이자, 가장 큰 자기모순이다. 리뷰 기사들이 공통으로 짚은 지점이 이것이다.</p>
+        <div class="quote">접속조차 하지 않아도 되는 게임에서 재미를 느끼기는 어렵다. 사람은 많은데 함께 겨룰 자리가 없어 외롭다는 인상.<cite>뉴데일리 리뷰, 2026.08.31 (취지 요약)</cite></div>
+        <div class="ptr"><div class="i">01</div><div class="t">AI가 몬스터 밀집도나 주변 <b>겹사 유저 수를 판단하지 못해</b> 수동 사냥보다 효율이 떨어진다는 불만이 나왔다.</div></div>
+        <div class="ptr"><div class="i">02</div><div class="t">공략의 핵심이 <b>“어느 사냥터에 AI를 돌릴까”</b>가 됐다. 플레이 실력이 아니라 배치 노하우가 경쟁력이다.</div></div>
+        <div class="ptr"><div class="i">03</div><div class="t">결국 <b>접속 = 세팅</b>이 된다. 로그인은 사냥터를 바꾸러 들어오는 행위에 가까워진다.</div></div>
+        <p style="margin-top:22px;color:var(--mute2);font-size:15px">반복을 줄이는 건 옳다. 하지만 반복을 자동화하면, 그 자리에 <em style="font-style:normal;color:var(--gold2)">수동으로만 얻을 수 있는 것</em>을 넣어야 게임이 비지 않는다. 제우스에는 그 보상이 없다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 균열 2 -->
+<section class="sec crack" data-name="Crack 02" data-no="04">
+  <div class="wrap">
+    <div class="no rv">04 — 균열 ② 과금의 위치</div>
+    <h2 class="h2 rv">무기를 뺀 자리에<br><em>시간</em>을 팔았다</h2>
+    <p class="lead rv">“무기는 과금으로 못 삽니다”는 분명한 진전이다. 그런데 과금의 총량이 줄었는지는 다른 문제다.</p>
+    <div class="gal2 rv" style="margin-bottom:30px">
+      <figure class="wide"><img src="https://cdn.gameple.co.kr/news/photo/202610/216835_250167_3159.png" alt="제우스 보상 UI" loading="lazy"><figcaption>보상 구조 — 재료는 플레이로만 얻는다</figcaption></figure>
+      <figure class="wide"><img src="https://cdn.gameple.co.kr/news/photo/202610/216723_249775_5253.png" alt="제우스 라이브 방송 장면" loading="lazy"><figcaption>라이브 방송으로 개선안을 직접 공유한다</figcaption></figure>
+    </div>
+    <div class="two">
+      <div class="rv">
+        <div class="ptr"><div class="i">₩</div><div class="t">월 <b>9,900원 멤버십</b>이 AI 모드를 12시간 → 24시간으로 늘린다. 성장 속도가 곧 2배가 된다는 뜻이다.</div></div>
+        <div class="ptr"><div class="i">₩</div><div class="t">멤버십에는 <b>거래 가능한 오리하르콘 획득 확률 증가</b>가 붙는다. “핵심 재화는 비과금”이라는 선이 여기서 흐려진다.</div></div>
+        <div class="ptr"><div class="i">₩</div><div class="t">의상·탈것은 <b>6등급 확률형 소환</b>이다. 천장은 있지만, 수집 요소가 전투력에 얹히는 구조 자체는 그대로다.</div></div>
+      </div>
+      <div class="card rv" style="border-color:rgba(212,84,58,.4)">
+        <div style="font:700 11px/1 var(--grot);letter-spacing:.18em;color:var(--cr)">왜 날카롭게 봐야 하나</div>
+        <p style="margin:18px 0 0;font-size:16.5px;line-height:1.7">무기 과금을 없애면 <em style="font-style:normal;color:var(--gold2)">과금 격차가 눈에 안 보이게</em> 된다. 보이지 않을 뿐, 하루 12시간의 격차는 한 달이면 360시간 차이다.</p>
+        <p style="margin:16px 0 0;font-size:16.5px;line-height:1.7;color:var(--mute2)">유저가 “나는 과금을 안 해도 된다”고 믿는 동안 격차가 쌓이면, 체감하는 순간의 이탈은 오히려 더 급격하다. <b style="color:var(--cr)">보이는 격차보다 늦게 발견되는 격차가 위험하다.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 균열 3 -->
+<section class="sec crack" data-name="Crack 03" data-no="05">
+  <div class="wrap">
+    <div class="no rv">05 — 균열 ③ 경쟁의 비대칭</div>
+    <h2 class="h2 rv">서버를 늘릴수록<br>경쟁은 <em>얕아진다</em></h2>
+    <div class="two">
+      <div class="rv">
+        <p>제우스는 3개 서버를 묶은 인터서버 통합 거래소를 쓴다. 좋은 설계다. 그런데 운영은 반대 방향으로 갔다.</p>
+        <div class="ptr"><div class="i">01</div><div class="t">전문 스트리머 협업 서버 <b>6개를 아예 분리</b>했다. 거래소·매칭·서버 이전까지 따로 돈다. 일반 서버 유저에게 “가장 큰 판”은 처음부터 닫혀 있다.</div></div>
+        <div class="ptr"><div class="i">02</div><div class="t">출시 50일 만에 서버가 <b>30 → 39개</b>로 늘었다. 신규 유입에는 좋지만, 서버당 인구는 옅어진다.</div></div>
+        <div class="ptr"><div class="i">03</div><div class="t">10월 22~25일 1차, 11월 19일 2차 <b>서버 이전</b>이 열렸다. 이전이 열리면 강한 길드로 쏠린다. 분산해 놓고 다시 모으는 셈이다.</div></div>
+        <div class="quote" style="border-color:var(--gold)">공성전은 길드 콘텐츠다. 길드 가입률 84%는 좋은 숫자지만, 그 길드들이 <b style="color:var(--gold2)">서로 만날 수 있는지</b>는 또 다른 숫자다.<cite>분석자 메모</cite></div>
+      </div>
+      <figure class="tall rv"><img src="https://cdn.gameple.co.kr/news/photo/202610/216699_249695_467.jpg" alt="제우스 공성전 전장 지도" loading="lazy"><figcaption><b>공성전 전장 지도</b> · 중앙 점령지를 둘러싼 길드 경쟁</figcaption></figure>
+    </div>
+    <div class="gal3 rv" style="margin-top:22px">
+      <figure class="wide"><img src="https://cdn.gamevu.co.kr/news/photo/202611/62287_102179_3227.png" alt="제우스 아카디아 점령전" loading="lazy"><figcaption>아카디아 점령전 — 점령지 9곳으로 확대</figcaption></figure>
+      <figure class="wide"><img src="https://cdn.gamevu.co.kr/news/photo/202611/62287_102180_3231.png" alt="제우스 요새전 대진" loading="lazy"><figcaption>요새전 대진 구성</figcaption></figure>
+      <figure class="wide"><img src="https://cdn.gameple.co.kr/news/photo/202610/216699_249692_4515.png" alt="제우스 공성전 입찰 화면" loading="lazy"><figcaption>공성전 입찰 — 길드 단위 참여</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 06 QA 관점 -->
+<section class="sec lt" data-name="QA" data-no="06">
+  <div class="wrap">
+    <div class="no rv">06 — QA 관점으로 다시 보기</div>
+    <h2 class="h2 rv">출시 3일 만에 나온<br><em>버그 목록</em>이 말해주는 것</h2>
+    <p class="lead rv">2026년 8월 28일 라이브에서 개발진이 직접 인정한 항목들이다. 각각이 어떤 테스트에서 걸렸어야 하는지를 적어봤다.</p>
+    <div class="fix">
+      <div class="fx rv"><div class="n">01</div><div>
+        <h4>블레스드 30레벨 스킬, 발동 조건 설정 오류</h4>
+        <p>특정 클래스의 특정 레벨 스킬이 조건대로 터지지 않았다. 레벨 해금형 스킬은 클래스 × 레벨 × 발동조건의 조합이 수십 개로 늘어난다.</p>
+        <div class="why">걸렸어야 할 테스트 — <b>조합 매트릭스 테스트</b>. 클래스 8종 × 해금 레벨 구간을 축으로 잡고, 조건부 스킬만 따로 체크리스트화.</div>
+      </div></div>
+      <div class="fx rv"><div class="n">02</div><div>
+        <h4>오라클 힐 성능 미달 · 근접 클래스 사냥 효율 저하</h4>
+        <p>원거리 밀집 지역에서 근접 캐릭터의 몬스터 타겟이 겹치는 문제까지 함께 보고됐다. 단일 스킬 수치가 아니라 <b>필드 환경과 맞물린 밸런스</b> 문제다.</p>
+        <div class="why">걸렸어야 할 테스트 — <b>필드 혼잡도 시나리오 테스트</b>. 1인 테스트가 아니라 동일 사냥터 N명 동시 접속 조건에서의 클래스별 처치 효율 측정.</div>
+      </div></div>
+      <div class="fx rv"><div class="n">03</div><div>
+        <h4>에픽 퀘스트 48 · 60 · 70 구간 성장 정체</h4>
+        <p>에픽 53 전후로 명중이 부족해 데미지가 들어가지 않는다는 보고가 반복됐다. 장비 컷이 급격히 올라가는데 인게임에는 그 사실을 알려주는 장치가 없었다.</p>
+        <div class="why">걸렸어야 할 테스트 — <b>무과금 기준 진행 곡선 측정</b>. “클리어 가능한가”가 아니라 “평균 장비로 몇 분 걸리는가”를 레벨 구간별로 기록.</div>
+      </div></div>
+      <div class="fx rv"><div class="n">04</div><div>
+        <h4>던전 반복 동선과 피로도</h4>
+        <p>소탕 기능 부재와 불필요한 이동 동선이 불편 사항으로 올라왔다. 버그는 아니지만 <b>이탈을 만드는 결함</b>이다.</p>
+        <div class="why">걸렸어야 할 테스트 — <b>동선 클릭 수 카운트</b>. 일일 루틴 1회를 완주하는 데 필요한 터치·이동 횟수를 수치로 뽑아 상한선을 기준으로 잡기.</div>
+      </div></div>
+    </div>
+    <p class="rv" style="margin-top:26px;font-size:15px;color:#55514a">네 건 모두 <em style="font-style:normal;color:#9a7a26">재현이 어려운 희귀 버그가 아니다</em>. 조건을 미리 정해두면 출시 전에 잡히는 종류다. 라이브 직후 유저가 먼저 발견했다는 건, 테스트 케이스의 축이 “동작하는가”에 머물러 있었다는 뜻으로 읽힌다.</p>
+  </div>
+</section>
+
+<!-- 07 개선 제안 -->
+<section class="sec" data-name="Fix" data-no="07">
+  <div class="wrap">
+    <div class="no rv">07 — 개선 방향</div>
+    <h2 class="h2 rv">자동화를 빼지 말고<br><em>비워진 자리</em>를 채워라</h2>
+    <p class="lead rv">AI 모드를 없애자는 제안은 현실적이지 않다. 이미 제우스의 정체성이고, 유저가 그걸 보고 왔다. 그래서 방향은 하나다 — 자동으로는 절대 못 얻는 것을 만드는 것.</p>
+    <div class="two">
+      <div class="rv">
+        <div class="ptr"><div class="i">01</div><div class="t"><b>AI는 하한, 수동은 상한으로.</b> AI 모드가 주는 보상을 100으로 고정하고, 수동 플레이에서만 열리는 변수 보상(필드 이벤트 난입, 연속 처치 가중치, 희귀 조우)을 얹는다. 성장 속도가 아니라 <b>기대값의 분산</b>으로 수동을 보상한다.</div></div>
+        <div class="ptr"><div class="i">02</div><div class="t"><b>멤버십을 시간에서 편의로.</b> 12→24시간은 성장 속도 자체를 판다. 대신 예약 스케줄·사냥터 프리셋·자동 보고서 같은 <b>관리 편의</b>로 옮기고, AI 총 시간은 전원 동일하게. 과금선이 다시 선명해진다.</div></div>
+        <div class="ptr"><div class="i">03</div><div class="t"><b>진입 장벽을 난이도가 아니라 정보로 풀기.</b> 에픽 48·60·70의 벽은 수치를 낮춘다고 사라지지 않는다. “현재 명중 412 / 권장 460”처럼 <b>부족한 스탯을 직접 짚어주는 진단 UI</b>가 더 싸고 확실하다.</div></div>
+        <div class="ptr"><div class="i">04</div><div class="t"><b>서버를 늘리는 대신 매칭을 넓히기.</b> 39개 서버 + 서버 이전은 쏠림을 미루는 처방이다. 공성전·요새전을 인터서버 단위로 묶어 <b>인구가 옅어져도 경쟁은 유지되게</b> 한다.</div></div>
+      </div>
+      <figure class="tall rv"><img src="https://cdn.gameple.co.kr/news/photo/202610/216835_250165_3136.jpg" alt="제우스 성물 방어전 업데이트 키 비주얼" loading="lazy"><figcaption><b>성물 방어전</b> · 최대 60명 협동 콘텐츠</figcaption></figure>
+    </div>
+    <div class="card rv" style="margin-top:26px;border-color:rgba(212,172,82,.42)">
+      <div style="font:700 11px/1 var(--grot);letter-spacing:.18em;color:var(--gold)">한 줄로</div>
+      <p style="margin:16px 0 0;font-size:clamp(19px,2.2vw,27px);font-weight:700;letter-spacing:-.03em;line-height:1.45">제우스가 다음 100일에 답해야 할 질문은 “어떻게 더 편하게 만들까”가 아니라,<br><em style="font-style:normal;color:var(--gold2)">“왜 지금 접속해야 하는가”</em>다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 한계 -->
+<section class="sec" data-name="Limits" data-no="08" style="background:var(--mar2)">
+  <div class="wrap">
+    <div class="no rv">08 — 이 분석의 한계</div>
+    <h2 class="h2 rv" style="font-size:clamp(26px,3.6vw,46px)">무엇을 확인하지 <em>못했는가</em></h2>
+    <div class="lim">
+      <div class="card rv"><h4>직접 플레이 미검증</h4><p>이 분석은 공개된 기사·리뷰·공식 발표를 기반으로 했다. 에픽 48·60·70 구간의 체감 난이도는 직접 플레이로 확인하지 않았다.</p></div>
+      <div class="card rv"><h4>잔존율 비공개</h4><p>제우스의 DAU·MAU·잔존율은 어디에도 공개되지 않았다. 매출 1위와 잔존율은 별개 지표이므로, 이탈 여부를 단정하지 않았다.</p></div>
+      <div class="card rv"><h4>시점 편향</h4><p>비판 근거의 상당수는 출시 직후 8~9월 리뷰다. 10~11월 공성전·요새전 업데이트 이후 체감이 달라졌을 수 있다.</p></div>
+    </div>
+    <p class="rv" style="margin-top:24px;font-size:15px;color:var(--mute2)">이 세 가지를 메우는 가장 빠른 방법은 직접 신규 계정으로 에픽 70까지 진행하며 구간별 소요 시간을 기록하는 것이다. 다음 분석의 과제로 남긴다.</p>
+  </div>
+</section>
+
+<!-- 출처 -->
+<section class="sec src" data-name="Sources" data-no="--">
+  <div class="wrap">
+    <div class="no rv">참고 자료</div>
+    <div class="rv">
+      <a href="https://www.inven.co.kr/webzine/news/?news=319310" target="_blank" rel="noopener"><span>인벤 2026.08.07</span><span>컴투스-에이버튼 신작 '제우스' 8월 26일 출시 — 쇼케이스 종합</span></a>
+      <a href="https://www.economytribune.co.kr/news/articleView.html?idxno=3903575" target="_blank" rel="noopener"><span>이코노미트리뷴 08.07</span><span>AI로 반복사냥 줄이고 "모두가 즐기는 경쟁" — 시스템·BM 상세</span></a>
+      <a href="https://www.thevaluenews.co.kr/news/200653" target="_blank" rel="noopener"><span>더밸류뉴스 08.10</span><span>무기 과금 덜고 '9900원 구독' 승부수</span></a>
+      <a href="https://www.youthdaily.co.kr/news/article.html?no=225988" target="_blank" rel="noopener"><span>청년일보 08.29</span><span>라이브에서 공개된 불편 사항과 개선 약속 — 본 분석 06장의 근거</span></a>
+      <a href="https://biz.newdaily.co.kr/site/data/html/2026/08/31/2026083100125.html" target="_blank" rel="noopener"><span>뉴데일리 08.31</span><span>플레이 리뷰 — AI 모드와 에픽 퀘스트 체감</span></a>
+      <a href="https://dpg.danawa.com/news/view?boardSeq=60&listSeq=6052298" target="_blank" rel="noopener"><span>다나와 DPG 08.31</span><span>익숙한 재미를 한층 더 다듬은 — 리뷰</span></a>
+      <a href="https://www.nbntv.co.kr/news/articleView.html?idxno=4024745" target="_blank" rel="noopener"><span>내외경제TV 09.27</span><span>리뷰 #273 — 경제·작업장·성장 구간 분석</span></a>
+      <a href="https://www.wolyo.co.kr/news/articleView.html?idxno=318515" target="_blank" rel="noopener"><span>월요신문 10.01</span><span>흥행 궤도 — 장기 흥행 조건 분석</span></a>
+      <a href="https://www.gameple.co.kr/news/articleView.html?idxno=216699" target="_blank" rel="noopener"><span>게임플 10.14</span><span>공성전 종합 가이드 — 전장 지도·점령 규칙</span></a>
+      <a href="https://www.youthdaily.co.kr/news/article.html?no=229669" target="_blank" rel="noopener"><span>청년일보 11.12</span><span>출시 50일·100일 지표와 신규 콘텐츠 로드맵</span></a>
+      <a href="https://www.newscj.com/news/articleView.html?idxno=3448315" target="_blank" rel="noopener"><span>천지일보 11.12</span><span>컴투스 3분기 실적 — RPG 매출·흑자 전환·해외 비중</span></a>
+      <a href="https://www.techm.kr/news/articleView.html?idxno=156919" target="_blank" rel="noopener"><span>테크M 11.04</span><span>10월 월간 매출 추정치 (모바일인덱스)</span></a>
+    </div>
+    <p class="rv credit" style="margin-top:22px">본문 이미지 저작권 © 컴투스 · 에이버튼. 보도 자료 이미지를 각 매체 기사에서 인용했으며, 비영리 학습·포트폴리오 목적으로 사용했습니다.</p>
+  </div>
+</section>
+
+<footer data-name="End" data-no="--">
+  <div class="in">
+    <div>
+      <div class="big">ZEUS</div>
+      <p class="credit" style="margin-top:14px">게임 분석 No.06 · 2026.11 · 유한대학교 게임콘텐츠과 202227039 이도언</p>
+    </div>
+    <a href="../qa/index.html">포트폴리오로 돌아가기</a>
+  </div>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script>
+(function(){
+  // 부드러운 스크롤
+  try{
+    if(window.Lenis && !matchMedia('(prefers-reduced-motion:reduce)').matches){
+      var lenis=new Lenis({duration:1.05,smoothWheel:true});
+      function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+      if(window.ScrollTrigger){lenis.on('scroll',ScrollTrigger.update);}
+    }
+  }catch(e){}
+
+  // 등장
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el,i){
+    el.style.transitionDelay=(Math.min(i%4,3)*70)+'ms';io.observe(el);
+  });
+
+  // 진행바 + 섹션 표기
+  var secs=[].slice.call(document.querySelectorAll('[data-name]')),
+      bar=document.getElementById('bar'),nm=document.getElementById('secName'),no=document.getElementById('secNo');
+  function tick(){
+    var h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.width=(h>0?Math.min(scrollY/h,1)*100:0)+'%';
+    var cur=secs[0];
+    for(var i=0;i<secs.length;i++){if(secs[i].getBoundingClientRect().top<=innerHeight*0.42)cur=secs[i];}
+    if(cur){var n=cur.dataset.name,v=cur.dataset.no;
+      if(nm.textContent!==n){nm.textContent=n;no.textContent=v;}}
+  }
+  addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
+
+  // 히어로 패럴럭스
+  var bg=document.querySelector('.hero .bg img');
+  if(bg&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    addEventListener('scroll',function(){
+      var y=Math.min(scrollY,innerHeight);
+      bg.style.transform='scale(1.06) translate3d(0,'+(y*0.16)+'px,0)';
+    },{passive:true});
+  }
+
+  // 깨진 이미지 숨김
+  document.querySelectorAll('figure img').forEach(function(im){
+    im.addEventListener('error',function(){var f=im.closest('figure');if(f)f.style.display='none';});
+  });
+})();
+</script>
+</body>
+</html>
