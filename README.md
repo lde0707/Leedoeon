@@ -24,6 +24,19 @@
 
 쓰레기 집게 소년, StillDrawn, 접힌 빛, GreenWay와 AI Shorts 자동화도 [포트폴리오의 참여 프로젝트](https://leedoeon.vercel.app/qa/index.html#projects)에서 볼 수 있습니다.
 
+## 공개 게임 소스
+
+| 게임 | GitHub 저장소 |
+|---|---|
+| 데굴데굴 퍼즐 | [lde0707/Puzzle](https://github.com/lde0707/Puzzle) |
+| Rushitadel | [lde0707/Roguelike-Defense](https://github.com/lde0707/Roguelike-Defense) |
+| 쓰레기 집게 소년 | [lde0707/Capstone](https://github.com/lde0707/Capstone) |
+| 접힌 빛 | [lde0707/Book-tower](https://github.com/lde0707/Book-tower) |
+| FlyEditor | [lde0707/FlyEditor](https://github.com/lde0707/FlyEditor) |
+| StillDrawn | [lde0707/Unfinished-Sketchbook](https://github.com/lde0707/Unfinished-Sketchbook) |
+
+진주도둑들은 팀 비공개 저장소에서 관리합니다. [STOVE 출시 페이지](https://store.onstove.com/games/104688)와 QA 보고서에서 확인할 수 있습니다.
+
 ## 프로젝트별 QA 엑셀
 
 파일 이름을 누르면 엑셀을 다운로드합니다. 각 게임의 **플레이 재검증** 시트에는 실제 입력으로 확인한 추가 결과를 정리했습니다. 기존 시트의 검증 날짜와 과거 실행 결과를 함께 보존했습니다.
@@ -59,7 +72,7 @@
 
 ## 자료 안내
 
-게임 이미지, 분석서 이미지, QA 엑셀은 이 저장소에 보관해 함께 배포합니다. 게임 개발 소스는 개인·팀 비공개 저장소에서 관리합니다.
+게임 이미지, 분석서 이미지, QA 엑셀은 이 저장소에 보관해 함께 배포합니다. 게임 6개의 개발 소스를 위 GitHub 저장소에서 공개합니다. 진주도둑들 팀 저장소는 비공개입니다.
 
 검증 범위는 각 보고서에 적었습니다. 전체 스테이지 완주나 모든 PC 환경에서의 동작을 의미하지 않습니다. 진주도둑들 수정 빌드는 팀 비공개 Release에 있으며 STOVE 판매 빌드는 별도입니다.
 
