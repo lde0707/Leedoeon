@@ -1,0 +1,10 @@
+# Local captures, downloaded verification copies and temporary scripts
+/outputs/
+**/__pycache__/
+**/node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+~$*
