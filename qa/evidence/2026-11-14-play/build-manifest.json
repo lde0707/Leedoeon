@@ -1,0 +1,58 @@
+{
+  "source_commits": [
+    {
+      "repo": "Book-tower",
+      "commit": "4415293a973d0ea37bde6e9cbd1cbd840a65259b"
+    },
+    {
+      "repo": "Capstone",
+      "commit": "647b8c9fb5446d3ff824769718879b3643f0030c"
+    },
+    {
+      "repo": "FlyEditor",
+      "commit": "ec3a855db2bfa5ca2b1c145d4d75f00f02cb846e"
+    },
+    {
+      "repo": "Puzzle",
+      "commit": "c80bf27299bd2413431b02e22d3c6f8ceb585a95"
+    },
+    {
+      "repo": "Roguelike-Defense",
+      "commit": "d76bbbbefce128af64e45c595dc6ef8a46e257fc"
+    },
+    {
+      "repo": "Unfinished-Sketchbook",
+      "commit": "deda399947fb1e2c3033a44095f99c2622338f85"
+    },
+    {
+      "repo": "GameEngine_Pearl-Thieves",
+      "commit": "7da8d33f6854a06f72d6649a17962926d763a61d"
+    }
+  ],
+  "fixed_packages": [
+    {
+      "repo": "Capstone",
+      "exe": "TrashBoy",
+      "sha256": "4be07ab3265db2f4d52e20f35c7a832bb8cd1482383ecb1d01292e91c2bb4694",
+      "size": 42234494,
+      "production_startup": "pass",
+      "release_excludes_probe": true
+    },
+    {
+      "repo": "Roguelike-Defense",
+      "exe": "Rushitadel",
+      "sha256": "e85c5af791eb021b3ea24936c6ac63f81d179d27e79a8f01eef45538cdd63d13",
+      "size": 59125074,
+      "production_startup": "pass",
+      "release_excludes_probe": true
+    },
+    {
+      "repo": "GameEngine_Pearl-Thieves",
+      "exe": "PearlThieves",
+      "sha256": "eefca5d51f6e6a31c811d834ed16df32682baab2ed6970178dd6356ff9111aed",
+      "size": 187902865,
+      "production_startup": "pass",
+      "release_excludes_probe": true
+    }
+  ]
+}
