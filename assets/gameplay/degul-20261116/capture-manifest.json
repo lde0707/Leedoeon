@@ -1,0 +1,19 @@
+{
+  "capture_date": "2026-11-16",
+  "source": "Latest local Unity WebGL build",
+  "source_hashes": {
+    "data": "aaa9d48e65fbbea806adafe3823f2b87833af5921aa32e34dbb4a1044a12bf00",
+    "wasm": "8e894bf4e2fa89bd168422712fcb9e02ff25941141e800a8d5920d3648efd8f9"
+  },
+  "method": "Real UI and directional keyboard input; fresh browser storage; ranking participation declined",
+  "flow": [
+    "home",
+    "stages",
+    "stage-detail",
+    "play",
+    "clear",
+    "wardrobe",
+    "skin-draw"
+  ],
+  "browser_errors": []
+}
